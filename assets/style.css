@@ -36,6 +36,8 @@
   --empty-bg:rgba(255,255,255,.6);
   --sb:#98A69A;
   --sb-hover:#84948A;
+  --bg-ink-2:rgba(23,23,23,.75);
+  --bg-hairline:rgba(23,23,23,.28);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -75,7 +77,7 @@ button{font-family:inherit}
 .sheet{
   position:relative;z-index:1;
   max-width:800px;
-  margin:56px auto 72px;
+  margin:0 auto 64px;
   padding:48px;
   background:var(--sheet);
   background-image:radial-gradient(circle,var(--dot) 1px,transparent 1.4px);
@@ -100,7 +102,11 @@ button{font-family:inherit}
 }
 
 /* ============ Header ============ */
-.site-header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-header{
+  position:relative;z-index:1;
+  max-width:800px;margin:48px auto 0;padding:0 48px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
 .head-actions{display:flex;align-items:center;gap:10px}
 .brand{display:flex;align-items:center;gap:12px}
 .brand-tile{
@@ -118,7 +124,7 @@ button{font-family:inherit}
 }
 .brand-sub{
   font-family:var(--mono);font-size:9.5px;font-weight:500;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--bg-ink-2);
   margin-top:3px;
 }
 
@@ -369,13 +375,14 @@ button{font-family:inherit}
 
 /* ============ Site nav ============ */
 .site-nav{
+  position:relative;z-index:1;
   display:flex;gap:4px;flex-wrap:wrap;
-  margin:14px 0 24px;
-  border-bottom:1px solid var(--hairline);
+  max-width:800px;margin:14px auto 32px;padding:0 48px;
+  border-bottom:1px solid var(--bg-hairline);
 }
 .site-nav a{
   font-family:var(--mono);font-size:10.5px;font-weight:600;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);
+  letter-spacing:.08em;text-transform:uppercase;color:var(--bg-ink-2);
   text-decoration:none;padding:8px 12px;margin-bottom:-1px;
   border-bottom:2px solid transparent;
   transition:color .16s ease-out,border-color .16s ease-out;
@@ -384,14 +391,18 @@ button{font-family:inherit}
 .site-nav a.is-active{color:var(--ink);border-bottom-color:var(--mint)}
 
 /* ============ Footer ============ */
-.site-footer{margin-top:36px;border-top:1px solid var(--hairline);padding-top:24px}
+.site-footer{
+  position:relative;z-index:1;
+  max-width:800px;margin:0 auto 64px;padding:24px 48px 0;
+  border-top:1px solid var(--bg-hairline);
+}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:24px}
 .footer-brandcol .brand{margin-bottom:10px}
-.footer-about{font-size:12.5px;color:var(--text-2);line-height:1.65;margin-top:10px;max-width:36ch}
+.footer-about{font-size:12.5px;color:var(--bg-ink-2);line-height:1.65;margin-top:10px;max-width:36ch}
 .footer-col h3{margin-bottom:10px}
 .footer-col a{
   display:flex;align-items:center;gap:6px;
-  font-size:12.5px;color:var(--text-2);text-decoration:none;
+  font-size:12.5px;color:var(--bg-ink-2);text-decoration:none;
   padding:4px 0;transition:color .16s ease-out;
 }
 .footer-col a:hover{color:var(--ink)}
@@ -399,7 +410,7 @@ button{font-family:inherit}
 .foot-fa{color:var(--text-3);font-family:var(--fa);font-size:11px}
 .footer-bottom{
   display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
-  border-top:1px solid var(--hairline);margin-top:22px;padding-top:14px;
+  border-top:1px solid var(--bg-hairline);margin-top:22px;padding-top:14px;
   font-family:var(--mono);font-size:9.5px;font-weight:500;
   letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);
 }
@@ -575,6 +586,8 @@ button{font-family:inherit}
   --sb:#4A4A4E;
   --sb-hover:#5C5C60;
   --shadow-sheet:0 24px 60px rgba(0,0,0,.5);
+  --bg-ink-2:rgba(237,237,237,.72);
+  --bg-hairline:rgba(237,237,237,.26);
   color-scheme:dark;
 }
 [data-theme="dark"] body::before{
@@ -617,7 +630,10 @@ button{font-family:inherit}
 
 /* ============ Responsive ============ */
 @media (max-width:720px){
-  .sheet{margin:20px 14px 32px;padding:26px 18px}
+  .sheet{margin:0 14px 32px;padding:26px 18px}
+  .site-header{margin:20px 14px 0;padding:0 4px}
+  .site-nav{margin:12px 14px 24px;padding:0 4px}
+  .site-footer{margin:0 14px 28px;padding:20px 4px 0}
   .stack,.prompt-list{gap:20px}
   .card{padding:18px 16px}
   .site-header{flex-direction:column;align-items:flex-start}

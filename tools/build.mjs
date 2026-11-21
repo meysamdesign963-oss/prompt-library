@@ -419,8 +419,6 @@ function shell({ pre, title, desc, canonical, jsonLd, body, active = "" }) {
 <!-- ambient light beams (animated backdrop) -->
 <div class="bg-lights" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
-<main class="sheet">
-
   <header class="site-header reveal">
     <div class="brand">
       <a class="brand-link" href="${pre}" aria-label="Prompt Library home">
@@ -445,7 +443,11 @@ function shell({ pre, title, desc, canonical, jsonLd, body, active = "" }) {
 
   <nav class="site-nav reveal" aria-label="Site sections">${nav}</nav>
 
+<main class="sheet">
+
 ${body}
+
+</main>
 
   <footer class="site-footer reveal">
     <div class="footer-grid">
@@ -477,8 +479,6 @@ ${body}
       <span>Static · No tracking · EN → FA</span>
     </div>
   </footer>
-
-</main>
 
 <script src="${pre}assets/main.js" defer></script>
 </body>
