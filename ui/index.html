@@ -67,7 +67,7 @@
       <p class="lede prompt-desc">Design systems, style prompts and interface specs.</p>
       <p class="fa">سیستم‌های طراحی، پرامپت‌های استایل و اسپک‌های رابط کاربری.</p>
       <div class="prompt-pills">
-        <span class="pill pill--dark">01 prompts</span>
+        <span class="pill pill--dark">02 prompts</span>
         <a class="pill pill-link" href="https://github.com/meysamdesign963-oss/prompt-library/tree/main/prompts/ui" target="_blank" rel="noopener">Folder <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
         <a class="pill pill-link" href="https://github.com/meysamdesign963-oss/prompt-library/new/main?filename=prompts/ui/my-prompt.md" target="_blank" rel="noopener">Add prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
       </div>
@@ -277,6 +277,317 @@ You are designing the UI of a SaaS web application. Apply this complete style sy
 ## 8 · The Rules
 DO: keep grain only on the green background, never on white cards; mono uppercase for all labels; stay monochrome with green as small semantic accents only; generous whitespace (at least 24px between cards).
 DON'T: no saturated fills or colored large surfaces; no shadow on every element; no 0px corners; max ONE dark "terminal" card per screen.
+</script>
+  <section class="card prompt-card reveal" id="responsive-frontend-standards" aria-labelledby="responsive-frontend-standards-title">
+    <div class="prompt-head">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/></svg></span>
+      <div class="prompt-id">
+        <h3 class="title-xl" id="responsive-frontend-standards-title">Responsive Frontend Standards</h3>
+        <p class="title-sub">استاندارد اجباری ریسپانسیو برای دسکتاپ و موبایل/اندروید — مقیاس گرید، پدینگ، اسپیسینگ، بریک‌پوینت‌ها و اندازه لمسی. در ساخت و ویرایش هر صفحه و کامپوننتی همیشه با همین مقادیر اعمال شود.</p>
+      </div>
+      <div class="head-icons">
+        <a class="icon-btn" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/prompts/ui/responsive-frontend-standards.md" target="_blank" rel="noopener" title="Open source file"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg></a>
+        <button class="icon-btn" type="button" data-expand="details-responsive-frontend-standards" aria-expanded="false" aria-controls="details-responsive-frontend-standards" title="Expand details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7.5 7.5"/><path d="M3 21l7.5-7.5"/></svg></button>
+      </div>
+    </div>
+
+    <div class="prompt-pills">
+      <span class="pill pill--mint">New</span>
+      <span class="pill pill--dark">Ready</span>
+      <span class="pill ">1.0.0</span>
+      <span class="pill ">UI & Design</span>
+      <a class="pill pill-link" href="../ui/responsive-frontend-standards/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="responsive-frontend-standards" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+    </div>
+
+    <p class="lede prompt-desc">استاندارد اجباری ریسپانسیو برای دسکتاپ و موبایل/اندروید — مقیاس گرید، پدینگ، اسپیسینگ، بریک‌پوینت‌ها و اندازه لمسی. در ساخت و ویرایش هر صفحه و کامپوننتی همیشه با همین مقادیر اعمال شود.</p>
+    <p class="fa">استاندارد ریسپانسیو — موبایل‌اول، مقیاس ۴px، بریک‌پوینت‌های استاندارد Tailwind، اندازه لمسی ۴۴px و قواعد RTL فارسی.</p>
+    <div class="chips prompt-chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/></svg><span>responsive</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/></svg><span>tailwind</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/></svg><span>mobile-first</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/></svg><span>rtl</span></span></div>
+    
+
+    <div class="details" id="details-responsive-frontend-standards">
+      <div class="details-inner">
+        <div class="details-pad">
+      <div class="detail-group">
+        <span class="sec-label">Prompt — full text</span>
+        <div class="md-body"><h1>اسکیل استاندارد فرانت‌اند — گرید، پدینگ و اسپیسینگ</h1>
+<p>مبنا: <strong>Mobile-First</strong> با TailwindCSS 4. هر صفحه و کامپوننت باید در موبایل/اندروید (عرض ۳۲۰px به بالا) و دسکتاپ هر دو درست باشند. توکن‌های رنگ و فونت از دیزاین‌سیستم پروژه.</p>
+<h2>۱) بریک‌پوینت‌های استاندارد (فقط همین‌ها)</h2>
+<table>
+<thead>
+<tr>
+<th>بریک‌پوینت</th>
+<th>عرض</th>
+<th>کاربرد</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>پایه (بدون پیشوند)</td>
+<td>0–639px</td>
+<td>موبایل/اندروید — همه استایل‌ها اول برای همین نوشته می‌شوند</td>
+</tr>
+<tr>
+<td><code>sm:</code></td>
+<td>≥640px</td>
+<td>موبایل بزرگ / تبلت کوچک</td>
+</tr>
+<tr>
+<td><code>md:</code></td>
+<td>≥768px</td>
+<td>تبلت</td>
+</tr>
+<tr>
+<td><code>lg:</code></td>
+<td>≥1024px</td>
+<td>لپ‌تاپ / دسکتاپ</td>
+</tr>
+<tr>
+<td><code>xl:</code></td>
+<td>≥1280px</td>
+<td>دسکتاپ بزرگ</td>
+</tr>
+</tbody></table>
+<p><strong>ممنوع:</strong> بریک‌پوینت سفارشی، <code>max-[520px]:</code> و مقادیر arbitrary مثل <code>p-[13px]</code>. فقط مقیاس استاندارد Tailwind (پایه ۴px: 1=4، 2=8، 3=12، 4=16، 5=20، 6=24، 8=32، 10=40، 12=48...).</p>
+<h2>۲) کانتینر و چیدمان صفحه</h2>
+<ul>
+<li>همیشه کانتینر استاندارد (<code>mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8</code>) — پدینگ افقی دستی نگذار.</li>
+<li>هیچ عنصری نباید overflow افقی بسازد؛ عرض ثابت px بزرگ ممنوع (حداقل عرض هدف: ۳۲۰px).</li>
+<li>سرتیتر صفحه: کامپوننت هدر با <code>mb-6</code>.</li>
+<li>فاصله عمودی سکشن‌های سایت: <code>py-10 sm:py-14 lg:py-20</code> — داخل پنل: <code>py-6</code>.</li>
+</ul>
+<h2>۳) گرید استاندارد</h2>
+<table>
+<thead>
+<tr>
+<th>الگو</th>
+<th>کلاس گرید</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>کارت‌های KPI / آمار</td>
+<td><code>grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4</code></td>
+</tr>
+<tr>
+<td>کارت‌های محتوا (وبلاگ، دوره، خدمات)</td>
+<td><code>grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3</code></td>
+</tr>
+<tr>
+<td>فرم‌ها</td>
+<td><code>grid grid-cols-1 gap-4 md:grid-cols-2</code> (فیلد تمام‌عرض: <code>md:col-span-2</code>)</td>
+</tr>
+<tr>
+<td>جدول در پنل</td>
+<td>داخل wrapper با اسکرول داخلی یا تبدیل به کارت در موبایل</td>
+</tr>
+<tr>
+<td>محتوا + سایدبار</td>
+<td><code>grid grid-cols-1 gap-6 lg:grid-cols-3</code> (محتوا: <code>lg:col-span-2</code>)</td>
+</tr>
+</tbody></table>
+<h2>۴) پدینگ و اسپیسینگ استاندارد</h2>
+<table>
+<thead>
+<tr>
+<th>محل</th>
+<th>مقدار</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>داخل کارت</td>
+<td><code>p-4 sm:p-6</code> (کارت فشرده <code>p-4</code>)</td>
+</tr>
+<tr>
+<td>فاصله بین کارت‌ها و آیتم‌ها</td>
+<td><code>gap-4</code> (فشرده <code>gap-3</code>، باز <code>gap-6</code>)</td>
+</tr>
+<tr>
+<td>فاصله فیلدهای فرم</td>
+<td><code>space-y-4</code> یا <code>gap-4</code></td>
+</tr>
+<tr>
+<td>دکمه (سایز md)</td>
+<td><code>px-5 py-2.5</code> با <code>min-h-11</code></td>
+</tr>
+<tr>
+<td>بین عنوان و محتوا</td>
+<td><code>mb-4</code> تا <code>mb-6</code></td>
+</tr>
+<tr>
+<td>آیتم‌های لیست داخل کارت</td>
+<td><code>space-y-3</code></td>
+</tr>
+<tr>
+<td>مودال</td>
+<td><code>p-6 max-h-[88vh] overflow-y-auto</code></td>
+</tr>
+</tbody></table>
+<p>قاعده: اول از کلاس‌های آماده‌ی دیزاین‌سیستم خودت استفاده کن؛ کامپوننت جدید را دقیقاً با همین مقیاس بساز و به کیت اضافه کن.</p>
+<h2>۵) اندازه لمسی (اندروید)</h2>
+<ul>
+<li>هر عنصر کلیک‌پذیر حداقل <code>min-h-11</code> (۴۴px) و فاصله دو هدف لمسی حداقل <code>gap-2</code>.</li>
+<li>سایز <code>sm</code> دکمه (<code>min-h-9</code>) فقط برای اکشن‌های فرعی — در موبایل برای اکشن اصلی استفاده نشود.</li>
+<li>لینک‌های منوی موبایل: تمام‌عرض با <code>px-3 py-2.5</code>.</li>
+</ul>
+<h2>۶) تایپوگرافی ریسپانسیو</h2>
+<table>
+<thead>
+<tr>
+<th>نقش</th>
+<th>کلاس</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>تیتر صفحه سایت</td>
+<td><code>text-2xl sm:text-3xl lg:text-4xl font-bold</code> (+ رنگ برند)</td>
+</tr>
+<tr>
+<td>تیتر صفحه پنل</td>
+<td><code>text-xl font-bold</code></td>
+</tr>
+<tr>
+<td>تیتر کارت / سکشن</td>
+<td><code>text-base sm:text-lg font-semibold</code></td>
+</tr>
+<tr>
+<td>متن بدنه</td>
+<td><code>text-sm leading-6</code></td>
+</tr>
+<tr>
+<td>کپشن / متا</td>
+<td><code>text-xs text-gray-500</code></td>
+</tr>
+<tr>
+<td>اعداد مالی و جدولی</td>
+<td>کلاس اعداد لاتین</td>
+</tr>
+</tbody></table>
+<h2>۷) RTL و فارسی</h2>
+<ul>
+<li><code>dir=&quot;rtl&quot;</code> سراسری در layout — تغییر دستی direction ممنوع (جز عناصر عددی).</li>
+<li>فاصله‌ها با <code>gap</code> و <code>space-*</code> — نه <code>mr-</code>/<code>ml-</code> (در RTL می‌شکنند؛ اگر ضروری شد <code>ms-</code>/<code>me-</code> منطقی).</li>
+<li>شماره تلفن، کد و ایمیل داخل متن فارسی: <code>dir=&quot;ltr&quot;</code> روی همان عنصر.</li>
+<li>تاریخ همیشه شمسی با یکتای تاریخ پروژه — تاریخ ISO خام به کاربر نمایش داده نشود.</li>
+</ul>
+<h2>۸) چک‌لیست هر صفحه / کامپوننت جدید</h2>
+<ul>
+<li><input disabled="" type="checkbox"> موبایل ۳۲۰px: بدون اسکرول افقی و بدون فشرده‌شدن محتوا</li>
+<li><input disabled="" type="checkbox"> کانتینر درست: کانتینر استاندارد صفحه</li>
+<li><input disabled="" type="checkbox"> گرید و اسپیسینگ فقط از جداول همین اسکیل</li>
+<li><input disabled="" type="checkbox"> حالت لودینگ / خالی / خطا: کامپوننت‌های آماده‌ی پروژه (Skeleton / EmptyState / ErrorState)</li>
+<li><input disabled="" type="checkbox"> هدف لمسی ۴۴px، تیترها مقیاس‌دار، اعداد مالی با کلاس اعداد لاتین</li>
+<li><input disabled="" type="checkbox"> بدون استایل inline برای چیزی که توکن دارد (رنگ/فونت/شعاع از دیزاین‌سیستم)</li>
+</ul>
+<h2>۹) تست پرفورمنس — فقط روی بیلد production</h2>
+<p>اندازه‌گیری Lighthouse / Core Web Vitals <strong>هرگز روی <code>npm run dev</code> معنا ندارد</strong> — حالت dev
+(React توسعه، بدون minify، کامپایل آنی) TBT چند ثانیه‌ای می‌دهد (اندازه‌گیری واقعی:
+dev → TBT سه‌ثانیه‌ای 3,040ms با امتیاز 2 و پرفورمنس 42؛ production همان صفحه → TBT 190ms
+با امتیاز 90 و پرفورمنس 84).</p>
+<ul>
+<li>مسیر درست: <code>npm run build</code> و بعد <code>npm run start</code> — تست فقط به آن سرور.</li>
+<li>پیش‌فرض لایت‌هاوس موبایل با 4x CPU throttle است؛ اعداد دسکتاپِ بدون throttle قابل مقایسه نیستند.</li>
+<li>پیش از هر نتیجه‌گیری پرفورمنسی، نسخه‌ی <code>next dev</code> بودن سرور تست را بررسی کن.</li>
+</ul>
+</div>
+      </div>
+      <div class="row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/></svg></span>
+        <div><p class="row-name">prompts/ui/responsive-frontend-standards.md</p>
+        <p class="row-sub" style="margin-left:0;margin-top:2px">Source file · auto-published</p></div>
+        <a class="pill row-right" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/prompts/ui/responsive-frontend-standards.md" target="_blank" rel="noopener">Source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      </div></div>
+      </div>
+    </div>
+  </section>
+  <script type="text/plain" class="prompt-raw" data-id="responsive-frontend-standards"># اسکیل استاندارد فرانت‌اند — گرید، پدینگ و اسپیسینگ
+
+مبنا: **Mobile-First** با TailwindCSS 4. هر صفحه و کامپوننت باید در موبایل/اندروید (عرض ۳۲۰px به بالا) و دسکتاپ هر دو درست باشند. توکن‌های رنگ و فونت از دیزاین‌سیستم پروژه.
+
+## ۱) بریک‌پوینت‌های استاندارد (فقط همین‌ها)
+
+| بریک‌پوینت | عرض | کاربرد |
+|---|---|---|
+| پایه (بدون پیشوند) | 0–639px | موبایل/اندروید — همه استایل‌ها اول برای همین نوشته می‌شوند |
+| `sm:` | ≥640px | موبایل بزرگ / تبلت کوچک |
+| `md:` | ≥768px | تبلت |
+| `lg:` | ≥1024px | لپ‌تاپ / دسکتاپ |
+| `xl:` | ≥1280px | دسکتاپ بزرگ |
+
+**ممنوع:** بریک‌پوینت سفارشی، `max-[520px]:` و مقادیر arbitrary مثل `p-[13px]`. فقط مقیاس استاندارد Tailwind (پایه ۴px: 1=4، 2=8، 3=12، 4=16، 5=20، 6=24، 8=32، 10=40، 12=48...).
+
+## ۲) کانتینر و چیدمان صفحه
+
+- همیشه کانتینر استاندارد (`mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8`) — پدینگ افقی دستی نگذار.
+- هیچ عنصری نباید overflow افقی بسازد؛ عرض ثابت px بزرگ ممنوع (حداقل عرض هدف: ۳۲۰px).
+- سرتیتر صفحه: کامپوننت هدر با `mb-6`.
+- فاصله عمودی سکشن‌های سایت: `py-10 sm:py-14 lg:py-20` — داخل پنل: `py-6`.
+
+## ۳) گرید استاندارد
+
+| الگو | کلاس گرید |
+|---|---|
+| کارت‌های KPI / آمار | `grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4` |
+| کارت‌های محتوا (وبلاگ، دوره، خدمات) | `grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3` |
+| فرم‌ها | `grid grid-cols-1 gap-4 md:grid-cols-2` (فیلد تمام‌عرض: `md:col-span-2`) |
+| جدول در پنل | داخل wrapper با اسکرول داخلی یا تبدیل به کارت در موبایل |
+| محتوا + سایدبار | `grid grid-cols-1 gap-6 lg:grid-cols-3` (محتوا: `lg:col-span-2`) |
+
+## ۴) پدینگ و اسپیسینگ استاندارد
+
+| محل | مقدار |
+|---|---|
+| داخل کارت | `p-4 sm:p-6` (کارت فشرده `p-4`) |
+| فاصله بین کارت‌ها و آیتم‌ها | `gap-4` (فشرده `gap-3`، باز `gap-6`) |
+| فاصله فیلدهای فرم | `space-y-4` یا `gap-4` |
+| دکمه (سایز md) | `px-5 py-2.5` با `min-h-11` |
+| بین عنوان و محتوا | `mb-4` تا `mb-6` |
+| آیتم‌های لیست داخل کارت | `space-y-3` |
+| مودال | `p-6 max-h-[88vh] overflow-y-auto` |
+
+قاعده: اول از کلاس‌های آماده‌ی دیزاین‌سیستم خودت استفاده کن؛ کامپوننت جدید را دقیقاً با همین مقیاس بساز و به کیت اضافه کن.
+
+## ۵) اندازه لمسی (اندروید)
+
+- هر عنصر کلیک‌پذیر حداقل `min-h-11` (۴۴px) و فاصله دو هدف لمسی حداقل `gap-2`.
+- سایز `sm` دکمه (`min-h-9`) فقط برای اکشن‌های فرعی — در موبایل برای اکشن اصلی استفاده نشود.
+- لینک‌های منوی موبایل: تمام‌عرض با `px-3 py-2.5`.
+
+## ۶) تایپوگرافی ریسپانسیو
+
+| نقش | کلاس |
+|---|---|
+| تیتر صفحه سایت | `text-2xl sm:text-3xl lg:text-4xl font-bold` (+ رنگ برند) |
+| تیتر صفحه پنل | `text-xl font-bold` |
+| تیتر کارت / سکشن | `text-base sm:text-lg font-semibold` |
+| متن بدنه | `text-sm leading-6` |
+| کپشن / متا | `text-xs text-gray-500` |
+| اعداد مالی و جدولی | کلاس اعداد لاتین |
+
+## ۷) RTL و فارسی
+
+- `dir="rtl"` سراسری در layout — تغییر دستی direction ممنوع (جز عناصر عددی).
+- فاصله‌ها با `gap` و `space-*` — نه `mr-`/`ml-` (در RTL می‌شکنند؛ اگر ضروری شد `ms-`/`me-` منطقی).
+- شماره تلفن، کد و ایمیل داخل متن فارسی: `dir="ltr"` روی همان عنصر.
+- تاریخ همیشه شمسی با یکتای تاریخ پروژه — تاریخ ISO خام به کاربر نمایش داده نشود.
+
+## ۸) چک‌لیست هر صفحه / کامپوننت جدید
+
+- [ ] موبایل ۳۲۰px: بدون اسکرول افقی و بدون فشرده‌شدن محتوا
+- [ ] کانتینر درست: کانتینر استاندارد صفحه
+- [ ] گرید و اسپیسینگ فقط از جداول همین اسکیل
+- [ ] حالت لودینگ / خالی / خطا: کامپوننت‌های آماده‌ی پروژه (Skeleton / EmptyState / ErrorState)
+- [ ] هدف لمسی ۴۴px، تیترها مقیاس‌دار، اعداد مالی با کلاس اعداد لاتین
+- [ ] بدون استایل inline برای چیزی که توکن دارد (رنگ/فونت/شعاع از دیزاین‌سیستم)
+
+## ۹) تست پرفورمنس — فقط روی بیلد production
+
+اندازه‌گیری Lighthouse / Core Web Vitals **هرگز روی `npm run dev` معنا ندارد** — حالت dev
+(React توسعه، بدون minify، کامپایل آنی) TBT چند ثانیه‌ای می‌دهد (اندازه‌گیری واقعی:
+dev → TBT سه‌ثانیه‌ای 3,040ms با امتیاز 2 و پرفورمنس 42؛ production همان صفحه → TBT 190ms
+با امتیاز 90 و پرفورمنس 84).
+
+- مسیر درست: `npm run build` و بعد `npm run start` — تست فقط به آن سرور.
+- پیش‌فرض لایت‌هاوس موبایل با 4x CPU throttle است؛ اعداد دسکتاپِ بدون throttle قابل مقایسه نیستند.
+- پیش از هر نتیجه‌گیری پرفورمنسی، نسخه‌ی `next dev` بودن سرور تست را بررسی کن.
 </script>
     
   <section class="card reveal" id="how-to-use" aria-labelledby="how-title">

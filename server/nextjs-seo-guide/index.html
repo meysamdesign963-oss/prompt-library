@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Next.js SEO Guide — Server &amp; API Prompt · Prompt Library</title>
+<meta name="description" content="Complete Google SEO implementation guide for Next.js (Node.js) projects. Covers the App Router Metadata API, generateMetadata, sitemap.ts/robots.ts conventions, JSON-LD structured data, Open Graph &amp;amp; Twitter cards, canonicalization, hreflang/i18n, Core Web Vitals (LCP/INP/CLS), rendering strategies (SSG/SSR/ISR/PPR/Cache Components), and Search Console auditing. Use this skill whenever the user mentions SEO, Google ranking, search visibility, meta tags, Open Graph, sitemap, robots.txt, structured data, schema.org, rich results, canonical URLs, hreflang, page speed, Core Web Vitals, Lighthouse score, \&amp;quot;my site doesn't appear on Google\&amp;quot;, or asks to build/optimize any Next.js page, blog, e-commerce store, or marketing site — even if they don't explicitly say \&amp;quot;SEO\&amp;quot;.">
+<link rel="canonical" href="https://meysamdesign963-oss.github.io/prompt-library/server/nextjs-seo-guide/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Library">
+<meta property="og:title" content="Next.js SEO Guide — Server &amp; API Prompt · Prompt Library">
+<meta property="og:description" content="Complete Google SEO implementation guide for Next.js (Node.js) projects. Covers the App Router Metadata API, generateMetadata, sitemap.ts/robots.ts conventions, JSON-LD structured data, Open Graph &amp;amp; Twitter cards, canonicalization, hreflang/i18n, Core Web Vitals (LCP/INP/CLS), rendering strategies (SSG/SSR/ISR/PPR/Cache Components), and Search Console auditing. Use this skill whenever the user mentions SEO, Google ranking, search visibility, meta tags, Open Graph, sitemap, robots.txt, structured data, schema.org, rich results, canonical URLs, hreflang, page speed, Core Web Vitals, Lighthouse score, \&amp;quot;my site doesn't appear on Google\&amp;quot;, or asks to build/optimize any Next.js page, blog, e-commerce store, or marketing site — even if they don't explicitly say \&amp;quot;SEO\&amp;quot;.">
+<meta property="og:url" content="https://meysamdesign963-oss.github.io/prompt-library/server/nextjs-seo-guide/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#869A8C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161A17" media="(prefers-color-scheme: dark)">
+<script>(function(){var t;try{t=localStorage.getItem("pl-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})()</script>
+<link rel="preload" href="../../assets/fonts/IRANSansX-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/IRANSansX-DemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/IRANSansX-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"Next.js SEO Guide","headline":"Next.js SEO Guide","description":"Complete Google SEO implementation guide for Next.js (Node.js) projects. Covers the App Router Metadata API, generateMetadata, sitemap.ts/robots.ts conventions, JSON-LD structured data, Open Graph &amp; Twitter cards, canonicalization, hreflang/i18n, Core Web Vitals (LCP/INP/CLS), rendering strategies (SSG/SSR/ISR/PPR/Cache Components), and Search Console auditing. Use this skill whenever the user mentions SEO, Google ranking, search visibility, meta tags, Open Graph, sitemap, robots.txt, structured data, schema.org, rich results, canonical URLs, hreflang, page speed, Core Web Vitals, Lighthouse score, \\&quot;my site doesn't appear on Google\\&quot;, or asks to build/optimize any Next.js page, blog, e-commerce store, or marketing site — even if they don't explicitly say \\&quot;SEO\\&quot;.","url":"https://meysamdesign963-oss.github.io/prompt-library/server/nextjs-seo-guide/","inLanguage":["en","fa"],"keywords":"seo, nextjs, google, metadata, core-web-vitals","datePublished":"2026-11-21","dateModified":"2026-11-21","author":{"@type":"Person","name":"meysamdesign963-oss","url":"https://github.com/meysamdesign963-oss"},"isPartOf":{"@type":"WebSite","name":"Prompt Library","url":"https://meysamdesign963-oss.github.io/prompt-library/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Library","item":"https://meysamdesign963-oss.github.io/prompt-library/"},{"@type":"ListItem","position":2,"name":"Server & API","item":"https://meysamdesign963-oss.github.io/prompt-library/server/"},{"@type":"ListItem","position":3,"name":"Next.js SEO Guide","item":"https://meysamdesign963-oss.github.io/prompt-library/server/nextjs-seo-guide/"}]}]}</script>
+</head>
+<body>
+
+
+  <header class="site-header reveal">
+    <div class="header-row">
+    <div class="brand">
+      <a class="brand-link" href="../../" aria-label="Prompt Library home">
+        <span class="brand-tile" aria-hidden="true"><img class="brand-logo" src="../../public/logo.svg" alt="" width="26"></span>
+        <div>
+          <h1 class="brand-name">Prompt Library</h1>
+          <p class="brand-sub">Curated specs &amp; prompts for builders</p>
+        </div>
+      </a>
+    </div>
+    
+    <div class="head-actions">
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle title="Toggle dark / light theme" aria-label="Toggle color theme">
+        <span class="theme-ic theme-ic--moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12.5A8 8 0 1 1 11.5 4a6.5 6.5 0 0 0 8.5 8.5z"/></svg></span>
+        <span class="theme-ic theme-ic--sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg></span>
+      </button>
+      <a class="pill pill-link" href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">
+        GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg>
+      </a>
+    </div>
+    </div>
+    <nav class="site-nav reveal" aria-label="Site sections"><a href="../../">Library</a><a href="../../security/">Security</a><a href="../../structure/">Structure</a><a href="../../ui/">UI & Design</a><a href="../../server/" class="is-active">Server & API</a></nav>
+  </header>
+
+<main class="sheet">
+
+
+  <div class="stack">
+    <section class="card reveal" aria-labelledby="pd-title">
+      <div class="prompt-head">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg></span>
+        <div class="prompt-id">
+          <h2 class="title-xl" id="pd-title">Next.js SEO Guide</h2>
+          <p class="title-sub">Complete Google SEO implementation guide for Next.js (Node.js) projects. Covers the App Router Metadata API, generateMetadata, sitemap.ts/robots.ts conventions, JSON-LD structured data, Open Graph &amp; Twitter cards, canonicalization, hreflang/i18n, Core Web Vitals (LCP/INP/CLS), rendering strategies (SSG/SSR/ISR/PPR/Cache Components), and Search Console auditing. Use this skill whenever the user mentions SEO, Google ranking, search visibility, meta tags, Open Graph, sitemap, robots.txt, structured data, schema.org, rich results, canonical URLs, hreflang, page speed, Core Web Vitals, Lighthouse score, \&quot;my site doesn't appear on Google\&quot;, or asks to build/optimize any Next.js page, blog, e-commerce store, or marketing site — even if they don't explicitly say \&quot;SEO\&quot;.</p>
+        </div>
+        <div class="head-icons">
+          <a class="icon-btn" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/prompts/server/nextjs-seo-guide.md" target="_blank" rel="noopener" title="Open source file"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg></a>
+        </div>
+      </div>
+      <div class="prompt-pills">
+        <span class="pill pill--dark">Server & API</span>
+        <span class="pill ">Ready</span>
+        <span class="pill ">1.0.0</span>
+        <span class="pill ">seo · nextjs</span>
+        
+        <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="nextjs-seo-guide" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+      </div>
+    </section>
+    
+    <section class="card reveal" data-text-view aria-label="Prompt full text">
+      <div class="md-body md-body--page"><h1>Next.js SEO — Complete Google Optimization Guide</h1>
+<p>Implement production-grade Google SEO in Next.js (Node.js) projects. This skill encodes Google Search Central documentation plus current Next.js (v15/v16, App Router first) conventions into a review-and-implementation workflow.</p>
+<h2>How Google Search Works (30-second mental model)</h2>
+<p>Google processes every URL in four stages. Every SEO task maps to one of them:</p>
+<ol>
+<li><strong>Crawl</strong> — Googlebot discovers URLs via links, sitemaps, and previously known URLs. <code>robots.txt</code>, <code>noindex</code>, and server errors control this.</li>
+<li><strong>Render</strong> — Googlebot executes JavaScript with an evergreen Chromium (Web Rendering Service). SSR/SSG pages render instantly; JS-only content enters a slower second wave. Server-rendered HTML is always safer.</li>
+<li><strong>Index</strong> — Google parses the rendered HTML, resolves canonicals, groups duplicate URLs, and stores content. <code>&lt;link rel=&quot;canonical&quot;&gt;</code>, <code>noindex</code>, and hreflang act here.</li>
+<li><strong>Rank</strong> — Helpful-content signals, relevance, links, page experience (Core Web Vitals), and spam policies determine position.</li>
+</ol>
+<p>Rule of thumb: ship real content in the initial HTML response, describe every page with unique metadata, remove crawl/index blockers, and keep the page fast and stable.</p>
+<h2>Core Workflow</h2>
+<p>When building or auditing a Next.js project, work through these steps in order:</p>
+<h3>Step 1 — Establish the base (every project)</h3>
+<pre><code class="language-ts">// app/layout.tsx — root layout
+import type { Metadata, Viewport } from &#39;next&#39;
+
+const SITE_URL = &#39;https://example.com&#39; // single source of truth
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL), // resolves all relative URLs — REQUIRED for OG images
+  title: {
+    default: &#39;Site Name — Primary value proposition&#39;,
+    template: &#39;%s — Site Name&#39;, // child pages only need `title`
+  },
+  description: &#39;Default site-wide description, 150–160 chars, unique per page when possible.&#39;,
+  alternates: { canonical: &#39;/&#39; },
+  openGraph: {
+    type: &#39;website&#39;,
+    siteName: &#39;Site Name&#39;,
+    url: SITE_URL,
+  },
+}
+
+export const viewport: Viewport = {
+  width: &#39;device-width&#39;,
+  initialScale: 1,
+  themeColor: &#39;#000000&#39;,
+}
+</code></pre>
+<pre><code class="language-ts">// app/page.tsx — home page
+import type { Metadata } from &#39;next&#39;
+export const metadata: Metadata = {
+  title: &#39;Home&#39;, // renders as &quot;Home — Site Name&quot; via template
+  alternates: { canonical: &#39;/&#39; },
+}
+</code></pre>
+<p>Key API facts:</p>
+<ul>
+<li><code>metadata</code> = static export; <code>generateMetadata()</code> = dynamic, receives awaited <code>params</code>/<code>searchParams</code> (Next 15+: they are Promises).</li>
+<li>Metadata only works in <strong>Server Components</strong>. Next always adds <code>charset</code> and <code>viewport</code> meta tags automatically.</li>
+<li>Merge rules: fields are <strong>shallow-merged</strong> from root layout down. A child&#39;s <code>title</code> overrides the parent&#39;s whole <code>title</code> object; <code>openGraph.title</code> falls back to <code>title</code> when omitted.</li>
+<li><code>themeColor</code>/<code>viewport</code> inside <code>metadata</code> are <strong>deprecated since Next 14</strong> — use the <code>viewport</code>/<code>generateViewport</code> exports.</li>
+<li>Next 15.2+ streams metadata for human users but <strong>emits blocking <code>&lt;head&gt;</code> metadata for bots</strong> (Googlebot, Bingbot, Twitterbot…) — configurable via <code>htmlLimitedBots</code>. Bots still see correct tags; do not panic when you see tags in <code>&lt;body&gt;</code> for a non-bot UA.</li>
+<li>Next 16: <code>params</code>/<code>searchParams</code> must be awaited; Turbopack is default; <code>middleware.ts</code> → <code>proxy.ts</code>; Cache Components model with <code>&quot;use cache&quot;</code>.</li>
+</ul>
+<h3>Step 2 — Control crawling and indexing</h3>
+<ul>
+<li><code>app/robots.ts</code> → generates <code>/robots.txt</code> (allow public paths, block <code>/api</code>, admin, search results pages).</li>
+<li><code>app/sitemap.ts</code> → generates <code>/sitemap.xml</code> from your routes/CMS (split with <code>generateSitemaps</code> beyond 50,000 URLs).</li>
+<li>Canonical URLs: set <code>alternates.canonical</code> on every indexable page, especially filtered/sorted/paginated variants.</li>
+<li>Block indexing with <code>robots: { index: false }</code> (meta robots) — <strong>never</strong> with robots.txt (Google explicitly does not support <code>noindex</code> in robots.txt).</li>
+<li>Non-HTML resources: use the <code>X-Robots-Tag</code> HTTP header via <code>next.config.ts</code> <code>headers()</code>.</li>
+<li>Redirects: <code>permanent: true</code> (308/301) for moved content, <code>temporary</code> otherwise; declare in <code>next.config.ts</code>.</li>
+</ul>
+<h3>Step 3 — Add structured data (JSON-LD)</h3>
+<p>Emit <code>&lt;script type=&quot;application/ld+json&quot;&gt;</code> from Server Components. Minimum set per site type:</p>
+<table>
+<thead>
+<tr>
+<th>Site type</th>
+<th>Schemas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Any site</td>
+<td><code>Organization</code>, <code>WebSite</code> (+ <code>SearchAction</code>), <code>BreadcrumbList</code></td>
+</tr>
+<tr>
+<td>Blog / news</td>
+<td><code>Article</code> / <code>BlogPosting</code> / <code>NewsArticle</code></td>
+</tr>
+<tr>
+<td>E-commerce</td>
+<td><code>Product</code> + <code>Offer</code> + <code>AggregateRating</code>, <code>Review</code></td>
+</tr>
+<tr>
+<td>Local business</td>
+<td><code>LocalBusiness</code> (+ subtypes), <code>Event</code></td>
+</tr>
+<tr>
+<td>Docs / how-to</td>
+<td><code>HowTo</code>, <code>TechArticle</code>, <code>FAQPage</code> (visible on page)</td>
+</tr>
+</tbody></table>
+<pre><code class="language-tsx">// app/blog/[slug]/page.tsx
+export default async function Page({ params }: { params: Promise&lt;{ slug: string }&gt; }) {
+  const { slug } = await params
+  const post = await getPost(slug)
+  const jsonLd = {
+    &#39;@context&#39;: &#39;https://schema.org&#39;,
+    &#39;@type&#39;: &#39;BlogPosting&#39;,
+    headline: post.title,
+    datePublished: post.date,
+    image: post.cover,
+    author: { &#39;@type&#39;: &#39;Person&#39;, name: post.author.name },
+  }
+  return (
+    &lt;&gt;
+      &lt;script
+        type=&quot;application/ld+json&quot;
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      /&gt;
+      &lt;article&gt;{/* content */}&lt;/article&gt;
+    &lt;/&gt;
+  )
+}
+</code></pre>
+<h3>Step 4 — Social sharing (Open Graph + Twitter)</h3>
+<ul>
+<li><code>metadata.openGraph</code> + <code>metadata.twitter</code> objects, or file conventions: <code>opengraph-image.png</code>, <code>twitter-image.png</code>, <code>icon.png</code>, <code>apple-icon.png</code> per route segment.</li>
+<li>Dynamic OG images: <code>opengraph-image.tsx</code> with <code>ImageResponse</code> from <code>next/og</code> (1200×630, flexbox-only CSS subset).</li>
+<li>Always provide absolute-resolvable images (needs <code>metadataBase</code>) with <code>width</code>/<code>height</code>/<code>alt</code>.</li>
+</ul>
+<h3>Step 5 — Core Web Vitals (page experience)</h3>
+<p>Thresholds (75th percentile of real-user visits, from CrUX): <strong>LCP ≤ 2.5 s · INP ≤ 200 ms · CLS ≤ 0.1</strong> (INP replaced FID in March 2024).</p>
+<p>Next.js levers, in impact order:</p>
+<ol>
+<li><code>next/image</code> everywhere; <code>priority</code> on the LCP image; correct <code>sizes</code>.</li>
+<li><code>next/font/google</code> / <code>next/font/local</code> (self-hosted, subset, no render-blocking Google CSS, <code>adjustFontFallback</code> kills font CLS).</li>
+<li>Server Components by default; <code>&quot;use client&quot;</code> only at leaves.</li>
+<li><code>next/script</code> with proper <code>strategy</code> for third-party tags; <code>afterInteractive</code> default, <code>lazyOnload</code> for widgets.</li>
+<li>Streaming + Suspense for fast FCP; static/ISR rendering for TTFB.</li>
+</ol>
+<h3>Step 6 — Rendering strategy per page type (SEO-critical decision)</h3>
+<table>
+<thead>
+<tr>
+<th>Page type</th>
+<th>Strategy</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Marketing / home</td>
+<td>Static (default)</td>
+<td>Instant TTFB, zero config</td>
+</tr>
+<tr>
+<td>Blog / docs</td>
+<td>Static or ISR (<code>revalidate</code>)</td>
+<td>Freshness without SSR cost</td>
+</tr>
+<tr>
+<td>E-commerce PDP</td>
+<td>ISR or dynamic w/ cache</td>
+<td>Price/stock freshness vs speed</td>
+</tr>
+<tr>
+<td>Search results, cart</td>
+<td>Dynamic (SSR)</td>
+<td>Per-request personalization</td>
+</tr>
+<tr>
+<td>Dashboard (auth)</td>
+<td>Client + <code>noindex</code></td>
+<td>Not for Google anyway</td>
+</tr>
+</tbody></table>
+<p>Next 16 Cache Components: enable <code>cacheComponents: true</code>, wrap dynamic data with <code>&quot;use cache&quot;</code> + <code>cacheLife()</code>; PPR shells stream instantly while dynamic holes fill in — bots get a complete, cached HTML shell.</p>
+<h3>Step 7 — Internationalization (if multi-language)</h3>
+<ul>
+<li>App Router pattern: <code>app/[lang]/</code> dynamic segment; render localized metadata via <code>generateMetadata</code>.</li>
+<li>hreflang: <code>alternates.languages</code> with <code>x-default</code>; every URL pair must be <strong>reciprocal</strong>.</li>
+<li>Locales in URLs (<code>/en/…</code>, <code>/de/…</code>) is Google&#39;s recommended structure.</li>
+</ul>
+<h3>Step 8 — Pages Router projects</h3>
+<p>If the project uses <code>pages/</code> (not <code>app/</code>): <code>&lt;Head&gt;</code> component, <code>getStaticProps</code>/<code>getServerSideProps</code>, manual canonical/OG tags.</p>
+<h3>Step 9 — Validate and monitor</h3>
+<ol>
+<li><code>next build</code> — watch for metadata warnings (<code>metadataBase</code> missing, prerender errors).</li>
+<li>Google <strong>Rich Results Test</strong> + <strong>Schema.org validator</strong> for JSON-LD.</li>
+<li>PageSpeed Insights / Lighthouse for CWV; Search Console for indexing, sitemaps, rich results.</li>
+<li>Re-crawl after changes: URL Inspection → &quot;Request indexing&quot;.</li>
+</ol>
+<h2>Non-Negotiable Rules</h2>
+<p>These prevent the most common, highest-impact failures seen in real Next.js projects:</p>
+<ol>
+<li><strong>One canonical URL per page.</strong> Missing or self-conflicting canonicals dilute ranking across <code>?filter=</code>, trailing-slash, and http/https variants.</li>
+<li><strong>Never rely on robots.txt to de-index.</strong> <code>noindex</code> belongs in meta robots or <code>X-Robots-Tag</code>. Blocking via robots.txt hides the page from the crawler but leaves the URL indexed &quot;without content&quot;.</li>
+<li><strong>Set <code>metadataBase</code> in the root layout.</strong> Without it, OG image URLs warn or resolve wrong; social cards break silently.</li>
+<li><strong>Every indexable page needs a unique <code>title</code> + <code>description</code>.</strong> Templated or duplicated descriptions get rewritten by Google; titles get truncated past ~600 px.</li>
+<li><strong>Server-render indexable content.</strong> Content only mounted after user interaction or fetch-on-client is invisible until render — often never indexed.</li>
+<li><strong><code>priority</code> the LCP image, <code>sizes</code> every image.</strong> Wrong <code>sizes</code> wastes bandwidth; missing <code>priority</code> on the hero image tanks LCP.</li>
+<li><strong>JSON-LD must mirror visible content.</strong> Structured data describing invisible/fabricated content violates Google&#39;s spam policies.</li>
+<li><strong>Await <code>params</code>/<code>searchParams</code>.</strong> Next 15+ they are Promises; sync access throws at build.</li>
+<li><strong>Keep <code>viewport</code> out of <code>metadata</code>.</strong> Use the <code>viewport</code>/<code>generateViewport</code> export (deprecated-in-14 fields still render but warn).</li>
+<li><strong>Use 308/301 (<code>permanent: true</code>) for content moves</strong>, and only one redirect hop. Chains leak PageRank and delay crawls.</li>
+</ol>
+<h2>Launch-Ready SEO Checklist (condensed)</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>metadataBase</code> + title template + default OG in root layout</li>
+<li><input disabled="" type="checkbox"> Unique title/description/canonical per indexable route</li>
+<li><input disabled="" type="checkbox"> <code>robots.ts</code> allows pages, blocks <code>/api</code>, <code>/admin</code>, internal search</li>
+<li><input disabled="" type="checkbox"> <code>sitemap.ts</code> lists all canonical, indexable URLs with <code>lastModified</code></li>
+<li><input disabled="" type="checkbox"> JSON-LD for site type + <code>BreadcrumbList</code> on nested pages</li>
+<li><input disabled="" type="checkbox"> <code>opengraph-image</code> per key route (1200×630) + favicon/icon set</li>
+<li><input disabled="" type="checkbox"> <code>next/image</code> with <code>sizes</code>; <code>priority</code> on hero; <code>next/font</code> for all text</li>
+<li><input disabled="" type="checkbox"> <code>noindex</code> on utility pages (404 intentionally excluded, thank-you, admin)</li>
+<li><input disabled="" type="checkbox"> 301 redirects map for any moved/renamed routes</li>
+<li><input disabled="" type="checkbox"> hreflang <code>alternates.languages</code> + <code>x-default</code> if multi-language</li>
+<li><input disabled="" type="checkbox"> Verified in Search Console; sitemap submitted; zero &quot;Page indexing&quot; errors</li>
+<li><input disabled="" type="checkbox"> PSI field data: LCP &lt; 2.5 s, INP &lt; 200 ms, CLS &lt; 0.1</li>
+</ul>
+<h2>Common Failure Patterns → Fixes</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;Crawled - currently not indexed&quot;</td>
+<td>Thin/duplicate content, render-blocking</td>
+<td>Server-render, unique content, check canonicals</td>
+</tr>
+<tr>
+<td>OG image missing in social preview</td>
+<td>No <code>metadataBase</code> / relative URL</td>
+<td>Set <code>metadataBase</code>; verify absolute URL</td>
+</tr>
+<tr>
+<td>Wrong page ranks for query</td>
+<td>Missing canonical on parameterized URLs</td>
+<td><code>alternates.canonical</code> + consistent internal links</td>
+</tr>
+<tr>
+<td>Google shows old title</td>
+<td>Stale snippet, not an error</td>
+<td>Update title, request re-indexing; Google may rewrite regardless</td>
+</tr>
+<tr>
+<td>LCP image &gt; 2.5 s</td>
+<td>Hero image not prioritized, oversized</td>
+<td><code>priority</code>, responsive <code>sizes</code>, modern formats</td>
+</tr>
+<tr>
+<td>Tags appear in <code>&lt;body&gt;</code></td>
+<td>Streaming metadata for non-bot UA</td>
+<td>Expected; verify with <code>curl -A &quot;Googlebot&quot;</code></td>
+</tr>
+<tr>
+<td>Site lost rankings after deploy</td>
+<td><code>noindex</code> leaked to prod, mass 404s</td>
+<td>Check headers/robots, redirects, Search Console coverage</td>
+</tr>
+</tbody></table>
+</div>
+    </section>
+    
+  <section class="card reveal" aria-labelledby="rel-title">
+        <div class="card-head">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+      <h2 class="mono-title" id="rel-title">Similar prompts</h2>
+    </div>
+    <div class="timeline"><a class="row cat-row related-row" href="../../structure/nextjs-project-structure/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Next.js Project Structure</span><span class="row-sub">Structure</span></div>
+        <p class="row-text">Exact folder structure &amp; code-style prompt for scalable Next.js + MongoDB projects.</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a><div class="connector" aria-hidden="true"></div><a class="row cat-row related-row" href="../../security/security-blueprint-canvas/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Prompt-Library</span><span class="row-sub">Security</span></div>
+        <p class="row-text">Every card of Prompt-Library rendered page by page — architecture, structure, login, tokens, post-login and OWASP — exactly as laid out in the Obsidian canvas.</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a><div class="connector" aria-hidden="true"></div><a class="row cat-row related-row" href="../../security/security-blueprint/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3.2v5.1c0 4.6-3 7.7-7 9.2-4-1.5-7-4.6-7-9.2V6.2L12 3z"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Prompt-Library</span><span class="row-sub">Security</span></div>
+        <p class="row-text">Universal security &amp; engineering spec for any Next.js + MongoDB web app.</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a></div>
+  </section>
+    <div class="back-row reveal">
+      <a class="pill pill-link" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg> Back to Server & API</a>
+      <a class="pill pill-link" href="../../">All prompts</a>
+    </div>
+  </div>
+  <script type="text/plain" class="prompt-raw" data-id="nextjs-seo-guide"># Next.js SEO — Complete Google Optimization Guide
+
+Implement production-grade Google SEO in Next.js (Node.js) projects. This skill encodes Google Search Central documentation plus current Next.js (v15/v16, App Router first) conventions into a review-and-implementation workflow.
+
+## How Google Search Works (30-second mental model)
+
+Google processes every URL in four stages. Every SEO task maps to one of them:
+
+1. **Crawl** — Googlebot discovers URLs via links, sitemaps, and previously known URLs. `robots.txt`, `noindex`, and server errors control this.
+2. **Render** — Googlebot executes JavaScript with an evergreen Chromium (Web Rendering Service). SSR/SSG pages render instantly; JS-only content enters a slower second wave. Server-rendered HTML is always safer.
+3. **Index** — Google parses the rendered HTML, resolves canonicals, groups duplicate URLs, and stores content. `<link rel="canonical">`, `noindex`, and hreflang act here.
+4. **Rank** — Helpful-content signals, relevance, links, page experience (Core Web Vitals), and spam policies determine position.
+
+Rule of thumb: ship real content in the initial HTML response, describe every page with unique metadata, remove crawl/index blockers, and keep the page fast and stable.
+
+## Core Workflow
+
+When building or auditing a Next.js project, work through these steps in order:
+
+### Step 1 — Establish the base (every project)
+
+```ts
+// app/layout.tsx — root layout
+import type { Metadata, Viewport } from 'next'
+
+const SITE_URL = 'https://example.com' // single source of truth
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL), // resolves all relative URLs — REQUIRED for OG images
+  title: {
+    default: 'Site Name — Primary value proposition',
+    template: '%s — Site Name', // child pages only need `title`
+  },
+  description: 'Default site-wide description, 150–160 chars, unique per page when possible.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    siteName: 'Site Name',
+    url: SITE_URL,
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#000000',
+}
+```
+
+```ts
+// app/page.tsx — home page
+import type { Metadata } from 'next'
+export const metadata: Metadata = {
+  title: 'Home', // renders as "Home — Site Name" via template
+  alternates: { canonical: '/' },
+}
+```
+
+Key API facts:
+
+- `metadata` = static export; `generateMetadata()` = dynamic, receives awaited `params`/`searchParams` (Next 15+: they are Promises).
+- Metadata only works in **Server Components**. Next always adds `charset` and `viewport` meta tags automatically.
+- Merge rules: fields are **shallow-merged** from root layout down. A child's `title` overrides the parent's whole `title` object; `openGraph.title` falls back to `title` when omitted.
+- `themeColor`/`viewport` inside `metadata` are **deprecated since Next 14** — use the `viewport`/`generateViewport` exports.
+- Next 15.2+ streams metadata for human users but **emits blocking `<head>` metadata for bots** (Googlebot, Bingbot, Twitterbot…) — configurable via `htmlLimitedBots`. Bots still see correct tags; do not panic when you see tags in `<body>` for a non-bot UA.
+- Next 16: `params`/`searchParams` must be awaited; Turbopack is default; `middleware.ts` → `proxy.ts`; Cache Components model with `"use cache"`.
+
+### Step 2 — Control crawling and indexing
+
+- `app/robots.ts` → generates `/robots.txt` (allow public paths, block `/api`, admin, search results pages).
+- `app/sitemap.ts` → generates `/sitemap.xml` from your routes/CMS (split with `generateSitemaps` beyond 50,000 URLs).
+- Canonical URLs: set `alternates.canonical` on every indexable page, especially filtered/sorted/paginated variants.
+- Block indexing with `robots: { index: false }` (meta robots) — **never** with robots.txt (Google explicitly does not support `noindex` in robots.txt).
+- Non-HTML resources: use the `X-Robots-Tag` HTTP header via `next.config.ts` `headers()`.
+- Redirects: `permanent: true` (308/301) for moved content, `temporary` otherwise; declare in `next.config.ts`.
+
+### Step 3 — Add structured data (JSON-LD)
+
+Emit `<script type="application/ld+json">` from Server Components. Minimum set per site type:
+
+| Site type | Schemas |
+|---|---|
+| Any site | `Organization`, `WebSite` (+ `SearchAction`), `BreadcrumbList` |
+| Blog / news | `Article` / `BlogPosting` / `NewsArticle` |
+| E-commerce | `Product` + `Offer` + `AggregateRating`, `Review` |
+| Local business | `LocalBusiness` (+ subtypes), `Event` |
+| Docs / how-to | `HowTo`, `TechArticle`, `FAQPage` (visible on page) |
+
+```tsx
+// app/blog/[slug]/page.tsx
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getPost(slug)
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    datePublished: post.date,
+    image: post.cover,
+    author: { '@type': 'Person', name: post.author.name },
+  }
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <article>{/* content */}</article>
+    </>
+  )
+}
+```
+
+### Step 4 — Social sharing (Open Graph + Twitter)
+
+- `metadata.openGraph` + `metadata.twitter` objects, or file conventions: `opengraph-image.png`, `twitter-image.png`, `icon.png`, `apple-icon.png` per route segment.
+- Dynamic OG images: `opengraph-image.tsx` with `ImageResponse` from `next/og` (1200×630, flexbox-only CSS subset).
+- Always provide absolute-resolvable images (needs `metadataBase`) with `width`/`height`/`alt`.
+
+### Step 5 — Core Web Vitals (page experience)
+
+Thresholds (75th percentile of real-user visits, from CrUX): **LCP ≤ 2.5 s · INP ≤ 200 ms · CLS ≤ 0.1** (INP replaced FID in March 2024).
+
+Next.js levers, in impact order:
+1. `next/image` everywhere; `priority` on the LCP image; correct `sizes`.
+2. `next/font/google` / `next/font/local` (self-hosted, subset, no render-blocking Google CSS, `adjustFontFallback` kills font CLS).
+3. Server Components by default; `"use client"` only at leaves.
+4. `next/script` with proper `strategy` for third-party tags; `afterInteractive` default, `lazyOnload` for widgets.
+5. Streaming + Suspense for fast FCP; static/ISR rendering for TTFB.
+
+### Step 6 — Rendering strategy per page type (SEO-critical decision)
+
+| Page type | Strategy | Why |
+|---|---|---|
+| Marketing / home | Static (default) | Instant TTFB, zero config |
+| Blog / docs | Static or ISR (`revalidate`) | Freshness without SSR cost |
+| E-commerce PDP | ISR or dynamic w/ cache | Price/stock freshness vs speed |
+| Search results, cart | Dynamic (SSR) | Per-request personalization |
+| Dashboard (auth) | Client + `noindex` | Not for Google anyway |
+
+Next 16 Cache Components: enable `cacheComponents: true`, wrap dynamic data with `"use cache"` + `cacheLife()`; PPR shells stream instantly while dynamic holes fill in — bots get a complete, cached HTML shell.
+
+### Step 7 — Internationalization (if multi-language)
+
+- App Router pattern: `app/[lang]/` dynamic segment; render localized metadata via `generateMetadata`.
+- hreflang: `alternates.languages` with `x-default`; every URL pair must be **reciprocal**.
+- Locales in URLs (`/en/…`, `/de/…`) is Google's recommended structure.
+
+### Step 8 — Pages Router projects
+
+If the project uses `pages/` (not `app/`): `<Head>` component, `getStaticProps`/`getServerSideProps`, manual canonical/OG tags.
+
+### Step 9 — Validate and monitor
+
+1. `next build` — watch for metadata warnings (`metadataBase` missing, prerender errors).
+2. Google **Rich Results Test** + **Schema.org validator** for JSON-LD.
+3. PageSpeed Insights / Lighthouse for CWV; Search Console for indexing, sitemaps, rich results.
+4. Re-crawl after changes: URL Inspection → "Request indexing".
+
+## Non-Negotiable Rules
+
+These prevent the most common, highest-impact failures seen in real Next.js projects:
+
+1. **One canonical URL per page.** Missing or self-conflicting canonicals dilute ranking across `?filter=`, trailing-slash, and http/https variants.
+2. **Never rely on robots.txt to de-index.** `noindex` belongs in meta robots or `X-Robots-Tag`. Blocking via robots.txt hides the page from the crawler but leaves the URL indexed "without content".
+3. **Set `metadataBase` in the root layout.** Without it, OG image URLs warn or resolve wrong; social cards break silently.
+4. **Every indexable page needs a unique `title` + `description`.** Templated or duplicated descriptions get rewritten by Google; titles get truncated past ~600 px.
+5. **Server-render indexable content.** Content only mounted after user interaction or fetch-on-client is invisible until render — often never indexed.
+6. **`priority` the LCP image, `sizes` every image.** Wrong `sizes` wastes bandwidth; missing `priority` on the hero image tanks LCP.
+7. **JSON-LD must mirror visible content.** Structured data describing invisible/fabricated content violates Google's spam policies.
+8. **Await `params`/`searchParams`.** Next 15+ they are Promises; sync access throws at build.
+9. **Keep `viewport` out of `metadata`.** Use the `viewport`/`generateViewport` export (deprecated-in-14 fields still render but warn).
+10. **Use 308/301 (`permanent: true`) for content moves**, and only one redirect hop. Chains leak PageRank and delay crawls.
+
+## Launch-Ready SEO Checklist (condensed)
+
+- [ ] `metadataBase` + title template + default OG in root layout
+- [ ] Unique title/description/canonical per indexable route
+- [ ] `robots.ts` allows pages, blocks `/api`, `/admin`, internal search
+- [ ] `sitemap.ts` lists all canonical, indexable URLs with `lastModified`
+- [ ] JSON-LD for site type + `BreadcrumbList` on nested pages
+- [ ] `opengraph-image` per key route (1200×630) + favicon/icon set
+- [ ] `next/image` with `sizes`; `priority` on hero; `next/font` for all text
+- [ ] `noindex` on utility pages (404 intentionally excluded, thank-you, admin)
+- [ ] 301 redirects map for any moved/renamed routes
+- [ ] hreflang `alternates.languages` + `x-default` if multi-language
+- [ ] Verified in Search Console; sitemap submitted; zero "Page indexing" errors
+- [ ] PSI field data: LCP < 2.5 s, INP < 200 ms, CLS < 0.1
+
+## Common Failure Patterns → Fixes
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| "Crawled - currently not indexed" | Thin/duplicate content, render-blocking | Server-render, unique content, check canonicals |
+| OG image missing in social preview | No `metadataBase` / relative URL | Set `metadataBase`; verify absolute URL |
+| Wrong page ranks for query | Missing canonical on parameterized URLs | `alternates.canonical` + consistent internal links |
+| Google shows old title | Stale snippet, not an error | Update title, request re-indexing; Google may rewrite regardless |
+| LCP image > 2.5 s | Hero image not prioritized, oversized | `priority`, responsive `sizes`, modern formats |
+| Tags appear in `<body>` | Streaming metadata for non-bot UA | Expected; verify with `curl -A "Googlebot"` |
+| Site lost rankings after deploy | `noindex` leaked to prod, mass 404s | Check headers/robots, redirects, Search Console coverage |
+</script>
+
+</main>
+
+  <footer class="site-footer reveal">
+    <div class="footer-grid">
+      <div class="footer-col footer-brandcol">
+        <div class="brand">
+          <span class="brand-tile" aria-hidden="true"><img class="brand-logo" src="../../public/logo.svg" alt="" width="26"></span>
+          <div>
+            <p class="brand-name">Prompt Library</p>
+            <p class="brand-sub">Curated specs &amp; prompts</p>
+          </div>
+        </div>
+        <p class="footer-about">A curated, growing collection of bilingual prompts and engineering specs — published as pure static pages and ready to hand to a developer or an AI coding agent.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Categories</h3>
+        <a href="../../security/">Security <span class="foot-fa">امنیت</span></a><a href="../../structure/">Structure <span class="foot-fa">ساختار</span></a><a href="../../ui/">UI & Design <span class="foot-fa">رابط کاربری</span></a><a href="../../server/">Server & API <span class="foot-fa">سرور و API</span></a>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Resources</h3>
+        <a href="https://github.com/meysamdesign963-oss" target="_blank" rel="noopener">Author · meysamdesign963-oss <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">GitHub repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="../../Prompt-Library.canvas" target="_blank" rel="noopener">Prompt-Library.canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP Top 10 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://jsoncanvas.org" target="_blank" rel="noopener">JSON Canvas spec <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Prompt Library · Built by <a href="https://github.com/meysamdesign963-oss" target="_blank" rel="noopener">meysamdesign963-oss <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a></span>
+      <span>Static · No tracking · EN → FA</span>
+    </div>
+  </footer>
+
+<script src="../../assets/main.js" defer></script>
+</body>
+</html>
