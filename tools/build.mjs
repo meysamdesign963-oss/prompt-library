@@ -61,6 +61,7 @@ const ICONS = {
   terminal: svg('<rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/>'),
   palette: svg('<path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/>'),
   arrow: svg('<path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/>'),
+  box: svg('<path d="M21 8.2l-9-5-9 5v7.6l9 5 9-5V8.2z"/><path d="M3 8.2l9 5 9-5"/><path d="M12 13.2V21"/>'),
   globe: svg('<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.8 2.7 2.8 14.3 0 17-2.8-2.7-2.8-14.3 0-17z"/>'),
   moon: svg('<path d="M20 12.5A8 8 0 1 1 11.5 4a6.5 6.5 0 0 0 8.5 8.5z"/>'),
   sun: svg('<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>'),
@@ -99,7 +100,12 @@ function canvasToMd(jsonText) {
 }
 
 /* full, faithful canvas rendering: intro cards first, then every group
-   in numbered order with its nodes in geometric reading order */
+   in numbered order with its nodes as individual cards in geometric
+   reading order — group markers use the actual Obsidian canvas colors */
+const CANVAS_COLORS = {
+  "1": "#E76E66", "2": "#E0A23C", "3": "#D9C24C",
+  "4": "#7CB86A", "5": "#5CB8D4", "6": "#A07CD4",
+};
 function canvasToHtml(jsonText) {
   try {
     const j = JSON.parse(jsonText);
@@ -110,25 +116,28 @@ function canvasToHtml(jsonText) {
       return cx >= g.x && cx <= g.x + (g.width || 0) && cy >= g.y && cy <= g.y + (g.height || 0);
     });
     const gnum = (label) => { const m = String(label || "").match(/(\d+)\s*·/); return m ? +m[1] : 99; };
+    const card = (n) => `<div class="canvas-card">${mdToHtml(n.text)}</div>`;
 
     const sections = new Map();
     const intro = [];
     for (const n of nodes) {
       const g = inGroup(n);
       if (!g) { intro.push(n); continue; }
-      if (!sections.has(g.id)) sections.set(g.id, { label: g.label, num: gnum(g.label), nodes: [] });
+      if (!sections.has(g.id)) sections.set(g.id, { label: g.label, num: gnum(g.label), color: g.color, nodes: [] });
       sections.get(g.id).nodes.push(n);
     }
     intro.sort((a, b) => a.y - b.y || a.x - b.x);
-    let html = intro.map((n) => mdToHtml(n.text)).join("\n");
+    let html = intro.map(card).join("\n");
     const sorted = [...sections.values()].sort((a, b) => a.num - b.num || a.label.localeCompare(b.label));
     for (const s of sorted) {
       s.nodes.sort((a, b) => a.y - b.y || a.x - b.x);
-      html += `<h2 class="canvas-group">${esc(s.label)}</h2>` + s.nodes.map((n) => mdToHtml(n.text)).join("\n");
+      const dot = CANVAS_COLORS[s.color] || "var(--mint)";
+      html += `<h2 class="canvas-group"><span class="canvas-dot" style="background:${dot}"></span>${esc(s.label)}</h2>`
+        + s.nodes.map(card).join("\n");
     }
-    return html || "<p><em>(This canvas has no text nodes — open it in Obsidian.)</em></p>";
+    return html || '<div class="canvas-card"><p><em>(This canvas has no text nodes — open it in Obsidian.)</em></p></div>';
   } catch (_) {
-    return "<p><em>(Unreadable canvas file — open it in Obsidian.)</em></p>";
+    return '<div class="canvas-card"><p><em>(Unreadable canvas file — open it in Obsidian.)</em></p></div>';
   }
 }
 
@@ -294,15 +303,6 @@ function renderCard(p, pre) {
 }
 
 /* ---------- shared fragments ---------- */
-const crumbsHtml = (pre, items) => `
-  <nav class="crumbs reveal" aria-label="Breadcrumb">
-    ${items.map((it, i) =>
-      i < items.length - 1
-        ? `<span><a href="${pre}${it[1] || ""}">${it[0]}</a></span><span class="sep" aria-hidden="true">›</span>`
-        : `<strong>${it[0]}</strong>`
-    ).join("")}
-  </nav>`;
-
 const terminalCard = (pre) => `
   <section class="card card-dark reveal" id="use-as-prompt" aria-labelledby="use-title">
     <div class="card-head">
@@ -380,7 +380,15 @@ const aboutCard = `
   </section>`;
 
 /* ---------- page shell ---------- */
-function shell({ pre, title, desc, canonical, jsonLd, body }) {
+function shell({ pre, title, desc, canonical, jsonLd, body, active = "" }) {
+  const navItems = [
+    ["Library", "", "home"],
+    ...Object.entries(CATS).map(([k, c]) => [c.label, `${k}/`, k]),
+  ];
+  const nav = navItems
+    .map(([label, href, key]) =>
+      `<a href="${pre}${href}"${key === active ? ' class="is-active"' : ""}>${label}</a>`)
+    .join("");
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -434,14 +442,38 @@ function shell({ pre, title, desc, canonical, jsonLd, body }) {
     </div>
   </header>
 
+  <nav class="site-nav reveal" aria-label="Site sections">${nav}</nav>
+
 ${body}
 
-  <footer class="sheet-footer reveal">
-    <span class="foot-note">Prompt Library — built with security in mind</span>
-    <div class="foot-links">
-      <a href="${REPO_URL}" target="_blank" rel="noopener">GitHub ${icon("ext")}</a>
-      <a href="${pre}Prompt-Library.canvas" target="_blank" rel="noopener">Canvas ${icon("ext")}</a>
-      <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP ${icon("ext")}</a>
+  <footer class="site-footer reveal">
+    <div class="footer-grid">
+      <div class="footer-col footer-brandcol">
+        <div class="brand">
+          <span class="brand-tile" aria-hidden="true">${icon("box")}</span>
+          <div>
+            <p class="brand-name">Prompt Library</p>
+            <p class="brand-sub">Curated specs &amp; prompts</p>
+          </div>
+        </div>
+        <p class="footer-about">A curated, growing collection of bilingual prompts and engineering specs — published as pure static pages and ready to hand to a developer or an AI coding agent.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Categories</h3>
+        ${Object.entries(CATS).map(([k, c]) => `<a href="${pre}${k}/">${c.label} <span class="foot-fa">${c.fa}</span></a>`).join("")}
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Resources</h3>
+        <a href="${REPO_URL}" target="_blank" rel="noopener">GitHub repository ${icon("ext")}</a>
+        <a href="${pre}Prompt-Library.canvas" target="_blank" rel="noopener">Prompt-Library.canvas ${icon("ext")}</a>
+        <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP Top 10 ${icon("ext")}</a>
+        <a href="https://jsoncanvas.org" target="_blank" rel="noopener">JSON Canvas spec ${icon("ext")}</a>
+        <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian ${icon("ext")}</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© ${new Date().getFullYear()} Prompt Library — built with security in mind</span>
+      <span>Static · No tracking · EN → FA</span>
     </div>
   </footer>
 
@@ -543,12 +575,12 @@ function homePage(prompts) {
 
   return shell({
     pre,
+    active: "home",
     title: "Prompt Library — Curated Prompts & Specs (Security · Structure · UI · Server)",
     desc: "A curated collection of production-grade prompts and engineering specs — security, structure, UI design systems and server/API — bilingual (EN/FA), auto-published as static pages.",
     canonical: BASE + "/",
     jsonLd,
     body: `
-  ${crumbsHtml(pre, [["Library", ""], ["All prompts"]])}
   <div class="stack">
     ${aboutCard}
     <section class="card reveal" aria-labelledby="cats-title">
@@ -588,12 +620,12 @@ function categoryPage(cat, prompts) {
 
   return shell({
     pre,
+    active: cat,
     title: `${c.label} Prompts — Prompt Library`,
     desc: `${c.desc} ${c.faDesc}`,
     canonical: `${BASE}/${cat}/`,
     jsonLd,
     body: `
-  ${crumbsHtml(pre, [["Library", ""], [c.label]])}
   <div class="stack">
     <section class="card reveal" aria-labelledby="cat-title">
       <div class="prompt-head">
@@ -649,12 +681,12 @@ function promptPage(p, all) {
 
   return shell({
     pre,
+    active: p.cat,
     title: `${p.name} — ${c.label} Prompt · Prompt Library`,
     desc: p.desc,
     canonical: `${BASE}/${p.cat}/${p.slug}/`,
     jsonLd,
     body: `
-  ${crumbsHtml(pre, [["Library", ""], [c.label, `${p.cat}/`], [p.name]])}
   <div class="stack">
     <section class="card reveal" aria-labelledby="pd-title">
       <div class="prompt-head">
@@ -697,7 +729,6 @@ function notFoundPage(prompts) {
     canonical: BASE + "/404.html",
     jsonLd: { "@context": "https://schema.org", "@graph": [crumbGraph([["Library", BASE + "/"], ["Not found"]])] },
     body: `
-  ${crumbsHtml("", [["Library", ""], ["Not found"]])}
   <div class="stack">
     <div class="empty-state reveal">
       <span class="icon-tile icon-tile--lg">${icon("filecode")}</span>
@@ -755,8 +786,8 @@ if (existsSync(rootCanvasPath)) {
     cat: "security",
     fname: "Prompt-Library.canvas",
     sourcePath: "Prompt-Library.canvas",
-    name: "Security Blueprint — Obsidian Canvas",
-    sub: "The full interactive canvas · bilingual (EN → FA)",
+    name: "Prompt-Library",
+    sub: "Obsidian Canvas · the full blueprint (EN → FA)",
     desc: "Every card of the Security Blueprint rendered page by page — architecture, structure, login, tokens, post-login and OWASP — exactly as laid out in the Obsidian canvas.",
     descFa: "تمام کارت‌های بلوپرینت امنیتی، دقیقاً به همان چیدمان کانواس اوبسیدین — از معماری تا OWASP.",
     version: metaVersion,

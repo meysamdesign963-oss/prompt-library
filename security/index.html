@@ -51,11 +51,9 @@
     </div>
   </header>
 
+  <nav class="site-nav reveal" aria-label="Site sections"><a href="../">Library</a><a href="../security/" class="is-active">Security</a><a href="../structure/">Structure</a><a href="../ui/">UI & Design</a><a href="../server/">Server & API</a></nav>
 
-  
-  <nav class="crumbs reveal" aria-label="Breadcrumb">
-    <span><a href="../">Library</a></span><span class="sep" aria-hidden="true">›</span><strong>Security</strong>
-  </nav>
+
   <div class="stack">
     <section class="card reveal" aria-labelledby="cat-title">
       <div class="prompt-head">
@@ -78,8 +76,8 @@
     <div class="prompt-head">
       <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
       <div class="prompt-id">
-        <h3 class="title-xl" id="security-blueprint-canvas-title">Security Blueprint — Obsidian Canvas</h3>
-        <p class="title-sub">The full interactive canvas · bilingual (EN → FA)</p>
+        <h3 class="title-xl" id="security-blueprint-canvas-title">Prompt-Library</h3>
+        <p class="title-sub">Obsidian Canvas · the full blueprint (EN → FA)</p>
       </div>
       <div class="head-icons">
         <a class="icon-btn" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/Prompt-Library.canvas" target="_blank" rel="noopener" title="Open source file"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg></a>
@@ -106,12 +104,12 @@
         <div class="details-pad">
       <div class="detail-group">
         <span class="sec-label">Prompt — full text</span>
-        <div class="md-body"><h1>🔐 Security Blueprint — Universal Web App Spec</h1>
+        <div class="md-body"><div class="canvas-card"><h1>🔐 Security Blueprint — Universal Web App Spec</h1>
 <h3>نقشه‌ی جامع امنیت و مهندسی — پرامپت عمومی برای هر اپلیکیشن وب</h3>
 <p>🇬🇧 A <strong>project-agnostic</strong> security &amp; engineering blueprint for any web application built with <strong>Next.js + MongoDB</strong>. Copy this canvas into your repo and hand it to a developer or an AI coding agent as a ready-made spec/prompt. Follow the numbered groups and the arrows (1 → 6). Every card explains the topic in <strong>English first, then Persian</strong>.</p>
 <p>🇮🇷 یک بلوپرینت <strong>مستقل از نوع پروژه</strong> برای امنیت و مهندسی هر اپلیکیشن وب با <strong>Next.js + MongoDB</strong>. این کانواز را در ریپوی خود کپی کنید و به‌عنوان پرامپت/اسپک آماده به توسعه‌دهنده یا ایجنت هوش مصنوعی بدهید. گروه‌های شماره‌دار و فلش‌ها را دنبال کنید (۱ تا ۶). هر کارت اول <strong>انگلیسی</strong> و بعد <strong>فارسی</strong> توضیح داده شده است.</p>
 <p><strong>1️⃣ Architecture معماری → 2️⃣ Structure ساختار → 3️⃣ Login ورود → 4️⃣ Tokens توکن‌ها → 5️⃣ Post-Login پس از ورود → 6️⃣ OWASP</strong></p>
-<h2 class="canvas-group">🏗 1 · Architecture &amp; Tech Stack | معماری و پشته‌ی فناوری</h2><h2>🧱 Tech Stack | پشته‌ی فناوری</h2>
+</div><h2 class="canvas-group"><span class="canvas-dot" style="background:#5CB8D4"></span>🏗 1 · Architecture &amp; Tech Stack | معماری و پشته‌ی فناوری</h2><div class="canvas-card"><h2>🧱 Tech Stack | پشته‌ی فناوری</h2>
 <p>🇬🇧</p>
 <ul>
 <li><strong>Database → MongoDB</strong> — no SQL, so schema changes never need migrations; updates stay fast and painless.</li>
@@ -124,8 +122,8 @@
 <li><strong>فرانت‌اند → React</strong> — رابط کاربری سبک و سریع.</li>
 <li><strong>بک‌اند → Next.js + Node.js</strong> — سریع و قابل‌اعتماد؛ یک کدبیس برای اپ و API.</li>
 </ul>
-
-<h2>🎯 Engineering Goals | اهداف مهندسی</h2>
+</div>
+<div class="canvas-card"><h2>🎯 Engineering Goals | اهداف مهندسی</h2>
 <p>🇬🇧</p>
 <ul>
 <li><strong>Update-resilient:</strong> any update to the database or the code must never break the project — this is why SQL is avoided entirely.</li>
@@ -136,7 +134,7 @@
 <li><strong>مقاوم در برابر آپدیت:</strong> هیچ آپدیتی روی دیتابیس یا کد نباید پروژه را بشکند — به همین دلیل اصلاً از SQL استفاده نمی‌شود.</li>
 <li><strong>سئو محور:</strong> تمام صفحات عمومی باید سئوی کامل، کاربردی و واقعی داشته باشند (خیلی مهم).</li>
 </ul>
-<h2 class="canvas-group">📁 2 · Folder Structure &amp; Code Style | ساختار پوشه‌ها و سبک کد</h2><h2>🗂 Project Structure | ساختار پروژه</h2>
+</div><h2 class="canvas-group"><span class="canvas-dot" style="background:#A07CD4"></span>📁 2 · Folder Structure &amp; Code Style | ساختار پوشه‌ها و سبک کد</h2><div class="canvas-card"><h2>🗂 Project Structure | ساختار پروژه</h2>
 <p>🇬🇧 The whole project lives in <strong>src/</strong> and must follow this exact structure:</p>
 <pre><code class="language-text">src/
 ├── app/            → Frontend pages &amp; routing
@@ -160,8 +158,8 @@
 <li><strong>utils</strong> → کتابخانه‌ها، ارتباط‌های real-time و کارهای جانبی و کمکی</li>
 <li><strong>.env</strong> → کلیدهای امنیتی توکن‌ها، آدرس اتصال به دیتابیس و سایر اسرار</li>
 </ul>
-
-<h2>✨ Code Style | سبک کدنویسی</h2>
+</div>
+<div class="canvas-card"><h2>✨ Code Style | سبک کدنویسی</h2>
 <p>🇬🇧</p>
 <ul>
 <li><strong>Clean code:</strong> anyone must be able to read and understand the code, so future updates stay painless.</li>
@@ -172,7 +170,7 @@
 <li><strong>کد تمیز:</strong> هر آدمی باید بفهمد کد چیست تا بعد از آپدیت‌ها اذیت نشوی و پروژه قابل‌توسعه بماند.</li>
 <li><strong>کامپوننت‌محور:</strong> هر بخش قابل‌استفاده را تا جای ممکن به کامپوننت تبدیل کن — این پوشه خیلی مهم است.</li>
 </ul>
-<h2 class="canvas-group">🚪 3 · Login Security | امنیت ورود</h2><h2>🚪 Login Requirements | الزامات امنیتی ورود</h2>
+</div><h2 class="canvas-group"><span class="canvas-dot" style="background:#E76E66"></span>🚪 3 · Login Security | امنیت ورود</h2><div class="canvas-card"><h2>🚪 Login Requirements | الزامات امنیتی ورود</h2>
 <p>🇬🇧 <strong>1. Password hashing</strong> — store passwords only with <strong>Bcrypt</strong> or <strong>Argon2</strong>; plain text is forbidden.
 🇮🇷 <strong>۱. هش کردن پسورد</strong> — ذخیره‌ی رمز عبور در دیتابیس فقط با <strong>Bcrypt</strong> یا <strong>Argon2</strong> مجاز است؛ ذخیره‌ی متن خام ممنوع.</p>
 <p>🇬🇧 <strong>2. Rate limit</strong> — max <strong>5 login requests per 15 minutes</strong> for each IP; violators get a temporary IP block.
@@ -183,7 +181,7 @@
 🇮🇷 <strong>۴. توکن امن</strong> — توکن ورود (JWT) فقط در کوکی‌های <strong>HttpOnly</strong> و <strong>Secure</strong> قرار گیرد تا با XSS قابل‌سرقت نباشد.</p>
 <p>🇬🇧 <strong>5. Strict input validation</strong> — every field (e.g. local full name, English username, phone number in your locale’s format such as an 11-digit Iranian mobile) must be regex-validated <strong>server-side</strong> so malicious payloads (SQLi / XSS) never reach the database.
 🇮🇷 <strong>۵. اعتبارسنجی سختگیرانه‌ی اینپوت‌ها</strong> — تمامی فیلدها (مثلاً نام کامل محلی، یوزرنیم انگلیسی، شماره تلفن با الگوی منطقه‌ی شما مثل موبایل ۱۱ رقمی ایران) باید در سمت سرور با Regex فیلتر شوند تا کدهای مخرب (SQLi/XSS) نتوانند وارد دیتابیس شوند.</p>
-<h2 class="canvas-group">🔑 4 · JWT Token System | سیستم توکن</h2><h2>🔑 Two Tokens, Two Secrets | دو توکن، دو کلید</h2>
+</div><h2 class="canvas-group"><span class="canvas-dot" style="background:#E0A23C"></span>🔑 4 · JWT Token System | سیستم توکن</h2><div class="canvas-card"><h2>🔑 Two Tokens, Two Secrets | دو توکن، دو کلید</h2>
 <p>🇬🇧 After login, the backend (in <strong>src/app/api/</strong>) must issue:</p>
 <ul>
 <li><strong>Access token — 2 minutes</strong> and <strong>Refresh token — 15 days</strong>, each signed with its <strong>own 128-character security key</strong> generated with crypto and stored in .env.</li>
@@ -194,8 +192,8 @@
 <li><strong>توکن دسترسی — ۲ دقیقه</strong> و <strong>توکن تازه‌سازی — ۱۵ روز</strong> را صادر کند؛ هرکدام با <strong>کلید امنیتی جداگانه‌ی ۱۲۸ کاراکتری</strong> ساخته‌شده با crypto و ذخیره‌شده در .env.</li>
 <li>کدهای نمونه زیر <strong>Express.js</strong> هستند — آن‌ها را برای <strong>API بک‌اند Next.js</strong> تبدیل کن.</li>
 </ul>
-
-<h2>🟠 Access Token — Generate &amp; Verify | ساخت و رمزگشایی</h2>
+</div>
+<div class="canvas-card"><h2>🟠 Access Token — Generate &amp; Verify | ساخت و رمزگشایی</h2>
 <p>🇬🇧 Short-lived (2 min) token carrying <strong>id, role, firstName</strong> and a unique <strong>jti</strong>.
 🇮🇷 توکن کوتاه‌عمر (۲ دقیقه) با <strong>id، role، firstName</strong> و شناسه‌ی یکتای <strong>jti</strong>.</p>
 <p><strong>Generate | ساخت:</strong></p>
@@ -227,8 +225,8 @@ export default function verifyAccessToken(token) {
   }
 }
 </code></pre>
-
-<h2>🍪 Access Token Cookie | کوکی توکن دسترسی</h2>
+</div>
+<div class="canvas-card"><h2>🍪 Access Token Cookie | کوکی توکن دسترسی</h2>
 <p>🇬🇧 HttpOnly, Secure in production, 2-minute lifespan.
 🇮🇷 کوکی HttpOnly و Secure در پروداکشن با عمر ۲ دقیقه.</p>
 <pre><code class="language-js">res.cookie(&quot;accessToken&quot;, accessToken, {
@@ -240,8 +238,8 @@ export default function verifyAccessToken(token) {
 </code></pre>
 <p>⚠️ 🇬🇧 Set SameSite to <strong>strict/lax</strong> here as well — required by the CSRF policy in the OWASP group (the early draft used an empty value).
 ⚠️ 🇮🇷 SameSite را اینجا هم <strong>strict/lax</strong> بگذار — طبق سیاست CSRF در گروه OWASP (پیش‌نویس اولیه مقدار خالی داشت).</p>
-
-<h2>🔵 Refresh Token — Generate &amp; Verify | ساخت و رمزگشایی</h2>
+</div>
+<div class="canvas-card"><h2>🔵 Refresh Token — Generate &amp; Verify | ساخت و رمزگشایی</h2>
 <p>🇬🇧 Long-lived (15 days) token with its <strong>own 128-char secret key</strong>; carries <strong>id, firstName, jti</strong>.
 🇮🇷 توکن بلندعمر (۱۵ روز) با <strong>کلید امنیتی ۱۲۸ کاراکتری جدا</strong>؛ شامل <strong>id، firstName و jti</strong>.</p>
 <p><strong>Generate | ساخت:</strong></p>
@@ -273,8 +271,8 @@ export default function verifyRefreshToken(token) {
   }
 }
 </code></pre>
-
-<h2>🍪➡️ 🚪 Refresh Cookie &amp; Logout | کوکی تازه‌سازی و خروج</h2>
+</div>
+<div class="canvas-card"><h2>🍪➡️ 🚪 Refresh Cookie &amp; Logout | کوکی تازه‌سازی و خروج</h2>
 <p>🇬🇧 The refresh cookie lives 15 days; logout clears <strong>both</strong> cookies with identical flags.
 🇮🇷 کوکی تازه‌سازی ۱۵ روز عمر دارد؛ خروج <strong>هر دو</strong> کوکی را با همان فلگ‌ها پاک می‌کند.</p>
 <p><strong>Refresh cookie | کوکی تازه‌سازی:</strong></p>
@@ -299,7 +297,7 @@ export default function verifyRefreshToken(token) {
   });
 }
 </code></pre>
-<h2 class="canvas-group">🛡 5 · Post-Login Security | امنیت پس از ورود</h2><h2>⏱ Session Management | مدیریت نشست</h2>
+</div><h2 class="canvas-group"><span class="canvas-dot" style="background:#7CB86A"></span>🛡 5 · Post-Login Security | امنیت پس از ورود</h2><div class="canvas-card"><h2>⏱ Session Management | مدیریت نشست</h2>
 <p>🇬🇧</p>
 <ul>
 <li><strong>Idle timeout:</strong> 15–30 min of inactivity → the session expires and the user must log in again.</li>
@@ -312,8 +310,8 @@ export default function verifyRefreshToken(token) {
 <li><strong>انقضای مطلق:</strong> حتی اگر کاربر مدام فعال باشد، بعد از مثلاً ۸ ساعت سشن قطع شود تا توکن‌های سرقت‌شده‌ی طولانی‌مدت کار نکنند.</li>
 <li><strong>کنترل ورود همزمان:</strong> یک کاربر نباید همزمان از دو دستگاه یا دو مرورگر وارد شود؛ ورود جدید، سشن دستگاه قبلی را فوراً باطل کند.</li>
 </ul>
-
-<h2>🧱 Data Isolation &amp; IDOR | جداسازی داده و جلوگیری از IDOR</h2>
+</div>
+<div class="canvas-card"><h2>🧱 Data Isolation &amp; IDOR | جداسازی داده و جلوگیری از IDOR</h2>
 <p>🇬🇧 <strong>RBAC isolation</strong></p>
 <ul>
 <li>A user must <strong>never</strong> see another user’s files, tasks, messages or customer data.</li>
@@ -336,12 +334,12 @@ export default function verifyRefreshToken(token) {
 <li>هکر نباید با تغییر آیدی در آدرس API (مثلاً <strong>/api/files/101 به /api/files/102</strong>) به داده‌ی شخص دیگری دسترسی پیدا کند.</li>
 <li>سرور در هر درخواست باید مالکیت آیدی را نسبت به یوزر لاگین‌شده چک کند؛ استفاده از <strong>UUID</strong> به‌جای آیدی ترتیبی (کمکی، نه کامل).</li>
 </ul>
-
-<h2>😶 Data Masking | ماسک‌کردن اطلاعات حساس</h2>
+</div>
+<div class="canvas-card"><h2>😶 Data Masking | ماسک‌کردن اطلاعات حساس</h2>
 <p>🇬🇧 Sensitive customer data — phone numbers above all — is the crown jewels of any product. In list views it must appear <strong>masked</strong> (e.g. <strong>0912****567</strong>); the full value is revealed only through a <strong>“View” button — and every reveal is logged</strong>. This stops a rogue user or employee from bulk-exporting the data.</p>
 <p>🇮🇷 داده‌های حساس مشتریان — بالاخص شماره تماس — ارزشمندترین دارایی هر محصول است. در لیست‌ها باید <strong>ماسک‌شده</strong> نمایش داده شود (مثلاً <strong>0912****567</strong>)؛ نمایش کامل فقط با کلیک روی دکمه‌ی <strong>«مشاهده»</strong> انجام شود که در لاگ ثبت می‌گردد. این کار از خروجی‌گرفتن دسته‌جمعی دیتا توسط کاربر یا کارمند سوءاستفاده‌گر جلوگیری می‌کند.</p>
-
-<h2>📎 File Upload Security | امنیت آپلود فایل</h2>
+</div>
+<div class="canvas-card"><h2>📎 File Upload Security | امنیت آپلود فایل</h2>
 <p>🇬🇧 For user uploads (images, documents, PDFs — adapt the whitelist to your product):</p>
 <ul>
 <li>Only whitelisted formats are accepted (e.g. <strong>jpg, png, pdf</strong>) — check the extension <strong>and</strong> the MIME type.</li>
@@ -356,8 +354,8 @@ export default function verifyRefreshToken(token) {
 <li>فایل‌های آپلودی نباید <strong>دسترسی اجرایی (Execute)</strong> داشته باشند تا از آپلود و اجرای شل‌های هکری (Web Shell) جلوگیری شود.</li>
 <li>ذخیره‌سازی در <strong>فضای ابری</strong>، نه داخل کد یا دیتابیس — در تمام بخش‌هایی که آپلود دارند اعمال شود.</li>
 </ul>
-
-<h2>🤖 Chat &amp; AI Security | امنیت چت و هوش مصنوعی</h2>
+</div>
+<div class="canvas-card"><h2>🤖 Chat &amp; AI Security | امنیت چت و هوش مصنوعی</h2>
 <p>🇬🇧</p>
 <ul>
 <li><strong>Internal chat:</strong> messages must be <strong>sanitized</strong> before storage so users cannot inject malicious scripts (XSS) into messages.</li>
@@ -368,11 +366,11 @@ export default function verifyRefreshToken(token) {
 <li><strong>چت داخلی:</strong> پیام‌ها باید قبل از ذخیره در دیتابیس <strong>پاکسازی (Sanitize)</strong> شوند تا کاربران نتوانند کدهای مخرب (XSS) در پیام‌ها قرار دهند.</li>
 <li><strong>ورودی هوش مصنوعی:</strong> درخواست‌ها باید <strong>محدودیت تعداد (Rate Limit) و طول کاراکتر</strong> داشته باشند تا یک کاربر با ارسال درخواست‌های سنگین، هزینه‌ی API هوش مصنوعی را بالا نبرد (محافظت از Prompt Injection).</li>
 </ul>
-
-<h2>📜 Audit Trail | لاگ‌گیری اقدامات حساس</h2>
+</div>
+<div class="canvas-card"><h2>📜 Audit Trail | لاگ‌گیری اقدامات حساس</h2>
 <p>🇬🇧 Every sensitive action — viewing sensitive data, editing or deleting records, downloading files — must be logged in a log table with <strong>IP + timestamp + username + action type</strong>, so if information ever leaks, the administrator can trace exactly <strong>who leaked what, and when</strong>.</p>
 <p>🇮🇷 هر اقدام حساس — مشاهده‌ی داده‌ی حساس، تغییر یا حذف رکورد، دانلود فایل — باید در جدول لاگ با ثبت <strong>آی‌پی + زمان + یوزرنیم + نوع عملیات</strong> ذخیره شود تا در صورت لو رفتن اطلاعات، مدیر سیستم دقیقاً بفهمد <strong>چه کسی، چه چیزی را، کِی لو داده است</strong>.</p>
-<h2 class="canvas-group">🐞 6 · OWASP Top 10 Checklist | چک‌لیست ده تهدید امنیتی وب</h2><h2>🐞 Threats 1–5 | تهدیدهای ۱ تا ۵</h2>
+</div><h2 class="canvas-group"><span class="canvas-dot" style="background:#D9C24C"></span>🐞 6 · OWASP Top 10 Checklist | چک‌لیست ده تهدید امنیتی وب</h2><div class="canvas-card"><h2>🐞 Threats 1–5 | تهدیدهای ۱ تا ۵</h2>
 <p><strong>1 — SQL Injection | تزریق SQL</strong>
 🇬🇧 Attackers must never be able to inject malicious SQL through user inputs — e.g. bypassing login with <strong>’ OR 1=1 --</strong>. Sanitize every input.
 🇮🇷 مهاجم نبتواند از طریق ورودی‌های کاربر دستورات SQL مخرب به دیتابیس تزریق کند و نتواند با <strong>’ OR 1=1 --</strong> احراز هویت را دور بزند.</p>
@@ -388,8 +386,8 @@ export default function verifyRefreshToken(token) {
 <p><strong>5 — Authentication Failures | شکست در احراز هویت و مدیریت سشن</strong>
 🇬🇧 Weak/default passwords, session hijacking (XSS/sniffing), session fixation, no session expiry, no rate limit on login (brute force). Fix: <strong>Secure + HttpOnly + SameSite</strong> cookies, session expiry + <strong>id regeneration after login</strong>, <strong>account lockout</strong> after failed attempts.
 🇮🇷 رمزهای ضعیف یا پیش‌فرض، Session Hijacking، Session Fixation، عدم انقضای نشست‌ها، نبود Rate Limit در لاگین (امکان Brute Force). راه‌حل: کوکی‌های <strong>Secure/HttpOnly/SameSite</strong>، انقضای سشن و <strong>بازتولید شناسه بعد از لاگین</strong> و <strong>قفل حساب پس از تلاش‌های ناموفق</strong>.</p>
-
-<h2>🐞 Threats 6–10 | تهدیدهای ۶ تا ۱۰</h2>
+</div>
+<div class="canvas-card"><h2>🐞 Threats 6–10 | تهدیدهای ۶ تا ۱۰</h2>
 <p><strong>6 — Sensitive Data Exposure | افشای داده‌های حساس</strong>
 🇬🇧 Moving or storing sensitive data without proper encryption. Fix: <strong>HTTPS mandatory (TLS 1.2+ &amp; HSTS)</strong>; never MD5/unsalted hashes — <strong>bcrypt/Argon2</strong> only; <strong>encrypt data at rest &amp; in transit</strong>; proper <strong>secrets management</strong>; never show <strong>stack traces</strong> to users; never put <strong>API keys in frontend code</strong>.
 🇮🇷 انتقال یا ذخیره‌ی اطلاعات حساس بدون رمزنگاری مناسب. راه‌حل: <strong>HTTPS اجباری با TLS 1.2+ و HSTS</strong>؛ هرگز MD5 یا هش بدون salt — فقط <strong>bcrypt/Argon2</strong>؛ <strong>رمزنگاری داده‌های حساس در Rest و Transit</strong>؛ <strong>مدیریت صحیح کلیدها و اسرار</strong>؛ عدم نمایش <strong>Stack Trace</strong> به کاربر؛ قرارندادن <strong>API Key در کد فرانت‌اند</strong> ممنوع.</p>
@@ -405,12 +403,12 @@ export default function verifyRefreshToken(token) {
 <p><strong>10 — Unsafe File Uploads | آپلود ناامن فایل‌ها</strong>
 🇬🇧 Malicious uploads such as web shells via extension tricks. Fix: <strong>whitelist extensions &amp; MIME types</strong>, <strong>random filenames stored outside the web root</strong>, <strong>antivirus scanning</strong>, <strong>no execute permission</strong> — full details in the File Upload card (group 5).
 🇮🇷 آپلود فایل مخرب مثل <strong>Webshell</strong> با تغییر پسوند. راه‌حل: <strong>Whitelist پسوندها و MIME Typeها</strong>، <strong>تغییر نام فایل‌ها و ذخیره خارج از ریشه‌ی وب</strong>، <strong>اسکن آنتی‌ویروس</strong>، <strong>حذف دسترسی اجرا</strong> — جزئیات کامل در کارت آپلود فایل (گروه ۵).</p>
-
-<h2>🔗 Learn &amp; Extend | یادگیری و توسعه</h2>
+</div>
+<div class="canvas-card"><h2>🔗 Learn &amp; Extend | یادگیری و توسعه</h2>
 <p>🇬🇧 Use the official OWASP Top 10 repository to study further security topics <strong>and support them in this project too</strong>.</p>
 <p>🇮🇷 برای فهمیدن جزئیات امنیتی بیشتر و اینکه موارد امنیتی دیگر هم در همین پروژه پشتیبانی شوند، از این مخزن گیت‌هاب کمک بگیر:</p>
 <p><strong><a href="https://github.com/OWASP/Top10/">https://github.com/OWASP/Top10/</a></strong></p>
-</div>
+</div></div>
       </div>
       <div class="row">
         <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/></svg></span>
@@ -1033,12 +1031,34 @@ Reference: https://github.com/OWASP/Top10
   </section>
   </div>
 
-  <footer class="sheet-footer reveal">
-    <span class="foot-note">Prompt Library — built with security in mind</span>
-    <div class="foot-links">
-      <a href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
-      <a href="../Prompt-Library.canvas" target="_blank" rel="noopener">Canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
-      <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+  <footer class="site-footer reveal">
+    <div class="footer-grid">
+      <div class="footer-col footer-brandcol">
+        <div class="brand">
+          <span class="brand-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8.2l-9-5-9 5v7.6l9 5 9-5V8.2z"/><path d="M3 8.2l9 5 9-5"/><path d="M12 13.2V21"/></svg></span>
+          <div>
+            <p class="brand-name">Prompt Library</p>
+            <p class="brand-sub">Curated specs &amp; prompts</p>
+          </div>
+        </div>
+        <p class="footer-about">A curated, growing collection of bilingual prompts and engineering specs — published as pure static pages and ready to hand to a developer or an AI coding agent.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Categories</h3>
+        <a href="../security/">Security <span class="foot-fa">امنیت</span></a><a href="../structure/">Structure <span class="foot-fa">ساختار</span></a><a href="../ui/">UI & Design <span class="foot-fa">رابط کاربری</span></a><a href="../server/">Server & API <span class="foot-fa">سرور و API</span></a>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Resources</h3>
+        <a href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">GitHub repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="../Prompt-Library.canvas" target="_blank" rel="noopener">Prompt-Library.canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP Top 10 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://jsoncanvas.org" target="_blank" rel="noopener">JSON Canvas spec <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Prompt Library — built with security in mind</span>
+      <span>Static · No tracking · EN → FA</span>
     </div>
   </footer>
 

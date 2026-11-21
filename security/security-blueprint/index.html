@@ -51,11 +51,9 @@
     </div>
   </header>
 
+  <nav class="site-nav reveal" aria-label="Site sections"><a href="../../">Library</a><a href="../../security/" class="is-active">Security</a><a href="../../structure/">Structure</a><a href="../../ui/">UI & Design</a><a href="../../server/">Server & API</a></nav>
 
-  
-  <nav class="crumbs reveal" aria-label="Breadcrumb">
-    <span><a href="../../">Library</a></span><span class="sep" aria-hidden="true">›</span><span><a href="../../security/">Security</a></span><span class="sep" aria-hidden="true">›</span><strong>Security Blueprint</strong>
-  </nav>
+
   <div class="stack">
     <section class="card reveal" aria-labelledby="pd-title">
       <div class="prompt-head">
@@ -155,7 +153,7 @@ refreshToken → same flags, maxAge: 15 * 24 * 60 * 60 * 1000</li>
     <div class="timeline"><a class="row cat-row related-row" href="../../security/security-blueprint-canvas/">
       <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
       <div class="cat-body">
-        <div class="cat-top"><span class="row-name">Security Blueprint — Obsidian Canvas</span><span class="row-sub">Security</span></div>
+        <div class="cat-top"><span class="row-name">Prompt-Library</span><span class="row-sub">Security</span></div>
         <p class="row-text">Every card of the Security Blueprint rendered page by page — architecture, structure, login, tokens, post-login and OWASP — exactly as laid out in the Obsidian canvas.</p>
       </div>
       <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
@@ -242,12 +240,34 @@ The whole project lives in src/ with this exact structure:
 Reference: https://github.com/OWASP/Top10
 </script>
 
-  <footer class="sheet-footer reveal">
-    <span class="foot-note">Prompt Library — built with security in mind</span>
-    <div class="foot-links">
-      <a href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
-      <a href="../../Prompt-Library.canvas" target="_blank" rel="noopener">Canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
-      <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+  <footer class="site-footer reveal">
+    <div class="footer-grid">
+      <div class="footer-col footer-brandcol">
+        <div class="brand">
+          <span class="brand-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8.2l-9-5-9 5v7.6l9 5 9-5V8.2z"/><path d="M3 8.2l9 5 9-5"/><path d="M12 13.2V21"/></svg></span>
+          <div>
+            <p class="brand-name">Prompt Library</p>
+            <p class="brand-sub">Curated specs &amp; prompts</p>
+          </div>
+        </div>
+        <p class="footer-about">A curated, growing collection of bilingual prompts and engineering specs — published as pure static pages and ready to hand to a developer or an AI coding agent.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Categories</h3>
+        <a href="../../security/">Security <span class="foot-fa">امنیت</span></a><a href="../../structure/">Structure <span class="foot-fa">ساختار</span></a><a href="../../ui/">UI & Design <span class="foot-fa">رابط کاربری</span></a><a href="../../server/">Server & API <span class="foot-fa">سرور و API</span></a>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Resources</h3>
+        <a href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">GitHub repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="../../Prompt-Library.canvas" target="_blank" rel="noopener">Prompt-Library.canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP Top 10 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://jsoncanvas.org" target="_blank" rel="noopener">JSON Canvas spec <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Prompt Library — built with security in mind</span>
+      <span>Static · No tracking · EN → FA</span>
     </div>
   </footer>
 
