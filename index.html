@@ -3,15 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prompt Library — Curated Prompts &amp; Specs</title>
-<meta name="description" content="A curated collection of production-grade prompts and engineering specs — organized into category folders (security · structure · ui · server), bilingual (EN/FA), auto-published from .md and .canvas files.">
-<meta property="og:title" content="Prompt Library">
-<meta property="og:description" content="Curated prompts &amp; engineering specs for developers and AI agents — auto-published from markdown and canvas files.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23869A8C'/%3E%3Cpath d='M10 16.5l4.5 4.5L22.5 11' stroke='%23F8F8F8' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Vazirmatn:wght@400;500&display=swap" rel="stylesheet">
+<title>Prompt Library — Curated Prompts &amp; Specs (Security · Structure · UI · Server)</title>
+<meta name="description" content="A curated collection of production-grade prompts and engineering specs — security, structure, UI design systems and server/API — bilingual (EN/FA), auto-published as static pages.">
+<link rel="canonical" href="https://meysamdesign963-oss.github.io/prompt-library/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Library">
+<meta property="og:title" content="Prompt Library — Curated Prompts &amp; Specs (Security · Structure · UI · Server)">
+<meta property="og:description" content="A curated collection of production-grade prompts and engineering specs — security, structure, UI design systems and server/API — bilingual (EN/FA), auto-published as static pages.">
+<meta property="og:url" content="https://meysamdesign963-oss.github.io/prompt-library/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Prompt Library","url":"https://meysamdesign963-oss.github.io/prompt-library/","inLanguage":["en","fa"]},{"@type":"CollectionPage","name":"All prompts","url":"https://meysamdesign963-oss.github.io/prompt-library/","hasPart":[{"@type":"CreativeWork","name":"Security Blueprint","url":"https://meysamdesign963-oss.github.io/prompt-library/p/security-blueprint/","description":"Universal security &amp; engineering spec for any Next.js + MongoDB web app.","keywords":"security, jwt, owasp, rbac"},{"@type":"CreativeWork","name":"Next.js Project Structure","url":"https://meysamdesign963-oss.github.io/prompt-library/p/nextjs-project-structure/","description":"Exact folder structure &amp; code-style prompt for scalable Next.js + MongoDB projects.","keywords":"structure, folders, code-style, nextjs"},{"@type":"CreativeWork","name":"Grainy Sage Editorial","url":"https://meysamdesign963-oss.github.io/prompt-library/p/grainy-sage-editorial/","description":"The complete UI style system behind this website — exact tokens, scales, layout recipes and rules.","keywords":"design-system, style, saas, typography"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Library","item":"https://meysamdesign963-oss.github.io/prompt-library/"},{"@type":"ListItem","position":2,"name":"All prompts","item":"https://meysamdesign963-oss.github.io/prompt-library/"}]}]}</script>
 </head>
 <body>
 
@@ -20,10 +24,9 @@
 
 <main class="sheet">
 
-  <!-- ===== Header (static shell) ===== -->
   <header class="site-header reveal">
     <div class="brand">
-      <a class="brand-link" href="#/" aria-label="Prompt Library home">
+      <a class="brand-link" href="" aria-label="Prompt Library home">
         <span class="brand-tile" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.2l-9-5-9 5v7.6l9 5 9-5V8.2z"/><path d="M3 8.2l9 5 9-5"/><path d="M12 13.2V21"/></svg>
         </span>
@@ -39,25 +42,682 @@
     </a>
   </header>
 
-  <!-- ===== Router view ===== -->
-  <div id="app" aria-live="polite"></div>
 
-  <!-- ===== Footer (static shell) ===== -->
+  
+  <nav class="crumbs reveal" aria-label="Breadcrumb">
+    <span><a href="">Library</a></span><span class="sep" aria-hidden="true">›</span><strong>All prompts</strong>
+  </nav>
+  <div class="stack">
+    
+  <section class="card reveal" id="about" aria-labelledby="about-title">
+    <div class="card-head">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5h6a3.5 3.5 0 0 1 3.5 3.5v12a2.5 2.5 0 0 0-2.5-2.5h-7v-13z"/><path d="M21.5 4.5h-6A3.5 3.5 0 0 0 12 8v12a2.5 2.5 0 0 1 2.5-2.5h7v-13z"/></svg></span>
+      <h2 class="mono-title" id="about-title">About this library</h2>
+    </div>
+    <p class="lede">A curated, growing collection of <strong>production-grade prompts and engineering specs</strong>, organized into <strong>four category folders</strong> — Security · Structure · UI &amp; Design · Server &amp; API. Every entry is bilingual (<strong>English first, then Persian</strong>) and written to be handed straight to a developer or an AI coding agent. New <strong>.md</strong> or <strong>.canvas</strong> files dropped into <strong>prompts/&lt;category&gt;/</strong> are built and published automatically as real static pages.</p>
+    <div class="chips">
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.8 2.7 2.8 14.3 0 17-2.8-2.7-2.8-14.3 0-17z"/></svg><span>Open source</span></span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5h6a3.5 3.5 0 0 1 3.5 3.5v12a2.5 2.5 0 0 0-2.5-2.5h-7v-13z"/><path d="M21.5 4.5h-6A3.5 3.5 0 0 0 12 8v12a2.5 2.5 0 0 1 2.5-2.5h7v-13z"/></svg><span>Bilingual FA · EN</span></span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/></svg><span>MD + JSON Canvas</span></span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 6.2L20.5 12l-6.3 2.8L12 21l-2.2-6.2L3.5 12l6.3-2.8L12 3z"/></svg><span>Agent-ready</span></span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Static pages · SEO-ready</span></span>
+    </div>
+  </section>
+    <section class="card reveal" aria-labelledby="cats-title">
+      <div class="card-head">
+        <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+        <h2 class="mono-title" id="cats-title">Categories — one folder each</h2>
+      </div>
+      <div class="cat-grid"><a class="cat-tile" href="c/security/">
+      <span class="cat-row-top">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3.2v5.1c0 4.6-3 7.7-7 9.2-4-1.5-7-4.6-7-9.2V6.2L12 3z"/></svg></span>
+        <span class="cat-count">01</span>
+      </span>
+      <span class="stack-name">Security</span>
+      <span class="stack-cat">امنیت</span>
+    </a><a class="cat-tile" href="c/structure/">
+      <span class="cat-row-top">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+        <span class="cat-count">01</span>
+      </span>
+      <span class="stack-name">Structure</span>
+      <span class="stack-cat">ساختار</span>
+    </a><a class="cat-tile" href="c/ui/">
+      <span class="cat-row-top">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/></svg></span>
+        <span class="cat-count">01</span>
+      </span>
+      <span class="stack-name">UI & Design</span>
+      <span class="stack-cat">رابط کاربری</span>
+    </a><a class="cat-tile" href="c/server/">
+      <span class="cat-row-top">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg></span>
+        <span class="cat-count">00</span>
+      </span>
+      <span class="stack-name">Server & API</span>
+      <span class="stack-cat">سرور و API</span>
+    </a></div>
+    </section>
+    
+      <div class="cat-section">
+        <div class="cat-section-head">
+          <span class="sec-label">Security — 1 prompt</span>
+          <a class="pill pill-link" href="c/security/">Open category <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></a>
+        </div>
+        
+  <section class="card prompt-card reveal" id="security-blueprint" aria-labelledby="security-blueprint-title">
+    <div class="prompt-head">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3.2v5.1c0 4.6-3 7.7-7 9.2-4-1.5-7-4.6-7-9.2V6.2L12 3z"/></svg></span>
+      <div class="prompt-id">
+        <h3 class="title-xl" id="security-blueprint-title">Security Blueprint</h3>
+        <p class="title-sub">Universal security &amp; engineering spec for any Next.js + MongoDB web app.</p>
+      </div>
+      <div class="head-icons">
+        <a class="icon-btn" href="../../Prompt-Library.canvas" target="_blank" rel="noopener" title="Open source file"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg></a>
+        <button class="icon-btn" type="button" data-expand="details-security-blueprint" aria-expanded="false" aria-controls="details-security-blueprint" title="Expand details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7.5 7.5"/><path d="M3 21l7.5-7.5"/></svg></button>
+      </div>
+    </div>
+
+    <div class="prompt-pills">
+      <span class="pill pill--mint">Recommended</span>
+      <span class="pill pill--dark">Spec ready</span>
+      <span class="pill ">1.0.0</span>
+      <span class="pill ">Bilingual FA · EN</span>
+      <a class="pill pill-link" href="p/security-blueprint/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="security-blueprint" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+    </div>
+
+    <p class="lede prompt-desc">Universal security &amp; engineering spec for any Next.js + MongoDB web app.</p>
+    <p class="fa">بلوپرینت مستقل از نوع پروژه برای امنیت و مهندسی هر اپلیکیشن وب Next.js + MongoDB.</p>
+    <div class="chips prompt-chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4"/><path d="M10.5 12.5L20 3"/><path d="M16 7l3 3"/></svg><span>JWT auth</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="5"/><path d="M12 8V6"/><path d="M9.5 8L7.5 5M14.5 8l2-3"/><path d="M4.5 13h2.5M17 13h2.5M6 19l2-2M18 19l-2-2"/></svg><span>OWASP Top 10</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg><span>RBAC isolation</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span>Rate limiting</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Secure cookies</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.5"/></svg><span>Data masking</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/></svg><span>Safe uploads</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5h6a3.5 3.5 0 0 1 3.5 3.5v12a2.5 2.5 0 0 0-2.5-2.5h-7v-13z"/><path d="M21.5 4.5h-6A3.5 3.5 0 0 0 12 8v12a2.5 2.5 0 0 1 2.5-2.5h7v-13z"/></svg><span>Audit trail</span></span></div>
+    <div class="stats prompt-stats"><div class="stat"><b>06</b><span>Categories</span></div><div class="stat"><b>20</b><span>Canvas cards</span></div><div class="stat"><b>02</b><span>Languages</span></div><div class="stat"><b>10</b><span>OWASP items</span></div></div>
+
+    <div class="details" id="details-security-blueprint">
+      <div class="details-inner">
+        <div class="details-pad">
+      <div class="detail-group">
+        <span class="sec-label">Blueprint map — 6 categories</span>
+        <div class="timeline"><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Architecture & Tech Stack</span><span class="row-sub">Stack & goals</span></div>
+          <p class="row-text">MongoDB (no migrations) · React · Next.js + Node.js · SEO-first · update-resilient engineering goals.</p>
+        </div>
+        <span class="cat-no">01</span>
+      </div><div class="connector" aria-hidden="true"></div><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Folder Structure & Code Style</span><span class="row-sub">src/ layout</span></div>
+          <p class="row-text">Exact src/ structure (app, controllers, services, components, utils) · clean code · componentize everything.</p>
+        </div>
+        <span class="cat-no">02</span>
+      </div><div class="connector" aria-hidden="true"></div><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Login Security</span><span class="row-sub">Auth gate</span></div>
+          <p class="row-text">Bcrypt / Argon2 hashing · 5 req / 15 min rate limit · unified errors · HttpOnly cookies · server-side validation.</p>
+        </div>
+        <span class="cat-no">03</span>
+      </div><div class="connector" aria-hidden="true"></div><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4"/><path d="M10.5 12.5L20 3"/><path d="M16 7l3 3"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">JWT Token System</span><span class="row-sub">Two tokens</span></div>
+          <p class="row-text">Access 2 min + Refresh 15 days · separate 128-char secrets · strict SameSite cookies · logout clears both.</p>
+        </div>
+        <span class="cat-no">04</span>
+      </div><div class="connector" aria-hidden="true"></div><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3.2v5.1c0 4.6-3 7.7-7 9.2-4-1.5-7-4.6-7-9.2V6.2L12 3z"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Post-Login Security</span><span class="row-sub">Runtime shield</span></div>
+          <p class="row-text">Sessions (idle 15–30 min, absolute ~8 h, single active) · RBAC isolation · IDOR · masking · uploads · AI limits · audit trail.</p>
+        </div>
+        <span class="cat-no">05</span>
+      </div><div class="connector" aria-hidden="true"></div><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="5"/><path d="M12 8V6"/><path d="M9.5 8L7.5 5M14.5 8l2-3"/><path d="M4.5 13h2.5M17 13h2.5M6 19l2-2M18 19l-2-2"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">OWASP Top 10 Checklist</span><span class="row-sub">Threat model</span></div>
+          <p class="row-text">The 10 critical web threats with concrete fixes — from SQLi and XSS to SSRF and unsafe uploads.</p>
+        </div>
+        <span class="cat-no">06</span>
+      </div></div>
+      </div>
+      <div class="detail-group">
+        <span class="sec-label">Tech stack</span>
+        <div class="stack-grid"><div class="stack-tile">
+            <span class="brand-letter" style="background:#47A2481A;color:#47A248">M</span>
+            <div><p class="stack-name">MongoDB</p><p class="stack-cat">Database</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#61DAFB1A;color:#61DAFB">R</span>
+            <div><p class="stack-name">React</p><p class="stack-cat">Frontend</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#1717171A;color:#171717">N</span>
+            <div><p class="stack-name">Next.js</p><p class="stack-cat">Framework</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#5FA04E1A;color:#5FA04E">Nd</span>
+            <div><p class="stack-name">Node.js</p><p class="stack-cat">Runtime</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#7C3AED1A;color:#7C3AED">O</span>
+            <div><p class="stack-name">Obsidian</p><p class="stack-cat">Canvas</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#B91C1C1A;color:#B91C1C">W</span>
+            <div><p class="stack-name">OWASP</p><p class="stack-cat">Checklist</p></div>
+          </div></div>
+      </div>
+      <div class="detail-group">
+        <span class="sec-label">OWASP Top 10 — quick reference</span>
+        <div class="owasp-grid"><div class="owasp-item">
+          <span class="owasp-no">01</span>
+          <div><p class="owasp-name">SQL Injection</p><p class="owasp-fix">sanitize every input — ' OR 1=1 -- must fail</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">02</span>
+          <div><p class="owasp-name">XSS</p><p class="owasp-fix">reflected · stored · DOM — sanitize output</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">03</span>
+          <div><p class="owasp-name">CSRF</p><p class="owasp-fix">tokens + SameSite + re-auth</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">04</span>
+          <div><p class="owasp-name">IDOR</p><p class="owasp-fix">ownership check per request · UUIDs</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">05</span>
+          <div><p class="owasp-name">Auth Failures</p><p class="owasp-fix">regeneration · expiry · lockout</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">06</span>
+          <div><p class="owasp-name">Data Exposure</p><p class="owasp-fix">TLS 1.2+ · HSTS · secrets mgmt</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">07</span>
+          <div><p class="owasp-name">SSRF</p><p class="owasp-fix">domain whitelist · block internal IPs</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">08</span>
+          <div><p class="owasp-name">Misconfiguration</p><p class="owasp-fix">hardening · strict CORS · headers</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">09</span>
+          <div><p class="owasp-name">Vulnerable Deps</p><p class="owasp-fix">regular updates · prune unused</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">10</span>
+          <div><p class="owasp-name">Unsafe Uploads</p><p class="owasp-fix">whitelist · AV scan · no execute</p></div>
+        </div></div>
+      </div>
+      <div class="row">
+          <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/></svg></span>
+          <div><p class="row-name">Prompt-Library.canvas</p>
+          <p class="row-sub" style="margin-left:0;margin-top:2px">Source file · JSON Canvas</p></div>
+          <a class="pill row-right" href="../../Prompt-Library.canvas" target="_blank" rel="noopener">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        </div></div>
+      </div>
+    </div>
+  </section>
+  <script type="text/plain" class="prompt-raw" data-id="security-blueprint"># Security Blueprint — Universal Web App Spec
+
+You are building a web application with Next.js + MongoDB. Follow this security and engineering spec exactly. It is project-agnostic — adapt the product-specific examples (upload whitelist, phone format, masked fields) to your own domain; everything else applies as-is.
+
+## 1 · Architecture & Tech Stack
+- Database → MongoDB (no SQL): schema changes never need migrations; updates stay fast and painless.
+- Frontend → React: light and fast UI.
+- Backend → Next.js (App Router, src/app/api/) + Node.js patterns: one codebase for app + API.
+- Engineering goals: update-resilient (no update may ever break the project) and SEO-first (every public page fully optimized).
+
+## 2 · Folder Structure & Code Style
+The whole project lives in src/ with this exact structure:
+- src/app/ → frontend pages & routing (src/app/api/ → backend & API routes)
+- src/public/img + src/public/font → site images and fonts
+- src/controllers/ → HTTP responses
+- src/services/ → all business logic
+- src/components/ → UI & styles (auth, theme, layout, ui)
+- src/utils/ → libraries, realtime, helpers
+- .env → secrets: token keys, DB URI (never commit!)
+- Clean code: anyone must be able to read and understand it, so future updates stay painless.
+- Componentize every reusable piece under components/ so the project stays scalable.
+
+## 3 · Login Security
+1. Password hashing: Bcrypt or Argon2 only — plain text and MD5 are forbidden.
+2. Rate limit: max 5 login requests per 15 minutes per IP → temporary IP block.
+3. Unified error message: never reveal whether the username or the password was wrong.
+4. Secure token storage: the login JWT lives only in HttpOnly + Secure cookies so XSS cannot steal it.
+5. Strict input validation: every field regex-validated server-side so malicious payloads (SQLi / XSS) never reach the database.
+
+## 4 · JWT Token System
+- After login the backend issues TWO tokens, each signed with its OWN 128-character secret generated with crypto and stored in .env:
+  - Access token — 2 minutes: payload { id, role, firstName, jti: crypto.randomUUID() }.
+  - Refresh token — 15 days: payload { id, firstName, jti: crypto.randomUUID() }.
+- Cookies (adapt the Express sample to the Next.js App Router API):
+  accessToken  → httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "strict", maxAge: 2 * 60 * 1000
+  refreshToken → same flags, maxAge: 15 * 24 * 60 * 60 * 1000
+- Logout clears BOTH cookies with identical flags. A new login immediately invalidates the previous session.
+
+## 5 · Post-Login Security
+- Sessions: idle timeout 15–30 min · absolute timeout ~8 h (stolen long-lived tokens become useless) · single active session per user (a new login invalidates the previous one).
+- RBAC isolation: every database query filters by user_id = current user; only admins see global reports and every user's data; a user must never see another user's files, tasks, messages or customer data.
+- IDOR prevention: changing an id in the API URL (/api/files/101 → /api/files/102) must never return someone else's data — the server verifies ownership of every requested id (Object-Level Authorization); prefer UUIDs over sequential ids.
+- Data masking: sensitive customer data — above all phone numbers — appears masked in list views (e.g. 0912****567); full value is revealed only through a "View" action and every reveal is logged.
+- File uploads: whitelist formats (e.g. jpg/png/pdf — check extension AND MIME type), filenames randomized on the server, no execute permission on stored files, store in cloud storage — never in code or database.
+- Chat & AI: sanitize messages before storage (XSS); rate limit + character-length limit on AI requests (cost and prompt-injection protection).
+- Audit trail: every sensitive action — viewing sensitive data, editing or deleting records, downloading files — is logged with IP + timestamp + username + action type, so leaks can always be traced to who, what and when.
+
+## 6 · OWASP Top 10 Checklist
+1. SQL Injection — sanitize every input (' OR 1=1 -- must fail).
+2. XSS (Reflected / Stored / DOM-based) — sanitize output and messages.
+3. CSRF — CSRF tokens in forms + SameSite=Strict/Lax cookies + re-confirmation for sensitive operations.
+4. IDOR — server-side ownership check per request; UUIDs.
+5. Authentication Failures — session regeneration after login, expiry, account lockout after failed attempts.
+6. Sensitive Data Exposure — HTTPS mandatory (TLS 1.2+ & HSTS), encryption at rest & in transit, proper secrets management, no stack traces to users, no API keys in frontend code.
+7. SSRF — whitelist allowed domains, block internal & loopback IPs, no automatic redirects.
+8. Security Misconfiguration — server hardening, no debug mode in production, CORS only for allowed domains, security headers.
+9. Vulnerable Components — regular package updates, review advisories, remove unused dependencies.
+10. Unsafe File Uploads — whitelist extensions & MIME types, random filenames stored outside the web root, antivirus scanning, no execute permission.
+
+Reference: https://github.com/OWASP/Top10
+</script>
+      </div>
+      <div class="cat-section">
+        <div class="cat-section-head">
+          <span class="sec-label">Structure — 1 prompt</span>
+          <a class="pill pill-link" href="c/structure/">Open category <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></a>
+        </div>
+        
+  <section class="card prompt-card reveal" id="nextjs-project-structure" aria-labelledby="nextjs-project-structure-title">
+    <div class="prompt-head">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+      <div class="prompt-id">
+        <h3 class="title-xl" id="nextjs-project-structure-title">Next.js Project Structure</h3>
+        <p class="title-sub">Exact folder structure &amp; code-style prompt for scalable Next.js + MongoDB projects.</p>
+      </div>
+      <div class="head-icons">
+        <a class="icon-btn" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/prompts/structure/nextjs-project-structure.md" target="_blank" rel="noopener" title="Open source file"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg></a>
+        <button class="icon-btn" type="button" data-expand="details-nextjs-project-structure" aria-expanded="false" aria-controls="details-nextjs-project-structure" title="Expand details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7.5 7.5"/><path d="M3 21l7.5-7.5"/></svg></button>
+      </div>
+    </div>
+
+    <div class="prompt-pills">
+      <span class="pill pill--mint">New</span>
+      <span class="pill pill--dark">Ready</span>
+      <span class="pill ">1.0.0</span>
+      <span class="pill ">Structure</span>
+      <a class="pill pill-link" href="p/nextjs-project-structure/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="nextjs-project-structure" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+    </div>
+
+    <p class="lede prompt-desc">Exact folder structure &amp; code-style prompt for scalable Next.js + MongoDB projects.</p>
+    <p class="fa">پرامپت ساختار پوشه‌ها و سبک کد برای پروژه‌های مقیاس‌پذیر Next.js + MongoDB.</p>
+    <div class="chips prompt-chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg><span>structure</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg><span>folders</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg><span>code-style</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg><span>nextjs</span></span></div>
+    
+
+    <div class="details" id="details-nextjs-project-structure">
+      <div class="details-inner">
+        <div class="details-pad">
+      <div class="detail-group">
+        <span class="sec-label">Prompt — full text</span>
+        <div class="md-body"><h1>Next.js Project Structure — Folder &amp; Code Style Prompt</h1>
+<p>You are scaffolding a Next.js + MongoDB application. Follow this structure and code style exactly so the project stays clean, readable and scalable as it grows.</p>
+<h2>1 · Folder Tree</h2>
+<p>The whole project lives in src/ with this exact layout:</p>
+<ul>
+<li>src/app/ → frontend pages &amp; routing<ul>
+<li>src/app/api/ → backend &amp; API routes (one folder per resource: auth, users, files, …)</li>
+</ul>
+</li>
+<li>src/public/img/ → site images</li>
+<li>src/public/font/ → site fonts</li>
+<li>src/controllers/ → HTTP layer: parse requests, call services, return responses — no business logic here</li>
+<li>src/services/ → ALL business logic — controllers and components never talk to the database directly</li>
+<li>src/components/ → every reusable UI piece, grouped by domain: auth/, theme/, layout/, ui/</li>
+<li>src/utils/ → libraries, realtime connections, helpers</li>
+<li>.env → secrets: token keys, DB URI (never commit!)</li>
+</ul>
+<h2>2 · Layer Rules</h2>
+<ol>
+<li>Request flow is always: route → controller → service → database. Never skip a layer.</li>
+<li>Controllers return one consistent response shape: { success, message, data }.</li>
+<li>Services are the only place that touches MongoDB — every query filters by user_id where applicable.</li>
+<li>Components are dumb where possible: props in, UI out; data fetching stays in controllers/services via API calls.</li>
+</ol>
+<h2>3 · Code Style</h2>
+<ul>
+<li>Clean code: anyone on the team must be able to read and understand any file without a briefing.</li>
+<li>Componentize every reusable piece under components/ — duplicated UI is a bug.</li>
+<li>Name files by domain, not by type: services/auth-service.js, components/auth/login-form.jsx.</li>
+<li>Keep functions small and single-purpose; extract anything reused into utils/.</li>
+<li>Comment only the &quot;why&quot;, never the &quot;what&quot;.</li>
+</ul>
+<h2>4 · Scalability Checks</h2>
+<ul>
+<li>Adding a new feature = adding folders under app/, controllers/, services/, components/ — no structural rewrites.</li>
+<li>Any update to the schema or code must never break the project (update-resilient goal — MongoDB, no migrations).</li>
+<li>Every public page is fully SEO-optimized (metadata, semantic HTML, performance).</li>
+</ul>
+</div>
+      </div>
+      <div class="row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/></svg></span>
+        <div><p class="row-name">prompts/structure/nextjs-project-structure.md</p>
+        <p class="row-sub" style="margin-left:0;margin-top:2px">Source file · auto-published</p></div>
+        <a class="pill row-right" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/prompts/structure/nextjs-project-structure.md" target="_blank" rel="noopener">Source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      </div></div>
+      </div>
+    </div>
+  </section>
+  <script type="text/plain" class="prompt-raw" data-id="nextjs-project-structure"># Next.js Project Structure — Folder & Code Style Prompt
+
+You are scaffolding a Next.js + MongoDB application. Follow this structure and code style exactly so the project stays clean, readable and scalable as it grows.
+
+## 1 · Folder Tree
+
+The whole project lives in src/ with this exact layout:
+
+- src/app/ → frontend pages & routing
+  - src/app/api/ → backend & API routes (one folder per resource: auth, users, files, …)
+- src/public/img/ → site images
+- src/public/font/ → site fonts
+- src/controllers/ → HTTP layer: parse requests, call services, return responses — no business logic here
+- src/services/ → ALL business logic — controllers and components never talk to the database directly
+- src/components/ → every reusable UI piece, grouped by domain: auth/, theme/, layout/, ui/
+- src/utils/ → libraries, realtime connections, helpers
+- .env → secrets: token keys, DB URI (never commit!)
+
+## 2 · Layer Rules
+
+1. Request flow is always: route → controller → service → database. Never skip a layer.
+2. Controllers return one consistent response shape: { success, message, data }.
+3. Services are the only place that touches MongoDB — every query filters by user_id where applicable.
+4. Components are dumb where possible: props in, UI out; data fetching stays in controllers/services via API calls.
+
+## 3 · Code Style
+
+- Clean code: anyone on the team must be able to read and understand any file without a briefing.
+- Componentize every reusable piece under components/ — duplicated UI is a bug.
+- Name files by domain, not by type: services/auth-service.js, components/auth/login-form.jsx.
+- Keep functions small and single-purpose; extract anything reused into utils/.
+- Comment only the "why", never the "what".
+
+## 4 · Scalability Checks
+
+- Adding a new feature = adding folders under app/, controllers/, services/, components/ — no structural rewrites.
+- Any update to the schema or code must never break the project (update-resilient goal — MongoDB, no migrations).
+- Every public page is fully SEO-optimized (metadata, semantic HTML, performance).
+</script>
+      </div>
+      <div class="cat-section">
+        <div class="cat-section-head">
+          <span class="sec-label">UI & Design — 1 prompt</span>
+          <a class="pill pill-link" href="c/ui/">Open category <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></a>
+        </div>
+        
+  <section class="card prompt-card reveal" id="grainy-sage-editorial" aria-labelledby="grainy-sage-editorial-title">
+    <div class="prompt-head">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/></svg></span>
+      <div class="prompt-id">
+        <h3 class="title-xl" id="grainy-sage-editorial-title">Grainy Sage Editorial</h3>
+        <p class="title-sub">The complete UI style system behind this website — exact tokens, scales, layout recipes and rules.</p>
+      </div>
+      <div class="head-icons">
+        <a class="icon-btn" href="https://meysamdesign963-oss.github.io/prompt-library/" target="_blank" rel="noopener" title="Open live site"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg></a>
+        <button class="icon-btn" type="button" data-expand="details-grainy-sage-editorial" aria-expanded="false" aria-controls="details-grainy-sage-editorial" title="Expand details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7.5 7.5"/><path d="M3 21l7.5-7.5"/></svg></button>
+      </div>
+    </div>
+
+    <div class="prompt-pills">
+      <span class="pill pill--mint">New</span>
+      <span class="pill pill--dark">Style ready</span>
+      <span class="pill ">1.0.0</span>
+      <span class="pill ">Design system</span>
+      <a class="pill pill-link" href="p/grainy-sage-editorial/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="grainy-sage-editorial" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+    </div>
+
+    <p class="lede prompt-desc">The complete UI style system behind this website — exact tokens, scales, layout recipes and rules.</p>
+    <p class="fa">پرامپت کامل استایل رابط کاربری همین وب‌سایت — سیستم طراحی دقیق با توکن‌ها، اسکیل‌ها و قوانین.</p>
+    <div class="chips prompt-chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/></svg><span>Color tokens</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg><span>Type scale</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg><span>Radius scale</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 6.2L20.5 12l-6.3 2.8L12 21l-2.2-6.2L3.5 12l6.3-2.8L12 3z"/></svg><span>Motion spec</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/></svg><span>CSS variables</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Do &amp; don't</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.5"/></svg><span>Grain &amp; texture</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg><span>Dark card rule</span></span></div>
+    <div class="stats prompt-stats"><div class="stat"><b>15</b><span>Color tokens</span></div><div class="stat"><b>04</b><span>Radius steps</span></div><div class="stat"><b>07</b><span>Spacing steps</span></div><div class="stat"><b>02</b><span>Type families</span></div></div>
+
+    <div class="details" id="details-grainy-sage-editorial">
+      <div class="details-inner">
+        <div class="details-pad">
+      <div class="detail-group">
+        <span class="sec-label">Style map — 6 sections</span>
+        <div class="timeline"><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 6.2L20.5 12l-6.3 2.8L12 21l-2.2-6.2L3.5 12l6.3-2.8L12 3z"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Identity & Mood</span><span class="row-sub">Tone</span></div>
+          <p class="row-text">Calm, tactile, blueprint-style SaaS aesthetic — a printed spec sheet resting on a sage-green plaster desk.</p>
+        </div>
+        <span class="cat-no">01</span>
+      </div><div class="connector" aria-hidden="true"></div><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Color Tokens</span><span class="row-sub">Exact hex</span></div>
+          <p class="row-text">Sage #869A8C + grain & vignette → sheet #F8F8F8 · ink #171717 · mint #5CB8A6 accents · one dark card #1F1F1F.</p>
+        </div>
+        <span class="cat-no">02</span>
+      </div><div class="connector" aria-hidden="true"></div><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Typography</span><span class="row-sub">Mono labels</span></div>
+          <p class="row-text">Mono uppercase micro-labels (JetBrains Mono, +0.08em) · grotesque sans body (Inter 13–14px) · sans breadcrumb nav.</p>
+        </div>
+        <span class="cat-no">03</span>
+      </div><div class="connector" aria-hidden="true"></div><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Spacing & Radius</span><span class="row-sub">Scales</span></div>
+          <p class="row-text">Spacing steps 4 · 8 · 12 · 16 · 24 · 32 · 48 · radius hierarchy sheet 24 → card 14 → row 10 → pill 999.</p>
+        </div>
+        <span class="cat-no">04</span>
+      </div><div class="connector" aria-hidden="true"></div><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Layout System</span><span class="row-sub">Sheet flow</span></div>
+          <p class="row-text">One centered 760–880px sheet · flat white cards with dotted connectors · nested rows, chips and 4-column grids.</p>
+        </div>
+        <span class="cat-no">05</span>
+      </div><div class="connector" aria-hidden="true"></div><div class="row cat-row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Depth & Motion</span><span class="row-sub">Subtle</span></div>
+          <p class="row-text">Flat hairline cards · fade + 4px slide 150–200ms ease-out · hover lifts 1px · soft shadows on sheet & dark card only.</p>
+        </div>
+        <span class="cat-no">06</span>
+      </div></div>
+      </div>
+      <div class="detail-group">
+        <span class="sec-label">Core palette</span>
+        <div class="stack-grid"><div class="stack-tile">
+            <span class="brand-letter" style="background:#869A8C;color:#F8F8F8">Aa</span>
+            <div><p class="stack-name">Sage</p><p class="stack-cat">#869A8C · page background</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#F8F8F8;color:#171717">Aa</span>
+            <div><p class="stack-name">Sheet</p><p class="stack-cat">#F8F8F8 · main canvas</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#171717;color:#F8F8F8">Aa</span>
+            <div><p class="stack-name">Ink</p><p class="stack-cat">#171717 · primary text</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#6F7070;color:#F8F8F8">Aa</span>
+            <div><p class="stack-name">Gray</p><p class="stack-cat">#6F7070 · secondary text</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#1F1F1F;color:#F8F8F8">Aa</span>
+            <div><p class="stack-name">Terminal</p><p class="stack-cat">#1F1F1F · dark card</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#5CB8A6;color:#171717">Aa</span>
+            <div><p class="stack-name">Mint</p><p class="stack-cat">#5CB8A6 · accent</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#F2FBFA;color:#2F8577">Aa</span>
+            <div><p class="stack-name">Mint BG</p><p class="stack-cat">#F2FBFA · badge surface</p></div>
+          </div><div class="stack-tile">
+            <span class="brand-letter" style="background:#E7E8E4;color:#171717">Aa</span>
+            <div><p class="stack-name">Hairline</p><p class="stack-cat">#E7E8E4 · 1px borders</p></div>
+          </div></div>
+      </div>
+      <div class="detail-group">
+        <span class="sec-label">Do & Don't — 10 rules</span>
+        <div class="owasp-grid"><div class="owasp-item">
+          <span class="owasp-no">01</span>
+          <div><p class="owasp-name">DO · Grain placement</p><p class="owasp-fix">grain only on the green background — never on white cards</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">02</span>
+          <div><p class="owasp-name">DO · Mono labels</p><p class="owasp-fix">every label mono uppercase with +0.08em tracking</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">03</span>
+          <div><p class="owasp-name">DO · Semantic mint</p><p class="owasp-fix">green only as small semantic accents, never large surfaces</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">04</span>
+          <div><p class="owasp-name">DO · Generous air</p><p class="owasp-fix">at least 24px vertical gap between cards</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">05</span>
+          <div><p class="owasp-name">DO · Pill everything</p><p class="owasp-fix">chips & status pills fully rounded with hairline borders</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">06</span>
+          <div><p class="owasp-name">DON'T · Saturated fills</p><p class="owasp-fix">no saturated colors or large colored surfaces</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">07</span>
+          <div><p class="owasp-name">DON'T · Shadow spam</p><p class="owasp-fix">no shadow on every element — sheet & dark card only</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">08</span>
+          <div><p class="owasp-name">DON'T · Sharp corners</p><p class="owasp-fix">no 0px corners anywhere</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">09</span>
+          <div><p class="owasp-name">DON'T · Gradient cards</p><p class="owasp-fix">no glassmorphism, no gradients on cards</p></div>
+        </div><div class="owasp-item">
+          <span class="owasp-no">10</span>
+          <div><p class="owasp-name">DON'T · Dark card spam</p><p class="owasp-fix">max ONE dark terminal card per screen</p></div>
+        </div></div>
+      </div>
+      <div class="row">
+          <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+          <div><p class="row-name">This website</p>
+          <p class="row-sub" style="margin-left:0;margin-top:2px">Live preview · built with this exact prompt</p></div>
+          <a class="pill row-right" href="https://meysamdesign963-oss.github.io/prompt-library/" target="_blank" rel="noopener">Live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        </div></div>
+      </div>
+    </div>
+  </section>
+  <script type="text/plain" class="prompt-raw" data-id="grainy-sage-editorial"># Grainy Sage Editorial — UI Style System Prompt
+
+You are designing the UI of a SaaS web application. Apply this complete style system exactly. It produces a calm, tactile, blueprint-style interface: an organic textured backdrop with precise, flat, paper-white cards and monospaced technical labels — like a beautifully printed spec sheet resting on a sage-green plaster desk.
+
+## 1 · Identity & Mood
+- Keyword set: calm, tactile, editorial, blueprint, precise, organic.
+- High contrast black-on-white, generous whitespace, hairline borders, pill-shaped chips.
+- The page reads like a printed spec sheet; the background reads like plaster — never like a gradient.
+
+## 2 · Color Tokens (use exact values)
+- Page background: muted sage green #869A8C with a film-grain / plaster noise texture (~10–14% opacity) and a soft vignette darkening toward the edges to #5F6E62. Variant mood: olive #77816A.
+- Main canvas: ONE large off-white #F8F8F8 rounded sheet (radius 20–24px) centered on the green, with a faint dot-grid (#E3E4E0 dots ~1px, 18px pitch) and a soft large shadow (0 24px 60px rgba(0,0,0,.18)).
+- Ink / primary text: #171717.
+- Dark "terminal" card surface: #1F1F1F with nested inner panels #2D2D2F and borders #3A3A3C.
+- Secondary text: #6F7070 · inactive nav text: #A1A1A1.
+- Hairline borders on light surfaces: #E7E8E4 (1px).
+- Accent mint green #5CB8A6 — sparingly only: "Recommended" badge on light mint bg #F2FBFA, checkmarks, positive states. Never large surfaces.
+- Status pills: "Configured" = solid #1E1E1E pill with white mono text (on light) or white #F8F8F8 pill with black text (on dark).
+- Brand logo colors (e.g. Supabase green #46BF91, Clerk purple #705AF3) only inside small icon tiles.
+
+## 3 · Typography
+- Micro-labels, card titles, status labels: monospace (Geist Mono / JetBrains Mono), UPPERCASE, 9–12px, letter-spacing +0.08em, weight 500–600. Everything label-like is mono uppercase ("APP OVERVIEW", "VISIT WEBSITE").
+- Body & UI: clean grotesque sans (Inter / Geist), 13–14px, line-height 1.55; body text #6F7070, emphasis #171717.
+- Step nav: sans breadcrumb ("Get started › Features › Tech stack › …") — current step bold #171717, others #A1A1A1.
+- Type scale reference: 16–18px mono titles · 14px body · 12.5px secondary · 11px / 9.5px mono micro-labels.
+- Non-Latin scripts (e.g. Persian / Arabic): use a dedicated family (Vazirmatn), correct RTL direction, no uppercase treatment.
+
+## 4 · Spacing & Radius Scales
+- Spacing scale: 4 · 8 · 12 · 16 · 24 · 32 · 48 px. Minimum 24px vertical gap between cards.
+- Radius hierarchy: sheet 20–24px → cards 12–14px → rows / tiles 8–10px → pills fully rounded. Never 0px corners.
+
+## 5 · Layout System
+- Full-viewport grainy green background; ONE centered white sheet (max-width ~760–880px, padding 40–56px) holding the whole flow.
+- Inside: a vertical stack of flat white section cards (radius 12–14px, 1px #E7E8E4 border) connected by short dotted vertical connector lines (timeline feel).
+- Card header pattern: small 14px line-icon + mono uppercase title on the left; subtle expand and kebab icons on the right.
+- Content as nested rows / tiles (radius 8–10px, 1px border): icon tile + name + tiny mono uppercase sublabel ("SOURCE CODE", "DATABASE") on the left; status pill or button on the right.
+- Feature chips: fully rounded, 1px border, icon + 12–13px label, wrapping in rows.
+- Tech stack / token grids: 4-column grid of bordered tiles (brand icon or color swatch + name + mono category).
+- Option cards: name + mint "Recommended" pill, "Pricing" / "Best for" blocks with bold 12px labels, gray text, mint check checklist, small white pill "Choose" button bottom-right.
+
+## 6 · Shape, Depth & Motion
+- Flat cards with hairlines; only the sheet and the dark card get soft shadows. No glassmorphism, no gradients on cards.
+- Motion: subtle — fade + 4px upward slide, 150–200ms ease-out; hover darkens the border and lifts 1px. No springy animation.
+- Copy feedback: swap the label to "COPIED ✓" for ~1.5s using the mint accent.
+
+## 7 · Implementation Notes
+- Grain: inline SVG feTurbulence (fractalNoise, baseFrequency ~0.82) as a data-URI on a fixed full-screen overlay, opacity ~0.13, pointer-events none.
+- Vignette: fixed radial-gradient overlay from a transparent center toward rgba(70,82,72,.5) at the edges.
+- Ambient light: 2-3 large diagonal white/mint gradients (opacity ~.2-.4, blur ~60px) sweeping slowly across the green background (30-50s transform-only loops), plus a faint light sheen passing over the sheet; disabled under prefers-reduced-motion.
+- Dot-grid: radial-gradient(circle, #E3E4E0 1px, transparent 1.4px) with an 18px background-size on the sheet.
+- Fonts via Google Fonts: Inter (400–700) + JetBrains Mono (400–700), plus Vazirmatn for Persian.
+- Define every token above as a CSS custom property in :root.
+- Render content from a data array so new entries inherit the system automatically.
+
+## 8 · The Rules
+DO: keep grain only on the green background, never on white cards; mono uppercase for all labels; stay monochrome with green as small semantic accents only; generous whitespace (at least 24px between cards).
+DON'T: no saturated fills or colored large surfaces; no shadow on every element; no 0px corners; max ONE dark "terminal" card per screen.
+</script>
+      </div>
+    
+  <section class="card card-dark reveal" id="use-as-prompt" aria-labelledby="use-title">
+    <div class="card-head">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg></span>
+      <h2 class="mono-title" id="use-title">Use it as a prompt</h2>
+    </div>
+    <div class="term-stack">
+      <div class="term-line">
+        <span class="dollar" aria-hidden="true">$</span>
+        <span class="term-cmd">git clone https://github.com/meysamdesign963-oss/prompt-library.git</span>
+        <button class="icon-btn icon-btn--dark" type="button" data-copy="git clone https://github.com/meysamdesign963-oss/prompt-library.git" title="Copy command" aria-label="Copy clone command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+      </div>
+      <div class="term-line">
+        <span class="dollar" aria-hidden="true">$</span>
+        <span class="term-cmd">open Prompt-Library.canvas → Obsidian / any JSON Canvas app</span>
+        <button class="icon-btn icon-btn--dark" type="button" data-copy="open Prompt-Library.canvas" title="Copy command" aria-label="Copy open command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+      </div>
+    </div>
+    <div class="term-actions">
+      <span class="term-hint">Then paste the spec into your AI agent — Claude · Cursor · Copilot</span>
+      <button class="btn-white" type="button" data-copy-prompt="security-blueprint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+        <span>Copy full prompt</span>
+      </button>
+    </div>
+  </section>
+    
+  <section class="card reveal" id="how-to-use" aria-labelledby="how-title">
+    <div class="card-head">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span>
+      <h2 class="mono-title" id="how-title">Publish a new prompt — automatic</h2>
+    </div>
+    <div class="timeline">
+      <div class="row cat-row">
+        <span class="step-tile" aria-hidden="true">01</span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Pick a category folder</span><span class="row-sub">Setup</span></div>
+          <p class="row-text">Create your file under <strong>prompts/security/</strong> · <strong>prompts/structure/</strong> · <strong>prompts/ui/</strong> · <strong>prompts/server/</strong> — the folder is the category.</p>
+        </div>
+      </div>
+      <div class="connector" aria-hidden="true"></div>
+      <div class="row cat-row">
+        <span class="step-tile" aria-hidden="true">02</span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Drop a .md or .canvas file</span><span class="row-sub">Add</span></div>
+          <p class="row-text">Add front-matter (title, description, version, tags) to a <strong>.md</strong> — or just push an Obsidian <strong>.canvas</strong> file with no ceremony.</p>
+        </div>
+      </div>
+      <div class="connector" aria-hidden="true"></div>
+      <div class="row cat-row">
+        <span class="step-tile" aria-hidden="true">03</span>
+        <div class="cat-body">
+          <div class="cat-top"><span class="row-name">Push to main</span><span class="row-sub">Auto</span></div>
+          <p class="row-text">The build generates a real static page for it — with its own meta tags, JSON-LD and a spot in <strong>sitemap.xml</strong> — and publishes it automatically.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
   <footer class="sheet-footer reveal">
     <span class="foot-note">Prompt Library — built with security in mind</span>
     <div class="foot-links">
       <a href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
-      <a href="./Prompt-Library.canvas" target="_blank" rel="noopener">Canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <a href="Prompt-Library.canvas" target="_blank" rel="noopener">Canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
       <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
     </div>
   </footer>
 
-  <noscript><p class="noscript">JavaScript is disabled — prompt pages can't render. Browse the files in the repo directly instead.</p></noscript>
-
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script src="assets/content.js"></script>
-<script src="assets/main.js"></script>
+<script src="assets/main.js" defer></script>
 </body>
 </html>

@@ -67,7 +67,26 @@ fa: توضیح فارسی کوتاه.
 ---
 ```
 
-3. Push to `main` — done. The site scans `prompts/**` at runtime (GitHub API — no build step) and automatically publishes the card, its category page (`#/c/<category>`) and its own detail page (`#/p/<slug>`), with a working **Copy prompt** button.
+3. Push to `main` — done. A GitHub Action runs `node tools/build.mjs`, which generates **a real static HTML page** for the prompt (`/p/<slug>/`), updates the category pages, `sitemap.xml` and the internal links, commits the generated files, and GitHub Pages publishes them automatically.
+
+### 🌐 Site Architecture (SEO)
+
+| Item | Implementation |
+|---|---|
+| Static pages | Every prompt = one pre-rendered HTML file (`p/<slug>/index.html`) — no client-side rendering; category pages at `c/<category>/` |
+| Unique meta | Per-page `<title>`, description, canonical URL and Open Graph tags generated from front-matter |
+| Structured data | JSON-LD on every page: `CreativeWork` (prompts) / `CollectionPage` + `WebSite` + `BreadcrumbList` |
+| Discoverability | `sitemap.xml` (8 URLs) + `robots.txt`, generated on every build |
+| Speed | Self-hosted fonts (Inter · JetBrains Mono · Vazirmatn — `assets/fonts/`), vendored markdown renderer (`assets/vendor/`), inline SVG icons, no CDN requests, deferred JS — Lighthouse 90+ target |
+| Internal linking | «Similar prompts» section on every prompt page (same category, then shared tags) + breadcrumb navigation |
+
+> Site pages (`index.html`, `p/`, `c/`, `sitemap.xml`, `robots.txt`, `404.html`) are **generated — do not edit by hand**. Edit `prompts/*.md`, then run `node tools/build.mjs` (or just push; the Action does it).
+
+### 🔍 Google Search Console
+
+1. Open [search.google.com/search-console](https://search.google.com/search-console) → Add property → **URL prefix** → `https://meysamdesign963-oss.github.io/prompt-library/`
+2. Verify ownership (HTML-tag method: copy the `<meta name="google-site-verification" ...>` tag and add it — it will be injected into every page by the build, or use the HTML-file method and drop it in the repo root)
+3. Submit `https://meysamdesign963-oss.github.io/prompt-library/sitemap.xml` under **Sitemaps**
 
 ### 🗺 Blueprint Map — 6 Categories
 
