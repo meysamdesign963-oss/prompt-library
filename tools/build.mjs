@@ -86,13 +86,14 @@ const faviconFallback = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32
 let faviconSvg = faviconFallback;
 try {
   const logoSrc = readFileSync(join(ROOT, "public", "logo.svg"), "utf8");
-  const d = (logoSrc.match(/ d="([^"]+)"/) || [])[1];
-  const vb = logoSrc.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/) || [];
-  if (d && vb[1] && vb[2]) {
-    const w = parseFloat(vb[1]), h = parseFloat(vb[2]);
-    const scale = Math.min(22 / w, 22 / h);
-    const tx = ((32 - w * scale) / 2).toFixed(2), ty = ((32 - h * scale) / 2).toFixed(2);
-    faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#869A8C"/><g transform="translate(${tx} ${ty}) scale(${scale.toFixed(4)})"><path fill="#171717" fill-rule="evenodd" d="${d}"/></g></svg>`;
+  const inner = logoSrc.replace(/^[\s\S]*?<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "").trim();
+  const vb = logoSrc.match(/viewBox="([^"]+)"/)[1].split(/\s+/).map(parseFloat);
+  const w = vb[2], h = vb[3];
+  if (inner && w && h) {
+    const scale = 22 / Math.max(w, h);
+    const iw = (w * scale).toFixed(2), ih = (h * scale).toFixed(2);
+    const x = ((32 - w * scale) / 2).toFixed(2), y = ((32 - h * scale) / 2).toFixed(2);
+    faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#869A8C"/><svg x="${x}" y="${y}" width="${iw}" height="${ih}" viewBox="0 0 ${w} ${h}">${inner}</svg></svg>`;
   }
 } catch (_) {}
 writeFileSync(join(ROOT, "assets/favicon.svg"), faviconSvg);
