@@ -62,6 +62,8 @@ const ICONS = {
   palette: svg('<path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/>'),
   arrow: svg('<path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/>'),
   globe: svg('<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.8 2.7 2.8 14.3 0 17-2.8-2.7-2.8-14.3 0-17z"/>'),
+  moon: svg('<path d="M20 12.5A8 8 0 1 1 11.5 4a6.5 6.5 0 0 0 8.5 8.5z"/>'),
+  sun: svg('<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>'),
 };
 const icon = (n) => ICONS[n] || "";
 
@@ -93,6 +95,40 @@ function canvasToMd(jsonText) {
     return parts.length ? parts.join("\n\n---\n\n") : "*(This canvas has no text nodes — open it in Obsidian.)*";
   } catch (_) {
     return "*(Unreadable canvas file — open it in Obsidian.)*";
+  }
+}
+
+/* full, faithful canvas rendering: intro cards first, then every group
+   in numbered order with its nodes in geometric reading order */
+function canvasToHtml(jsonText) {
+  try {
+    const j = JSON.parse(jsonText);
+    const nodes = (j.nodes || []).filter((n) => n.type === "text" && n.text);
+    const groups = (j.nodes || []).filter((n) => n.type === "group");
+    const inGroup = (n) => groups.find((g) => {
+      const cx = n.x + (n.width || 0) / 2, cy = n.y + (n.height || 0) / 2;
+      return cx >= g.x && cx <= g.x + (g.width || 0) && cy >= g.y && cy <= g.y + (g.height || 0);
+    });
+    const gnum = (label) => { const m = String(label || "").match(/(\d+)\s*·/); return m ? +m[1] : 99; };
+
+    const sections = new Map();
+    const intro = [];
+    for (const n of nodes) {
+      const g = inGroup(n);
+      if (!g) { intro.push(n); continue; }
+      if (!sections.has(g.id)) sections.set(g.id, { label: g.label, num: gnum(g.label), nodes: [] });
+      sections.get(g.id).nodes.push(n);
+    }
+    intro.sort((a, b) => a.y - b.y || a.x - b.x);
+    let html = intro.map((n) => mdToHtml(n.text)).join("\n");
+    const sorted = [...sections.values()].sort((a, b) => a.num - b.num || a.label.localeCompare(b.label));
+    for (const s of sorted) {
+      s.nodes.sort((a, b) => a.y - b.y || a.x - b.x);
+      html += `<h2 class="canvas-group">${esc(s.label)}</h2>` + s.nodes.map((n) => mdToHtml(n.text)).join("\n");
+    }
+    return html || "<p><em>(This canvas has no text nodes — open it in Obsidian.)</em></p>";
+  } catch (_) {
+    return "<p><em>(Unreadable canvas file — open it in Obsidian.)</em></p>";
   }
 }
 
@@ -238,8 +274,8 @@ function renderCard(p, pre) {
       ${pill(x?.featured ? "Recommended" : "New", "pill--mint")}
       ${pill(p.status, "pill--dark")}
       ${pill(p.version)}
-      ${pill(x ? (p.slug === "security-blueprint" ? "Bilingual FA · EN" : "Design system") : CATS[p.cat].label)}
-      <a class="pill pill-link" href="${pre}p/${p.slug}/">Full text ${icon("ext")}</a>
+      ${pill(x?.pillLabel || CATS[p.cat].label)}
+      <a class="pill pill-link" href="${pre}${p.cat}/${p.slug}/">Full text ${icon("ext")}</a>
       <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="${p.slug}" title="Copy the full prompt">Copy prompt ${icon("copy")}</button>
     </div>
 
@@ -359,6 +395,9 @@ function shell({ pre, title, desc, canonical, jsonLd, body }) {
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${canonical}">
 <meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#869A8C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161A17" media="(prefers-color-scheme: dark)">
+<script>(function(){var t;try{t=localStorage.getItem("pl-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})()</script>
 <link rel="icon" href="${pre}assets/favicon.svg">
 <link rel="stylesheet" href="${pre}assets/fonts/fonts.css">
 <link rel="stylesheet" href="${pre}assets/style.css">
@@ -383,10 +422,16 @@ function shell({ pre, title, desc, canonical, jsonLd, body }) {
         </div>
       </a>
     </div>
-    <a class="pill pill-link" href="${REPO_URL}" target="_blank" rel="noopener">
-      GitHub
-      ${icon("ext")}
-    </a>
+    <div class="head-actions">
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle title="Toggle dark / light theme" aria-label="Toggle color theme">
+        <span class="theme-ic theme-ic--moon">${icon("moon")}</span>
+        <span class="theme-ic theme-ic--sun">${icon("sun")}</span>
+      </button>
+      <a class="pill pill-link" href="${REPO_URL}" target="_blank" rel="noopener">
+        GitHub
+        ${icon("ext")}
+      </a>
+    </div>
   </header>
 
 ${body}
@@ -424,7 +469,7 @@ function relatedSection(p, all, pre) {
   const rel = relatedOf(p, all);
   if (!rel.length) return "";
   const rows = rel.map((q) =>
-    `<a class="row cat-row related-row" href="${pre}p/${q.slug}/">
+    `<a class="row cat-row related-row" href="${pre}${q.cat}/${q.slug}/">
       <span class="icon-tile icon-tile--lg">${icon(q.icon)}</span>
       <div class="cat-body">
         <div class="cat-top"><span class="row-name">${q.name}</span><span class="row-sub">${CATS[q.cat].label}</span></div>
@@ -522,7 +567,7 @@ function homePage(prompts) {
 
 function categoryPage(cat, prompts) {
   const c = CATS[cat];
-  const pre = "../../";
+  const pre = "../"; // served at /<cat>/ → one level deep
   const items = prompts.filter((p) => p.cat === cat);
   const cards = items.length
     ? items.map((p) => renderCard(p, pre)).join("")
@@ -536,8 +581,8 @@ function categoryPage(cat, prompts) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "CollectionPage", name: `${c.label} prompts`, url: `${BASE}/c/${cat}/`, description: c.desc, inLanguage: ["en", "fa"] },
-      crumbGraph([["Library", BASE + "/"], [c.label, `${BASE}/c/${cat}/`]]),
+      { "@type": "CollectionPage", name: `${c.label} prompts`, url: `${BASE}/${cat}/`, description: c.desc, inLanguage: ["en", "fa"] },
+      crumbGraph([["Library", BASE + "/"], [c.label, `${BASE}/${cat}/`]]),
     ],
   };
 
@@ -545,7 +590,7 @@ function categoryPage(cat, prompts) {
     pre,
     title: `${c.label} Prompts — Prompt Library`,
     desc: `${c.desc} ${c.faDesc}`,
-    canonical: `${BASE}/c/${cat}/`,
+    canonical: `${BASE}/${cat}/`,
     jsonLd,
     body: `
   ${crumbsHtml(pre, [["Library", ""], [c.label]])}
@@ -573,11 +618,11 @@ function categoryPage(cat, prompts) {
 }
 
 function promptPage(p, all) {
-  const pre = "../../";
+  const pre = "../../"; // served at /<cat>/<slug>/ → two levels deep
   const c = CATS[p.cat];
   const x = p.extras;
   const srcHref = x?.canvas
-    ? "../" + x.canvas.href
+    ? pre + x.canvas.href
     : x?.live ? x.live.href
     : `${REPO_URL}/blob/${BRANCH}/${p.sourcePath}`;
   const srcTitle = x?.canvas ? "Open source file" : x?.live ? "Open live site" : "Open source file";
@@ -590,7 +635,7 @@ function promptPage(p, all) {
         name: p.name,
         headline: p.name,
         description: p.desc,
-        url: `${BASE}/p/${p.slug}/`,
+        url: `${BASE}/${p.cat}/${p.slug}/`,
         inLanguage: ["en", "fa"],
         keywords: p.tags.join(", "),
         datePublished: BUILD_DATE,
@@ -598,7 +643,7 @@ function promptPage(p, all) {
         author: { "@type": "Person", name: OWNER, url: `https://github.com/${OWNER}` },
         isPartOf: { "@type": "WebSite", name: "Prompt Library", url: BASE + "/" },
       },
-      crumbGraph([["Library", BASE + "/"], [c.label, `${BASE}/c/${p.cat}/`], [p.name, `${BASE}/p/${p.slug}/`]]),
+      crumbGraph([["Library", BASE + "/"], [c.label, `${BASE}/${p.cat}/`], [p.name, `${BASE}/${p.cat}/${p.slug}/`]]),
     ],
   };
 
@@ -606,10 +651,10 @@ function promptPage(p, all) {
     pre,
     title: `${p.name} — ${c.label} Prompt · Prompt Library`,
     desc: p.desc,
-    canonical: `${BASE}/p/${p.slug}/`,
+    canonical: `${BASE}/${p.cat}/${p.slug}/`,
     jsonLd,
     body: `
-  ${crumbsHtml(pre, [["Library", ""], [c.label, `c/${p.cat}/`], [p.name]])}
+  ${crumbsHtml(pre, [["Library", ""], [c.label, `${p.cat}/`], [p.name]])}
   <div class="stack">
     <section class="card reveal" aria-labelledby="pd-title">
       <div class="prompt-head">
@@ -627,6 +672,7 @@ function promptPage(p, all) {
         ${pill(p.status)}
         ${pill(p.version)}
         ${pill(p.tagLabel)}
+        ${x?.alt ? `<a class="pill pill-link" href="${pre}${x.alt.href}">${x.alt.label} ${icon("ext")}</a>` : ""}
         <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="${p.slug}" title="Copy the full prompt">Copy prompt ${icon("copy")}</button>
       </div>
     </section>
@@ -635,15 +681,15 @@ function promptPage(p, all) {
     </section>
     ${relatedSection(p, all, pre)}
     <div class="back-row reveal">
-      <a class="pill pill-link" href="c/${p.cat}/">${icon("arrow")} Back to ${c.label}</a>
-      <a class="pill pill-link" href="../">All prompts</a>
+      <a class="pill pill-link" href="../">${icon("arrow")} Back to ${c.label}</a>
+      <a class="pill pill-link" href="../../">All prompts</a>
     </div>
   </div>
   <script type="text/plain" class="prompt-raw" data-id="${p.slug}">${p.bodyText.replace(/<\/script/gi, "<\\\\/script")}</script>`,
   });
 }
 
-function notFoundPage() {
+function notFoundPage(prompts) {
   return shell({
     pre: "",
     title: "Page not found — Prompt Library",
@@ -662,11 +708,12 @@ function notFoundPage() {
   </div>`,
   }) + `
 <script>
+var PL_MAP = ${JSON.stringify(prompts.reduce((m, p) => (m[p.slug] = p.cat + "/" + p.slug + "/", m), {}))};
+var PL_CATS = ${JSON.stringify(Object.keys(CATS))};
 (function () {
-  var h = location.hash || "";
-  var m;
-  if ((m = h.match(/^#\\/p\\/([^/?]+)/))) location.replace("/p/" + m[1] + "/");
-  else if ((m = h.match(/^#\\/c\\/([^/?]+)/))) location.replace("/c/" + m[1] + "/");
+  var h = location.hash || "", m;
+  if ((m = h.match(/^#\\/p\\/([^/?]+)/)) && PL_MAP[m[1]]) location.replace("/" + PL_MAP[m[1]]);
+  else if ((m = h.match(/^#\\/c\\/([^/?]+)/)) && PL_CATS.indexOf(m[1]) !== -1) location.replace("/" + m[1] + "/");
 })();
 </script>`;
 }
@@ -675,8 +722,8 @@ function notFoundPage() {
 function sitemap(prompts) {
   const urls = [
     { loc: `${BASE}/`, priority: "1.0" },
-    ...Object.keys(CATS).map((k) => ({ loc: `${BASE}/c/${k}/`, priority: "0.8" })),
-    ...prompts.map((p) => ({ loc: `${BASE}/p/${p.slug}/`, priority: "0.9" })),
+    ...Object.keys(CATS).map((k) => ({ loc: `${BASE}/${k}/`, priority: "0.8" })),
+    ...prompts.map((p) => ({ loc: `${BASE}/${p.cat}/${p.slug}/`, priority: "0.9" })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -697,23 +744,54 @@ const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 /* ---------- main ---------- */
 const prompts = loadPrompts();
 
-rmSync(join(ROOT, "p"), { recursive: true, force: true });
-rmSync(join(ROOT, "c"), { recursive: true, force: true });
+/* the root Obsidian canvas gets its own fully-rendered page */
+const rootCanvasPath = join(ROOT, "Prompt-Library.canvas");
+if (existsSync(rootCanvasPath)) {
+  const raw = readFileSync(rootCanvasPath, "utf8");
+  let metaVersion = "1.0";
+  try { metaVersion = JSON.parse(raw).metadata?.version || "1.0"; } catch (_) {}
+  prompts.unshift({
+    slug: "security-blueprint-canvas",
+    cat: "security",
+    fname: "Prompt-Library.canvas",
+    sourcePath: "Prompt-Library.canvas",
+    name: "Security Blueprint — Obsidian Canvas",
+    sub: "The full interactive canvas · bilingual (EN → FA)",
+    desc: "Every card of the Security Blueprint rendered page by page — architecture, structure, login, tokens, post-login and OWASP — exactly as laid out in the Obsidian canvas.",
+    descFa: "تمام کارت‌های بلوپرینت امنیتی، دقیقاً به همان چیدمان کانواس اوبسیدین — از معماری تا OWASP.",
+    version: metaVersion,
+    status: "Canvas",
+    tags: ["canvas", "obsidian", "security"],
+    tagLabel: "JSON Canvas",
+    icon: "layers",
+    bodyHtml: canvasToHtml(raw),
+    bodyText: canvasToMd(raw),
+    extras: { featured: false, icon: "layers", pillLabel: "JSON Canvas", alt: { href: "security/security-blueprint/", label: "Markdown view" } },
+  });
+  if (EXTRAS["security-blueprint"]) {
+    EXTRAS["security-blueprint"].alt = { href: "security/security-blueprint-canvas/", label: "Canvas view" };
+  }
+}
+
+/* clean previously generated output */
+for (const d of ["p", "c", ...Object.keys(CATS)]) {
+  rmSync(join(ROOT, d), { recursive: true, force: true });
+}
 
 writeFileSync(join(ROOT, "index.html"), homePage(prompts));
-writeFileSync(join(ROOT, "404.html"), notFoundPage());
+writeFileSync(join(ROOT, "404.html"), notFoundPage(prompts));
 writeFileSync(join(ROOT, "sitemap.xml"), sitemap(prompts));
 writeFileSync(join(ROOT, "robots.txt"), robotsTxt);
 writeFileSync(join(ROOT, "assets/favicon.svg"), faviconSvg);
 
 for (const cat of Object.keys(CATS)) {
-  mkdirSync(join(ROOT, "c", cat), { recursive: true });
-  writeFileSync(join(ROOT, "c", cat, "index.html"), categoryPage(cat, prompts));
+  mkdirSync(join(ROOT, cat), { recursive: true });
+  writeFileSync(join(ROOT, cat, "index.html"), categoryPage(cat, prompts));
 }
 for (const p of prompts) {
-  mkdirSync(join(ROOT, "p", p.slug), { recursive: true });
-  writeFileSync(join(ROOT, "p", p.slug, "index.html"), promptPage(p, prompts));
+  mkdirSync(join(ROOT, p.cat, p.slug), { recursive: true });
+  writeFileSync(join(ROOT, p.cat, p.slug, "index.html"), promptPage(p, prompts));
 }
 
 console.log(`OK — built ${prompts.length} prompt pages, ${Object.keys(CATS).length} category pages, home, 404, sitemap.xml, robots.txt (${BUILD_DATE})`);
-for (const p of prompts) console.log(`  · /p/${p.slug}/  (${p.cat})`);
+for (const p of prompts) console.log(`  · /${p.cat}/${p.slug}/`);

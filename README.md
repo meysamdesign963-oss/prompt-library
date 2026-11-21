@@ -67,13 +67,13 @@ fa: توضیح فارسی کوتاه.
 ---
 ```
 
-3. Push to `main` — done. A GitHub Action runs `node tools/build.mjs`, which generates **a real static HTML page** for the prompt (`/p/<slug>/`), updates the category pages, `sitemap.xml` and the internal links, commits the generated files, and GitHub Pages publishes them automatically.
+3. Push to `main` — done. A GitHub Action runs `node tools/build.mjs`, which generates **a real static HTML page** for the prompt (`/<category>/<slug>/`), updates the category pages, `sitemap.xml` and the internal links, commits the generated files, and GitHub Pages publishes them automatically.
 
 ### 🌐 Site Architecture (SEO)
 
 | Item | Implementation |
 |---|---|
-| Static pages | Every prompt = one pre-rendered HTML file (`p/<slug>/index.html`) — no client-side rendering; category pages at `c/<category>/` |
+| Static pages | Every prompt = one pre-rendered HTML file — category pages at `/<category>/`, prompt pages at `/<category>/<slug>/` (e.g. `/ui/grainy-sage-editorial/`) — no client-side rendering; dark/light theme included |
 | Unique meta | Per-page `<title>`, description, canonical URL and Open Graph tags generated from front-matter |
 | Structured data | JSON-LD on every page: `CreativeWork` (prompts) / `CollectionPage` + `WebSite` + `BreadcrumbList` |
 | Discoverability | `sitemap.xml` (8 URLs) + `robots.txt`, generated on every build |

@@ -70,6 +70,17 @@ function wireCopy() {
   });
 }
 
+/* ---------- theme toggle ---------- */
+function wireTheme() {
+  const btn = document.querySelector("[data-theme-toggle]");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const cur = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", cur);
+    try { localStorage.setItem("pl-theme", cur); } catch (_) {}
+  });
+}
+
 /* ---------- scroll reveal ---------- */
 function initReveal() {
   const els = document.querySelectorAll(".reveal:not(.is-in)");
@@ -81,7 +92,7 @@ function initReveal() {
     (entries) => entries.forEach((e) => {
       if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
     }),
-    { threshold: 0.08 }
+    { threshold: 0 }
   );
   els.forEach((el, i) => {
     el.style.transitionDelay = `${(i % 6) * 45}ms`;
@@ -91,4 +102,5 @@ function initReveal() {
 
 wireExpanders();
 wireCopy();
+wireTheme();
 initReveal();

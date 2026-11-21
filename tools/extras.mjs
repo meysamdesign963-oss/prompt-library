@@ -5,6 +5,7 @@
 export const EXTRAS = {
   "security-blueprint": {
     featured: true,
+    pillLabel: "Bilingual FA · EN",
     icon: "shield",
     canvas: { href: "../../Prompt-Library.canvas", name: "Prompt-Library.canvas", sub: "Source file · JSON Canvas" },
     chips: [
@@ -60,6 +61,7 @@ export const EXTRAS = {
 
   "grainy-sage-editorial": {
     featured: false,
+    pillLabel: "Design system",
     icon: "palette",
     live: { href: "https://meysamdesign963-oss.github.io/prompt-library/", name: "This website", sub: "Live preview · built with this exact prompt" },
     chips: [

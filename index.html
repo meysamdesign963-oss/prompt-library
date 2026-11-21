@@ -12,10 +12,13 @@
 <meta property="og:description" content="A curated collection of production-grade prompts and engineering specs — security, structure, UI design systems and server/API — bilingual (EN/FA), auto-published as static pages.">
 <meta property="og:url" content="https://meysamdesign963-oss.github.io/prompt-library/">
 <meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#869A8C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161A17" media="(prefers-color-scheme: dark)">
+<script>(function(){var t;try{t=localStorage.getItem("pl-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})()</script>
 <link rel="icon" href="assets/favicon.svg">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Prompt Library","url":"https://meysamdesign963-oss.github.io/prompt-library/","inLanguage":["en","fa"]},{"@type":"CollectionPage","name":"All prompts","url":"https://meysamdesign963-oss.github.io/prompt-library/","hasPart":[{"@type":"CreativeWork","name":"Security Blueprint","url":"https://meysamdesign963-oss.github.io/prompt-library/p/security-blueprint/","description":"Universal security &amp; engineering spec for any Next.js + MongoDB web app.","keywords":"security, jwt, owasp, rbac"},{"@type":"CreativeWork","name":"Next.js Project Structure","url":"https://meysamdesign963-oss.github.io/prompt-library/p/nextjs-project-structure/","description":"Exact folder structure &amp; code-style prompt for scalable Next.js + MongoDB projects.","keywords":"structure, folders, code-style, nextjs"},{"@type":"CreativeWork","name":"Grainy Sage Editorial","url":"https://meysamdesign963-oss.github.io/prompt-library/p/grainy-sage-editorial/","description":"The complete UI style system behind this website — exact tokens, scales, layout recipes and rules.","keywords":"design-system, style, saas, typography"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Library","item":"https://meysamdesign963-oss.github.io/prompt-library/"},{"@type":"ListItem","position":2,"name":"All prompts","item":"https://meysamdesign963-oss.github.io/prompt-library/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Prompt Library","url":"https://meysamdesign963-oss.github.io/prompt-library/","inLanguage":["en","fa"]},{"@type":"CollectionPage","name":"All prompts","url":"https://meysamdesign963-oss.github.io/prompt-library/","hasPart":[{"@type":"CreativeWork","name":"Security Blueprint — Obsidian Canvas","url":"https://meysamdesign963-oss.github.io/prompt-library/p/security-blueprint-canvas/","description":"Every card of the Security Blueprint rendered page by page — architecture, structure, login, tokens, post-login and OWASP — exactly as laid out in the Obsidian canvas.","keywords":"canvas, obsidian, security"},{"@type":"CreativeWork","name":"Security Blueprint","url":"https://meysamdesign963-oss.github.io/prompt-library/p/security-blueprint/","description":"Universal security &amp; engineering spec for any Next.js + MongoDB web app.","keywords":"security, jwt, owasp, rbac"},{"@type":"CreativeWork","name":"Next.js Project Structure","url":"https://meysamdesign963-oss.github.io/prompt-library/p/nextjs-project-structure/","description":"Exact folder structure &amp; code-style prompt for scalable Next.js + MongoDB projects.","keywords":"structure, folders, code-style, nextjs"},{"@type":"CreativeWork","name":"Grainy Sage Editorial","url":"https://meysamdesign963-oss.github.io/prompt-library/p/grainy-sage-editorial/","description":"The complete UI style system behind this website — exact tokens, scales, layout recipes and rules.","keywords":"design-system, style, saas, typography"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Library","item":"https://meysamdesign963-oss.github.io/prompt-library/"},{"@type":"ListItem","position":2,"name":"All prompts","item":"https://meysamdesign963-oss.github.io/prompt-library/"}]}]}</script>
 </head>
 <body>
 
@@ -36,10 +39,16 @@
         </div>
       </a>
     </div>
-    <a class="pill pill-link" href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">
-      GitHub
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg>
-    </a>
+    <div class="head-actions">
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle title="Toggle dark / light theme" aria-label="Toggle color theme">
+        <span class="theme-ic theme-ic--moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12.5A8 8 0 1 1 11.5 4a6.5 6.5 0 0 0 8.5 8.5z"/></svg></span>
+        <span class="theme-ic theme-ic--sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg></span>
+      </button>
+      <a class="pill pill-link" href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">
+        GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg>
+      </a>
+    </div>
   </header>
 
 
@@ -71,7 +80,7 @@
       <div class="cat-grid"><a class="cat-tile" href="c/security/">
       <span class="cat-row-top">
         <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3.2v5.1c0 4.6-3 7.7-7 9.2-4-1.5-7-4.6-7-9.2V6.2L12 3z"/></svg></span>
-        <span class="cat-count">01</span>
+        <span class="cat-count">02</span>
       </span>
       <span class="stack-name">Security</span>
       <span class="stack-cat">امنیت</span>
@@ -101,10 +110,733 @@
     
       <div class="cat-section">
         <div class="cat-section-head">
-          <span class="sec-label">Security — 1 prompt</span>
+          <span class="sec-label">Security — 2 prompts</span>
           <a class="pill pill-link" href="c/security/">Open category <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></a>
         </div>
         
+  <section class="card prompt-card reveal" id="security-blueprint-canvas" aria-labelledby="security-blueprint-canvas-title">
+    <div class="prompt-head">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+      <div class="prompt-id">
+        <h3 class="title-xl" id="security-blueprint-canvas-title">Security Blueprint — Obsidian Canvas</h3>
+        <p class="title-sub">The full interactive canvas · bilingual (EN → FA)</p>
+      </div>
+      <div class="head-icons">
+        <a class="icon-btn" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/Prompt-Library.canvas" target="_blank" rel="noopener" title="Open source file"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg></a>
+        <button class="icon-btn" type="button" data-expand="details-security-blueprint-canvas" aria-expanded="false" aria-controls="details-security-blueprint-canvas" title="Expand details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7.5 7.5"/><path d="M3 21l7.5-7.5"/></svg></button>
+      </div>
+    </div>
+
+    <div class="prompt-pills">
+      <span class="pill pill--mint">New</span>
+      <span class="pill pill--dark">Canvas</span>
+      <span class="pill ">1.0-1.0</span>
+      <span class="pill ">JSON Canvas</span>
+      <a class="pill pill-link" href="security/security-blueprint-canvas/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="security-blueprint-canvas" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+    </div>
+
+    <p class="lede prompt-desc">Every card of the Security Blueprint rendered page by page — architecture, structure, login, tokens, post-login and OWASP — exactly as laid out in the Obsidian canvas.</p>
+    <p class="fa">تمام کارت‌های بلوپرینت امنیتی، دقیقاً به همان چیدمان کانواس اوبسیدین — از معماری تا OWASP.</p>
+    <div class="chips prompt-chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg><span>canvas</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg><span>obsidian</span></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg><span>security</span></span></div>
+    
+
+    <div class="details" id="details-security-blueprint-canvas">
+      <div class="details-inner">
+        <div class="details-pad">
+      <div class="detail-group">
+        <span class="sec-label">Prompt — full text</span>
+        <div class="md-body"><h1>🔐 Security Blueprint — Universal Web App Spec</h1>
+<h3>نقشه‌ی جامع امنیت و مهندسی — پرامپت عمومی برای هر اپلیکیشن وب</h3>
+<p>🇬🇧 A <strong>project-agnostic</strong> security &amp; engineering blueprint for any web application built with <strong>Next.js + MongoDB</strong>. Copy this canvas into your repo and hand it to a developer or an AI coding agent as a ready-made spec/prompt. Follow the numbered groups and the arrows (1 → 6). Every card explains the topic in <strong>English first, then Persian</strong>.</p>
+<p>🇮🇷 یک بلوپرینت <strong>مستقل از نوع پروژه</strong> برای امنیت و مهندسی هر اپلیکیشن وب با <strong>Next.js + MongoDB</strong>. این کانواز را در ریپوی خود کپی کنید و به‌عنوان پرامپت/اسپک آماده به توسعه‌دهنده یا ایجنت هوش مصنوعی بدهید. گروه‌های شماره‌دار و فلش‌ها را دنبال کنید (۱ تا ۶). هر کارت اول <strong>انگلیسی</strong> و بعد <strong>فارسی</strong> توضیح داده شده است.</p>
+<p><strong>1️⃣ Architecture معماری → 2️⃣ Structure ساختار → 3️⃣ Login ورود → 4️⃣ Tokens توکن‌ها → 5️⃣ Post-Login پس از ورود → 6️⃣ OWASP</strong></p>
+<h2 class="canvas-group">🏗 1 · Architecture &amp; Tech Stack | معماری و پشته‌ی فناوری</h2><h2>🧱 Tech Stack | پشته‌ی فناوری</h2>
+<p>🇬🇧</p>
+<ul>
+<li><strong>Database → MongoDB</strong> — no SQL, so schema changes never need migrations; updates stay fast and painless.</li>
+<li><strong>Frontend → React</strong> — light and fast UI.</li>
+<li><strong>Backend → Next.js + Node.js</strong> architecture — fast and reliable, one codebase for app + API.</li>
+</ul>
+<p>🇮🇷</p>
+<ul>
+<li><strong>دیتابیس → MongoDB</strong> — بدون SQL؛ تغییرات شِما نیازی به migration ندارند و آپدیت‌ها سریع و بی‌دردسر می‌مانند.</li>
+<li><strong>فرانت‌اند → React</strong> — رابط کاربری سبک و سریع.</li>
+<li><strong>بک‌اند → Next.js + Node.js</strong> — سریع و قابل‌اعتماد؛ یک کدبیس برای اپ و API.</li>
+</ul>
+
+<h2>🎯 Engineering Goals | اهداف مهندسی</h2>
+<p>🇬🇧</p>
+<ul>
+<li><strong>Update-resilient:</strong> any update to the database or the code must never break the project — this is why SQL is avoided entirely.</li>
+<li><strong>SEO-first:</strong> every public page must be fully SEO-optimized — practical, working on-page SEO on all public routes (very important).</li>
+</ul>
+<p>🇮🇷</p>
+<ul>
+<li><strong>مقاوم در برابر آپدیت:</strong> هیچ آپدیتی روی دیتابیس یا کد نباید پروژه را بشکند — به همین دلیل اصلاً از SQL استفاده نمی‌شود.</li>
+<li><strong>سئو محور:</strong> تمام صفحات عمومی باید سئوی کامل، کاربردی و واقعی داشته باشند (خیلی مهم).</li>
+</ul>
+<h2 class="canvas-group">📁 2 · Folder Structure &amp; Code Style | ساختار پوشه‌ها و سبک کد</h2><h2>🗂 Project Structure | ساختار پروژه</h2>
+<p>🇬🇧 The whole project lives in <strong>src/</strong> and must follow this exact structure:</p>
+<pre><code class="language-text">src/
+├── app/            → Frontend pages &amp; routing
+│   └── api/        → Backend &amp; API routes
+├── public/
+│   ├── img/        → Site images
+│   └── font/       → Site fonts
+├── controllers/    → HTTP responses
+├── services/       → All business logic
+├── components/     → UI &amp; styles (auth, theme, layout, ui)
+└── utils/          → Libraries, realtime, helpers
+.env                → Secrets: token keys, DB URI (never commit!)
+</code></pre>
+<p>🇮🇷 کل پروژه در <strong>src/</strong> است و باید دقیقاً از این ساختار پیروی کند:</p>
+<ul>
+<li><strong>app</strong> → صفحه‌بندی و routing فرانت — <strong>api</strong> داخل آن: مسئول بک‌اند و APIها</li>
+<li><strong>public</strong> → عکس‌ها در <strong>img</strong> و فونت‌ها در <strong>font</strong></li>
+<li><strong>controllers</strong> → در این قسمت responseها داده می‌شوند</li>
+<li><strong>services</strong> → کل منطق هر بخش اینجا نوشته می‌شود</li>
+<li><strong>components</strong> → UI و استایل هر بخش (زیرمجموعه‌های auth، theme، layout، ui)</li>
+<li><strong>utils</strong> → کتابخانه‌ها، ارتباط‌های real-time و کارهای جانبی و کمکی</li>
+<li><strong>.env</strong> → کلیدهای امنیتی توکن‌ها، آدرس اتصال به دیتابیس و سایر اسرار</li>
+</ul>
+
+<h2>✨ Code Style | سبک کدنویسی</h2>
+<p>🇬🇧</p>
+<ul>
+<li><strong>Clean code:</strong> anyone must be able to read and understand the code, so future updates stay painless.</li>
+<li><strong>Componentize everything:</strong> convert every reusable piece into a component under <strong>components/</strong> (auth, theme, layout, ui) so the project stays scalable.</li>
+</ul>
+<p>🇮🇷</p>
+<ul>
+<li><strong>کد تمیز:</strong> هر آدمی باید بفهمد کد چیست تا بعد از آپدیت‌ها اذیت نشوی و پروژه قابل‌توسعه بماند.</li>
+<li><strong>کامپوننت‌محور:</strong> هر بخش قابل‌استفاده را تا جای ممکن به کامپوننت تبدیل کن — این پوشه خیلی مهم است.</li>
+</ul>
+<h2 class="canvas-group">🚪 3 · Login Security | امنیت ورود</h2><h2>🚪 Login Requirements | الزامات امنیتی ورود</h2>
+<p>🇬🇧 <strong>1. Password hashing</strong> — store passwords only with <strong>Bcrypt</strong> or <strong>Argon2</strong>; plain text is forbidden.
+🇮🇷 <strong>۱. هش کردن پسورد</strong> — ذخیره‌ی رمز عبور در دیتابیس فقط با <strong>Bcrypt</strong> یا <strong>Argon2</strong> مجاز است؛ ذخیره‌ی متن خام ممنوع.</p>
+<p>🇬🇧 <strong>2. Rate limit</strong> — max <strong>5 login requests per 15 minutes</strong> for each IP; violators get a temporary IP block.
+🇮🇷 <strong>۲. محدودیت تلاش (Rate Limit)</strong> — حداکثر <strong>۵ درخواست لاگین در ۱۵ دقیقه</strong> برای هر آی‌پی؛ در صورت تخلف، بلاک موقت آی‌پی.</p>
+<p>🇬🇧 <strong>3. Unified error message</strong> — never reveal whether the username or the password was wrong; only one generic message.
+🇮🇷 <strong>۳. پیام خطای یکپارچه</strong> — سیستم نباید بگوید یوزرنیم اشتباه است یا پسورد؛ فقط یک پیام کلی: «نام کاربری یا رمز عبور اشتباه است».</p>
+<p>🇬🇧 <strong>4. Secure token storage</strong> — the login JWT must only live in <strong>HttpOnly + Secure</strong> cookies so XSS cannot steal it.
+🇮🇷 <strong>۴. توکن امن</strong> — توکن ورود (JWT) فقط در کوکی‌های <strong>HttpOnly</strong> و <strong>Secure</strong> قرار گیرد تا با XSS قابل‌سرقت نباشد.</p>
+<p>🇬🇧 <strong>5. Strict input validation</strong> — every field (e.g. local full name, English username, phone number in your locale’s format such as an 11-digit Iranian mobile) must be regex-validated <strong>server-side</strong> so malicious payloads (SQLi / XSS) never reach the database.
+🇮🇷 <strong>۵. اعتبارسنجی سختگیرانه‌ی اینپوت‌ها</strong> — تمامی فیلدها (مثلاً نام کامل محلی، یوزرنیم انگلیسی، شماره تلفن با الگوی منطقه‌ی شما مثل موبایل ۱۱ رقمی ایران) باید در سمت سرور با Regex فیلتر شوند تا کدهای مخرب (SQLi/XSS) نتوانند وارد دیتابیس شوند.</p>
+<h2 class="canvas-group">🔑 4 · JWT Token System | سیستم توکن</h2><h2>🔑 Two Tokens, Two Secrets | دو توکن، دو کلید</h2>
+<p>🇬🇧 After login, the backend (in <strong>src/app/api/</strong>) must issue:</p>
+<ul>
+<li><strong>Access token — 2 minutes</strong> and <strong>Refresh token — 15 days</strong>, each signed with its <strong>own 128-character security key</strong> generated with crypto and stored in .env.</li>
+<li>The samples below are <strong>Express.js</strong> — convert them for the <strong>Next.js App Router API</strong>.</li>
+</ul>
+<p>🇮🇷 بعد از لاگین، بک‌اند (در <strong>src/app/api/</strong>) باید:</p>
+<ul>
+<li><strong>توکن دسترسی — ۲ دقیقه</strong> و <strong>توکن تازه‌سازی — ۱۵ روز</strong> را صادر کند؛ هرکدام با <strong>کلید امنیتی جداگانه‌ی ۱۲۸ کاراکتری</strong> ساخته‌شده با crypto و ذخیره‌شده در .env.</li>
+<li>کدهای نمونه زیر <strong>Express.js</strong> هستند — آن‌ها را برای <strong>API بک‌اند Next.js</strong> تبدیل کن.</li>
+</ul>
+
+<h2>🟠 Access Token — Generate &amp; Verify | ساخت و رمزگشایی</h2>
+<p>🇬🇧 Short-lived (2 min) token carrying <strong>id, role, firstName</strong> and a unique <strong>jti</strong>.
+🇮🇷 توکن کوتاه‌عمر (۲ دقیقه) با <strong>id، role، firstName</strong> و شناسه‌ی یکتای <strong>jti</strong>.</p>
+<p><strong>Generate | ساخت:</strong></p>
+<pre><code class="language-js">import &quot;dotenv/config&quot;;
+import jwt from &quot;jsonwebtoken&quot;;
+import crypto from &quot;crypto&quot;;
+
+export default function GenerateAccessToken(user) {
+  try {
+    return jwt.sign(
+      { id: user._id, role: user.role, firstName: user.firstName, jti: crypto.randomUUID() },
+      process.env.Access_Token_Security_Code,
+      { expiresIn: &quot;2m&quot; }
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+</code></pre>
+<p><strong>Verify | رمزگشایی:</strong></p>
+<pre><code class="language-js">import &quot;dotenv/config&quot;;
+import jwt from &quot;jsonwebtoken&quot;;
+
+export default function verifyAccessToken(token) {
+  try {
+    return jwt.verify(token, process.env.Access_Token_Security_Code);
+  } catch (error) {
+    return null;
+  }
+}
+</code></pre>
+
+<h2>🍪 Access Token Cookie | کوکی توکن دسترسی</h2>
+<p>🇬🇧 HttpOnly, Secure in production, 2-minute lifespan.
+🇮🇷 کوکی HttpOnly و Secure در پروداکشن با عمر ۲ دقیقه.</p>
+<pre><code class="language-js">res.cookie(&quot;accessToken&quot;, accessToken, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === &quot;production&quot;,
+  sameSite: &quot;strict&quot;,
+  maxAge: 2 * 60 * 1000,
+});
+</code></pre>
+<p>⚠️ 🇬🇧 Set SameSite to <strong>strict/lax</strong> here as well — required by the CSRF policy in the OWASP group (the early draft used an empty value).
+⚠️ 🇮🇷 SameSite را اینجا هم <strong>strict/lax</strong> بگذار — طبق سیاست CSRF در گروه OWASP (پیش‌نویس اولیه مقدار خالی داشت).</p>
+
+<h2>🔵 Refresh Token — Generate &amp; Verify | ساخت و رمزگشایی</h2>
+<p>🇬🇧 Long-lived (15 days) token with its <strong>own 128-char secret key</strong>; carries <strong>id, firstName, jti</strong>.
+🇮🇷 توکن بلندعمر (۱۵ روز) با <strong>کلید امنیتی ۱۲۸ کاراکتری جدا</strong>؛ شامل <strong>id، firstName و jti</strong>.</p>
+<p><strong>Generate | ساخت:</strong></p>
+<pre><code class="language-js">import &quot;dotenv/config&quot;;
+import jwt from &quot;jsonwebtoken&quot;;
+import crypto from &quot;crypto&quot;;
+
+export default function GenerateRefreshToken(user) {
+  try {
+    return jwt.sign(
+      { id: user._id, firstName: user.firstName, jti: crypto.randomUUID() },
+      process.env.Refresh_Token_Security_Code,
+      { expiresIn: &quot;15d&quot; }
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+</code></pre>
+<p><strong>Verify | رمزگشایی:</strong></p>
+<pre><code class="language-js">import &quot;dotenv/config&quot;;
+import jwt from &quot;jsonwebtoken&quot;;
+
+export default function verifyRefreshToken(token) {
+  try {
+    return jwt.verify(token, process.env.Refresh_Token_Security_Code);
+  } catch (error) {
+    return null;
+  }
+}
+</code></pre>
+
+<h2>🍪➡️ 🚪 Refresh Cookie &amp; Logout | کوکی تازه‌سازی و خروج</h2>
+<p>🇬🇧 The refresh cookie lives 15 days; logout clears <strong>both</strong> cookies with identical flags.
+🇮🇷 کوکی تازه‌سازی ۱۵ روز عمر دارد؛ خروج <strong>هر دو</strong> کوکی را با همان فلگ‌ها پاک می‌کند.</p>
+<p><strong>Refresh cookie | کوکی تازه‌سازی:</strong></p>
+<pre><code class="language-js">res.cookie(&quot;refreshToken&quot;, refreshToken, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === &quot;production&quot;,
+  sameSite: &quot;strict&quot;,
+  maxAge: 15 * 24 * 60 * 60 * 1000,
+});
+</code></pre>
+<p><strong>Logout — clear both cookies | خروج — پاک‌کردن هر دو کوکی:</strong></p>
+<pre><code class="language-js">export default function ClearTokenCookies(res) {
+  res.clearCookie(&quot;accessToken&quot;, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === &quot;production&quot;,
+    sameSite: &quot;strict&quot;,
+  });
+  res.clearCookie(&quot;refreshToken&quot;, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === &quot;production&quot;,
+    sameSite: &quot;strict&quot;,
+  });
+}
+</code></pre>
+<h2 class="canvas-group">🛡 5 · Post-Login Security | امنیت پس از ورود</h2><h2>⏱ Session Management | مدیریت نشست</h2>
+<p>🇬🇧</p>
+<ul>
+<li><strong>Idle timeout:</strong> 15–30 min of inactivity → the session expires and the user must log in again.</li>
+<li><strong>Absolute timeout:</strong> even active users are logged out after ~8 hours so stolen long-lived tokens become useless.</li>
+<li><strong>Single active session:</strong> a user must not be logged in from two devices/browsers at once; a new login instantly invalidates the previous session.</li>
+</ul>
+<p>🇮🇷</p>
+<ul>
+<li><strong>انقضای بی‌فعالیتی:</strong> ۱۵ تا ۳۰ دقیقه بی‌فعالیتی → سشن خودکار منقضی شود و کاربر دوباره لاگین کند.</li>
+<li><strong>انقضای مطلق:</strong> حتی اگر کاربر مدام فعال باشد، بعد از مثلاً ۸ ساعت سشن قطع شود تا توکن‌های سرقت‌شده‌ی طولانی‌مدت کار نکنند.</li>
+<li><strong>کنترل ورود همزمان:</strong> یک کاربر نباید همزمان از دو دستگاه یا دو مرورگر وارد شود؛ ورود جدید، سشن دستگاه قبلی را فوراً باطل کند.</li>
+</ul>
+
+<h2>🧱 Data Isolation &amp; IDOR | جداسازی داده و جلوگیری از IDOR</h2>
+<p>🇬🇧 <strong>RBAC isolation</strong></p>
+<ul>
+<li>A user must <strong>never</strong> see another user’s files, tasks, messages or customer data.</li>
+<li>Every database query must filter by the logged-in user (<strong>user_id = current user</strong>).</li>
+<li>Only admins may see global reports and every user’s data.</li>
+</ul>
+<p>🇬🇧 <strong>IDOR prevention</strong></p>
+<ul>
+<li>Changing an id in the API URL (e.g. <strong>/api/files/101 → /api/files/102</strong>) must never return someone else’s data.</li>
+<li>The server must verify <strong>ownership of every requested id</strong> against the logged-in user; prefer <strong>UUIDs</strong> over sequential ids (helpful, not sufficient alone).</li>
+</ul>
+<p>🇮🇷 <strong>جداسازی نقش‌محور (RBAC)</strong></p>
+<ul>
+<li>کاربر تحت هیچ شرایطی نباید فایل‌ها، تسک‌ها، پیام‌ها و داده‌ی مشتریانِ کاربر دیگر را ببیند.</li>
+<li>همه‌ی کوئری‌های دیتابیس باید فیلتر <strong>user_id = کاربر لاگین‌شده</strong> داشته باشند.</li>
+<li>فقط مدیران (admin) باید بتوانند گزارش‌های کلان و داده‌های همه‌ی کاربران را ببینند.</li>
+</ul>
+<p>🇮🇷 <strong>جلوگیری از IDOR</strong></p>
+<ul>
+<li>هکر نباید با تغییر آیدی در آدرس API (مثلاً <strong>/api/files/101 به /api/files/102</strong>) به داده‌ی شخص دیگری دسترسی پیدا کند.</li>
+<li>سرور در هر درخواست باید مالکیت آیدی را نسبت به یوزر لاگین‌شده چک کند؛ استفاده از <strong>UUID</strong> به‌جای آیدی ترتیبی (کمکی، نه کامل).</li>
+</ul>
+
+<h2>😶 Data Masking | ماسک‌کردن اطلاعات حساس</h2>
+<p>🇬🇧 Sensitive customer data — phone numbers above all — is the crown jewels of any product. In list views it must appear <strong>masked</strong> (e.g. <strong>0912****567</strong>); the full value is revealed only through a <strong>“View” button — and every reveal is logged</strong>. This stops a rogue user or employee from bulk-exporting the data.</p>
+<p>🇮🇷 داده‌های حساس مشتریان — بالاخص شماره تماس — ارزشمندترین دارایی هر محصول است. در لیست‌ها باید <strong>ماسک‌شده</strong> نمایش داده شود (مثلاً <strong>0912****567</strong>)؛ نمایش کامل فقط با کلیک روی دکمه‌ی <strong>«مشاهده»</strong> انجام شود که در لاگ ثبت می‌گردد. این کار از خروجی‌گرفتن دسته‌جمعی دیتا توسط کاربر یا کارمند سوءاستفاده‌گر جلوگیری می‌کند.</p>
+
+<h2>📎 File Upload Security | امنیت آپلود فایل</h2>
+<p>🇬🇧 For user uploads (images, documents, PDFs — adapt the whitelist to your product):</p>
+<ul>
+<li>Only whitelisted formats are accepted (e.g. <strong>jpg, png, pdf</strong>) — check the extension <strong>and</strong> the MIME type.</li>
+<li>Filenames are <strong>randomized on the server</strong> so users cannot guess storage paths.</li>
+<li>Uploaded files get <strong>no execute permission</strong> → hacker web shells cannot run.</li>
+<li>Store uploads in <strong>cloud storage</strong>, never inside the code or the database — apply this across the whole project wherever uploads exist.</li>
+</ul>
+<p>🇮🇷 برای فایل‌های آپلودی کاربران (عکس، مدرک، PDF — لیست مجاز را مطابق محصول خود تنظیم کنید):</p>
+<ul>
+<li>فقط فرمت‌های مجاز از <strong>Whitelist</strong> (مثل <strong>jpg، png، pdf</strong>) پذیرفته شود — با بررسی پسوند <strong>و</strong> MIME Type.</li>
+<li>نام فایل‌ها در سرور به‌صورت <strong>رندوم</strong> تغییر کند تا کاربر نتواند مسیر سرور را حدس بزند.</li>
+<li>فایل‌های آپلودی نباید <strong>دسترسی اجرایی (Execute)</strong> داشته باشند تا از آپلود و اجرای شل‌های هکری (Web Shell) جلوگیری شود.</li>
+<li>ذخیره‌سازی در <strong>فضای ابری</strong>، نه داخل کد یا دیتابیس — در تمام بخش‌هایی که آپلود دارند اعمال شود.</li>
+</ul>
+
+<h2>🤖 Chat &amp; AI Security | امنیت چت و هوش مصنوعی</h2>
+<p>🇬🇧</p>
+<ul>
+<li><strong>Internal chat:</strong> messages must be <strong>sanitized</strong> before storage so users cannot inject malicious scripts (XSS) into messages.</li>
+<li><strong>AI inputs:</strong> every request needs a <strong>rate limit + character-length limit</strong>, so a single user cannot inflate your AI API costs with heavy requests (prompt-injection &amp; abuse protection).</li>
+</ul>
+<p>🇮🇷</p>
+<ul>
+<li><strong>چت داخلی:</strong> پیام‌ها باید قبل از ذخیره در دیتابیس <strong>پاکسازی (Sanitize)</strong> شوند تا کاربران نتوانند کدهای مخرب (XSS) در پیام‌ها قرار دهند.</li>
+<li><strong>ورودی هوش مصنوعی:</strong> درخواست‌ها باید <strong>محدودیت تعداد (Rate Limit) و طول کاراکتر</strong> داشته باشند تا یک کاربر با ارسال درخواست‌های سنگین، هزینه‌ی API هوش مصنوعی را بالا نبرد (محافظت از Prompt Injection).</li>
+</ul>
+
+<h2>📜 Audit Trail | لاگ‌گیری اقدامات حساس</h2>
+<p>🇬🇧 Every sensitive action — viewing sensitive data, editing or deleting records, downloading files — must be logged in a log table with <strong>IP + timestamp + username + action type</strong>, so if information ever leaks, the administrator can trace exactly <strong>who leaked what, and when</strong>.</p>
+<p>🇮🇷 هر اقدام حساس — مشاهده‌ی داده‌ی حساس، تغییر یا حذف رکورد، دانلود فایل — باید در جدول لاگ با ثبت <strong>آی‌پی + زمان + یوزرنیم + نوع عملیات</strong> ذخیره شود تا در صورت لو رفتن اطلاعات، مدیر سیستم دقیقاً بفهمد <strong>چه کسی، چه چیزی را، کِی لو داده است</strong>.</p>
+<h2 class="canvas-group">🐞 6 · OWASP Top 10 Checklist | چک‌لیست ده تهدید امنیتی وب</h2><h2>🐞 Threats 1–5 | تهدیدهای ۱ تا ۵</h2>
+<p><strong>1 — SQL Injection | تزریق SQL</strong>
+🇬🇧 Attackers must never be able to inject malicious SQL through user inputs — e.g. bypassing login with <strong>’ OR 1=1 --</strong>. Sanitize every input.
+🇮🇷 مهاجم نبتواند از طریق ورودی‌های کاربر دستورات SQL مخرب به دیتابیس تزریق کند و نتواند با <strong>’ OR 1=1 --</strong> احراز هویت را دور بزند.</p>
+<p><strong>2 — XSS | اسکریپت‌نویسی بین‌سایتی</strong>
+🇬🇧 All three types — <strong>Reflected, Stored, DOM-based</strong> — must be blocked; otherwise attackers run malicious JavaScript in the victim’s browser to steal cookies/sessions or tamper with user actions.
+🇮🇷 هر سه نوع — <strong>Reflected، Stored و DOM-based</strong> — باید مسدود باشند؛ وگرنه مهاجم جاوااسکریپت مخرب در مرورگر قربانی اجرا می‌کند، کوکی‌ها را می‌دزدد، سشن را می‌قاپد یا عملیات کاربران را تغییر می‌دهد.</p>
+<p><strong>3 — CSRF | جعل درخواست بین‌سایتی</strong>
+🇬🇧 Browsers auto-send cookies with every request; attackers trick users into unwanted actions (money transfer, password change). Fix: <strong>CSRF Token</strong> in forms + <strong>SameSite=Strict/Lax</strong> cookies + <strong>re-confirmation for sensitive operations</strong>.
+🇮🇷 مرورگر قربانی خودکار کوکی‌ها را همراه درخواست می‌فرستد؛ مهاجم با فریب کاربر باعث ارسال درخواست ناخواسته می‌شود. راه‌حل: <strong>توکن CSRF</strong> در فرم‌ها + فلگ <strong>SameSite=Strict/Lax</strong> روی کوکی‌ها + <strong>درخواست مجوز مجدد</strong> برای عملیات‌های حساس.</p>
+<p><strong>4 — IDOR | ارجاع مستقیم ناامن</strong>
+🇬🇧 See the <strong>Data Isolation &amp; IDOR</strong> card in group 5 — server-side authorization per request, Object-Level Authorization, UUIDs.
+🇮🇷 کارت <strong>جداسازی داده و IDOR</strong> در گروه ۵ را ببینید — بررسی دسترسی در سمت سرور برای هر درخواست، Object-Level Authorization و UUID.</p>
+<p><strong>5 — Authentication Failures | شکست در احراز هویت و مدیریت سشن</strong>
+🇬🇧 Weak/default passwords, session hijacking (XSS/sniffing), session fixation, no session expiry, no rate limit on login (brute force). Fix: <strong>Secure + HttpOnly + SameSite</strong> cookies, session expiry + <strong>id regeneration after login</strong>, <strong>account lockout</strong> after failed attempts.
+🇮🇷 رمزهای ضعیف یا پیش‌فرض، Session Hijacking، Session Fixation، عدم انقضای نشست‌ها، نبود Rate Limit در لاگین (امکان Brute Force). راه‌حل: کوکی‌های <strong>Secure/HttpOnly/SameSite</strong>، انقضای سشن و <strong>بازتولید شناسه بعد از لاگین</strong> و <strong>قفل حساب پس از تلاش‌های ناموفق</strong>.</p>
+
+<h2>🐞 Threats 6–10 | تهدیدهای ۶ تا ۱۰</h2>
+<p><strong>6 — Sensitive Data Exposure | افشای داده‌های حساس</strong>
+🇬🇧 Moving or storing sensitive data without proper encryption. Fix: <strong>HTTPS mandatory (TLS 1.2+ &amp; HSTS)</strong>; never MD5/unsalted hashes — <strong>bcrypt/Argon2</strong> only; <strong>encrypt data at rest &amp; in transit</strong>; proper <strong>secrets management</strong>; never show <strong>stack traces</strong> to users; never put <strong>API keys in frontend code</strong>.
+🇮🇷 انتقال یا ذخیره‌ی اطلاعات حساس بدون رمزنگاری مناسب. راه‌حل: <strong>HTTPS اجباری با TLS 1.2+ و HSTS</strong>؛ هرگز MD5 یا هش بدون salt — فقط <strong>bcrypt/Argon2</strong>؛ <strong>رمزنگاری داده‌های حساس در Rest و Transit</strong>؛ <strong>مدیریت صحیح کلیدها و اسرار</strong>؛ عدم نمایش <strong>Stack Trace</strong> به کاربر؛ قرارندادن <strong>API Key در کد فرانت‌اند</strong> ممنوع.</p>
+<p><strong>7 — SSRF | جعل درخواست سمت سرور</strong>
+🇬🇧 Attackers force the server to call internal network addresses — e.g. a profile image-URL field reading <strong><a href="http://169.254.169.254/">http://169.254.169.254/</a></strong> (AWS metadata). Fix: <strong>whitelist allowed domains</strong>, <strong>block internal &amp; loopback IPs</strong>, <strong>no automatic redirects</strong>.
+🇮🇷 مهاجم سرور را وادار می‌کند به آدرس‌های داخلی شبکه درخواست بفرستد — مثلاً فیلد URL عکس پروفایل با <strong><a href="http://169.254.169.254/">http://169.254.169.254/</a></strong> اطلاعات حساس سرور را می‌خواند. راه‌حل: <strong>Whitelist دامنه‌های مجاز</strong>، <strong>مسدودکردن IPهای داخلی و Loopback</strong>، <strong>عدم ارسال خودکار Redirectها</strong>.</p>
+<p><strong>8 — Security Misconfiguration | پیکربندی ناامن</strong>
+🇬🇧 Debug mode in production, directory listing enabled, default pages &amp; server version banners (e.g. <strong>Server: Apache 2.4.49</strong>), CORS set to <strong>*</strong>, unprotected admin panels. Fix: <strong>server hardening</strong>, remove unneeded services, <strong>CORS only for allowed domains</strong>, <strong>Security Headers</strong>.
+🇮🇷 حالت Debug در Production، Directory Listing فعال، صفحات پیش‌فرض و اطلاعات نسخه‌ی سرور (مثل <strong>Server: Apache 2.4.49</strong>)، CORS با تنظیمات باز (<strong>*</strong>) و پنل‌های مدیریتی بدون محافظت. راه‌حل: <strong>Hardening سرور</strong> و حذف سرویس‌های غیرضروری، <strong>تنظیم CORS فقط برای دامنه‌های مجاز</strong> و <strong>Security Headers</strong>.</p>
+<p><strong>9 — Vulnerable Components | کامپوننت‌های آسیب‌پذیر</strong>
+🇬🇧 Old libraries/frameworks with known vulnerabilities. Fix: <strong>regular package updates</strong>, review the details, <strong>remove unused dependencies</strong>.
+🇮🇷 استفاده از کتابخانه‌ها و فریم‌ورک‌های قدیمی با آسیب‌پذیری شناخته‌شده. راه‌حل: <strong>به‌روزرسانی منظم پکیج‌ها</strong>، بررسی جزئیات و <strong>حذف وابستگی‌های استفاده‌نشده</strong>.</p>
+<p><strong>10 — Unsafe File Uploads | آپلود ناامن فایل‌ها</strong>
+🇬🇧 Malicious uploads such as web shells via extension tricks. Fix: <strong>whitelist extensions &amp; MIME types</strong>, <strong>random filenames stored outside the web root</strong>, <strong>antivirus scanning</strong>, <strong>no execute permission</strong> — full details in the File Upload card (group 5).
+🇮🇷 آپلود فایل مخرب مثل <strong>Webshell</strong> با تغییر پسوند. راه‌حل: <strong>Whitelist پسوندها و MIME Typeها</strong>، <strong>تغییر نام فایل‌ها و ذخیره خارج از ریشه‌ی وب</strong>، <strong>اسکن آنتی‌ویروس</strong>، <strong>حذف دسترسی اجرا</strong> — جزئیات کامل در کارت آپلود فایل (گروه ۵).</p>
+
+<h2>🔗 Learn &amp; Extend | یادگیری و توسعه</h2>
+<p>🇬🇧 Use the official OWASP Top 10 repository to study further security topics <strong>and support them in this project too</strong>.</p>
+<p>🇮🇷 برای فهمیدن جزئیات امنیتی بیشتر و اینکه موارد امنیتی دیگر هم در همین پروژه پشتیبانی شوند، از این مخزن گیت‌هاب کمک بگیر:</p>
+<p><strong><a href="https://github.com/OWASP/Top10/">https://github.com/OWASP/Top10/</a></strong></p>
+</div>
+      </div>
+      <div class="row">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/></svg></span>
+        <div><p class="row-name">Prompt-Library.canvas</p>
+        <p class="row-sub" style="margin-left:0;margin-top:2px">Source file · auto-published</p></div>
+        <a class="pill row-right" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/Prompt-Library.canvas" target="_blank" rel="noopener">Source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      </div></div>
+      </div>
+    </div>
+  </section>
+  <script type="text/plain" class="prompt-raw" data-id="security-blueprint-canvas"># 🔐 Security Blueprint — Universal Web App Spec
+### نقشه‌ی جامع امنیت و مهندسی — پرامپت عمومی برای هر اپلیکیشن وب
+
+🇬🇧 A **project-agnostic** security & engineering blueprint for any web application built with **Next.js + MongoDB**. Copy this canvas into your repo and hand it to a developer or an AI coding agent as a ready-made spec/prompt. Follow the numbered groups and the arrows (1 → 6). Every card explains the topic in **English first, then Persian**.
+
+🇮🇷 یک بلوپرینت **مستقل از نوع پروژه** برای امنیت و مهندسی هر اپلیکیشن وب با **Next.js + MongoDB**. این کانواز را در ریپوی خود کپی کنید و به‌عنوان پرامپت/اسپک آماده به توسعه‌دهنده یا ایجنت هوش مصنوعی بدهید. گروه‌های شماره‌دار و فلش‌ها را دنبال کنید (۱ تا ۶). هر کارت اول **انگلیسی** و بعد **فارسی** توضیح داده شده است.
+
+**1️⃣ Architecture معماری → 2️⃣ Structure ساختار → 3️⃣ Login ورود → 4️⃣ Tokens توکن‌ها → 5️⃣ Post-Login پس از ورود → 6️⃣ OWASP**
+
+---
+
+## 🧱 Tech Stack | پشته‌ی فناوری
+
+🇬🇧
+- **Database → MongoDB** — no SQL, so schema changes never need migrations; updates stay fast and painless.
+- **Frontend → React** — light and fast UI.
+- **Backend → Next.js + Node.js** architecture — fast and reliable, one codebase for app + API.
+
+🇮🇷
+- **دیتابیس → MongoDB** — بدون SQL؛ تغییرات شِما نیازی به migration ندارند و آپدیت‌ها سریع و بی‌دردسر می‌مانند.
+- **فرانت‌اند → React** — رابط کاربری سبک و سریع.
+- **بک‌اند → Next.js + Node.js** — سریع و قابل‌اعتماد؛ یک کدبیس برای اپ و API.
+
+---
+
+## 🎯 Engineering Goals | اهداف مهندسی
+
+🇬🇧
+- **Update-resilient:** any update to the database or the code must never break the project — this is why SQL is avoided entirely.
+- **SEO-first:** every public page must be fully SEO-optimized — practical, working on-page SEO on all public routes (very important).
+
+🇮🇷
+- **مقاوم در برابر آپدیت:** هیچ آپدیتی روی دیتابیس یا کد نباید پروژه را بشکند — به همین دلیل اصلاً از SQL استفاده نمی‌شود.
+- **سئو محور:** تمام صفحات عمومی باید سئوی کامل، کاربردی و واقعی داشته باشند (خیلی مهم).
+
+---
+
+## 🗂 Project Structure | ساختار پروژه
+
+🇬🇧 The whole project lives in **src/** and must follow this exact structure:
+
+```text
+src/
+├── app/            → Frontend pages & routing
+│   └── api/        → Backend & API routes
+├── public/
+│   ├── img/        → Site images
+│   └── font/       → Site fonts
+├── controllers/    → HTTP responses
+├── services/       → All business logic
+├── components/     → UI & styles (auth, theme, layout, ui)
+└── utils/          → Libraries, realtime, helpers
+.env                → Secrets: token keys, DB URI (never commit!)
+```
+
+🇮🇷 کل پروژه در **src/** است و باید دقیقاً از این ساختار پیروی کند:
+- **app** → صفحه‌بندی و routing فرانت — **api** داخل آن: مسئول بک‌اند و APIها
+- **public** → عکس‌ها در **img** و فونت‌ها در **font**
+- **controllers** → در این قسمت responseها داده می‌شوند
+- **services** → کل منطق هر بخش اینجا نوشته می‌شود
+- **components** → UI و استایل هر بخش (زیرمجموعه‌های auth، theme، layout، ui)
+- **utils** → کتابخانه‌ها، ارتباط‌های real-time و کارهای جانبی و کمکی
+- **.env** → کلیدهای امنیتی توکن‌ها، آدرس اتصال به دیتابیس و سایر اسرار
+
+---
+
+## ✨ Code Style | سبک کدنویسی
+
+🇬🇧
+- **Clean code:** anyone must be able to read and understand the code, so future updates stay painless.
+- **Componentize everything:** convert every reusable piece into a component under **components/** (auth, theme, layout, ui) so the project stays scalable.
+
+🇮🇷
+- **کد تمیز:** هر آدمی باید بفهمد کد چیست تا بعد از آپدیت‌ها اذیت نشوی و پروژه قابل‌توسعه بماند.
+- **کامپوننت‌محور:** هر بخش قابل‌استفاده را تا جای ممکن به کامپوننت تبدیل کن — این پوشه خیلی مهم است.
+
+---
+
+## 🚪 Login Requirements | الزامات امنیتی ورود
+
+🇬🇧 **1. Password hashing** — store passwords only with **Bcrypt** or **Argon2**; plain text is forbidden.
+🇮🇷 **۱. هش کردن پسورد** — ذخیره‌ی رمز عبور در دیتابیس فقط با **Bcrypt** یا **Argon2** مجاز است؛ ذخیره‌ی متن خام ممنوع.
+
+🇬🇧 **2. Rate limit** — max **5 login requests per 15 minutes** for each IP; violators get a temporary IP block.
+🇮🇷 **۲. محدودیت تلاش (Rate Limit)** — حداکثر **۵ درخواست لاگین در ۱۵ دقیقه** برای هر آی‌پی؛ در صورت تخلف، بلاک موقت آی‌پی.
+
+🇬🇧 **3. Unified error message** — never reveal whether the username or the password was wrong; only one generic message.
+🇮🇷 **۳. پیام خطای یکپارچه** — سیستم نباید بگوید یوزرنیم اشتباه است یا پسورد؛ فقط یک پیام کلی: «نام کاربری یا رمز عبور اشتباه است».
+
+🇬🇧 **4. Secure token storage** — the login JWT must only live in **HttpOnly + Secure** cookies so XSS cannot steal it.
+🇮🇷 **۴. توکن امن** — توکن ورود (JWT) فقط در کوکی‌های **HttpOnly** و **Secure** قرار گیرد تا با XSS قابل‌سرقت نباشد.
+
+🇬🇧 **5. Strict input validation** — every field (e.g. local full name, English username, phone number in your locale’s format such as an 11-digit Iranian mobile) must be regex-validated **server-side** so malicious payloads (SQLi / XSS) never reach the database.
+🇮🇷 **۵. اعتبارسنجی سختگیرانه‌ی اینپوت‌ها** — تمامی فیلدها (مثلاً نام کامل محلی، یوزرنیم انگلیسی، شماره تلفن با الگوی منطقه‌ی شما مثل موبایل ۱۱ رقمی ایران) باید در سمت سرور با Regex فیلتر شوند تا کدهای مخرب (SQLi/XSS) نتوانند وارد دیتابیس شوند.
+
+---
+
+## 🔑 Two Tokens, Two Secrets | دو توکن، دو کلید
+
+🇬🇧 After login, the backend (in **src/app/api/**) must issue:
+- **Access token — 2 minutes** and **Refresh token — 15 days**, each signed with its **own 128-character security key** generated with crypto and stored in .env.
+- The samples below are **Express.js** — convert them for the **Next.js App Router API**.
+
+🇮🇷 بعد از لاگین، بک‌اند (در **src/app/api/**) باید:
+- **توکن دسترسی — ۲ دقیقه** و **توکن تازه‌سازی — ۱۵ روز** را صادر کند؛ هرکدام با **کلید امنیتی جداگانه‌ی ۱۲۸ کاراکتری** ساخته‌شده با crypto و ذخیره‌شده در .env.
+- کدهای نمونه زیر **Express.js** هستند — آن‌ها را برای **API بک‌اند Next.js** تبدیل کن.
+
+---
+
+## 🟠 Access Token — Generate & Verify | ساخت و رمزگشایی
+
+🇬🇧 Short-lived (2 min) token carrying **id, role, firstName** and a unique **jti**.
+🇮🇷 توکن کوتاه‌عمر (۲ دقیقه) با **id، role، firstName** و شناسه‌ی یکتای **jti**.
+
+**Generate | ساخت:**
+```js
+import "dotenv/config";
+import jwt from "jsonwebtoken";
+import crypto from "crypto";
+
+export default function GenerateAccessToken(user) {
+  try {
+    return jwt.sign(
+      { id: user._id, role: user.role, firstName: user.firstName, jti: crypto.randomUUID() },
+      process.env.Access_Token_Security_Code,
+      { expiresIn: "2m" }
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+```
+
+**Verify | رمزگشایی:**
+```js
+import "dotenv/config";
+import jwt from "jsonwebtoken";
+
+export default function verifyAccessToken(token) {
+  try {
+    return jwt.verify(token, process.env.Access_Token_Security_Code);
+  } catch (error) {
+    return null;
+  }
+}
+```
+
+---
+
+## 🍪 Access Token Cookie | کوکی توکن دسترسی
+
+🇬🇧 HttpOnly, Secure in production, 2-minute lifespan.
+🇮🇷 کوکی HttpOnly و Secure در پروداکشن با عمر ۲ دقیقه.
+
+```js
+res.cookie("accessToken", accessToken, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "strict",
+  maxAge: 2 * 60 * 1000,
+});
+```
+
+⚠️ 🇬🇧 Set SameSite to **strict/lax** here as well — required by the CSRF policy in the OWASP group (the early draft used an empty value).
+⚠️ 🇮🇷 SameSite را اینجا هم **strict/lax** بگذار — طبق سیاست CSRF در گروه OWASP (پیش‌نویس اولیه مقدار خالی داشت).
+
+---
+
+## 🔵 Refresh Token — Generate & Verify | ساخت و رمزگشایی
+
+🇬🇧 Long-lived (15 days) token with its **own 128-char secret key**; carries **id, firstName, jti**.
+🇮🇷 توکن بلندعمر (۱۵ روز) با **کلید امنیتی ۱۲۸ کاراکتری جدا**؛ شامل **id، firstName و jti**.
+
+**Generate | ساخت:**
+```js
+import "dotenv/config";
+import jwt from "jsonwebtoken";
+import crypto from "crypto";
+
+export default function GenerateRefreshToken(user) {
+  try {
+    return jwt.sign(
+      { id: user._id, firstName: user.firstName, jti: crypto.randomUUID() },
+      process.env.Refresh_Token_Security_Code,
+      { expiresIn: "15d" }
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+```
+
+**Verify | رمزگشایی:**
+```js
+import "dotenv/config";
+import jwt from "jsonwebtoken";
+
+export default function verifyRefreshToken(token) {
+  try {
+    return jwt.verify(token, process.env.Refresh_Token_Security_Code);
+  } catch (error) {
+    return null;
+  }
+}
+```
+
+---
+
+## 🍪➡️ 🚪 Refresh Cookie & Logout | کوکی تازه‌سازی و خروج
+
+🇬🇧 The refresh cookie lives 15 days; logout clears **both** cookies with identical flags.
+🇮🇷 کوکی تازه‌سازی ۱۵ روز عمر دارد؛ خروج **هر دو** کوکی را با همان فلگ‌ها پاک می‌کند.
+
+**Refresh cookie | کوکی تازه‌سازی:**
+```js
+res.cookie("refreshToken", refreshToken, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "strict",
+  maxAge: 15 * 24 * 60 * 60 * 1000,
+});
+```
+
+**Logout — clear both cookies | خروج — پاک‌کردن هر دو کوکی:**
+```js
+export default function ClearTokenCookies(res) {
+  res.clearCookie("accessToken", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+  });
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+  });
+}
+```
+
+---
+
+## ⏱ Session Management | مدیریت نشست
+
+🇬🇧
+- **Idle timeout:** 15–30 min of inactivity → the session expires and the user must log in again.
+- **Absolute timeout:** even active users are logged out after ~8 hours so stolen long-lived tokens become useless.
+- **Single active session:** a user must not be logged in from two devices/browsers at once; a new login instantly invalidates the previous session.
+
+🇮🇷
+- **انقضای بی‌فعالیتی:** ۱۵ تا ۳۰ دقیقه بی‌فعالیتی → سشن خودکار منقضی شود و کاربر دوباره لاگین کند.
+- **انقضای مطلق:** حتی اگر کاربر مدام فعال باشد، بعد از مثلاً ۸ ساعت سشن قطع شود تا توکن‌های سرقت‌شده‌ی طولانی‌مدت کار نکنند.
+- **کنترل ورود همزمان:** یک کاربر نباید همزمان از دو دستگاه یا دو مرورگر وارد شود؛ ورود جدید، سشن دستگاه قبلی را فوراً باطل کند.
+
+---
+
+## 🧱 Data Isolation & IDOR | جداسازی داده و جلوگیری از IDOR
+
+🇬🇧 **RBAC isolation**
+- A user must **never** see another user’s files, tasks, messages or customer data.
+- Every database query must filter by the logged-in user (**user_id = current user**).
+- Only admins may see global reports and every user’s data.
+
+🇬🇧 **IDOR prevention**
+- Changing an id in the API URL (e.g. **/api/files/101 → /api/files/102**) must never return someone else’s data.
+- The server must verify **ownership of every requested id** against the logged-in user; prefer **UUIDs** over sequential ids (helpful, not sufficient alone).
+
+🇮🇷 **جداسازی نقش‌محور (RBAC)**
+- کاربر تحت هیچ شرایطی نباید فایل‌ها، تسک‌ها، پیام‌ها و داده‌ی مشتریانِ کاربر دیگر را ببیند.
+- همه‌ی کوئری‌های دیتابیس باید فیلتر **user_id = کاربر لاگین‌شده** داشته باشند.
+- فقط مدیران (admin) باید بتوانند گزارش‌های کلان و داده‌های همه‌ی کاربران را ببینند.
+
+🇮🇷 **جلوگیری از IDOR**
+- هکر نباید با تغییر آیدی در آدرس API (مثلاً **/api/files/101 به /api/files/102**) به داده‌ی شخص دیگری دسترسی پیدا کند.
+- سرور در هر درخواست باید مالکیت آیدی را نسبت به یوزر لاگین‌شده چک کند؛ استفاده از **UUID** به‌جای آیدی ترتیبی (کمکی، نه کامل).
+
+---
+
+## 😶 Data Masking | ماسک‌کردن اطلاعات حساس
+
+🇬🇧 Sensitive customer data — phone numbers above all — is the crown jewels of any product. In list views it must appear **masked** (e.g. **0912\*\*\*\*567**); the full value is revealed only through a **“View” button — and every reveal is logged**. This stops a rogue user or employee from bulk-exporting the data.
+
+🇮🇷 داده‌های حساس مشتریان — بالاخص شماره تماس — ارزشمندترین دارایی هر محصول است. در لیست‌ها باید **ماسک‌شده** نمایش داده شود (مثلاً **0912\*\*\*\*567**)؛ نمایش کامل فقط با کلیک روی دکمه‌ی **«مشاهده»** انجام شود که در لاگ ثبت می‌گردد. این کار از خروجی‌گرفتن دسته‌جمعی دیتا توسط کاربر یا کارمند سوءاستفاده‌گر جلوگیری می‌کند.
+
+---
+
+## 📎 File Upload Security | امنیت آپلود فایل
+
+🇬🇧 For user uploads (images, documents, PDFs — adapt the whitelist to your product):
+- Only whitelisted formats are accepted (e.g. **jpg, png, pdf**) — check the extension **and** the MIME type.
+- Filenames are **randomized on the server** so users cannot guess storage paths.
+- Uploaded files get **no execute permission** → hacker web shells cannot run.
+- Store uploads in **cloud storage**, never inside the code or the database — apply this across the whole project wherever uploads exist.
+
+🇮🇷 برای فایل‌های آپلودی کاربران (عکس، مدرک، PDF — لیست مجاز را مطابق محصول خود تنظیم کنید):
+- فقط فرمت‌های مجاز از **Whitelist** (مثل **jpg، png، pdf**) پذیرفته شود — با بررسی پسوند **و** MIME Type.
+- نام فایل‌ها در سرور به‌صورت **رندوم** تغییر کند تا کاربر نتواند مسیر سرور را حدس بزند.
+- فایل‌های آپلودی نباید **دسترسی اجرایی (Execute)** داشته باشند تا از آپلود و اجرای شل‌های هکری (Web Shell) جلوگیری شود.
+- ذخیره‌سازی در **فضای ابری**، نه داخل کد یا دیتابیس — در تمام بخش‌هایی که آپلود دارند اعمال شود.
+
+---
+
+## 🤖 Chat & AI Security | امنیت چت و هوش مصنوعی
+
+🇬🇧
+- **Internal chat:** messages must be **sanitized** before storage so users cannot inject malicious scripts (XSS) into messages.
+- **AI inputs:** every request needs a **rate limit + character-length limit**, so a single user cannot inflate your AI API costs with heavy requests (prompt-injection & abuse protection).
+
+🇮🇷
+- **چت داخلی:** پیام‌ها باید قبل از ذخیره در دیتابیس **پاکسازی (Sanitize)** شوند تا کاربران نتوانند کدهای مخرب (XSS) در پیام‌ها قرار دهند.
+- **ورودی هوش مصنوعی:** درخواست‌ها باید **محدودیت تعداد (Rate Limit) و طول کاراکتر** داشته باشند تا یک کاربر با ارسال درخواست‌های سنگین، هزینه‌ی API هوش مصنوعی را بالا نبرد (محافظت از Prompt Injection).
+
+---
+
+## 📜 Audit Trail | لاگ‌گیری اقدامات حساس
+
+🇬🇧 Every sensitive action — viewing sensitive data, editing or deleting records, downloading files — must be logged in a log table with **IP + timestamp + username + action type**, so if information ever leaks, the administrator can trace exactly **who leaked what, and when**.
+
+🇮🇷 هر اقدام حساس — مشاهده‌ی داده‌ی حساس، تغییر یا حذف رکورد، دانلود فایل — باید در جدول لاگ با ثبت **آی‌پی + زمان + یوزرنیم + نوع عملیات** ذخیره شود تا در صورت لو رفتن اطلاعات، مدیر سیستم دقیقاً بفهمد **چه کسی، چه چیزی را، کِی لو داده است**.
+
+---
+
+## 🐞 Threats 1–5 | تهدیدهای ۱ تا ۵
+
+**1 — SQL Injection | تزریق SQL**
+🇬🇧 Attackers must never be able to inject malicious SQL through user inputs — e.g. bypassing login with **’ OR 1=1 --**. Sanitize every input.
+🇮🇷 مهاجم نبتواند از طریق ورودی‌های کاربر دستورات SQL مخرب به دیتابیس تزریق کند و نتواند با **’ OR 1=1 --** احراز هویت را دور بزند.
+
+**2 — XSS | اسکریپت‌نویسی بین‌سایتی**
+🇬🇧 All three types — **Reflected, Stored, DOM-based** — must be blocked; otherwise attackers run malicious JavaScript in the victim’s browser to steal cookies/sessions or tamper with user actions.
+🇮🇷 هر سه نوع — **Reflected، Stored و DOM-based** — باید مسدود باشند؛ وگرنه مهاجم جاوااسکریپت مخرب در مرورگر قربانی اجرا می‌کند، کوکی‌ها را می‌دزدد، سشن را می‌قاپد یا عملیات کاربران را تغییر می‌دهد.
+
+**3 — CSRF | جعل درخواست بین‌سایتی**
+🇬🇧 Browsers auto-send cookies with every request; attackers trick users into unwanted actions (money transfer, password change). Fix: **CSRF Token** in forms + **SameSite=Strict/Lax** cookies + **re-confirmation for sensitive operations**.
+🇮🇷 مرورگر قربانی خودکار کوکی‌ها را همراه درخواست می‌فرستد؛ مهاجم با فریب کاربر باعث ارسال درخواست ناخواسته می‌شود. راه‌حل: **توکن CSRF** در فرم‌ها + فلگ **SameSite=Strict/Lax** روی کوکی‌ها + **درخواست مجوز مجدد** برای عملیات‌های حساس.
+
+**4 — IDOR | ارجاع مستقیم ناامن**
+🇬🇧 See the **Data Isolation & IDOR** card in group 5 — server-side authorization per request, Object-Level Authorization, UUIDs.
+🇮🇷 کارت **جداسازی داده و IDOR** در گروه ۵ را ببینید — بررسی دسترسی در سمت سرور برای هر درخواست، Object-Level Authorization و UUID.
+
+**5 — Authentication Failures | شکست در احراز هویت و مدیریت سشن**
+🇬🇧 Weak/default passwords, session hijacking (XSS/sniffing), session fixation, no session expiry, no rate limit on login (brute force). Fix: **Secure + HttpOnly + SameSite** cookies, session expiry + **id regeneration after login**, **account lockout** after failed attempts.
+🇮🇷 رمزهای ضعیف یا پیش‌فرض، Session Hijacking، Session Fixation، عدم انقضای نشست‌ها، نبود Rate Limit در لاگین (امکان Brute Force). راه‌حل: کوکی‌های **Secure/HttpOnly/SameSite**، انقضای سشن و **بازتولید شناسه بعد از لاگین** و **قفل حساب پس از تلاش‌های ناموفق**.
+
+---
+
+## 🐞 Threats 6–10 | تهدیدهای ۶ تا ۱۰
+
+**6 — Sensitive Data Exposure | افشای داده‌های حساس**
+🇬🇧 Moving or storing sensitive data without proper encryption. Fix: **HTTPS mandatory (TLS 1.2+ & HSTS)**; never MD5/unsalted hashes — **bcrypt/Argon2** only; **encrypt data at rest & in transit**; proper **secrets management**; never show **stack traces** to users; never put **API keys in frontend code**.
+🇮🇷 انتقال یا ذخیره‌ی اطلاعات حساس بدون رمزنگاری مناسب. راه‌حل: **HTTPS اجباری با TLS 1.2+ و HSTS**؛ هرگز MD5 یا هش بدون salt — فقط **bcrypt/Argon2**؛ **رمزنگاری داده‌های حساس در Rest و Transit**؛ **مدیریت صحیح کلیدها و اسرار**؛ عدم نمایش **Stack Trace** به کاربر؛ قرارندادن **API Key در کد فرانت‌اند** ممنوع.
+
+**7 — SSRF | جعل درخواست سمت سرور**
+🇬🇧 Attackers force the server to call internal network addresses — e.g. a profile image-URL field reading **http://169.254.169.254/** (AWS metadata). Fix: **whitelist allowed domains**, **block internal & loopback IPs**, **no automatic redirects**.
+🇮🇷 مهاجم سرور را وادار می‌کند به آدرس‌های داخلی شبکه درخواست بفرستد — مثلاً فیلد URL عکس پروفایل با **http://169.254.169.254/** اطلاعات حساس سرور را می‌خواند. راه‌حل: **Whitelist دامنه‌های مجاز**، **مسدودکردن IPهای داخلی و Loopback**، **عدم ارسال خودکار Redirectها**.
+
+**8 — Security Misconfiguration | پیکربندی ناامن**
+🇬🇧 Debug mode in production, directory listing enabled, default pages & server version banners (e.g. **Server: Apache 2.4.49**), CORS set to **\***, unprotected admin panels. Fix: **server hardening**, remove unneeded services, **CORS only for allowed domains**, **Security Headers**.
+🇮🇷 حالت Debug در Production، Directory Listing فعال، صفحات پیش‌فرض و اطلاعات نسخه‌ی سرور (مثل **Server: Apache 2.4.49**)، CORS با تنظیمات باز (**\***) و پنل‌های مدیریتی بدون محافظت. راه‌حل: **Hardening سرور** و حذف سرویس‌های غیرضروری، **تنظیم CORS فقط برای دامنه‌های مجاز** و **Security Headers**.
+
+**9 — Vulnerable Components | کامپوننت‌های آسیب‌پذیر**
+🇬🇧 Old libraries/frameworks with known vulnerabilities. Fix: **regular package updates**, review the details, **remove unused dependencies**.
+🇮🇷 استفاده از کتابخانه‌ها و فریم‌ورک‌های قدیمی با آسیب‌پذیری شناخته‌شده. راه‌حل: **به‌روزرسانی منظم پکیج‌ها**، بررسی جزئیات و **حذف وابستگی‌های استفاده‌نشده**.
+
+**10 — Unsafe File Uploads | آپلود ناامن فایل‌ها**
+🇬🇧 Malicious uploads such as web shells via extension tricks. Fix: **whitelist extensions & MIME types**, **random filenames stored outside the web root**, **antivirus scanning**, **no execute permission** — full details in the File Upload card (group 5).
+🇮🇷 آپلود فایل مخرب مثل **Webshell** با تغییر پسوند. راه‌حل: **Whitelist پسوندها و MIME Typeها**، **تغییر نام فایل‌ها و ذخیره خارج از ریشه‌ی وب**، **اسکن آنتی‌ویروس**، **حذف دسترسی اجرا** — جزئیات کامل در کارت آپلود فایل (گروه ۵).
+
+---
+
+## 🔗 Learn & Extend | یادگیری و توسعه
+
+🇬🇧 Use the official OWASP Top 10 repository to study further security topics **and support them in this project too**.
+
+🇮🇷 برای فهمیدن جزئیات امنیتی بیشتر و اینکه موارد امنیتی دیگر هم در همین پروژه پشتیبانی شوند، از این مخزن گیت‌هاب کمک بگیر:
+
+**https://github.com/OWASP/Top10/**</script>
   <section class="card prompt-card reveal" id="security-blueprint" aria-labelledby="security-blueprint-title">
     <div class="prompt-head">
       <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3.2v5.1c0 4.6-3 7.7-7 9.2-4-1.5-7-4.6-7-9.2V6.2L12 3z"/></svg></span>
@@ -123,7 +855,7 @@
       <span class="pill pill--dark">Spec ready</span>
       <span class="pill ">1.0.0</span>
       <span class="pill ">Bilingual FA · EN</span>
-      <a class="pill pill-link" href="p/security-blueprint/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <a class="pill pill-link" href="security/security-blueprint/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
       <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="security-blueprint" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
     </div>
 
@@ -332,7 +1064,7 @@ Reference: https://github.com/OWASP/Top10
       <span class="pill pill--dark">Ready</span>
       <span class="pill ">1.0.0</span>
       <span class="pill ">Structure</span>
-      <a class="pill pill-link" href="p/nextjs-project-structure/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <a class="pill pill-link" href="structure/nextjs-project-structure/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
       <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="nextjs-project-structure" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
     </div>
 
@@ -459,7 +1191,7 @@ The whole project lives in src/ with this exact layout:
       <span class="pill pill--dark">Style ready</span>
       <span class="pill ">1.0.0</span>
       <span class="pill ">Design system</span>
-      <a class="pill pill-link" href="p/grainy-sage-editorial/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <a class="pill pill-link" href="ui/grainy-sage-editorial/">Full text <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
       <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="grainy-sage-editorial" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
     </div>
 
