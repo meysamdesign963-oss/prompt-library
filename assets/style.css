@@ -689,3 +689,21 @@ button{font-family:inherit}
 .cv-node .md-body > *:first-child{margin-top:0}
 [data-theme="dark"] .cv-node{box-shadow:0 4px 14px rgba(0,0,0,.4)}
 [data-theme="dark"] .cv-node.is-dragging{box-shadow:0 12px 30px rgba(0,0,0,.55)}
+
+
+/* ============ Canvas fullscreen ============ */
+.fs-ic{display:flex;align-items:center;justify-content:center}
+.fs-ic svg{width:13px;height:13px}
+.fs-ic--min{display:none}
+[data-canvas-view].is-fullscreen .fs-ic--min{display:flex}
+[data-canvas-view].is-fullscreen .fs-ic--expand{display:none}
+[data-canvas-view]:fullscreen{
+  width:100%;height:100%;
+  background:var(--sheet);
+  border-radius:0;box-shadow:none;
+  display:flex;flex-direction:column;
+  padding:14px 18px;
+  overflow:hidden;
+}
+[data-canvas-view]:fullscreen .canvas-stage{flex:1;height:auto;min-height:0}
+[data-canvas-view]:fullscreen .canvas-toolbar{margin-bottom:10px}

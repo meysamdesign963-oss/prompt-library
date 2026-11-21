@@ -280,6 +280,47 @@ function wireCanvas() {
   if (fitBtn) fitBtn.addEventListener("click", fit);
   document.addEventListener("canvas-refit", fit);
 
+  /* fullscreen */
+  const fsBtn = document.querySelector("[data-canvas-fullscreen]");
+  const fsSec = document.querySelector("[data-canvas-view]");
+  if (fsBtn && fsSec) {
+    fsBtn.addEventListener("click", () => {
+      try {
+        if (document.fullscreenElement) {
+          (document.exitFullscreen || document.webkitExitFullscreen)?.call(document);
+        } else {
+          const el = fsSec;
+          (el.requestFullscreen || el.webkitRequestFullscreen)?.call(el);
+        }
+      } catch (_) {}
+    });
+    const onFsChange = () => {
+      const on = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      fsSec.classList.toggle("is-fullscreen", on);
+      requestAnimationFrame(() => fit());
+    };
+    document.addEventListener("fullscreenchange", onFsChange);
+    document.addEventListener("webkitfullscreenchange", onFsChange);
+  }
+
+  /* keyboard navigation: + / - / F / arrow-pan */
+  document.addEventListener("keydown", (e) => {
+    if (!fsSec || fsSec.hidden) return;
+    if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+    const r = stage.getBoundingClientRect();
+    const k = e.key;
+    if (k === "+" || k === "=") {
+      zoomAt(r.left + r.width / 2, r.top + r.height / 2, clampScale(scale * 1.25));
+    } else if (k === "-" || k === "_") {
+      zoomAt(r.left + r.width / 2, r.top + r.height / 2, clampScale(scale / 1.25));
+    } else if (k === "f" || k === "F") {
+      fit();
+    } else if (k === "ArrowLeft") { tx += 60; applyView(); e.preventDefault(); }
+    else if (k === "ArrowRight") { tx -= 60; applyView(); e.preventDefault(); }
+    else if (k === "ArrowUp") { ty += 60; applyView(); e.preventDefault(); }
+    else if (k === "ArrowDown") { ty -= 60; applyView(); e.preventDefault(); }
+  });
+
   redrawEdges();
   requestAnimationFrame(() => requestAnimationFrame(fit));
 }

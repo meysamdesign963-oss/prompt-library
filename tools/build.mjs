@@ -65,6 +65,7 @@ const ICONS = {
   globe: svg('<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.8 2.7 2.8 14.3 0 17-2.8-2.7-2.8-14.3 0-17z"/>'),
   moon: svg('<path d="M20 12.5A8 8 0 1 1 11.5 4a6.5 6.5 0 0 0 8.5 8.5z"/>'),
   zoomin: svg('<path d="M12 5v14M5 12h14"/>'),
+  min: svg('<path d="M4 14h6v6"/><path d="M14 10h6V4"/><path d="M14 10l7-7"/><path d="M3 21l7-7"/>'),
   zoomout: svg('<path d="M5 12h14"/>'),
   sun: svg('<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>'),
 };
@@ -682,6 +683,10 @@ function canvasStageBlock(p) {
         <span class="zoom-label" data-zoom-label>100%</span>
         <button class="icon-btn" type="button" data-zoom="in" title="Zoom in" aria-label="Zoom in">${icon("zoomin")}</button>
         <button class="pill pill-link" type="button" data-canvas-fit>Fit</button>
+        <button class="icon-btn" type="button" data-canvas-fullscreen title="Toggle fullscreen">
+          <span class="fs-ic fs-ic--expand">${icon("expand")}</span>
+          <span class="fs-ic fs-ic--min">${icon("min")}</span>
+        </button>
       </div>
     </div>
     <div class="canvas-stage" data-canvas-stage></div>
