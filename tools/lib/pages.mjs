@@ -209,8 +209,9 @@ export function promptPage(p, all) {
 }
 
 export function notFoundPage(prompts) {
+  const pre = BASE + "/"; // absolute: GH Pages serves 404.html at any unknown path depth
   return shell({
-    pre: "",
+    pre, // absolute: GH Pages serves 404.html at any unknown path depth
     title: "Page not found — Prompt Library",
     desc: "The page you requested does not exist in the Prompt Library.",
     canonical: BASE + "/404.html",
@@ -221,7 +222,7 @@ export function notFoundPage(prompts) {
       <span class="icon-tile icon-tile--lg">${icon("filecode")}</span>
       <p class="row-name">Page not found</p>
       <p class="row-text">The prompt or category you're looking for doesn't exist (yet).</p>
-      <a class="pill pill-link" href="/">Back to the library ${icon("arrow")}</a>
+      <a class="pill pill-link" href="${pre}">Back to the library ${icon("arrow")}</a>
     </div>
   </div>`,
   }) + `
@@ -232,6 +233,9 @@ var PL_CATS = ${JSON.stringify(Object.keys(CATS))};
   var h = location.hash || "", m;
   if ((m = h.match(/^#\\/p\\/([^/?]+)/)) && PL_MAP[m[1]]) location.replace("/" + PL_MAP[m[1]]);
   else if ((m = h.match(/^#\\/c\\/([^/?]+)/)) && PL_CATS.indexOf(m[1]) !== -1) location.replace("/" + m[1] + "/");
+  var pth = location.pathname, m2;
+  if ((m2 = pth.match(/\\/p\\/([^/]+)\\/?$/)) && PL_MAP[m2[1]]) location.replace("/" + PL_MAP[m2[1]]);
+  else if ((m2 = pth.match(/\\/c\\/([^/]+)\\/?$/)) && PL_CATS.indexOf(m2[1]) !== -1) location.replace("/" + m2[1] + "/");
 })();
 </script>`;
 }
