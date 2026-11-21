@@ -25,7 +25,7 @@ A **universal, project-agnostic security & engineering blueprint** for any web a
 ### 🚀 Use It as a Prompt
 
 1. **Fork or copy** this repository (or just the canvas file) into your project
-2. Open `Security-Blueprint.canvas` in [Obsidian](https://obsidian.md) — or any [JSON Canvas](https://jsoncanvas.org) compatible app
+2. Open `Prompt-Library.canvas` in [Obsidian](https://obsidian.md) — or any [JSON Canvas](https://jsoncanvas.org) compatible app
 3. Hand it to your **developer or AI coding agent** as the security & engineering spec
 4. Adapt the product-specific examples (upload whitelist, phone format, masked fields) to your own domain — everything else applies as-is
 
@@ -33,7 +33,7 @@ A **universal, project-agnostic security & engineering blueprint** for any web a
 
 | File | Description |
 |---|---|
-| [`Security-Blueprint.canvas`](./Security-Blueprint.canvas) | The full interactive blueprint (Obsidian / JSON Canvas format) |
+| [`Prompt-Library.canvas`](./Prompt-Library.canvas) | The full interactive blueprint (Obsidian / JSON Canvas format) |
 | `README.md` | This bilingual guide |
 
 ### 🗺 Blueprint Map — 6 Categories
@@ -109,7 +109,7 @@ src/
 ### 📖 How to Open the Canvas
 
 1. Install [Obsidian](https://obsidian.md) (free), open this folder as a vault
-2. Click `Security-Blueprint.canvas`
+2. Click `Prompt-Library.canvas`
 3. Follow the numbered groups and arrows (1 → 6)
 
 No Obsidian? Any app that supports the open [JSON Canvas](https://jsoncanvas.org) spec can read the file.
@@ -127,7 +127,7 @@ No Obsidian? Any app that supports the open [JSON Canvas](https://jsoncanvas.org
 ### 🚀 استفاده به‌عنوان پرامپت
 
 1. این ریپو (یا فقط فایل کانواز) را **فورک یا کپی** کنید داخل پروژه‌ی خودتان
-2. `Security-Blueprint.canvas` را در [Obsidian](https://obsidian.md) — یا هر برنامه‌ی سازگار با [JSON Canvas](https://jsoncanvas.org) — باز کنید
+2. `Prompt-Library.canvas` را در [Obsidian](https://obsidian.md) — یا هر برنامه‌ی سازگار با [JSON Canvas](https://jsoncanvas.org) — باز کنید
 3. آن را به‌عنوان اسپک امنیتی و مهندسی به **توسعه‌دهنده یا ایجنت هوش مصنوعی** خود بدهید
 4. مثال‌های وابسته به محصول (لیست آپلود مجاز، فرمت شماره تماس، فیلدهای ماسک‌شونده) را مطابق دامنه‌ی خودتان تنظیم کنید — بقیه بدون تغییر قابل اعمال است
 
@@ -135,7 +135,7 @@ No Obsidian? Any app that supports the open [JSON Canvas](https://jsoncanvas.org
 
 | فایل | توضیح |
 |---|---|
-| [`Security-Blueprint.canvas`](./Security-Blueprint.canvas) | نقشه‌ی کامل تعاملی (فرمت اوبسیدین / JSON Canvas) |
+| [`Prompt-Library.canvas`](./Prompt-Library.canvas) | نقشه‌ی کامل تعاملی (فرمت اوبسیدین / JSON Canvas) |
 | `README.md` | راهنمای دوزبانه (همین فایل) |
 
 ### 🗺 نقشه‌ی کانواز — ۶ دسته‌بندی
@@ -209,7 +209,7 @@ src/
 ### 📖 نحوه‌ی باز کردن کانواز
 
 1. [Obsidian](https://obsidian.md) رایگان را نصب کنید و این پوشه را به‌عنوان vault باز کنید
-2. روی `Security-Blueprint.canvas` کلیک کنید
+2. روی `Prompt-Library.canvas` کلیک کنید
 3. گروه‌های شماره‌دار و فلش‌ها را دنبال کنید (۱ تا ۶)
 
 اوبسیدین ندارید؟ هر برنامه‌ای که از استاندارد باز [JSON Canvas](https://jsoncanvas.org) پشتیبانی کند می‌تواند فایل را بخواند.
