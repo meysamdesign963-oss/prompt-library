@@ -232,19 +232,20 @@ export function renderCard(p, pre) {
 export function relatedSection(p, all, pre, relatedOf) {
   const rel = relatedOf(p, all);
   if (!rel.length) return "";
-  const rows = rel.map((q) =>
-    `<a class="row cat-row related-row" href="${pre}${q.cat}/${q.slug}/">
+  const rows = rel.map((q, i) =>
+    `<a class="row cat-row rel-row" href="${pre}${q.cat}/${q.slug}/">
+      <span class="step-tile" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
       <span class="icon-tile icon-tile--lg">${icon(q.icon)}</span>
       <div class="cat-body">
         <div class="cat-top"><span class="row-name">${q.name}</span><span class="row-sub">${CATS[q.cat].label}</span></div>
         <p class="row-text">${q.desc}</p>
       </div>
-      <span class="cat-no">${icon("arrow")}</span>
-    </a>`).join('<div class="connector" aria-hidden="true"></div>');
+      <span class="rel-arrow" aria-hidden="true">${icon("arrow")}</span>
+    </a>`).join('<div class="connector rel-connector" aria-hidden="true"></div>');
   return `
   <section class="card reveal" aria-labelledby="rel-title">
     ${cardHead("layers", "rel-title", "Similar prompts")}
-    <div class="timeline">${rows}</div>
+    <div class="timeline rel-timeline">${rows}</div>
   </section>`;
 }
 
