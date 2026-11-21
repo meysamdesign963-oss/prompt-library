@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Production Deploy Runbook — Server &amp; API Prompt · Prompt Library</title>
+<meta name="description" content="(دسته: سرور) روش کار عملیاتی استقرار — اجرا/تصاحب پورت dev، سیکل دیپلوی (توقف→بیلد→استارت)، راستی‌آزمایی (tsc/lint/چک سئو/اسکرین‌شات مرورگر)، دیتابیس و بکاپ، اسکریپت‌های مهاجرت، و دام‌های شناخته‌شده. در هر تسک اجرا/استقرار/بیلد/دیباگ لودنشدن استفاده شود. همچنین: «بیلد بزن»، «روی سرور بره»، «لود نمیشه»، «بکاپ»، «ریدایرکت».">
+<link rel="canonical" href="https://meysamdesign963-oss.github.io/prompt-library/server/deployment-runbook/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Library">
+<meta property="og:title" content="Production Deploy Runbook — Server &amp; API Prompt · Prompt Library">
+<meta property="og:description" content="(دسته: سرور) روش کار عملیاتی استقرار — اجرا/تصاحب پورت dev، سیکل دیپلوی (توقف→بیلد→استارت)، راستی‌آزمایی (tsc/lint/چک سئو/اسکرین‌شات مرورگر)، دیتابیس و بکاپ، اسکریپت‌های مهاجرت، و دام‌های شناخته‌شده. در هر تسک اجرا/استقرار/بیلد/دیباگ لودنشدن استفاده شود. همچنین: «بیلد بزن»، «روی سرور بره»، «لود نمیشه»، «بکاپ»، «ریدایرکت».">
+<meta property="og:url" content="https://meysamdesign963-oss.github.io/prompt-library/server/deployment-runbook/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#869A8C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161A17" media="(prefers-color-scheme: dark)">
+<script>(function(){var t;try{t=localStorage.getItem("pl-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})()</script>
+<link rel="preload" href="../../assets/fonts/IRANSansX-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/IRANSansX-DemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/IRANSansX-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"Production Deploy Runbook","headline":"Production Deploy Runbook","description":"(دسته: سرور) روش کار عملیاتی استقرار — اجرا/تصاحب پورت dev، سیکل دیپلوی (توقف→بیلد→استارت)، راستی‌آزمایی (tsc/lint/چک سئو/اسکرین‌شات مرورگر)، دیتابیس و بکاپ، اسکریپت‌های مهاجرت، و دام‌های شناخته‌شده. در هر تسک اجرا/استقرار/بیلد/دیباگ لودنشدن استفاده شود. همچنین: «بیلد بزن»، «روی سرور بره»، «لود نمیشه»، «بکاپ»، «ریدایرکت».","url":"https://meysamdesign963-oss.github.io/prompt-library/server/deployment-runbook/","inLanguage":["en","fa"],"keywords":"deployment, nextjs, production, runbook, windows","datePublished":"2026-11-21","dateModified":"2026-11-21","author":{"@type":"Person","name":"meysamdesign963-oss","url":"https://github.com/meysamdesign963-oss"},"isPartOf":{"@type":"WebSite","name":"Prompt Library","url":"https://meysamdesign963-oss.github.io/prompt-library/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Library","item":"https://meysamdesign963-oss.github.io/prompt-library/"},{"@type":"ListItem","position":2,"name":"Server & API","item":"https://meysamdesign963-oss.github.io/prompt-library/server/"},{"@type":"ListItem","position":3,"name":"Production Deploy Runbook","item":"https://meysamdesign963-oss.github.io/prompt-library/server/deployment-runbook/"}]}]}</script>
+</head>
+<body>
+
+
+  <header class="site-header reveal">
+    <div class="header-row">
+    <div class="brand">
+      <a class="brand-link" href="../../" aria-label="Prompt Library home">
+        <span class="brand-tile" aria-hidden="true"><img class="brand-logo" src="../../public/logo.svg" alt="" width="26"></span>
+        <div>
+          <h1 class="brand-name">Prompt Library</h1>
+          <p class="brand-sub">Curated specs &amp; prompts for builders</p>
+        </div>
+      </a>
+    </div>
+    
+    <div class="head-actions">
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle title="Toggle dark / light theme" aria-label="Toggle color theme">
+        <span class="theme-ic theme-ic--moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12.5A8 8 0 1 1 11.5 4a6.5 6.5 0 0 0 8.5 8.5z"/></svg></span>
+        <span class="theme-ic theme-ic--sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg></span>
+      </button>
+      <a class="pill pill-link" href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">
+        GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg>
+      </a>
+    </div>
+    </div>
+    <nav class="site-nav reveal" aria-label="Site sections"><a href="../../">Library</a><a href="../../security/">Security</a><a href="../../structure/">Structure</a><a href="../../ui/">UI & Design</a><a href="../../server/" class="is-active">Server & API</a></nav>
+  </header>
+
+<main class="sheet">
+
+
+  <div class="stack">
+    <section class="card reveal" aria-labelledby="pd-title">
+      <div class="prompt-head">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg></span>
+        <div class="prompt-id">
+          <h2 class="title-xl" id="pd-title">Production Deploy Runbook</h2>
+          <p class="title-sub">(دسته: سرور) روش کار عملیاتی استقرار — اجرا/تصاحب پورت dev، سیکل دیپلوی (توقف→بیلد→استارت)، راستی‌آزمایی (tsc/lint/چک سئو/اسکرین‌شات مرورگر)، دیتابیس و بکاپ، اسکریپت‌های مهاجرت، و دام‌های شناخته‌شده. در هر تسک اجرا/استقرار/بیلد/دیباگ لودنشدن استفاده شود. همچنین: «بیلد بزن»، «روی سرور بره»، «لود نمیشه»، «بکاپ»، «ریدایرکت».</p>
+        </div>
+        <div class="head-icons">
+          <a class="icon-btn" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/prompts/server/deployment-runbook.md" target="_blank" rel="noopener" title="Open source file"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg></a>
+        </div>
+      </div>
+      <div class="prompt-pills">
+        <span class="pill pill--dark">Server & API</span>
+        <span class="pill ">Ready</span>
+        <span class="pill ">1.0.0</span>
+        <span class="pill ">deployment · nextjs</span>
+        
+        <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="deployment-runbook" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+      </div>
+    </section>
+    
+    <section class="card reveal" data-text-view aria-label="Prompt full text">
+      <div class="md-body md-body--page"><h1>Production Deploy Runbook — اجرا، استقرار، راستی‌آزمایی</h1>
+<blockquote>
+<p>جمع‌بندی تجربه‌ی عملی استقرار Next.js روی ویندوز. قواعد پورت و سیکل دیپلوی باید با سیاست مدیر پروژه هماهنگ باشد و تغییراتش مستند.</p>
+</blockquote>
+<h2>۱) پورت dev/پروداکشن — مالکیت و تصاحب</h2>
+<ul>
+<li><strong>پورت اصلی = بیلد پروداکشن</strong> (<code>next start</code>)، هرگز <code>next dev</code>.</li>
+<li><strong>اگر پورت اشغال بود:</strong> پیدا کن، بکش، خودت بالا بیاور:<pre><code class="language-bash">netstat -ano | grep &quot;:3000&quot; | grep LISTENING        # PIDها
+for pid in $(netstat -ano | grep &quot;:3000&quot; | grep LISTENING | awk &#39;{print $NF}&#39; | sort -u); do taskkill //PID $pid //F; done
+</code></pre>
+</li>
+<li><strong>هرگز دو سرور روی یک پورت نباشد</strong> — دو پروسه‌ی هم‌زمان = <code>BUILD_ID</code> از <code>.next</code> خراب می‌شود/UI ناقص لود می‌شود. علامت بیماری: چند PID روی پورت + <code>ls .next/BUILD_ID</code> خالی → کلین‌بیلد از نو.</li>
+<li>پروسه‌های بک‌گراند <code>npm</code>/<code>next start</code> گاهی «exit 1» گزارش می‌شوند درحالی‌که سالم‌اند — همیشه با
+<code>curl -s -o /dev/null -w &quot;%{http_code}&quot; http://localhost:3000/</code> تصمیم بگیر، نه با status تسک.</li>
+</ul>
+<h2>۲) سیکل دیپلوی (توقف → بیلد → استارت)</h2>
+<p><strong>بیلد روی سرورِ در حال اجرا ممنوع</strong> — ویندوز روی فایل‌های <code>.next</code> قفل می‌گذارد و بیلد/استارت دوم
+با «Could not find production build» می‌میرد. ترتیب همیشه:</p>
+<pre><code class="language-bash"># ۱) توقف
+for pid in $(netstat -ano | grep &quot;:3000&quot; | grep LISTENING | awk &#39;{print $NF}&#39; | sort -u); do taskkill //PID $pid //F; done
+# ۲) بیلد
+npm run build
+# ۳) استارت (بک‌گراند) — فقط یک پروسه روی پورت
+npx next start
+# ۴) تأیید
+curl -s -o /dev/null -w &quot;%{http_code}&quot; http://localhost:3000/     # 200
+</code></pre>
+<ul>
+<li>اگر خروجی بیلد دوپهلو بود («Compiled successfully» و «Failed» با هم) — اجرای مجدد تمیز بگیر؛
+اغلب خروجی نیمه‌کاره‌ی یک اجرای قطع‌شده است.</li>
+<li>خروجی «Failed to compile» واقعی = دوباره <code>npm run build 2&gt;&amp;1 | tail -25</code> بگیر و خطا را بخوان.</li>
+</ul>
+<h2>۳) راستی‌آزمایی — قبل از هر کامیت</h2>
+<ol>
+<li><code>npx tsc --noEmit</code> → صفر خطا.</li>
+<li><code>npx eslint &lt;فایل‌های دست‌خورده&gt;</code> → صفر خطا (هشدارهای قدیمی‌شناخته اشکال ندارد).</li>
+<li><strong>سئو:</strong> اسکریپت چک سئوی پروژه را روی سرور لوکال اجرا کن (robots، متاها، X-Robots-Tag، 404 واقعی).</li>
+<li><strong>بصری:</strong> مرورگر in-app — دسکتاپ ۱۴۴۰×۹۰۰ + موبایل ۳۹۰×۸۴۴، اسکرین‌شات؛ برای اندازه‌گیری دقیق
+از <code>tab.playwright.evaluate</code> استفاده کن (عدد بده، حدس نزن).</li>
+<li>تست تعاملی (کلیک/فرم): اگر locator با نام فارسی timeout خورد، <strong>دوباره همان را retry نکن</strong> —
+<code>tab.playwright.evaluate</code> با <code>document.querySelector(...).click()</code> قطعی‌تر است، یا کلیک با
+مختصات از اسکرین‌شات تازه.</li>
+</ol>
+<h3>سرور موقت موازی (بدون دست زدن به پورت اصلی)</h3>
+<pre><code class="language-bash">NEXT_DIST_DIR=.next-verify npx next build     # خروجی جدا — در .gitignore است
+NEXT_DIST_DIR=.next-verify npx next start -p 3100
+# بعد از کار: هر PID لیسنر 3100 را taskkill کن
+</code></pre>
+<p>پورت اصلی برای تغییرِ env/CSS فقط با بیلد+ری‌استارت خودش به‌روز می‌شود.</p>
+<h2>۴) دیتابیس — بکاپ و مهاجرت</h2>
+<ul>
+<li>دیتابیس پروداکشن معمولاً <strong>لوکال</strong> است؛ رشته‌ی اتصال فقط از <code>.env</code> خوانده شود.</li>
+<li><strong>بکاپ:</strong> اگر <code>mongodump</code> نصب نیست، اکسپورت JSON همه کالکشن‌ها به <code>backups/db-&lt;timestamp&gt;/</code>
+(اسکریپت کوتاه با <code>connectDB</code> + <code>mongoose.connection.db.collections()</code>). پوشه <code>backups/</code> در
+<code>.gitignore</code> — <strong>دیتای کاربران دارد، هرگز کامیت نشود.</strong></li>
+<li>اسکریپت‌های مستقل tsx: <strong><code>.env</code> را خودشان باید لود کنند</strong> (tsx خودش نمی‌خواند) و در پایان
+<code>mongoose.connection.close()</code> یا <code>process.exit()</code> — وگرنه پروسه باز می‌ماند و «هنگ» به نظر می‌رسد.</li>
+<li>مهاجرت داده: همیشه اول dry-run، بعد <code>--write</code>؛ الگوی idempotent (upsert با کلید یکتا).</li>
+</ul>
+<h2>۵) سئو — قواعد حیاتی</h2>
+<ul>
+<li><strong><code>NEXT_PUBLIC_SITE_URL</code> هرگز localhost نماند</strong> — اگر robots.ts حالت staging داشته باشد،
+با URL لوکال کل سایت <code>Disallow: /</code> می‌شود + canonical/sitemap لوکالی می‌شوند. (<code>NEXT_PUBLIC_*</code>
+در build اینلاین می‌شود → تغییرش = بیلد مجدد.)</li>
+<li>ریدایرکت‌های غیرASCII در next.config باید <code>encodeURI(from)</code> باشند — Next فاز redirects را روی
+مسیر percent-encoded مقایسه می‌کند.</li>
+<li>فونت فارسی با <code>display:&quot;swap&quot;</code> + preload — سقف ۴ وزن.</li>
+<li>گیت سئو: چک‌لیست robots، متای صفحات، X-Robots-Tag روی /api و 404 واقعی.</li>
+</ul>
+<h2>۶) دام‌های شناخته‌شده (هرکدام یک بار گاز گرفته‌اند)</h2>
+<ul>
+<li><strong>CSS cascade:</strong> override فقط-موبایل را همیشه <strong>بعد از</strong> قانون پایه بنویس؛ قانون هم‌وزنِ قبلیِ
+فایل می‌بَرد. قانون base معمولاً پایین‌تر از جایی است که فکر می‌کنی.</li>
+<li><code>.gitignore</code>: خط با <code>\n</code> لفظی = قانون بی‌اثر. بعد از هر افزودن، <code>git status</code> را چک کن.</li>
+<li><code>sed</code> با متن فارسی/یونیکد روی این ماشین می‌شکند (ugrep alias + یونیکد) —
+از ابزار Edit استفاده کن؛ برای grep الگو با <code>grep -oe &#39;pattern&#39;</code>.</li>
+<li>تصاویر: next/image پیش‌فرض lazy — فقط LCP واقعی <code>priority</code> بگیرد.</li>
+</ul>
+<h2>۷) گیت — قرارداد کامیت/پوش</h2>
+<ul>
+<li>کامیت‌های conventional: <code>feat|fix|style|refactor|docs|chore(scope): خلاصه انگلیسی</code>.</li>
+<li>قبل از کامیت <code>npx tsc --noEmit</code>.</li>
+<li>سیاست پوش با دستور مدیر مستند شود (پوش آزاد، فقط با دستور، یا از دیپلوی خودکار).</li>
+<li>وقتی ایجنت دیگر هم‌زمان در کلون کار می‌کند: <strong>فایل‌های خودت را صریح add کن</strong> (نه add -A) مگر
+مدیر گفته باشد «همه‌چیز را کامیت کن» — آن‌وقت یک کامیت جدا با توضیح «agent work» بده.</li>
+<li>فایل‌های مشترک حساس: <code>.env</code> هرگز؛ فایل‌های استایل/برد نقطه تماس دو ایجنت‌اند — قبل از
+کامیت <code>git diff</code> آن‌ها را نگاه کن که کار طرف دیگر را قاطی نکنی.</li>
+</ul>
+</div>
+    </section>
+    
+  <section class="card reveal" aria-labelledby="rel-title">
+        <div class="card-head">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+      <h2 class="mono-title" id="rel-title">Similar prompts</h2>
+    </div>
+    <div class="timeline"><a class="row cat-row related-row" href="../../server/backend-patterns/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Backend Patterns</span><span class="row-sub">Server & API</span></div>
+        <p class="row-text">(دسته: بک‌اند) الگوهای استاندارد ساخت بک‌اند — زنجیره Route→Controller→Service، گاردها (requireRole/assertCsrf)، پارس ورودی ضد NoSQL Injection، AuditLog، ریت‌لیمیت، Idempotency، revalidatePath، صفحه‌بندی و تست E2E با curl. هر وقت اندپوینت/سرویس/مدل جدید ساخته می‌شود یا منطق بک‌اند تغییر می‌کند، همراه اسکیل security اجرا شود.</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a><div class="connector" aria-hidden="true"></div><a class="row cat-row related-row" href="../../server/nextjs-seo-guide/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Next.js SEO Guide</span><span class="row-sub">Server & API</span></div>
+        <p class="row-text">Complete Google SEO implementation guide for Next.js (Node.js) projects. Covers the App Router Metadata API, generateMetadata, sitemap.ts/robots.ts conventions, JSON-LD structured data, Open Graph &amp; Twitter cards, canonicalization, hreflang/i18n, Core Web Vitals (LCP/INP/CLS), rendering strategies (SSG/SSR/ISR/PPR/Cache Components), and Search Console auditing. Use this skill whenever the user mentions SEO, Google ranking, search visibility, meta tags, Open Graph, sitemap, robots.txt, structured data, schema.org, rich results, canonical URLs, hreflang, page speed, Core Web Vitals, Lighthouse score, \&quot;my site doesn't appear on Google\&quot;, or asks to build/optimize any Next.js page, blog, e-commerce store, or marketing site — even if they don't explicitly say \&quot;SEO\&quot;.</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a><div class="connector" aria-hidden="true"></div><a class="row cat-row related-row" href="../../structure/nextjs-project-structure/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Next.js Project Structure</span><span class="row-sub">Structure</span></div>
+        <p class="row-text">Exact folder structure &amp; code-style prompt for scalable Next.js + MongoDB projects.</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a></div>
+  </section>
+    <div class="back-row reveal">
+      <a class="pill pill-link" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg> Back to Server & API</a>
+      <a class="pill pill-link" href="../../">All prompts</a>
+    </div>
+  </div>
+  <script type="text/plain" class="prompt-raw" data-id="deployment-runbook"># Production Deploy Runbook — اجرا، استقرار، راستی‌آزمایی
+
+> جمع‌بندی تجربه‌ی عملی استقرار Next.js روی ویندوز. قواعد پورت و سیکل دیپلوی باید با سیاست مدیر پروژه هماهنگ باشد و تغییراتش مستند.
+
+## ۱) پورت dev/پروداکشن — مالکیت و تصاحب
+
+- **پورت اصلی = بیلد پروداکشن** (`next start`)، هرگز `next dev`.
+- **اگر پورت اشغال بود:** پیدا کن، بکش، خودت بالا بیاور:
+  ```bash
+  netstat -ano | grep ":3000" | grep LISTENING        # PIDها
+  for pid in $(netstat -ano | grep ":3000" | grep LISTENING | awk '{print $NF}' | sort -u); do taskkill //PID $pid //F; done
+  ```
+- **هرگز دو سرور روی یک پورت نباشد** — دو پروسه‌ی هم‌زمان = `BUILD_ID` از `.next` خراب می‌شود/UI ناقص لود می‌شود. علامت بیماری: چند PID روی پورت + `ls .next/BUILD_ID` خالی → کلین‌بیلد از نو.
+- پروسه‌های بک‌گراند `npm`/`next start` گاهی «exit 1» گزارش می‌شوند درحالی‌که سالم‌اند — همیشه با
+  `curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/` تصمیم بگیر، نه با status تسک.
+
+## ۲) سیکل دیپلوی (توقف → بیلد → استارت)
+
+**بیلد روی سرورِ در حال اجرا ممنوع** — ویندوز روی فایل‌های `.next` قفل می‌گذارد و بیلد/استارت دوم
+با «Could not find production build» می‌میرد. ترتیب همیشه:
+
+```bash
+# ۱) توقف
+for pid in $(netstat -ano | grep ":3000" | grep LISTENING | awk '{print $NF}' | sort -u); do taskkill //PID $pid //F; done
+# ۲) بیلد
+npm run build
+# ۳) استارت (بک‌گراند) — فقط یک پروسه روی پورت
+npx next start
+# ۴) تأیید
+curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/     # 200
+```
+
+- اگر خروجی بیلد دوپهلو بود («Compiled successfully» و «Failed» با هم) — اجرای مجدد تمیز بگیر؛
+  اغلب خروجی نیمه‌کاره‌ی یک اجرای قطع‌شده است.
+- خروجی «Failed to compile» واقعی = دوباره `npm run build 2>&1 | tail -25` بگیر و خطا را بخوان.
+
+## ۳) راستی‌آزمایی — قبل از هر کامیت
+
+1. `npx tsc --noEmit` → صفر خطا.
+2. `npx eslint <فایل‌های دست‌خورده>` → صفر خطا (هشدارهای قدیمی‌شناخته اشکال ندارد).
+3. **سئو:** اسکریپت چک سئوی پروژه را روی سرور لوکال اجرا کن (robots، متاها، X-Robots-Tag، 404 واقعی).
+4. **بصری:** مرورگر in-app — دسکتاپ ۱۴۴۰×۹۰۰ + موبایل ۳۹۰×۸۴۴، اسکرین‌شات؛ برای اندازه‌گیری دقیق
+   از `tab.playwright.evaluate` استفاده کن (عدد بده، حدس نزن).
+5. تست تعاملی (کلیک/فرم): اگر locator با نام فارسی timeout خورد، **دوباره همان را retry نکن** —
+   `tab.playwright.evaluate` با `document.querySelector(...).click()` قطعی‌تر است، یا کلیک با
+   مختصات از اسکرین‌شات تازه.
+
+### سرور موقت موازی (بدون دست زدن به پورت اصلی)
+
+```bash
+NEXT_DIST_DIR=.next-verify npx next build     # خروجی جدا — در .gitignore است
+NEXT_DIST_DIR=.next-verify npx next start -p 3100
+# بعد از کار: هر PID لیسنر 3100 را taskkill کن
+```
+پورت اصلی برای تغییرِ env/CSS فقط با بیلد+ری‌استارت خودش به‌روز می‌شود.
+
+## ۴) دیتابیس — بکاپ و مهاجرت
+
+- دیتابیس پروداکشن معمولاً **لوکال** است؛ رشته‌ی اتصال فقط از `.env` خوانده شود.
+- **بکاپ:** اگر `mongodump` نصب نیست، اکسپورت JSON همه کالکشن‌ها به `backups/db-<timestamp>/`
+  (اسکریپت کوتاه با `connectDB` + `mongoose.connection.db.collections()`). پوشه `backups/` در
+  `.gitignore` — **دیتای کاربران دارد، هرگز کامیت نشود.**
+- اسکریپت‌های مستقل tsx: **`.env` را خودشان باید لود کنند** (tsx خودش نمی‌خواند) و در پایان
+  `mongoose.connection.close()` یا `process.exit()` — وگرنه پروسه باز می‌ماند و «هنگ» به نظر می‌رسد.
+- مهاجرت داده: همیشه اول dry-run، بعد `--write`؛ الگوی idempotent (upsert با کلید یکتا).
+
+## ۵) سئو — قواعد حیاتی
+
+- **`NEXT_PUBLIC_SITE_URL` هرگز localhost نماند** — اگر robots.ts حالت staging داشته باشد،
+  با URL لوکال کل سایت `Disallow: /` می‌شود + canonical/sitemap لوکالی می‌شوند. (`NEXT_PUBLIC_*`
+  در build اینلاین می‌شود → تغییرش = بیلد مجدد.)
+- ریدایرکت‌های غیرASCII در next.config باید `encodeURI(from)` باشند — Next فاز redirects را روی
+  مسیر percent-encoded مقایسه می‌کند.
+- فونت فارسی با `display:"swap"` + preload — سقف ۴ وزن.
+- گیت سئو: چک‌لیست robots، متای صفحات، X-Robots-Tag روی /api و 404 واقعی.
+
+## ۶) دام‌های شناخته‌شده (هرکدام یک بار گاز گرفته‌اند)
+
+- **CSS cascade:** override فقط-موبایل را همیشه **بعد از** قانون پایه بنویس؛ قانون هم‌وزنِ قبلیِ
+  فایل می‌بَرد. قانون base معمولاً پایین‌تر از جایی است که فکر می‌کنی.
+- `.gitignore`: خط با `\n` لفظی = قانون بی‌اثر. بعد از هر افزودن، `git status` را چک کن.
+- `sed` با متن فارسی/یونیکد روی این ماشین می‌شکند (ugrep alias + یونیکد) —
+  از ابزار Edit استفاده کن؛ برای grep الگو با `grep -oe 'pattern'`.
+- تصاویر: next/image پیش‌فرض lazy — فقط LCP واقعی `priority` بگیرد.
+
+## ۷) گیت — قرارداد کامیت/پوش
+
+- کامیت‌های conventional: `feat|fix|style|refactor|docs|chore(scope): خلاصه انگلیسی`.
+- قبل از کامیت `npx tsc --noEmit`.
+- سیاست پوش با دستور مدیر مستند شود (پوش آزاد، فقط با دستور، یا از دیپلوی خودکار).
+- وقتی ایجنت دیگر هم‌زمان در کلون کار می‌کند: **فایل‌های خودت را صریح add کن** (نه add -A) مگر
+  مدیر گفته باشد «همه‌چیز را کامیت کن» — آن‌وقت یک کامیت جدا با توضیح «agent work» بده.
+- فایل‌های مشترک حساس: `.env` هرگز؛ فایل‌های استایل/برد نقطه تماس دو ایجنت‌اند — قبل از
+  کامیت `git diff` آن‌ها را نگاه کن که کار طرف دیگر را قاطی نکنی.
+</script>
+
+</main>
+
+  <footer class="site-footer reveal">
+    <div class="footer-grid">
+      <div class="footer-col footer-brandcol">
+        <div class="brand">
+          <span class="brand-tile" aria-hidden="true"><img class="brand-logo" src="../../public/logo.svg" alt="" width="26"></span>
+          <div>
+            <p class="brand-name">Prompt Library</p>
+            <p class="brand-sub">Curated specs &amp; prompts</p>
+          </div>
+        </div>
+        <p class="footer-about">A curated, growing collection of bilingual prompts and engineering specs — published as pure static pages and ready to hand to a developer or an AI coding agent.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Categories</h3>
+        <a href="../../security/">Security <span class="foot-fa">امنیت</span></a><a href="../../structure/">Structure <span class="foot-fa">ساختار</span></a><a href="../../ui/">UI & Design <span class="foot-fa">رابط کاربری</span></a><a href="../../server/">Server & API <span class="foot-fa">سرور و API</span></a>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Resources</h3>
+        <a href="https://github.com/meysamdesign963-oss" target="_blank" rel="noopener">Author · meysamdesign963-oss <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">GitHub repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="../../Prompt-Library.canvas" target="_blank" rel="noopener">Prompt-Library.canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP Top 10 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://jsoncanvas.org" target="_blank" rel="noopener">JSON Canvas spec <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Prompt Library · Built by <a href="https://github.com/meysamdesign963-oss" target="_blank" rel="noopener">meysamdesign963-oss <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a></span>
+      <span>Static · No tracking · EN → FA</span>
+    </div>
+  </footer>
+
+<script src="../../assets/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parallel Agents Protocol — Structure Prompt · Prompt Library</title>
+<meta name="description" content="(دسته: گردش کار) قرارداد هماهنگی دو ایجنت که هم‌زمان روی یک پروژه کار می‌کنند (یک کلون، دو نقش) — مالکیت فایل‌ها، استیج انتخابی، قرارداد API بین فرانت و بکند، برد هماهنگی و چرخه گیت. قبل از اولین ویرایش فایل و قبل از هر کامیت، در هر تسکی که ستاپ دو-ایجنتی فعال است اجرا شود.">
+<link rel="canonical" href="https://meysamdesign963-oss.github.io/prompt-library/structure/parallel-agents/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Library">
+<meta property="og:title" content="Parallel Agents Protocol — Structure Prompt · Prompt Library">
+<meta property="og:description" content="(دسته: گردش کار) قرارداد هماهنگی دو ایجنت که هم‌زمان روی یک پروژه کار می‌کنند (یک کلون، دو نقش) — مالکیت فایل‌ها، استیج انتخابی، قرارداد API بین فرانت و بکند، برد هماهنگی و چرخه گیت. قبل از اولین ویرایش فایل و قبل از هر کامیت، در هر تسکی که ستاپ دو-ایجنتی فعال است اجرا شود.">
+<meta property="og:url" content="https://meysamdesign963-oss.github.io/prompt-library/structure/parallel-agents/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#869A8C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161A17" media="(prefers-color-scheme: dark)">
+<script>(function(){var t;try{t=localStorage.getItem("pl-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})()</script>
+<link rel="preload" href="../../assets/fonts/IRANSansX-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/IRANSansX-DemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/IRANSansX-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"Parallel Agents Protocol","headline":"Parallel Agents Protocol","description":"(دسته: گردش کار) قرارداد هماهنگی دو ایجنت که هم‌زمان روی یک پروژه کار می‌کنند (یک کلون، دو نقش) — مالکیت فایل‌ها، استیج انتخابی، قرارداد API بین فرانت و بکند، برد هماهنگی و چرخه گیت. قبل از اولین ویرایش فایل و قبل از هر کامیت، در هر تسکی که ستاپ دو-ایجنتی فعال است اجرا شود.","url":"https://meysamdesign963-oss.github.io/prompt-library/structure/parallel-agents/","inLanguage":["en","fa"],"keywords":"agents, collaboration, git, workflow","datePublished":"2026-11-21","dateModified":"2026-11-21","author":{"@type":"Person","name":"meysamdesign963-oss","url":"https://github.com/meysamdesign963-oss"},"isPartOf":{"@type":"WebSite","name":"Prompt Library","url":"https://meysamdesign963-oss.github.io/prompt-library/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Library","item":"https://meysamdesign963-oss.github.io/prompt-library/"},{"@type":"ListItem","position":2,"name":"Structure","item":"https://meysamdesign963-oss.github.io/prompt-library/structure/"},{"@type":"ListItem","position":3,"name":"Parallel Agents Protocol","item":"https://meysamdesign963-oss.github.io/prompt-library/structure/parallel-agents/"}]}]}</script>
+</head>
+<body>
+
+
+  <header class="site-header reveal">
+    <div class="header-row">
+    <div class="brand">
+      <a class="brand-link" href="../../" aria-label="Prompt Library home">
+        <span class="brand-tile" aria-hidden="true"><img class="brand-logo" src="../../public/logo.svg" alt="" width="26"></span>
+        <div>
+          <h1 class="brand-name">Prompt Library</h1>
+          <p class="brand-sub">Curated specs &amp; prompts for builders</p>
+        </div>
+      </a>
+    </div>
+    
+    <div class="head-actions">
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle title="Toggle dark / light theme" aria-label="Toggle color theme">
+        <span class="theme-ic theme-ic--moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12.5A8 8 0 1 1 11.5 4a6.5 6.5 0 0 0 8.5 8.5z"/></svg></span>
+        <span class="theme-ic theme-ic--sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg></span>
+      </button>
+      <a class="pill pill-link" href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">
+        GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg>
+      </a>
+    </div>
+    </div>
+    <nav class="site-nav reveal" aria-label="Site sections"><a href="../../">Library</a><a href="../../security/">Security</a><a href="../../structure/" class="is-active">Structure</a><a href="../../ui/">UI & Design</a><a href="../../server/">Server & API</a></nav>
+  </header>
+
+<main class="sheet">
+
+
+  <div class="stack">
+    <section class="card reveal" aria-labelledby="pd-title">
+      <div class="prompt-head">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+        <div class="prompt-id">
+          <h2 class="title-xl" id="pd-title">Parallel Agents Protocol</h2>
+          <p class="title-sub">(دسته: گردش کار) قرارداد هماهنگی دو ایجنت که هم‌زمان روی یک پروژه کار می‌کنند (یک کلون، دو نقش) — مالکیت فایل‌ها، استیج انتخابی، قرارداد API بین فرانت و بکند، برد هماهنگی و چرخه گیت. قبل از اولین ویرایش فایل و قبل از هر کامیت، در هر تسکی که ستاپ دو-ایجنتی فعال است اجرا شود.</p>
+        </div>
+        <div class="head-icons">
+          <a class="icon-btn" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/prompts/structure/parallel-agents.md" target="_blank" rel="noopener" title="Open source file"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg></a>
+        </div>
+      </div>
+      <div class="prompt-pills">
+        <span class="pill pill--dark">Structure</span>
+        <span class="pill ">Ready</span>
+        <span class="pill ">1.0.0</span>
+        <span class="pill ">agents · collaboration</span>
+        
+        <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="parallel-agents" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+      </div>
+    </section>
+    
+    <section class="card reveal" data-text-view aria-label="Prompt full text">
+      <div class="md-body md-body--page"><h1>Parallel Agents Protocol — فرانت + بکند هم‌زمان</h1>
+<p>دو ایجنت روی این پروژه به‌صورت هم‌زمان کار می‌کنند. هدف: صفر تداخل در کد.
+این اسکیل <strong>در هر تسک، قبل از اولین ویرایش فایل و قبل از هر کامیت</strong> اجرا می‌شود.</p>
+<h2>۱. نقش‌ها — یک کلون، دو نقش</h2>
+<table>
+<thead>
+<tr>
+<th>پوشه کاری</th>
+<th>نقش</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ایجنت ۱</td>
+<td><strong>بکند</strong> — API، سرویس‌ها، مدل‌ها، دیتابیس</td>
+</tr>
+<tr>
+<td>ایجنت ۲</td>
+<td><strong>فرانت</strong> — صفحات، کامپوننت‌ها، استایل</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>همه‌چیز در یک کلون است</strong> — هر دو چت می‌توانند هم‌زمان در همین پوشه باز باشند، چون مالکیت فایل‌ها (بخش ۲) تفکیک شده است.</li>
+<li><strong>سرور dev مشترک فقط یکی است و مدیر اجرا کرده</strong> — هیچ ایجنتی سرور را روشن/خاموش/ری‌استارت نمی‌کند و سرور موازی راه نمی‌اندازد. تغییرات فرانت با hot-reload خودکار دیده می‌شود؛ اگر ری‌استارت لازم شد، در برد اعلان کن تا مدیر انجام دهد.</li>
+<li><strong>فقط فایل‌های خودت را stage کن:</strong> <code>git add &lt;مسیر-فایل‌های-خودت&gt;</code> — هرگز <code>git add -A</code> یا <code>git add .</code>، چون تغییرات نیمه‌کاره‌ی ایجنت دیگر در همین پوشه است.</li>
+</ul>
+<h2>۲. مالکیت فایل‌ها — مرزهای سفت</h2>
+<p><strong>مالک بکند (ویرایش انحصاری):</strong> سرویس‌ها · کنترلرها · مدل‌ها · <code>app/api/</code> · زیرساخت سرور · اسکریپت‌ها · middleware · seed و مهاجرت دیتابیس</p>
+<p><strong>مالک فرانت (ویرایش انحصاری):</strong> صفحات عمومی و پنل · کامپوننت‌ها · <code>globals.css</code> · <code>public/</code> (رسانه‌ها و فونت)</p>
+<p><strong>مشترک/ایزومورفیک — utils:</strong> هر دو می‌خوانند؛ هر تغییر فقط با هماهنگی در برد.</p>
+<p><strong>فایل‌های مشترک دیگر — فقط با هماهنگی در برد:</strong> <code>package.json</code> · <code>next.config</code> · <code>layout.tsx</code> · <code>robots.ts</code> · <code>sitemap.ts</code> · <code>.env.example</code> · <code>README.md</code></p>
+<p>قاعده: خواندن (import) از هر ناحیه‌ای آزاد است؛ <strong>نوشتن فقط در مالکیت خودت.</strong></p>
+<h2>۳. قرارداد API — مرز گفتگوی فرانت و بکند</h2>
+<ul>
+<li>فرانت <strong>هرگز</strong> endpoint/فیلد جدید در بکند نمی‌سازد و مدل دیتابیس را دست نمی‌زند.</li>
+<li>فرانت نیازش را در برد، بخش «قراردادهای در انتظار» ثبت می‌کند: مسیر پیشنهادی + شکل ورودی/خروجی + کدام صفحه به آن نیاز دارد.</li>
+<li>بکند پس از پیاده‌سازی، آیتم را با شکل نهایی پاسخ به‌روز می‌کند و در کامیت body به برد ارجاع می‌دهد.</li>
+<li>تغییر در شکل پاسخ یک endpoint موجود = تغییر breaking؛ بکند باید قبل از کامیت در برد اعلان کند.</li>
+<li><strong>کانال جزئیات:</strong> هر طرف تغییرات دارای اثر فرانت/بکند را به‌صورت یادداشت کامل در پوشه‌ی <code>.agent/&lt;side&gt;-to-&lt;side&gt;/notes/YYYY-MM-DD-&lt;topic&gt;.md</code> مستند می‌کند. طرف مقابل در <code>git pull</code> دنبال می‌کند و پس از اقدام، خط <code>✔ انجام شد</code> اضافه می‌کند.</li>
+</ul>
+<h2>۴. چرخه گیت — قبل و بعد از هر تسک</h2>
+<pre><code>شروع تسک:    git pull --rebase origin main   →   ثبت تسک در برد (+ کامیت برد یا همراه اولین کامیت)
+پایان تسک:   کامیت طبق اسکیل commit          →   تمام (پوش فقط با هماهنگی/دستور مدیر)
+</code></pre>
+<ul>
+<li><strong>پوش فقط با هماهنگی</strong> — اگر دیپلوی از گیت pull می‌کند، بدون پوش کامیت‌ها تا سینک دستی به پروداکشن نمی‌رسند (تصمیم آگاهانه‌ی مدیر باید مستند باشد).</li>
+<li>کامیت‌ها کوچک و فوری — هرچه سریع‌تر کامیت، ریسک تداخل با ایجنت دیگر کمتر.</li>
+<li><strong>stage انتخابی:</strong> چون هر دو ایجنت یک working tree مشترک دارند، فقط فایل‌های لمس‌شده خودت را add کن (<code>git add &lt;paths&gt;</code>) — هرگز <code>git add -A</code> / <code>git add .</code> / <code>git commit -a</code>.</li>
+<li>اگر فایل مشترکی تغییر اساسی داده شده (کامیت‌های سمت دیگر)، قبل از ویرایش فایل را دوباره از دیسک بخوان.</li>
+<li>هرگز روی main دیگران را rewrite نکن؛ اگر rebase کانفلیکت داد و مربوط به ناحیه دیگری بود، آن فایل را به نسخه origin برگردان و از مالکش через برد بخواه.</li>
+</ul>
+<h2>۵. برد — حافظه مشترک</h2>
+<p>برد (مثلاً <code>BOARD.md</code>) سه بخش دارد: <strong>در حال انجام</strong> (تسک + فایل‌های لمس‌شده)، <strong>قراردادهای در انتظار</strong>، <strong>اعلان‌ها</strong>.</p>
+<ul>
+<li>قبل از شروع تسک: برد را بخوان — اگر فایل‌های لازم مال ایجنت دیگر است یا او روی همان ناحیه کار می‌کند، ترتیب را هماهنگ کن.</li>
+<li>ادعای مالکیت موقت با یک خط: <code>[- ] تسک — فایل‌ها — (پوشه/نقش)</code>.</li>
+<li>بعد از اتمام: تیک بزن. تغییر برد در همان کامیت تسک همراه می‌شود (نه کامیت جدا).</li>
+</ul>
+<h2>۶. تست و اجرا</h2>
+<ul>
+<li><strong>یک سرور dev مشترک</strong> — مدیر اجرا کرده؛ هیچ ایجنتی آن را نمی‌بندد و سرور موازی نمی‌سازد. دیتابیس مشترک است.</li>
+<li>تست UI: مرورگر روی آدرس لوکال (یا آی‌پی شبکه برای موبایل) — تغییرات فرانت با hot-reload می‌آید.</li>
+<li>تست API: همان سرور (curl/مرورگر) — همان اپلیکیشن است.</li>
+<li>راستی‌آزمایی ایستا بدون لمس سرور: <code>npx tsc --noEmit</code> و چک‌های استاتیک پروژه.</li>
+<li>تغییرات اسکیمای دیتابیس فقط بکند؛ بعد از هر تغییر schema، اعلان در برد.</li>
+</ul>
+</div>
+    </section>
+    
+  <section class="card reveal" aria-labelledby="rel-title">
+        <div class="card-head">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+      <h2 class="mono-title" id="rel-title">Similar prompts</h2>
+    </div>
+    <div class="timeline"><a class="row cat-row related-row" href="../../structure/action-mode/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Action Mode</span><span class="row-sub">Structure</span></div>
+        <p class="row-text">(دسته: گردش کار) سبک کاری اجباری ایجنت هوش مصنوعی — صحبت حداقلی در چت، بدون توضیحات اضافه و جزئیات طولانی، اجرای مستقیم و پیش بردن پروژه. در هر گفتگو و هر وظیفه‌ای همیشه فعال است و نیاز به درخواست کاربر ندارد.</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a><div class="connector" aria-hidden="true"></div><a class="row cat-row related-row" href="../../structure/git-commit-workflow/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Git Commit Workflow</span><span class="row-sub">Structure</span></div>
+        <p class="row-text">Commit and push the duckcrm project to GitHub immediately after EVERY completed task, with a detailed English commit message (subject + full technical body). Use automatically at the end of every task, and whenever the user asks to commit/push — e.g. «کامیت بزن», «کامیت و پوش کن», «commit», «push to github».</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a><div class="connector" aria-hidden="true"></div><a class="row cat-row related-row" href="../../structure/nextjs-project-structure/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Next.js Project Structure</span><span class="row-sub">Structure</span></div>
+        <p class="row-text">Exact folder structure &amp; code-style prompt for scalable Next.js + MongoDB projects.</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a></div>
+  </section>
+    <div class="back-row reveal">
+      <a class="pill pill-link" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg> Back to Structure</a>
+      <a class="pill pill-link" href="../../">All prompts</a>
+    </div>
+  </div>
+  <script type="text/plain" class="prompt-raw" data-id="parallel-agents"># Parallel Agents Protocol — فرانت + بکند هم‌زمان
+
+دو ایجنت روی این پروژه به‌صورت هم‌زمان کار می‌کنند. هدف: صفر تداخل در کد.
+این اسکیل **در هر تسک، قبل از اولین ویرایش فایل و قبل از هر کامیت** اجرا می‌شود.
+
+## ۱. نقش‌ها — یک کلون، دو نقش
+
+| پوشه کاری | نقش |
+|---|---|
+| ایجنت ۱ | **بکند** — API، سرویس‌ها، مدل‌ها، دیتابیس |
+| ایجنت ۲ | **فرانت** — صفحات، کامپوننت‌ها، استایل |
+
+- **همه‌چیز در یک کلون است** — هر دو چت می‌توانند هم‌زمان در همین پوشه باز باشند، چون مالکیت فایل‌ها (بخش ۲) تفکیک شده است.
+- **سرور dev مشترک فقط یکی است و مدیر اجرا کرده** — هیچ ایجنتی سرور را روشن/خاموش/ری‌استارت نمی‌کند و سرور موازی راه نمی‌اندازد. تغییرات فرانت با hot-reload خودکار دیده می‌شود؛ اگر ری‌استارت لازم شد، در برد اعلان کن تا مدیر انجام دهد.
+- **فقط فایل‌های خودت را stage کن:** `git add <مسیر-فایل‌های-خودت>` — هرگز `git add -A` یا `git add .`، چون تغییرات نیمه‌کاره‌ی ایجنت دیگر در همین پوشه است.
+
+## ۲. مالکیت فایل‌ها — مرزهای سفت
+
+**مالک بکند (ویرایش انحصاری):** سرویس‌ها · کنترلرها · مدل‌ها · `app/api/` · زیرساخت سرور · اسکریپت‌ها · middleware · seed و مهاجرت دیتابیس
+
+**مالک فرانت (ویرایش انحصاری):** صفحات عمومی و پنل · کامپوننت‌ها · `globals.css` · `public/` (رسانه‌ها و فونت)
+
+**مشترک/ایزومورفیک — utils:** هر دو می‌خوانند؛ هر تغییر فقط با هماهنگی در برد.
+
+**فایل‌های مشترک دیگر — فقط با هماهنگی در برد:** `package.json` · `next.config` · `layout.tsx` · `robots.ts` · `sitemap.ts` · `.env.example` · `README.md`
+
+قاعده: خواندن (import) از هر ناحیه‌ای آزاد است؛ **نوشتن فقط در مالکیت خودت.**
+
+## ۳. قرارداد API — مرز گفتگوی فرانت و بکند
+
+- فرانت **هرگز** endpoint/فیلد جدید در بکند نمی‌سازد و مدل دیتابیس را دست نمی‌زند.
+- فرانت نیازش را در برد، بخش «قراردادهای در انتظار» ثبت می‌کند: مسیر پیشنهادی + شکل ورودی/خروجی + کدام صفحه به آن نیاز دارد.
+- بکند پس از پیاده‌سازی، آیتم را با شکل نهایی پاسخ به‌روز می‌کند و در کامیت body به برد ارجاع می‌دهد.
+- تغییر در شکل پاسخ یک endpoint موجود = تغییر breaking؛ بکند باید قبل از کامیت در برد اعلان کند.
+- **کانال جزئیات:** هر طرف تغییرات دارای اثر فرانت/بکند را به‌صورت یادداشت کامل در پوشه‌ی `.agent/<side>-to-<side>/notes/YYYY-MM-DD-<topic>.md` مستند می‌کند. طرف مقابل در `git pull` دنبال می‌کند و پس از اقدام، خط `✔ انجام شد` اضافه می‌کند.
+
+## ۴. چرخه گیت — قبل و بعد از هر تسک
+
+```
+شروع تسک:    git pull --rebase origin main   →   ثبت تسک در برد (+ کامیت برد یا همراه اولین کامیت)
+پایان تسک:   کامیت طبق اسکیل commit          →   تمام (پوش فقط با هماهنگی/دستور مدیر)
+```
+
+- **پوش فقط با هماهنگی** — اگر دیپلوی از گیت pull می‌کند، بدون پوش کامیت‌ها تا سینک دستی به پروداکشن نمی‌رسند (تصمیم آگاهانه‌ی مدیر باید مستند باشد).
+- کامیت‌ها کوچک و فوری — هرچه سریع‌تر کامیت، ریسک تداخل با ایجنت دیگر کمتر.
+- **stage انتخابی:** چون هر دو ایجنت یک working tree مشترک دارند، فقط فایل‌های لمس‌شده خودت را add کن (`git add <paths>`) — هرگز `git add -A` / `git add .` / `git commit -a`.
+- اگر فایل مشترکی تغییر اساسی داده شده (کامیت‌های سمت دیگر)، قبل از ویرایش فایل را دوباره از دیسک بخوان.
+- هرگز روی main دیگران را rewrite نکن؛ اگر rebase کانفلیکت داد و مربوط به ناحیه دیگری بود، آن فایل را به نسخه origin برگردان و از مالکش через برد بخواه.
+
+## ۵. برد — حافظه مشترک
+
+برد (مثلاً `BOARD.md`) سه بخش دارد: **در حال انجام** (تسک + فایل‌های لمس‌شده)، **قراردادهای در انتظار**، **اعلان‌ها**.
+- قبل از شروع تسک: برد را بخوان — اگر فایل‌های لازم مال ایجنت دیگر است یا او روی همان ناحیه کار می‌کند، ترتیب را هماهنگ کن.
+- ادعای مالکیت موقت با یک خط: `[- ] تسک — فایل‌ها — (پوشه/نقش)`.
+- بعد از اتمام: تیک بزن. تغییر برد در همان کامیت تسک همراه می‌شود (نه کامیت جدا).
+
+## ۶. تست و اجرا
+
+- **یک سرور dev مشترک** — مدیر اجرا کرده؛ هیچ ایجنتی آن را نمی‌بندد و سرور موازی نمی‌سازد. دیتابیس مشترک است.
+- تست UI: مرورگر روی آدرس لوکال (یا آی‌پی شبکه برای موبایل) — تغییرات فرانت با hot-reload می‌آید.
+- تست API: همان سرور (curl/مرورگر) — همان اپلیکیشن است.
+- راستی‌آزمایی ایستا بدون لمس سرور: `npx tsc --noEmit` و چک‌های استاتیک پروژه.
+- تغییرات اسکیمای دیتابیس فقط بکند؛ بعد از هر تغییر schema، اعلان در برد.
+</script>
+
+</main>
+
+  <footer class="site-footer reveal">
+    <div class="footer-grid">
+      <div class="footer-col footer-brandcol">
+        <div class="brand">
+          <span class="brand-tile" aria-hidden="true"><img class="brand-logo" src="../../public/logo.svg" alt="" width="26"></span>
+          <div>
+            <p class="brand-name">Prompt Library</p>
+            <p class="brand-sub">Curated specs &amp; prompts</p>
+          </div>
+        </div>
+        <p class="footer-about">A curated, growing collection of bilingual prompts and engineering specs — published as pure static pages and ready to hand to a developer or an AI coding agent.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Categories</h3>
+        <a href="../../security/">Security <span class="foot-fa">امنیت</span></a><a href="../../structure/">Structure <span class="foot-fa">ساختار</span></a><a href="../../ui/">UI & Design <span class="foot-fa">رابط کاربری</span></a><a href="../../server/">Server & API <span class="foot-fa">سرور و API</span></a>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Resources</h3>
+        <a href="https://github.com/meysamdesign963-oss" target="_blank" rel="noopener">Author · meysamdesign963-oss <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">GitHub repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="../../Prompt-Library.canvas" target="_blank" rel="noopener">Prompt-Library.canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP Top 10 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://jsoncanvas.org" target="_blank" rel="noopener">JSON Canvas spec <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Prompt Library · Built by <a href="https://github.com/meysamdesign963-oss" target="_blank" rel="noopener">meysamdesign963-oss <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a></span>
+      <span>Static · No tracking · EN → FA</span>
+    </div>
+  </footer>
+
+<script src="../../assets/main.js" defer></script>
+</body>
+</html>

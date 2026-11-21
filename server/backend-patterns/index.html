@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backend Patterns — Server &amp; API Prompt · Prompt Library</title>
+<meta name="description" content="(دسته: بک‌اند) الگوهای استاندارد ساخت بک‌اند — زنجیره Route→Controller→Service، گاردها (requireRole/assertCsrf)، پارس ورودی ضد NoSQL Injection، AuditLog، ریت‌لیمیت، Idempotency، revalidatePath، صفحه‌بندی و تست E2E با curl. هر وقت اندپوینت/سرویس/مدل جدید ساخته می‌شود یا منطق بک‌اند تغییر می‌کند، همراه اسکیل security اجرا شود.">
+<link rel="canonical" href="https://meysamdesign963-oss.github.io/prompt-library/server/backend-patterns/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Library">
+<meta property="og:title" content="Backend Patterns — Server &amp; API Prompt · Prompt Library">
+<meta property="og:description" content="(دسته: بک‌اند) الگوهای استاندارد ساخت بک‌اند — زنجیره Route→Controller→Service، گاردها (requireRole/assertCsrf)، پارس ورودی ضد NoSQL Injection، AuditLog، ریت‌لیمیت، Idempotency، revalidatePath، صفحه‌بندی و تست E2E با curl. هر وقت اندپوینت/سرویس/مدل جدید ساخته می‌شود یا منطق بک‌اند تغییر می‌کند، همراه اسکیل security اجرا شود.">
+<meta property="og:url" content="https://meysamdesign963-oss.github.io/prompt-library/server/backend-patterns/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#869A8C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161A17" media="(prefers-color-scheme: dark)">
+<script>(function(){var t;try{t=localStorage.getItem("pl-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})()</script>
+<link rel="preload" href="../../assets/fonts/IRANSansX-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/IRANSansX-DemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/IRANSansX-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"Backend Patterns","headline":"Backend Patterns","description":"(دسته: بک‌اند) الگوهای استاندارد ساخت بک‌اند — زنجیره Route→Controller→Service، گاردها (requireRole/assertCsrf)، پارس ورودی ضد NoSQL Injection، AuditLog، ریت‌لیمیت، Idempotency، revalidatePath، صفحه‌بندی و تست E2E با curl. هر وقت اندپوینت/سرویس/مدل جدید ساخته می‌شود یا منطق بک‌اند تغییر می‌کند، همراه اسکیل security اجرا شود.","url":"https://meysamdesign963-oss.github.io/prompt-library/server/backend-patterns/","inLanguage":["en","fa"],"keywords":"backend, api, patterns, nextjs","datePublished":"2026-11-21","dateModified":"2026-11-21","author":{"@type":"Person","name":"meysamdesign963-oss","url":"https://github.com/meysamdesign963-oss"},"isPartOf":{"@type":"WebSite","name":"Prompt Library","url":"https://meysamdesign963-oss.github.io/prompt-library/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Library","item":"https://meysamdesign963-oss.github.io/prompt-library/"},{"@type":"ListItem","position":2,"name":"Server & API","item":"https://meysamdesign963-oss.github.io/prompt-library/server/"},{"@type":"ListItem","position":3,"name":"Backend Patterns","item":"https://meysamdesign963-oss.github.io/prompt-library/server/backend-patterns/"}]}]}</script>
+</head>
+<body>
+
+
+  <header class="site-header reveal">
+    <div class="header-row">
+    <div class="brand">
+      <a class="brand-link" href="../../" aria-label="Prompt Library home">
+        <span class="brand-tile" aria-hidden="true"><img class="brand-logo" src="../../public/logo.svg" alt="" width="26"></span>
+        <div>
+          <h1 class="brand-name">Prompt Library</h1>
+          <p class="brand-sub">Curated specs &amp; prompts for builders</p>
+        </div>
+      </a>
+    </div>
+    
+    <div class="head-actions">
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle title="Toggle dark / light theme" aria-label="Toggle color theme">
+        <span class="theme-ic theme-ic--moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12.5A8 8 0 1 1 11.5 4a6.5 6.5 0 0 0 8.5 8.5z"/></svg></span>
+        <span class="theme-ic theme-ic--sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg></span>
+      </button>
+      <a class="pill pill-link" href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">
+        GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg>
+      </a>
+    </div>
+    </div>
+    <nav class="site-nav reveal" aria-label="Site sections"><a href="../../">Library</a><a href="../../security/">Security</a><a href="../../structure/">Structure</a><a href="../../ui/">UI & Design</a><a href="../../server/" class="is-active">Server & API</a></nav>
+  </header>
+
+<main class="sheet">
+
+
+  <div class="stack">
+    <section class="card reveal" aria-labelledby="pd-title">
+      <div class="prompt-head">
+        <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg></span>
+        <div class="prompt-id">
+          <h2 class="title-xl" id="pd-title">Backend Patterns</h2>
+          <p class="title-sub">(دسته: بک‌اند) الگوهای استاندارد ساخت بک‌اند — زنجیره Route→Controller→Service، گاردها (requireRole/assertCsrf)، پارس ورودی ضد NoSQL Injection، AuditLog، ریت‌لیمیت، Idempotency، revalidatePath، صفحه‌بندی و تست E2E با curl. هر وقت اندپوینت/سرویس/مدل جدید ساخته می‌شود یا منطق بک‌اند تغییر می‌کند، همراه اسکیل security اجرا شود.</p>
+        </div>
+        <div class="head-icons">
+          <a class="icon-btn" href="https://github.com/meysamdesign963-oss/prompt-library/blob/main/prompts/server/backend-patterns.md" target="_blank" rel="noopener" title="Open source file"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg></a>
+        </div>
+      </div>
+      <div class="prompt-pills">
+        <span class="pill pill--dark">Server & API</span>
+        <span class="pill ">Ready</span>
+        <span class="pill ">1.0.0</span>
+        <span class="pill ">backend · api</span>
+        
+        <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="backend-patterns" title="Copy the full prompt">Copy prompt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+      </div>
+    </section>
+    
+    <section class="card reveal" data-text-view aria-label="Prompt full text">
+      <div class="md-body md-body--page"><h1>اسکیل الگوهای بک‌اند</h1>
+<blockquote>
+<p>قواعد امنیتی کامل: اسکیل <code>security</code>. گیت کیفیت هر تسک بک‌اند:
+<code>npx tsc --noEmit</code> + eslint فایل‌های خودت + تست زنده curl (الگوی بخش ۶).</p>
+</blockquote>
+<h2>۱) زنجیره ثابت — هیچ لایه‌ای حذف نمی‌شود</h2>
+<pre><code class="language-ts">// src/app/api/&lt;domain&gt;/route.ts — فایل نازک؛ منطق اینجا ممنوع
+export async function POST(req: NextRequest) {
+  try {
+    await connectDB();
+    const actor = requireRole(req, [&quot;system_boss&quot;]);
+    assertCsrf(req);
+    const body = await readJson&lt;Record&lt;string, unknown&gt;&gt;(req);
+    return ok(await domainController.adminSave(body, actor, req));
+  } catch (error) { return fail(error); }
+}
+// پارامتری: { params }: { params: Promise&lt;{ id: string }&gt; } → const { id } = await params;
+</code></pre>
+<ul>
+<li>کنترلر: بدنه را می‌خواند، فیلد الزامی را چک می‌کند، سرویس را صدا می‌زند، <code>ok()</code> برمی‌گرداند. خطا همیشه <code>fail(error)</code> — هرگز throw خام به بیرون.</li>
+<li>سرویس: منطق واقعی. ورودی با <code>parseInput</code> پاک‌سازی می‌شود.</li>
+</ul>
+<h2>۲) گاردها</h2>
+<table>
+<thead>
+<tr>
+<th>گارد</th>
+<th>کِی</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>requireAuth(req)</code> / <code>requireRole(req, [roles])</code></td>
+<td>هر اندپوینت غیرعمومی — payload کاربر را برمی‌گرداند (<code>{id, role, firstName}</code>)</td>
+</tr>
+<tr>
+<td><code>assertCsrf(req)</code></td>
+<td>هر متد تغییردهنده (POST/PUT/PATCH/DELETE) — هدر سفارشی که fetcher کلاینت خودکار می‌فرستد</td>
+</tr>
+<tr>
+<td><code>assertStaff</code> / <code>assertBoss</code></td>
+<td>داخل سرویس وقتی لایه route فقط requireAuth است</td>
+</tr>
+<tr>
+<td>ریت‌لیمیت با IP</td>
+<td><code>limitByIp(req, &quot;key&quot;, n, min)</code> + نسخه‌ی بازدیدکننده برای اندپوینت‌های عمومی</td>
+</tr>
+<tr>
+<td>ریت‌لیمیت با شماره</td>
+<td>OTP login/setup</td>
+</tr>
+</tbody></table>
+<h2>۳) ورودی — readJson + parseInput (بدون اعتماد به کلاینت)</h2>
+<pre><code class="language-ts">function parseInput(b: Body): Body {
+  const out: Body = {};
+  if (b.title !== undefined) out.title = txt(b.title, 200);       // الزامی: خالی = throw
+  if (b.metaTitle !== undefined) out.metaTitle = txt(b.metaTitle, 200);
+  if (b.rating !== undefined) out.rating = clampNum(b.rating, 1, 5, 5);
+  if (b.consentSigned !== undefined) out.consentSigned = bool(b.consentSigned) ?? false;
+  return out;
+}
+</code></pre>
+<ul>
+<li><strong>$set جزئی:</strong> فقط فیلدهای ارسالی در data می‌روند → <code>findByIdAndUpdate(id, { $set: data })</code> — ویرایش partial امن است.</li>
+<li><strong>استثنا:</strong> زیرسند کامل (مثل شیء سئو) کل زیرسند را جایگزین می‌کند — فرم/عامل باید آن را کامل بفرستد (اول سند را با read بخواند).</li>
+<li><code>searchOr([&quot;name&quot;,&quot;quote&quot;], q)</code> برای جستجوی متنی؛ <code>pageParams(sp, default, max)</code> + <code>paginate()</code> برای فهرست‌ها → پاسخ <code>{items,total,page,totalPages}</code>.</li>
+<li>شناسه: <code>mustId(id, &quot;نام موجودیت&quot;)</code> — پیام فارسی + ۴۰۰ تمیز، نه ۵۰۰.</li>
+</ul>
+<h2>۴) قواعد نوشتن</h2>
+<ol>
+<li><strong>هر اقدام حساس AuditLog می‌شود:</strong> <code>logAudit({ req, actorId, actorName, action: &quot;create|update|delete|...&quot;, entity, entityId, before, after, meta })</code> — قبل از تغییر، <code>before</code> را <code>.lean()</code> بگیر.</li>
+<li><strong>بعد از هر نوشتن مؤثر روی صفحات عمومی:</strong> <code>revalidatePath(&quot;/&quot;)</code> یا مسیرهای متأثر (+ <code>revalidatePath(&quot;/sitemap.xml&quot;)</code> برای محتوای ایندکس‌پذیر) داخل <code>try{}catch{}</code>.</li>
+<li><strong>حذف = حذف واقعی (سخت)</strong> با snapshot در AuditLog — اگر soft-delete لازم شد، صریح تصمیم‌گیری و مستند شود.</li>
+<li><strong>کلید Idempotency</strong> برای هر نوشتن قابل‌تکرار از کلاینت/عامل: <code>consumeIdempotencyKey(req, &quot;bucket&quot;)</code> → در catch هم <code>releaseIdempotencyKey</code> فراموش نشود.</li>
+<li><strong>قواعد دامنه‌ای سفت:</strong> مثال‌های مرجع — نظر بدون رضایت‌نامه انتشار نمی‌شود؛ هیچ نظری بی‌نام نیست؛ پیام چت همیشه با REST ارسال می‌شود (WS فقط پوش).</li>
+<li><strong>همه پیام‌های خطا فارسی و کاربر-محور</strong> — <code>Errors.badRequest/notFound/...</code> یا <code>new ApiError(400, &quot;…&quot;, &quot;CODE&quot;)</code>.</li>
+</ol>
+<h2>۵) مالکیت دیتا</h2>
+<ul>
+<li>مدل‌ها به تفکیک دامنه: auth / crm / finance / content / academy / system / chat / broadcast / media / backup.</li>
+<li>اسکیمای مشترک سئو (ContentSeo زیرسند: canonical/noindex/og*/jsonLd) برای هر محتوای ایندکس‌پذیر.</li>
+<li>مهاجرت داده نیازمند <code>scripts/</code> + هماهنگی در برد — دیتابیس پروداکشن واقعی است.</li>
+</ul>
+<h2>۶) تست زنده E2E — الگوی استاندارد (بدون تکیه بر حدس)</h2>
+<p>الگوی کامل که در جلسه‌های واقعی جواب داده:</p>
+<ol>
+<li><strong>ورود تستی مدیر:</strong> درخواست OTP → <code>devCode</code> در پاسخ (فقط dev) → login — کوکی‌ها را از <code>set-cookie</code> جمع کن. روی 429: ثانیه‌های پیام را parse و صبر کن.</li>
+<li><strong>سناریو را با curl/node بزن</strong> (ساخت → ویرایش → تاگل → حذف) و <strong>persistence واقعی</strong> را با GET بعدی چک کن — «200 گرفتن» کافی نیست.</li>
+<li><strong>NEG test:</strong> id ناموجود → ۴۰۴، id خراب → ۴۰۰ تمیز؛ قانون دامنه (مثلاً انتشار بدون رضایت‌نامه) → ۴۰۰ با پیام فارسی.</li>
+<li>هیچ mutation روی داده واقعی بدون مسیر پاکسازی/برگرداندن انجام نشود.</li>
+<li>گیت نهایی: <code>npx tsc --noEmit</code> صفر + eslint فایل‌های خودت صفر (قبل از کامیت، هر دو).</li>
+</ol>
+<h2>۷) چک‌لیست قبل از کامیت بک‌اند</h2>
+<ul>
+<li><input disabled="" type="checkbox"> زنجیره کامل route→controller→service و هیچ منطقی در route نیست</li>
+<li><input disabled="" type="checkbox"> گارد نقش + CSRF + ریت‌لیمیت (عمومی) + AuditLog</li>
+<li><input disabled="" type="checkbox"> parseInput whitelist — هیچ فیلدی مستقیم از body به DB نمی‌رود</li>
+<li><input disabled="" type="checkbox"> revalidatePath صفحات متأثر</li>
+<li><input disabled="" type="checkbox"> NEG tests تمیز (۴۰۰/۴۰۴ نه ۵۰۰) + E2E persistence</li>
+<li><input disabled="" type="checkbox"> tsc + eslint صفر + برد به‌روز + کامیت طبق اسکیل commit</li>
+</ul>
+</div>
+    </section>
+    
+  <section class="card reveal" aria-labelledby="rel-title">
+        <div class="card-head">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+      <h2 class="mono-title" id="rel-title">Similar prompts</h2>
+    </div>
+    <div class="timeline"><a class="row cat-row related-row" href="../../server/deployment-runbook/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Production Deploy Runbook</span><span class="row-sub">Server & API</span></div>
+        <p class="row-text">(دسته: سرور) روش کار عملیاتی استقرار — اجرا/تصاحب پورت dev، سیکل دیپلوی (توقف→بیلد→استارت)، راستی‌آزمایی (tsc/lint/چک سئو/اسکرین‌شات مرورگر)، دیتابیس و بکاپ، اسکریپت‌های مهاجرت، و دام‌های شناخته‌شده. در هر تسک اجرا/استقرار/بیلد/دیباگ لودنشدن استفاده شود. همچنین: «بیلد بزن»، «روی سرور بره»، «لود نمیشه»، «بکاپ»، «ریدایرکت».</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a><div class="connector" aria-hidden="true"></div><a class="row cat-row related-row" href="../../server/nextjs-seo-guide/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Next.js SEO Guide</span><span class="row-sub">Server & API</span></div>
+        <p class="row-text">Complete Google SEO implementation guide for Next.js (Node.js) projects. Covers the App Router Metadata API, generateMetadata, sitemap.ts/robots.ts conventions, JSON-LD structured data, Open Graph &amp; Twitter cards, canonicalization, hreflang/i18n, Core Web Vitals (LCP/INP/CLS), rendering strategies (SSG/SSR/ISR/PPR/Cache Components), and Search Console auditing. Use this skill whenever the user mentions SEO, Google ranking, search visibility, meta tags, Open Graph, sitemap, robots.txt, structured data, schema.org, rich results, canonical URLs, hreflang, page speed, Core Web Vitals, Lighthouse score, \&quot;my site doesn't appear on Google\&quot;, or asks to build/optimize any Next.js page, blog, e-commerce store, or marketing site — even if they don't explicitly say \&quot;SEO\&quot;.</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a><div class="connector" aria-hidden="true"></div><a class="row cat-row related-row" href="../../structure/nextjs-project-structure/">
+      <span class="icon-tile icon-tile--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">Next.js Project Structure</span><span class="row-sub">Structure</span></div>
+        <p class="row-text">Exact folder structure &amp; code-style prompt for scalable Next.js + MongoDB projects.</p>
+      </div>
+      <span class="cat-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg></span>
+    </a></div>
+  </section>
+    <div class="back-row reveal">
+      <a class="pill pill-link" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5L18.5 12 13 17.5"/></svg> Back to Server & API</a>
+      <a class="pill pill-link" href="../../">All prompts</a>
+    </div>
+  </div>
+  <script type="text/plain" class="prompt-raw" data-id="backend-patterns"># اسکیل الگوهای بک‌اند
+
+> قواعد امنیتی کامل: اسکیل `security`. گیت کیفیت هر تسک بک‌اند:
+> `npx tsc --noEmit` + eslint فایل‌های خودت + تست زنده curl (الگوی بخش ۶).
+
+## ۱) زنجیره ثابت — هیچ لایه‌ای حذف نمی‌شود
+
+```ts
+// src/app/api/<domain>/route.ts — فایل نازک؛ منطق اینجا ممنوع
+export async function POST(req: NextRequest) {
+  try {
+    await connectDB();
+    const actor = requireRole(req, ["system_boss"]);
+    assertCsrf(req);
+    const body = await readJson<Record<string, unknown>>(req);
+    return ok(await domainController.adminSave(body, actor, req));
+  } catch (error) { return fail(error); }
+}
+// پارامتری: { params }: { params: Promise<{ id: string }> } → const { id } = await params;
+```
+- کنترلر: بدنه را می‌خواند، فیلد الزامی را چک می‌کند، سرویس را صدا می‌زند، `ok()` برمی‌گرداند. خطا همیشه `fail(error)` — هرگز throw خام به بیرون.
+- سرویس: منطق واقعی. ورودی با `parseInput` پاک‌سازی می‌شود.
+
+## ۲) گاردها
+
+| گارد | کِی |
+|---|---|
+| `requireAuth(req)` / `requireRole(req, [roles])` | هر اندپوینت غیرعمومی — payload کاربر را برمی‌گرداند (`{id, role, firstName}`) |
+| `assertCsrf(req)` | هر متد تغییردهنده (POST/PUT/PATCH/DELETE) — هدر سفارشی که fetcher کلاینت خودکار می‌فرستد |
+| `assertStaff` / `assertBoss` | داخل سرویس وقتی لایه route فقط requireAuth است |
+| ریت‌لیمیت با IP | `limitByIp(req, "key", n, min)` + نسخه‌ی بازدیدکننده برای اندپوینت‌های عمومی |
+| ریت‌لیمیت با شماره | OTP login/setup |
+
+## ۳) ورودی — readJson + parseInput (بدون اعتماد به کلاینت)
+
+```ts
+function parseInput(b: Body): Body {
+  const out: Body = {};
+  if (b.title !== undefined) out.title = txt(b.title, 200);       // الزامی: خالی = throw
+  if (b.metaTitle !== undefined) out.metaTitle = txt(b.metaTitle, 200);
+  if (b.rating !== undefined) out.rating = clampNum(b.rating, 1, 5, 5);
+  if (b.consentSigned !== undefined) out.consentSigned = bool(b.consentSigned) ?? false;
+  return out;
+}
+```
+- **$set جزئی:** فقط فیلدهای ارسالی در data می‌روند → `findByIdAndUpdate(id, { $set: data })` — ویرایش partial امن است.
+- **استثنا:** زیرسند کامل (مثل شیء سئو) کل زیرسند را جایگزین می‌کند — فرم/عامل باید آن را کامل بفرستد (اول سند را با read بخواند).
+- `searchOr(["name","quote"], q)` برای جستجوی متنی؛ `pageParams(sp, default, max)` + `paginate()` برای فهرست‌ها → پاسخ `{items,total,page,totalPages}`.
+- شناسه: `mustId(id, "نام موجودیت")` — پیام فارسی + ۴۰۰ تمیز، نه ۵۰۰.
+
+## ۴) قواعد نوشتن
+
+1. **هر اقدام حساس AuditLog می‌شود:** `logAudit({ req, actorId, actorName, action: "create|update|delete|...", entity, entityId, before, after, meta })` — قبل از تغییر، `before` را `.lean()` بگیر.
+2. **بعد از هر نوشتن مؤثر روی صفحات عمومی:** `revalidatePath("/")` یا مسیرهای متأثر (+ `revalidatePath("/sitemap.xml")` برای محتوای ایندکس‌پذیر) داخل `try{}catch{}`.
+3. **حذف = حذف واقعی (سخت)** با snapshot در AuditLog — اگر soft-delete لازم شد، صریح تصمیم‌گیری و مستند شود.
+4. **کلید Idempotency** برای هر نوشتن قابل‌تکرار از کلاینت/عامل: `consumeIdempotencyKey(req, "bucket")` → در catch هم `releaseIdempotencyKey` فراموش نشود.
+5. **قواعد دامنه‌ای سفت:** مثال‌های مرجع — نظر بدون رضایت‌نامه انتشار نمی‌شود؛ هیچ نظری بی‌نام نیست؛ پیام چت همیشه با REST ارسال می‌شود (WS فقط پوش).
+6. **همه پیام‌های خطا فارسی و کاربر-محور** — `Errors.badRequest/notFound/...` یا `new ApiError(400, "…", "CODE")`.
+
+## ۵) مالکیت دیتا
+
+- مدل‌ها به تفکیک دامنه: auth / crm / finance / content / academy / system / chat / broadcast / media / backup.
+- اسکیمای مشترک سئو (ContentSeo زیرسند: canonical/noindex/og*/jsonLd) برای هر محتوای ایندکس‌پذیر.
+- مهاجرت داده نیازمند `scripts/` + هماهنگی در برد — دیتابیس پروداکشن واقعی است.
+
+## ۶) تست زنده E2E — الگوی استاندارد (بدون تکیه بر حدس)
+
+الگوی کامل که در جلسه‌های واقعی جواب داده:
+
+1. **ورود تستی مدیر:** درخواست OTP → `devCode` در پاسخ (فقط dev) → login — کوکی‌ها را از `set-cookie` جمع کن. روی 429: ثانیه‌های پیام را parse و صبر کن.
+2. **سناریو را با curl/node بزن** (ساخت → ویرایش → تاگل → حذف) و **persistence واقعی** را با GET بعدی چک کن — «200 گرفتن» کافی نیست.
+3. **NEG test:** id ناموجود → ۴۰۴، id خراب → ۴۰۰ تمیز؛ قانون دامنه (مثلاً انتشار بدون رضایت‌نامه) → ۴۰۰ با پیام فارسی.
+4. هیچ mutation روی داده واقعی بدون مسیر پاکسازی/برگرداندن انجام نشود.
+5. گیت نهایی: `npx tsc --noEmit` صفر + eslint فایل‌های خودت صفر (قبل از کامیت، هر دو).
+
+## ۷) چک‌لیست قبل از کامیت بک‌اند
+
+- [ ] زنجیره کامل route→controller→service و هیچ منطقی در route نیست
+- [ ] گارد نقش + CSRF + ریت‌لیمیت (عمومی) + AuditLog
+- [ ] parseInput whitelist — هیچ فیلدی مستقیم از body به DB نمی‌رود
+- [ ] revalidatePath صفحات متأثر
+- [ ] NEG tests تمیز (۴۰۰/۴۰۴ نه ۵۰۰) + E2E persistence
+- [ ] tsc + eslint صفر + برد به‌روز + کامیت طبق اسکیل commit
+</script>
+
+</main>
+
+  <footer class="site-footer reveal">
+    <div class="footer-grid">
+      <div class="footer-col footer-brandcol">
+        <div class="brand">
+          <span class="brand-tile" aria-hidden="true"><img class="brand-logo" src="../../public/logo.svg" alt="" width="26"></span>
+          <div>
+            <p class="brand-name">Prompt Library</p>
+            <p class="brand-sub">Curated specs &amp; prompts</p>
+          </div>
+        </div>
+        <p class="footer-about">A curated, growing collection of bilingual prompts and engineering specs — published as pure static pages and ready to hand to a developer or an AI coding agent.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Categories</h3>
+        <a href="../../security/">Security <span class="foot-fa">امنیت</span></a><a href="../../structure/">Structure <span class="foot-fa">ساختار</span></a><a href="../../ui/">UI & Design <span class="foot-fa">رابط کاربری</span></a><a href="../../server/">Server & API <span class="foot-fa">سرور و API</span></a>
+      </div>
+      <div class="footer-col">
+        <h3 class="mono-title">Resources</h3>
+        <a href="https://github.com/meysamdesign963-oss" target="_blank" rel="noopener">Author · meysamdesign963-oss <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">GitHub repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="../../Prompt-Library.canvas" target="_blank" rel="noopener">Prompt-Library.canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP Top 10 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://jsoncanvas.org" target="_blank" rel="noopener">JSON Canvas spec <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+        <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Prompt Library · Built by <a href="https://github.com/meysamdesign963-oss" target="_blank" rel="noopener">meysamdesign963-oss <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a></span>
+      <span>Static · No tracking · EN → FA</span>
+    </div>
+  </footer>
+
+<script src="../../assets/main.js" defer></script>
+</body>
+</html>
