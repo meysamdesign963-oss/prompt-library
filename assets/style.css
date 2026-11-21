@@ -85,22 +85,6 @@ button{font-family:inherit}
   border-radius:var(--r-sheet);
   box-shadow:var(--shadow-sheet);
 }
-/* faint moving sheen on the sheet — light passing between the cards */
-.sheet::before{
-  content:"";
-  position:absolute;inset:0;z-index:-1;border-radius:inherit;
-  pointer-events:none;
-  background:
-    linear-gradient(115deg,transparent 32%,rgba(92,184,166,.10) 45%,rgba(255,255,255,.14) 50%,rgba(92,184,166,.10) 55%,transparent 68%),
-    linear-gradient(115deg,transparent 55%,rgba(255,255,255,.09) 66%,transparent 80%);
-  background-size:220% 220%;
-  animation:sheet-sheen 26s ease-in-out infinite alternate;
-}
-@keyframes sheet-sheen{
-  from{background-position:0% 0%}
-  to{background-position:100% 100%}
-}
-
 /* ============ Header ============ */
 .site-header{
   position:relative;z-index:1;
