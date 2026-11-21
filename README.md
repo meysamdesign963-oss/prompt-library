@@ -28,6 +28,7 @@
 | # | Prompt | What it is |
 |---|---|---|
 | 1 | 🔐 **Security Blueprint** | Universal security & engineering spec for any **Next.js + MongoDB** web app |
+| 2 | 🎨 **Grainy Sage Editorial** | UI style prompt & design-system spec — the exact look of this site |
 
 ---
 
@@ -141,6 +142,7 @@ No Obsidian? Any app that supports the open [JSON Canvas](https://jsoncanvas.org
 | # | پرامپت | چیست |
 |---|---|---|
 | ۱ | 🔐 **Security Blueprint** | اسپک عمومی امنیت و مهندسی برای هر اپلیکیشن وب **Next.js + MongoDB** |
+| ۲ | 🎨 **Grainy Sage Editorial** | پرامپت استایل رابط کاربری و اسپک سیستم طراحی — ظاهر دقیق همین سایت |
 
 ---
 

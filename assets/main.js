@@ -26,6 +26,11 @@ const ICONS = {
   dots:     svg('<circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/>', true),
   ext:      svg('<path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/>'),
   filecode: svg('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/>'),
+  book:    svg('<path d="M2.5 4.5h6a3.5 3.5 0 0 1 3.5 3.5v12a2.5 2.5 0 0 0-2.5-2.5h-7v-13z"/><path d="M21.5 4.5h-6A3.5 3.5 0 0 0 12 8v12a2.5 2.5 0 0 1 2.5-2.5h7v-13z"/>'),
+  sparkle: svg('<path d="M12 3l2.2 6.2L20.5 12l-6.3 2.8L12 21l-2.2-6.2L3.5 12l6.3-2.8L12 3z"/>'),
+  list:    svg('<path d="M8 6h13M8 12h13M8 18h13"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/>'),
+  terminal: svg('<rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/>'),
+  palette: svg('<path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1-1.4-3.4A2 2 0 0 1 12 12h4.5A4.5 4.5 0 0 0 21 7.5C21 4.4 16.9 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="10.5" r="1.1"/>'),
 };
 const icon = (name) => ICONS[name] || "";
 
@@ -91,6 +96,64 @@ The whole project lives in src/ with this exact structure:
 
 Reference: https://github.com/OWASP/Top10`;
 
+/* ---------- the scaled UI style prompt ---------- */
+const STYLE_PROMPT = `# Grainy Sage Editorial — UI Style System Prompt
+
+You are designing the UI of a SaaS web application. Apply this complete style system exactly. It produces a calm, tactile, blueprint-style interface: an organic textured backdrop with precise, flat, paper-white cards and monospaced technical labels — like a beautifully printed spec sheet resting on a sage-green plaster desk.
+
+## 1 · Identity & Mood
+- Keyword set: calm, tactile, editorial, blueprint, precise, organic.
+- High contrast black-on-white, generous whitespace, hairline borders, pill-shaped chips.
+- The page reads like a printed spec sheet; the background reads like plaster — never like a gradient.
+
+## 2 · Color Tokens (use exact values)
+- Page background: muted sage green #869A8C with a film-grain / plaster noise texture (~10–14% opacity) and a soft vignette darkening toward the edges to #5F6E62. Variant mood: olive #77816A.
+- Main canvas: ONE large off-white #F8F8F8 rounded sheet (radius 20–24px) centered on the green, with a faint dot-grid (#E3E4E0 dots ~1px, 18px pitch) and a soft large shadow (0 24px 60px rgba(0,0,0,.18)).
+- Ink / primary text: #171717.
+- Dark "terminal" card surface: #1F1F1F with nested inner panels #2D2D2F and borders #3A3A3C.
+- Secondary text: #6F7070 · inactive nav text: #A1A1A1.
+- Hairline borders on light surfaces: #E7E8E4 (1px).
+- Accent mint green #5CB8A6 — sparingly only: "Recommended" badge on light mint bg #F2FBFA, checkmarks, positive states. Never large surfaces.
+- Status pills: "Configured" = solid #1E1E1E pill with white mono text (on light) or white #F8F8F8 pill with black text (on dark).
+- Brand logo colors (e.g. Supabase green #46BF91, Clerk purple #705AF3) only inside small icon tiles.
+
+## 3 · Typography
+- Micro-labels, card titles, status labels: monospace (Geist Mono / JetBrains Mono), UPPERCASE, 9–12px, letter-spacing +0.08em, weight 500–600. Everything label-like is mono uppercase ("APP OVERVIEW", "VISIT WEBSITE").
+- Body & UI: clean grotesque sans (Inter / Geist), 13–14px, line-height 1.55; body text #6F7070, emphasis #171717.
+- Step nav: sans breadcrumb ("Get started › Features › Tech stack › …") — current step bold #171717, others #A1A1A1.
+- Type scale reference: 16–18px mono titles · 14px body · 12.5px secondary · 11px / 9.5px mono micro-labels.
+- Non-Latin scripts (e.g. Persian / Arabic): use a dedicated family (Vazirmatn), correct RTL direction, no uppercase treatment.
+
+## 4 · Spacing & Radius Scales
+- Spacing scale: 4 · 8 · 12 · 16 · 24 · 32 · 48 px. Minimum 24px vertical gap between cards.
+- Radius hierarchy: sheet 20–24px → cards 12–14px → rows / tiles 8–10px → pills fully rounded. Never 0px corners.
+
+## 5 · Layout System
+- Full-viewport grainy green background; ONE centered white sheet (max-width ~760–880px, padding 40–56px) holding the whole flow.
+- Inside: a vertical stack of flat white section cards (radius 12–14px, 1px #E7E8E4 border) connected by short dotted vertical connector lines (timeline feel).
+- Card header pattern: small 14px line-icon + mono uppercase title on the left; subtle expand and kebab icons on the right.
+- Content as nested rows / tiles (radius 8–10px, 1px border): icon tile + name + tiny mono uppercase sublabel ("SOURCE CODE", "DATABASE") on the left; status pill or button on the right.
+- Feature chips: fully rounded, 1px border, icon + 12–13px label, wrapping in rows.
+- Tech stack / token grids: 4-column grid of bordered tiles (brand icon or color swatch + name + mono category).
+- Option cards: name + mint "Recommended" pill, "Pricing" / "Best for" blocks with bold 12px labels, gray text, mint check checklist, small white pill "Choose" button bottom-right.
+
+## 6 · Shape, Depth & Motion
+- Flat cards with hairlines; only the sheet and the dark card get soft shadows. No glassmorphism, no gradients on cards.
+- Motion: subtle — fade + 4px upward slide, 150–200ms ease-out; hover darkens the border and lifts 1px. No springy animation.
+- Copy feedback: swap the label to "COPIED ✓" for ~1.5s using the mint accent.
+
+## 7 · Implementation Notes
+- Grain: inline SVG feTurbulence (fractalNoise, baseFrequency ~0.82) as a data-URI on a fixed full-screen overlay, opacity ~0.13, pointer-events none.
+- Vignette: fixed radial-gradient overlay from a transparent center toward rgba(70,82,72,.5) at the edges.
+- Dot-grid: radial-gradient(circle, #E3E4E0 1px, transparent 1.4px) with an 18px background-size on the sheet.
+- Fonts via Google Fonts: Inter (400–700) + JetBrains Mono (400–700), plus Vazirmatn for Persian.
+- Define every token above as a CSS custom property in :root.
+- Render content from a data array so new entries inherit the system automatically.
+
+## 8 · The Rules
+DO: keep grain only on the green background, never on white cards; mono uppercase for all labels; stay monochrome with green as small semantic accents only; generous whitespace (at least 24px between cards).
+DON'T: no saturated fills or colored large surfaces; no shadow on every element; no 0px corners; max ONE dark "terminal" card per screen.`;
+
 /* ---------- prompt data (rendered as cards) ---------- */
 const REPO_URL = "https://github.com/meysamdesign963-oss/prompt-library";
 
@@ -98,10 +161,12 @@ const PROMPTS = [
   {
     id: "security-blueprint",
     icon: "shield",
+    featured: true,
     name: "Security Blueprint",
     sub: "Universal Web App Spec · Next.js + MongoDB",
     version: "V1.0",
     status: "Spec ready",
+    tags: "Bilingual FA · EN",
     descEn:
       "A project-agnostic security & engineering blueprint for any Next.js + MongoDB web app — six color-coded categories in one interactive Obsidian Canvas, written to be handed to a developer or AI coding agent as a ready-made spec.",
     descFa:
@@ -138,7 +203,10 @@ const PROMPTS = [
       ["O", "#7C3AED", "Obsidian", "Canvas"],
       ["W", "#B91C1C", "OWASP", "Checklist"],
     ],
-    owasp: [
+    mapTitle: "Blueprint map — 6 categories",
+    gridTitle: "Tech stack",
+    rulesTitle: "OWASP Top 10 — quick reference",
+    rules: [
       ["SQL Injection", "sanitize every input — ' OR 1=1 -- must fail"],
       ["XSS", "reflected · stored · DOM — sanitize output"],
       ["CSRF", "tokens + SameSite + re-auth"],
@@ -152,6 +220,71 @@ const PROMPTS = [
     ],
     canvas: { href: "./Prompt-Library.canvas", name: "Prompt-Library.canvas", sub: "Source file · JSON Canvas" },
     full: FULL_PROMPT,
+  },
+  {
+    id: "grainy-sage-editorial",
+    icon: "palette",
+    name: "Grainy Sage Editorial",
+    sub: "UI Style Prompt · Design System Spec",
+    version: "V1.0",
+    status: "Style ready",
+    tags: "Design system",
+    descEn:
+      "The complete UI style prompt behind this very website — a scaled, ready-to-paste design system: exact color tokens, mono-uppercase typography, spacing & radius scales, layout recipes, motion spec and the ten DO / DON'T rules.",
+    descFa:
+      "پرامپت کامل استایل رابط کاربری همین وب‌سایت — یک سیستم طراحی دقیق و آماده‌ی استفاده: توکن‌های دقیق رنگ، تایپوگرافی مونو، اسکیل فاصله و شعاع، دستورالعمل لی‌اوت، مشخصات حرکت و ده قانون DO / DON'T.",
+    chips: [
+      ["palette", "Color tokens"],
+      ["list", "Type scale"],
+      ["layers", "Radius scale"],
+      ["sparkle", "Motion spec"],
+      ["filecode", "CSS variables"],
+      ["check", "Do & don't"],
+      ["eye", "Grain & texture"],
+      ["terminal", "Dark card rule"],
+    ].map(([iconName, label]) => ({ iconName, label })),
+    stats: [
+      ["15", "Color tokens"],
+      ["04", "Radius steps"],
+      ["07", "Spacing steps"],
+      ["02", "Type families"],
+    ],
+    categories: [
+      ["sparkle", "Identity & Mood", "Tone", "Calm, tactile, blueprint-style SaaS aesthetic — a printed spec sheet resting on a sage-green plaster desk."],
+      ["palette", "Color Tokens", "Exact hex", "Sage #869A8C + grain & vignette → sheet #F8F8F8 · ink #171717 · mint #5CB8A6 accents · one dark card #1F1F1F."],
+      ["list", "Typography", "Mono labels", "Mono uppercase micro-labels (JetBrains Mono, +0.08em) · grotesque sans body (Inter 13–14px) · sans breadcrumb nav."],
+      ["layers", "Spacing & Radius", "Scales", "Spacing steps 4 · 8 · 12 · 16 · 24 · 32 · 48 · radius hierarchy sheet 24 → card 14 → row 10 → pill 999."],
+      ["folder", "Layout System", "Sheet flow", "One centered 760–880px sheet · flat white cards with dotted connectors · nested rows, chips and 4-column grids."],
+      ["clock", "Depth & Motion", "Subtle", "Flat hairline cards · fade + 4px slide 150–200ms ease-out · hover lifts 1px · soft shadows on sheet & dark card only."],
+    ],
+    swatchMode: true,
+    stack: [
+      ["#869A8C", "#F8F8F8", "Sage", "#869A8C · page background"],
+      ["#F8F8F8", "#171717", "Sheet", "#F8F8F8 · main canvas"],
+      ["#171717", "#F8F8F8", "Ink", "#171717 · primary text"],
+      ["#6F7070", "#F8F8F8", "Gray", "#6F7070 · secondary text"],
+      ["#1F1F1F", "#F8F8F8", "Terminal", "#1F1F1F · dark card"],
+      ["#5CB8A6", "#171717", "Mint", "#5CB8A6 · accent"],
+      ["#F2FBFA", "#2F8577", "Mint BG", "#F2FBFA · badge surface"],
+      ["#E7E8E4", "#171717", "Hairline", "#E7E8E4 · 1px borders"],
+    ],
+    rules: [
+      ["DO · Grain placement", "grain only on the green background — never on white cards"],
+      ["DO · Mono labels", "every label mono uppercase with +0.08em tracking"],
+      ["DO · Semantic mint", "green only as small semantic accents, never large surfaces"],
+      ["DO · Generous air", "at least 24px vertical gap between cards"],
+      ["DO · Pill everything", "chips & status pills fully rounded with hairline borders"],
+      ["DON'T · Saturated fills", "no saturated colors or large colored surfaces"],
+      ["DON'T · Shadow spam", "no shadow on every element — sheet & dark card only"],
+      ["DON'T · Sharp corners", "no 0px corners anywhere"],
+      ["DON'T · Gradient cards", "no glassmorphism, no gradients on cards"],
+      ["DON'T · Dark card spam", "max ONE dark terminal card per screen"],
+    ],
+    mapTitle: "Style map — 6 sections",
+    gridTitle: "Core palette",
+    rulesTitle: "Do & Don't — 10 rules",
+    live: { href: "https://meysamdesign963-oss.github.io/prompt-library/", name: "This website", sub: "Live preview · built with this exact prompt" },
+    full: STYLE_PROMPT,
   },
 ];
 
@@ -179,21 +312,45 @@ function renderPrompt(p) {
   );
   const cats = catRows.join('<div class="connector" aria-hidden="true"></div>');
 
-  const stackTiles = p.stack
-    .map(([letter, color, name, cat]) =>
-      `<div class="stack-tile">
-        <span class="brand-letter" style="background:${color}1A;color:${color}">${letter}</span>
-        <div><p class="stack-name">${name}</p><p class="stack-cat">${cat}</p></div>
-      </div>`)
-    .join("");
+  const stackTiles = (p.swatchMode
+    ? p.stack.map(([color, fg, name, cat]) =>
+        `<div class="stack-tile">
+          <span class="brand-letter" style="background:${color};color:${fg}">Aa</span>
+          <div><p class="stack-name">${name}</p><p class="stack-cat">${cat}</p></div>
+        </div>`)
+    : p.stack.map(([letter, color, name, cat]) =>
+        `<div class="stack-tile">
+          <span class="brand-letter" style="background:${color}1A;color:${color}">${letter}</span>
+          <div><p class="stack-name">${name}</p><p class="stack-cat">${cat}</p></div>
+        </div>`)
+  ).join("");
 
-  const owaspItems = p.owasp
+  const ruleItems = p.rules
     .map(([name, fix], i) =>
       `<div class="owasp-item">
         <span class="owasp-no">${String(i + 1).padStart(2, "0")}</span>
         <div><p class="owasp-name">${name}</p><p class="owasp-fix">${fix}</p></div>
       </div>`)
     .join("");
+
+  const srcHref = p.canvas ? p.canvas.href : p.live.href;
+  const sourceRow = p.canvas
+    ? `<div class="row">
+        <span class="icon-tile icon-tile--lg">${icon("filecode")}</span>
+        <div>
+          <p class="row-name">${p.canvas.name}</p>
+          <p class="row-sub" style="margin-left:0;margin-top:2px">${p.canvas.sub}</p>
+        </div>
+        <a class="pill row-right" href="${p.canvas.href}" target="_blank" rel="noopener">Open ${icon("ext")}</a>
+      </div>`
+    : `<div class="row">
+        <span class="icon-tile icon-tile--lg">${icon("eye")}</span>
+        <div>
+          <p class="row-name">${p.live.name}</p>
+          <p class="row-sub" style="margin-left:0;margin-top:2px">${p.live.sub}</p>
+        </div>
+        <a class="pill row-right" href="${p.live.href}" target="_blank" rel="noopener">Live ${icon("ext")}</a>
+      </div>`;
 
   return `
   <section class="card prompt-card reveal" id="${p.id}" aria-labelledby="${p.id}-title">
@@ -204,16 +361,17 @@ function renderPrompt(p) {
         <p class="title-sub">${p.sub}</p>
       </div>
       <div class="head-icons">
-        <a class="icon-btn" href="${p.canvas.href}" target="_blank" rel="noopener" title="Open source file">${icon("dots")}</a>
+        <a class="icon-btn" href="${srcHref}" target="_blank" rel="noopener" title="${p.canvas ? "Open source file" : "Open live site"}">${icon("dots")}</a>
         <button class="icon-btn" type="button" data-expand="details-${p.id}" aria-expanded="false" aria-controls="details-${p.id}" title="Expand details">${icon("expand")}</button>
       </div>
     </div>
 
     <div class="prompt-pills">
-      ${pill("Recommended", "pill--mint")}
+      ${pill(p.featured ? "Recommended" : "New", "pill--mint")}
       ${pill(p.status, "pill--dark")}
       ${pill(p.version)}
-      ${pill("Bilingual FA · EN")}
+      ${pill(p.tags || "Bilingual FA · EN")}
+      <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="${p.id}" title="Copy the full prompt">Copy prompt ${icon("copy")}</button>
     </div>
 
     <p class="lede prompt-desc">${p.descEn}</p>
@@ -226,25 +384,18 @@ function renderPrompt(p) {
       <div class="details-inner">
         <div class="details-pad">
           <div class="detail-group">
-            <span class="sec-label">Blueprint map — 6 categories</span>
+            <span class="sec-label">${p.mapTitle}</span>
             <div class="timeline">${cats}</div>
           </div>
           <div class="detail-group">
-            <span class="sec-label">Tech stack</span>
+            <span class="sec-label">${p.gridTitle}</span>
             <div class="stack-grid">${stackTiles}</div>
           </div>
           <div class="detail-group">
-            <span class="sec-label">OWASP Top 10 — quick reference</span>
-            <div class="owasp-grid">${owaspItems}</div>
+            <span class="sec-label">${p.rulesTitle}</span>
+            <div class="owasp-grid">${ruleItems}</div>
           </div>
-          <div class="row">
-            <span class="icon-tile icon-tile--lg">${icon("filecode")}</span>
-            <div>
-              <p class="row-name">${p.canvas.name}</p>
-              <p class="row-sub" style="margin-left:0;margin-top:2px">${p.canvas.sub}</p>
-            </div>
-            <a class="pill row-right" href="${p.canvas.href}" target="_blank" rel="noopener">Open ${icon("ext")}</a>
-          </div>
+          ${sourceRow}
         </div>
       </div>
     </div>
@@ -266,9 +417,10 @@ function wireEvents() {
     el.addEventListener("click", () => copyText(el.getAttribute("data-copy"), el));
   });
 
-  document.querySelectorAll("[data-copy-target]").forEach((el) => {
+  document.querySelectorAll("[data-copy-target], [data-copy-prompt]").forEach((el) => {
     el.addEventListener("click", () => {
-      const p = PROMPTS.find((x) => x.id === el.getAttribute("data-copy-target"));
+      const id = el.getAttribute("data-copy-target") || el.getAttribute("data-copy-prompt");
+      const p = PROMPTS.find((x) => x.id === id);
       if (p) copyText(p.full, el);
     });
   });
@@ -297,7 +449,7 @@ function flashCopied(el, ok) {
   const prev = el.innerHTML;
   const prevTitle = el.title;
   el.classList.add("is-copied");
-  el.innerHTML = el.classList.contains("btn-white")
+  el.innerHTML = el.classList.contains("btn-white") || el.classList.contains("btn-copy")
     ? `${icon("check")}<span>Copied ✓</span>`
     : icon("check");
   el.title = "Copied";

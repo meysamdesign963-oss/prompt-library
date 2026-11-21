@@ -333,6 +333,11 @@ button{font-family:inherit}
 .btn-white svg{width:12px;height:12px;flex:none}
 .btn-white.is-copied{background:var(--mint-bg);border-color:var(--mint-bg);color:#1D5A50}
 
+/* per-card copy button */
+.btn-copy{cursor:pointer;transition:transform .16s ease-out,background .16s ease-out,color .16s ease-out,border-color .16s ease-out}
+.btn-copy:hover{transform:translateY(-1px)}
+.btn-copy.is-copied{background:var(--mint-bg);border-color:var(--mint-border);color:var(--mint-deep)}
+
 /* ============ Footer ============ */
 .sheet-footer{
   margin-top:32px;padding-top:18px;border-top:1px solid var(--hairline);
