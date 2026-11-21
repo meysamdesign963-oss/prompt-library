@@ -44,8 +44,6 @@ export function shell({ pre, title, desc, canonical, jsonLd, body, active = "" }
 </head>
 <body>
 
-<!-- ambient light beams (animated backdrop) -->
-<div class="bg-lights" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
 
 ${siteHeader(pre, active)}
 

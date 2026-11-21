@@ -502,81 +502,6 @@ button{font-family:inherit}
 .md-body th,.md-body td{border:1px solid var(--hairline);padding:7px 10px;text-align:left;vertical-align:top}
 .md-body th{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:#F6F7F4}
 
-/* ============ Abstract light field (organic, multi-directional) ============ */
-.bg-lights{
-  position:fixed;inset:-12%;z-index:0;overflow:hidden;pointer-events:none;
-  filter:blur(72px);
-}
-.bg-lights span{position:absolute;border-radius:50%;will-change:transform,opacity}
-
-/* 1 — main white field: diagonal drift, morphs size + rotation */
-.bg-lights span:nth-child(1){
-  width:58vw;height:58vw;left:6vw;top:-6vh;
-  background:radial-gradient(circle at 42% 42%,rgba(255,255,255,.34),rgba(255,255,255,.10) 45%,transparent 70%);
-  animation:field-a 38s ease-in-out infinite alternate;
-}
-
-/* 2 — mint wave: S-curve across the lower half */
-.bg-lights span:nth-child(2){
-  width:44vw;height:44vw;left:24vw;top:26vh;
-  background:radial-gradient(circle at 50% 50%,rgba(92,184,166,.38),rgba(92,184,166,.12) 48%,transparent 72%);
-  animation:field-b 32s ease-in-out infinite alternate;
-}
-
-/* 3 — soft wandering glow, multi-directional loop */
-.bg-lights span:nth-child(3){
-  width:34vw;height:34vw;left:44vw;top:44vh;
-  background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.22),transparent 70%);
-  animation:field-c 27s ease-in-out infinite alternate;
-}
-
-/* 4 — olive tone, slow morph upper-right */
-.bg-lights span:nth-child(4){
-  width:30vw;height:30vw;left:60vw;top:2vh;
-  background:radial-gradient(circle at 50% 50%,rgba(184,196,168,.30),transparent 70%);
-  animation:field-d 24s ease-in-out infinite alternate;
-}
-
-/* 5 — rotating light plane: changes direction in place, never leaves */
-.bg-lights span:nth-child(5){
-  width:96vw;height:46vh;left:-8vw;top:22vh;border-radius:0;
-  background:linear-gradient(105deg,transparent 18%,rgba(255,255,255,.14) 46%,rgba(92,184,166,.16) 54%,transparent 84%);
-  animation:field-spin 56s ease-in-out infinite alternate;
-}
-
-@keyframes field-a{
-  0%{transform:translate(4vw,6vh) rotate(0deg) scale(1);opacity:.55}
-  33%{transform:translate(26vw,26vh) rotate(28deg) scale(1.22);opacity:.95}
-  66%{transform:translate(44vw,4vh) rotate(-14deg) scale(.9);opacity:.7}
-  100%{transform:translate(10vw,30vh) rotate(16deg) scale(1.12);opacity:.8}
-}
-@keyframes field-b{
-  0%{transform:translate(-6vw,10vh) rotate(0deg) scale(1.1);opacity:.8}
-  40%{transform:translate(14vw,-8vh) rotate(24deg) scale(.85);opacity:.55}
-  70%{transform:translate(30vw,22vh) rotate(-18deg) scale(1.25);opacity:.9}
-  100%{transform:translate(2vw,30vh) rotate(8deg) scale(1);opacity:.7}
-}
-@keyframes field-c{
-  0%{transform:translate(0,0) scale(1);opacity:.7}
-  30%{transform:translate(-16vw,10vh) scale(1.2);opacity:.45}
-  55%{transform:translate(6vw,-14vh) scale(.9);opacity:.85}
-  80%{transform:translate(-12vw,-6vh) scale(1.15);opacity:.6}
-  100%{transform:translate(0,0) scale(1);opacity:.7}
-}
-@keyframes field-d{
-  0%{transform:translate(0,0) rotate(0deg) scale(.95);opacity:.6}
-  50%{transform:translate(-14vw,12vh) rotate(160deg) scale(1.25);opacity:.9}
-  100%{transform:translate(4vw,2vh) rotate(300deg) scale(.9);opacity:.65}
-}
-@keyframes field-spin{
-  0%{transform:translate(6vw,4vh) rotate(0deg) scale(1);opacity:.5}
-  50%{transform:translate(-4vw,10vh) rotate(90deg) scale(1.15);opacity:.85}
-  100%{transform:translate(8vw,-2vh) rotate(180deg) scale(1);opacity:.5}
-}
-@media (max-width:720px){
-  .bg-lights{filter:blur(48px)}
-}
-
 /* ============ Dark theme ============ */
 [data-theme="dark"]{
   --bg:#161A17;
@@ -611,21 +536,6 @@ button{font-family:inherit}
     rgba(0,0,0,0) 46%,
     rgba(0,0,0,.45) 100%);
 }
-[data-theme="dark"] .bg-lights span:nth-child(1){
-  background:radial-gradient(circle at 42% 42%,rgba(255,255,255,.16),rgba(255,255,255,.05) 45%,transparent 70%);
-}
-[data-theme="dark"] .bg-lights span:nth-child(2){
-  background:radial-gradient(circle at 50% 50%,rgba(92,184,166,.20),rgba(92,184,166,.06) 48%,transparent 72%);
-}
-[data-theme="dark"] .bg-lights span:nth-child(3){
-  background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.10),transparent 70%);
-}
-[data-theme="dark"] .bg-lights span:nth-child(4){
-  background:radial-gradient(circle at 50% 50%,rgba(184,196,168,.16),transparent 70%);
-}
-[data-theme="dark"] .bg-lights span:nth-child(5){
-  background:linear-gradient(105deg,transparent 18%,rgba(255,255,255,.08) 46%,rgba(92,184,166,.10) 54%,transparent 84%);
-}
 [data-theme="dark"] ::selection{background:#2A5A51;color:#EDEDED}
 
 /* theme toggle icons */
@@ -642,7 +552,6 @@ button{font-family:inherit}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .bg-lights{display:none}
   *,*::before,*::after{transition:none!important;animation:none!important}
 }
 
