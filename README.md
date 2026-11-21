@@ -1,7 +1,7 @@
 <div align="center">
 
-# 🔐 Security Blueprint — Universal Web App Spec
-### نقشه‌ی جامع امنیت و مهندسی — پرامپت عمومی برای هر اپلیکیشن وب
+# 📚 Prompt Library — Curated Prompts & Specs
+### کتابخانه‌ی پرامپت‌ها و اسپک‌های آماده — برای توسعه‌دهنده‌ها و ایجنت‌های هوش مصنوعی
 
 [![Canvas](https://img.shields.io/badge/Obsidian-Canvas-7C3AED?logo=obsidian&logoColor=white)](https://obsidian.md)
 [![Spec](https://img.shields.io/badge/Spec-Bilingual%20FA%20%2F%20EN-0E7490)](#)
@@ -20,7 +20,17 @@
 
 ## 🇬🇧 English
 
-A **universal, project-agnostic security & engineering blueprint** for any web application built with **Next.js + MongoDB**. The entire spec lives in one interactive Obsidian Canvas file — organized into **6 color-coded categories** with step-by-step flow — so any developer (or AI coding agent) can pick it up and implement it without ambiguity. **Works for any project: dashboards, CRMs, shops, SaaS — anything.**
+**Prompt Library** is a curated, growing collection of **production-grade prompts and engineering specs** — bilingual (English → Persian), stored as interactive Obsidian Canvas files, and written to be handed straight to a developer or an AI coding agent. This repo also doubles as a pure HTML/CSS/JS showcase site (GitHub Pages).
+
+### 🗂 Prompts in this library
+
+| # | Prompt | What it is |
+|---|---|---|
+| 1 | 🔐 **Security Blueprint** | Universal security & engineering spec for any **Next.js + MongoDB** web app |
+
+---
+
+Its first entry is a **universal, project-agnostic security & engineering blueprint** for any web application built with **Next.js + MongoDB**. The entire spec lives in one interactive Obsidian Canvas file — organized into **6 color-coded categories** with step-by-step flow — so any developer (or AI coding agent) can pick it up and implement it without ambiguity. **Works for any project: dashboards, CRMs, shops, SaaS — anything.**
 
 ### 🚀 Use It as a Prompt
 
@@ -34,6 +44,7 @@ A **universal, project-agnostic security & engineering blueprint** for any web a
 | File | Description |
 |---|---|
 | [`Prompt-Library.canvas`](./Prompt-Library.canvas) | The full interactive blueprint (Obsidian / JSON Canvas format) |
+| `index.html` + `assets/` | The pure HTML/CSS/JS showcase website (GitHub Pages) |
 | `README.md` | This bilingual guide |
 
 ### 🗺 Blueprint Map — 6 Categories
@@ -122,7 +133,17 @@ No Obsidian? Any app that supports the open [JSON Canvas](https://jsoncanvas.org
 
 ## 🇮🇷 فارسی
 
-یک **بلوپرینت عمومی و مستقل از نوع پروژه** برای امنیت و مهندسی هر اپلیکیشن وب با **Next.js + MongoDB**. کل اسپک در یک فایل کانواز تعاملی اوبسیدین است — با **۶ دسته‌بندی رنگی** و جریان مرحله‌به‌مرحله — تا هر توسعه‌دهنده (یا ایجنت هوش مصنوعی) بتواند بدون ابهام آن را پیاده‌سازی کند. **برای هر پروژه‌ای کار می‌کند: داشبورد، CRM، فروشگاه، SaaS — هر چیز.**
+**پرامپت لایبرری** مجموعه‌ای در حال رشد از **پرامپت‌ها و اسپک‌های مهندسی آماده‌ی کار** است — دوزبانه (اول انگلیسی، بعد فارسی)، در قالب فایل‌های کانواس تعاملی اوبسیدین، و آماده‌ی تحویل به توسعه‌دهنده یا ایجنت هوش مصنوعی. همین ریپو یک وب‌سایت نمایشی با HTML/CSS/JS خالص هم هست (GitHub Pages).
+
+### 🗂 پرامپت‌های این کتابخانه
+
+| # | پرامپت | چیست |
+|---|---|---|
+| ۱ | 🔐 **Security Blueprint** | اسپک عمومی امنیت و مهندسی برای هر اپلیکیشن وب **Next.js + MongoDB** |
+
+---
+
+اولین پرامپت این مجموعه، یک **بلوپرینت عمومی و مستقل از نوع پروژه** برای امنیت و مهندسی هر اپلیکیشن وب با **Next.js + MongoDB** است. کل اسپک در یک فایل کانواز تعاملی اوبسیدین است — با **۶ دسته‌بندی رنگی** و جریان مرحله‌به‌مرحله — تا هر توسعه‌دهنده (یا ایجنت هوش مصنوعی) بتواند بدون ابهام آن را پیاده‌سازی کند. **برای هر پروژه‌ای کار می‌کند: داشبورد، CRM، فروشگاه، SaaS — هر چیز.**
 
 ### 🚀 استفاده به‌عنوان پرامپت
 
@@ -136,6 +157,7 @@ No Obsidian? Any app that supports the open [JSON Canvas](https://jsoncanvas.org
 | فایل | توضیح |
 |---|---|
 | [`Prompt-Library.canvas`](./Prompt-Library.canvas) | نقشه‌ی کامل تعاملی (فرمت اوبسیدین / JSON Canvas) |
+| `index.html` + `assets/` | وب‌سایت نمایشی با HTML/CSS/JS خالص (GitHub Pages) |
 | `README.md` | راهنمای دوزبانه (همین فایل) |
 
 ### 🗺 نقشه‌ی کانواز — ۶ دسته‌بندی
