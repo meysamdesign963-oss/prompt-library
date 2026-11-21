@@ -14,7 +14,7 @@ export const hasLogo = existsSync(LOGO_PATH);
 
 export const CATS = {
   security:  { label: "Security",     fa: "امنیت",       icon: "shield",   desc: "Auth, tokens, sessions, OWASP — hardening specs for web apps.", faDesc: "احراز هویت، توکن، سشن و OWASP — اسپک‌های مقاوم‌سازی اپلیکیشن وب." },
-  structure: { label: "Structure",    fa: "ساختار",      icon: "folder",   desc: "Folder structures, code style & architecture blueprints.", faDesc: "ساختار پوشه‌ها، سبک کد و بلوپرینت‌های معماری." },
+  structure: { label: "Structure",    fa: "ساختار",      icon: "folder",   desc: "Folder structures, code style & architecture specs.", faDesc: "ساختار پوشه‌ها، سبک کد و اسپک‌های معماری." },
   ui:        { label: "UI & Design",  fa: "رابط کاربری", icon: "palette",  desc: "Design systems, style prompts and interface specs.", faDesc: "سیستم‌های طراحی، پرامپت‌های استایل و اسپک‌های رابط کاربری." },
   server:    { label: "Server & API", fa: "سرور و API",  icon: "terminal", desc: "API design, server hardening, deployment & DevOps prompts.", faDesc: "طراحی API، مقاوم‌سازی سرور، دیپلوی و پرامپت‌های DevOps." },
 };

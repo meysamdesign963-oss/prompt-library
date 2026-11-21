@@ -25,7 +25,7 @@ export const EXTRAS = {
       ["10", "OWASP items"],
     ],
     map: {
-      title: "Blueprint map — 6 categories",
+      title: "Prompt-Library map — 6 categories",
       gridTitle: "Tech stack",
       rulesTitle: "OWASP Top 10 — quick reference",
       categories: [

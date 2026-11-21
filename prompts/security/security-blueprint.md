@@ -1,14 +1,14 @@
 ---
-title: Security Blueprint
+title: Prompt-Library
 description: Universal security & engineering spec for any Next.js + MongoDB web app.
 category: security
 version: 1.0.0
 status: Spec ready
 tags: security, jwt, owasp, rbac
-fa: بلوپرینت مستقل از نوع پروژه برای امنیت و مهندسی هر اپلیکیشن وب Next.js + MongoDB.
+fa: پرامپت‌لایبرری — اسپک مستقل از نوع پروژه برای امنیت و مهندسی هر اپلیکیشن وب Next.js + MongoDB.
 ---
 
-# Security Blueprint — Universal Web App Spec
+# Prompt-Library — Universal Web App Spec
 
 You are building a web application with Next.js + MongoDB. Follow this security and engineering spec exactly. It is project-agnostic — adapt the product-specific examples (upload whitelist, phone format, masked fields) to your own domain; everything else applies as-is.
 
