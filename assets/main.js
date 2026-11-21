@@ -560,7 +560,8 @@ function view404() {
 
 /* ---------- router ---------- */
 function parseRoute() {
-  const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent);
+  const hash = location.hash.replace(/^#\/?/, "").split("?")[0];
+  const parts = hash.split("/").filter(Boolean).map(decodeURIComponent);
   if (!parts.length) return { view: "home" };
   if (parts[0] === "c" && parts[1] && CATS[parts[1]]) return { view: "category", cat: parts[1] };
   if (parts[0] === "p" && parts[1]) return { view: "prompt", slug: parts[1] };

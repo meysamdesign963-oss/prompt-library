@@ -132,6 +132,7 @@ You are designing the UI of a SaaS web application. Apply this complete style sy
 ## 7 · Implementation Notes
 - Grain: inline SVG feTurbulence (fractalNoise, baseFrequency ~0.82) as a data-URI on a fixed full-screen overlay, opacity ~0.13, pointer-events none.
 - Vignette: fixed radial-gradient overlay from a transparent center toward rgba(70,82,72,.5) at the edges.
+- Ambient light: 2-3 large diagonal white/mint gradients (opacity ~.2-.4, blur ~60px) sweeping slowly across the green background (30-50s transform-only loops), plus a faint light sheen passing over the sheet; disabled under prefers-reduced-motion.
 - Dot-grid: radial-gradient(circle, #E3E4E0 1px, transparent 1.4px) with an 18px background-size on the sheet.
 - Fonts via Google Fonts: Inter (400–700) + JetBrains Mono (400–700), plus Vazirmatn for Persian.
 - Define every token above as a CSS custom property in :root.

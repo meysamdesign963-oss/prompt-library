@@ -46,11 +46,11 @@ body{
 /* --- soft vignette toward edges --- */
 body::before{
   content:"";
-  position:fixed;inset:0;z-index:0;pointer-events:none;
+  position:fixed;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(120% 90% at 50% 28%,
     rgba(255,255,255,.10) 0%,
     rgba(95,110,98,0) 46%,
-    rgba(70,82,72,.50) 100%);
+    rgba(70,82,72,.26) 100%);
 }
 /* --- fine film-grain / plaster noise --- */
 body::after{
@@ -66,7 +66,7 @@ button{font-family:inherit}
 /* ============ Sheet (main canvas) ============ */
 .sheet{
   position:relative;z-index:1;
-  max-width:860px;
+  max-width:800px;
   margin:56px auto 72px;
   padding:48px;
   background:var(--sheet);
@@ -74,6 +74,21 @@ button{font-family:inherit}
   background-size:18px 18px;
   border-radius:var(--r-sheet);
   box-shadow:var(--shadow-sheet);
+}
+/* faint moving sheen on the sheet — light passing between the cards */
+.sheet::before{
+  content:"";
+  position:absolute;inset:0;z-index:-1;border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg,transparent 32%,rgba(92,184,166,.10) 45%,rgba(255,255,255,.14) 50%,rgba(92,184,166,.10) 55%,transparent 68%),
+    linear-gradient(115deg,transparent 55%,rgba(255,255,255,.09) 66%,transparent 80%);
+  background-size:220% 220%;
+  animation:sheet-sheen 26s ease-in-out infinite alternate;
+}
+@keyframes sheet-sheen{
+  from{background-position:0% 0%}
+  to{background-position:100% 100%}
 }
 
 /* ============ Header ============ */
@@ -426,6 +441,51 @@ button{font-family:inherit}
 .md-body th,.md-body td{border:1px solid var(--hairline);padding:7px 10px;text-align:left;vertical-align:top}
 .md-body th{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:#F6F7F4}
 
+/* ============ Ambient light beams ============ */
+.bg-lights{
+  position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+  filter:blur(64px);
+}
+.bg-lights span{
+  position:absolute;top:-40%;left:0;height:180%;width:46%;
+  will-change:transform;
+}
+.bg-lights span:nth-child(1){
+  width:52%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.38) 50%,transparent);
+  animation:sweep-a 34s linear infinite;animation-delay:-6s;
+}
+.bg-lights span:nth-child(2){
+  width:36%;
+  background:linear-gradient(90deg,transparent,rgba(92,184,166,.40) 50%,transparent);
+  animation:sweep-b 46s linear infinite;animation-delay:-22s;
+}
+.bg-lights span:nth-child(3){
+  width:60%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.20) 50%,transparent);
+  animation:sweep-a 58s linear infinite reverse;animation-delay:-40s;
+}
+.bg-lights span:nth-child(4){
+  width:90%;height:90%;top:-10%;left:-15%;
+  background:radial-gradient(closest-side,rgba(255,255,255,.20),transparent 72%);
+  animation:breathe 18s ease-in-out infinite alternate;
+}
+@keyframes sweep-a{
+  0%,100%{transform:translateX(-150%) rotate(24deg)}
+  50%{transform:translateX(170%) rotate(24deg)}
+}
+@keyframes sweep-b{
+  0%,100%{transform:translateX(180%) rotate(31deg)}
+  50%{transform:translateX(-170%) rotate(31deg)}
+}
+@keyframes breathe{
+  from{opacity:.55}
+  to{opacity:1}
+}
+@media (max-width:720px){
+  .bg-lights{filter:blur(44px)}
+}
+
 /* ============ Motion ============ */
 .reveal{opacity:0;transform:translateY(4px);transition:opacity .2s ease-out,transform .2s ease-out}
 .reveal.is-in{opacity:1;transform:none}
@@ -433,6 +493,7 @@ button{font-family:inherit}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
+  .bg-lights{display:none}
   *,*::before,*::after{transition:none!important;animation:none!important}
 }
 
