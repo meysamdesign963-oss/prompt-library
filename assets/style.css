@@ -105,9 +105,12 @@ button{font-family:inherit}
 .brand{display:flex;align-items:center;gap:12px}
 .brand-tile{
   width:38px;height:38px;flex:none;border-radius:11px;
-  background:var(--dark);color:#F8F8F8;
+  background:var(--tile-bg);border:1px solid var(--hairline);color:var(--ink);
   display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
 }
+.brand-tile .brand-logo{width:26px;height:auto;display:block}
+[data-theme="dark"] .brand-tile .brand-logo{filter:invert(1) brightness(1.35)}
 .brand-tile svg{width:17px;height:17px}
 .brand-name{
   font-family:var(--mono);font-size:13px;font-weight:700;

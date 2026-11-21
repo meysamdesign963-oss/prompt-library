@@ -381,6 +381,9 @@ const aboutCard = `
 
 /* ---------- page shell ---------- */
 function shell({ pre, title, desc, canonical, jsonLd, body, active = "" }) {
+  const brandMark = hasLogo
+    ? `<img class="brand-logo" src="${pre}public/logo.svg" alt="" width="26">`
+    : icon("box");
   const navItems = [
     ["Library", "", "home"],
     ...Object.entries(CATS).map(([k, c]) => [c.label, `${k}/`, k]),
@@ -421,9 +424,7 @@ function shell({ pre, title, desc, canonical, jsonLd, body, active = "" }) {
   <header class="site-header reveal">
     <div class="brand">
       <a class="brand-link" href="${pre}" aria-label="Prompt Library home">
-        <span class="brand-tile" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.2l-9-5-9 5v7.6l9 5 9-5V8.2z"/><path d="M3 8.2l9 5 9-5"/><path d="M12 13.2V21"/></svg>
-        </span>
+        <span class="brand-tile" aria-hidden="true">${brandMark}</span>
         <div>
           <h1 class="brand-name">Prompt Library</h1>
           <p class="brand-sub">Curated specs &amp; prompts for builders</p>
@@ -450,7 +451,7 @@ ${body}
     <div class="footer-grid">
       <div class="footer-col footer-brandcol">
         <div class="brand">
-          <span class="brand-tile" aria-hidden="true">${icon("box")}</span>
+          <span class="brand-tile" aria-hidden="true">${brandMark}</span>
           <div>
             <p class="brand-name">Prompt Library</p>
             <p class="brand-sub">Curated specs &amp; prompts</p>
@@ -769,8 +770,23 @@ Allow: /
 Sitemap: ${BASE}/sitemap.xml
 `;
 
-/* ---------- favicon ---------- */
-const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#869A8C"/><path d="M10 16.5l4.5 4.5L22.5 11" stroke="#F8F8F8" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+/* ---------- favicon & brand mark (from public/logo.svg) ---------- */
+const LOGO_PATH = join(ROOT, "public", "logo.svg");
+const hasLogo = existsSync(LOGO_PATH);
+let faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#869A8C"/><path d="M10 16.5l4.5 4.5L22.5 11" stroke="#F8F8F8" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+if (hasLogo) {
+  try {
+    const src = readFileSync(LOGO_PATH, "utf8");
+    const d = (src.match(/ d="([^"]+)"/) || [])[1];
+    const vb = src.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/) || [];
+    if (d && vb[1] && vb[2]) {
+      const w = parseFloat(vb[1]), h = parseFloat(vb[2]);
+      const scale = Math.min(22 / w, 22 / h);
+      const tx = ((32 - w * scale) / 2).toFixed(2), ty = ((32 - h * scale) / 2).toFixed(2);
+      faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#869A8C"/><g transform="translate(${tx} ${ty}) scale(${scale.toFixed(4)})"><path fill="#171717" fill-rule="evenodd" d="${d}"/></g></svg>`;
+    }
+  } catch (_) {}
+}
 
 /* ---------- main ---------- */
 const prompts = loadPrompts();
