@@ -46,8 +46,28 @@ Its first entry is a **universal, project-agnostic security & engineering bluepr
 | File | Description |
 |---|---|
 | [`Prompt-Library.canvas`](./Prompt-Library.canvas) | The full interactive blueprint (Obsidian / JSON Canvas format) |
-| `index.html` + `assets/` | The pure HTML/CSS/JS showcase website (GitHub Pages) |
+| `prompts/` | The library itself — one folder per category (`security` · `structure` · `ui` · `server`); every `.md` / `.canvas` file is auto-published |
+| `index.html` + `assets/` | The pure HTML/CSS/JS website (GitHub Pages) — multi-page, auto-discovers `prompts/**` |
 | `README.md` | This bilingual guide |
+
+### 🗂 Publishing a New Prompt — Automatic
+
+1. Create a file under `prompts/<category>/` — categories: `security` · `structure` · `ui` · `server`
+2. Markdown files support front-matter:
+
+```yaml
+---
+title: My Prompt
+description: One-line description.
+category: security
+version: 1.0.0
+status: Ready
+tags: auth, jwt
+fa: توضیح فارسی کوتاه.
+---
+```
+
+3. Push to `main` — done. The site scans `prompts/**` at runtime (GitHub API — no build step) and automatically publishes the card, its category page (`#/c/<category>`) and its own detail page (`#/p/<slug>`), with a working **Copy prompt** button.
 
 ### 🗺 Blueprint Map — 6 Categories
 
@@ -160,8 +180,28 @@ No Obsidian? Any app that supports the open [JSON Canvas](https://jsoncanvas.org
 | فایل | توضیح |
 |---|---|
 | [`Prompt-Library.canvas`](./Prompt-Library.canvas) | نقشه‌ی کامل تعاملی (فرمت اوبسیدین / JSON Canvas) |
-| `index.html` + `assets/` | وب‌سایت نمایشی با HTML/CSS/JS خالص (GitHub Pages) |
+| `prompts/` | خود کتابخانه — یک پوشه به‌ازای هر دسته (`security` · `structure` · `ui` · `server`)؛ هر فایل `.md` / `.canvas` خودکار منتشر می‌شود |
+| `index.html` + `assets/` | وب‌سایت چندصفحه‌ای با HTML/CSS/JS خالص (GitHub Pages) — فایل‌های `prompts/**` را خودکار کشف می‌کند |
 | `README.md` | راهنمای دوزبانه (همین فایل) |
+
+### 🗂 انتشار پرامپت جدید — خودکار
+
+1. فایل را داخل `prompts/<category>/` بسازید — دسته‌ها: `security` · `structure` · `ui` · `server`
+2. فایل‌های Markdown از front-matter پشتیبانی می‌کنند:
+
+```yaml
+---
+title: My Prompt
+description: توضیح یک‌خطی.
+category: security
+version: 1.0.0
+status: Ready
+tags: auth, jwt
+fa: توضیح فارسی کوتاه.
+---
+```
+
+3. به `main` پوش کنید — تمام. سایت در زمان اجرا (با GitHub API — بدون build) همه‌ی فایل‌های `prompts/**` را می‌بیند و خودکار کارت، صفحه‌ی دسته (`#/c/<category>`) و صفحه‌ی اختصاصی (`#/p/<slug>`) با دکمه‌ی **Copy prompt** منتشر می‌کند.
 
 ### 🗺 نقشه‌ی کانواز — ۶ دسته‌بندی
 
