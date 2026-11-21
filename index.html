@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt Library — Curated Prompts &amp; Specs</title>
+<meta name="description" content="A curated collection of production-grade prompts and engineering specs — bilingual (EN/FA), Obsidian Canvas ready, built to be handed to developers or AI coding agents.">
+<meta property="og:title" content="Prompt Library">
+<meta property="og:description" content="Curated prompts &amp; engineering specs for developers and AI agents.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23869A8C'/%3E%3Cpath d='M10 16.5l4.5 4.5L22.5 11' stroke='%23F8F8F8' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Vazirmatn:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<main class="sheet">
+
+  <!-- ===== Header ===== -->
+  <header class="site-header reveal">
+    <div class="brand">
+      <span class="brand-tile" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.2l-9-5-9 5v7.6l9 5 9-5V8.2z"/><path d="M3 8.2l9 5 9-5"/><path d="M12 13.2V21"/></svg>
+      </span>
+      <div>
+        <h1 class="brand-name">Prompt Library</h1>
+        <p class="brand-sub">Curated specs &amp; prompts for builders</p>
+      </div>
+    </div>
+    <a class="pill pill-link" href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">
+      GitHub
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg>
+    </a>
+  </header>
+
+  <nav class="crumbs reveal" aria-label="Breadcrumb">
+    <span>Library</span><span class="sep" aria-hidden="true">›</span><span>All prompts</span><span class="sep" aria-hidden="true">›</span><strong>Security Blueprint</strong>
+  </nav>
+
+  <div class="stack">
+
+    <!-- ===== About ===== -->
+    <section class="card reveal" id="about" aria-labelledby="about-title">
+      <div class="card-head">
+        <span class="icon-tile" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5h6a3.5 3.5 0 0 1 3.5 3.5v12a2.5 2.5 0 0 0-2.5-2.5h-7v-13z"/><path d="M21.5 4.5h-6A3.5 3.5 0 0 0 12 8v12a2.5 2.5 0 0 1 2.5-2.5h7v-13z"/></svg>
+        </span>
+        <h2 class="mono-title" id="about-title">About this library</h2>
+      </div>
+      <p class="lede">A curated, growing collection of <strong>production-grade prompts and engineering specs</strong>. Every entry is bilingual — <strong>English first, then Persian</strong> — stored as an interactive <strong>Obsidian JSON Canvas</strong>, and written to be handed straight to a developer or an AI coding agent.</p>
+      <div class="chips">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.8 2.7 2.8 14.3 0 17-2.8-2.7-2.8-14.3 0-17z"/></svg><span>Open source</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5h6a3.5 3.5 0 0 1 3.5 3.5v12a2.5 2.5 0 0 0-2.5-2.5h-7v-13z"/><path d="M21.5 4.5h-6A3.5 3.5 0 0 0 12 8v12a2.5 2.5 0 0 1 2.5-2.5h7v-13z"/></svg><span>Bilingual FA · EN</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/></svg><span>JSON Canvas</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 6.2L20.5 12l-6.3 2.8L12 21l-2.2-6.2L3.5 12l6.3-2.8L12 3z"/></svg><span>Agent-ready</span></span>
+      </div>
+    </section>
+
+    <!-- ===== Prompt cards (rendered by assets/main.js) ===== -->
+    <div id="prompts" class="prompt-list"></div>
+
+    <!-- ===== Use as prompt (single dark terminal card) ===== -->
+    <section class="card card-dark reveal" id="use-as-prompt" aria-labelledby="use-title">
+      <div class="card-head">
+        <span class="icon-tile" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3.5 3L7 15.5"/><path d="M12.5 15.5H17"/></svg>
+        </span>
+        <h2 class="mono-title" id="use-title">Use it as a prompt</h2>
+      </div>
+      <div class="term-stack">
+        <div class="term-line">
+          <span class="dollar" aria-hidden="true">$</span>
+          <span class="term-cmd">git clone https://github.com/meysamdesign963-oss/prompt-library.git</span>
+          <button class="icon-btn icon-btn--dark" type="button" data-copy="git clone https://github.com/meysamdesign963-oss/prompt-library.git" title="Copy command" aria-label="Copy clone command">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          </button>
+        </div>
+        <div class="term-line">
+          <span class="dollar" aria-hidden="true">$</span>
+          <span class="term-cmd">open Prompt-Library.canvas → Obsidian / any JSON Canvas app</span>
+          <button class="icon-btn icon-btn--dark" type="button" data-copy="open Prompt-Library.canvas" title="Copy command" aria-label="Copy open command">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="term-actions">
+        <span class="term-hint">Then paste the spec into your AI agent — Claude · Cursor · Copilot</span>
+        <button class="btn-white" type="button" data-copy-target="security-blueprint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span>Copy full prompt</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== How to use ===== -->
+    <section class="card reveal" id="how-to-use" aria-labelledby="how-title">
+      <div class="card-head">
+        <span class="icon-tile" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>
+        </span>
+        <h2 class="mono-title" id="how-title">How to use</h2>
+      </div>
+      <div class="timeline">
+        <div class="row cat-row">
+          <span class="step-tile" aria-hidden="true">01</span>
+          <div class="cat-body">
+            <div class="cat-top"><span class="row-name">Fork or copy</span><span class="row-sub">Setup</span></div>
+            <p class="row-text">Fork this repository on GitHub — or copy just the canvas file — into your project.</p>
+          </div>
+        </div>
+        <div class="connector" aria-hidden="true"></div>
+        <div class="row cat-row">
+          <span class="step-tile" aria-hidden="true">02</span>
+          <div class="cat-body">
+            <div class="cat-top"><span class="row-name">Open the canvas</span><span class="row-sub">Inspect</span></div>
+            <p class="row-text">Open <strong>Prompt-Library.canvas</strong> in Obsidian — or any JSON Canvas compatible app.</p>
+          </div>
+        </div>
+        <div class="connector" aria-hidden="true"></div>
+        <div class="row cat-row">
+          <span class="step-tile" aria-hidden="true">03</span>
+          <div class="cat-body">
+            <div class="cat-top"><span class="row-name">Hand it over</span><span class="row-sub">Build</span></div>
+            <p class="row-text">Give the spec to your developer or AI coding agent — adapt the domain examples, ship.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer class="sheet-footer reveal">
+    <span class="foot-note">Prompt Library — built with security in mind</span>
+    <div class="foot-links">
+      <a href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <a href="./Prompt-Library.canvas" target="_blank" rel="noopener">Canvas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+      <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+    </div>
+  </footer>
+
+  <noscript><p class="noscript">JavaScript is disabled — prompt cards can't render. Open Prompt-Library.canvas directly instead.</p></noscript>
+
+</main>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

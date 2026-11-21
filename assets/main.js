@@ -1,0 +1,333 @@
+"use strict";
+
+/* ============================================================
+   Prompt Library — data-driven prompt showcase
+   Add a new prompt by appending an object to PROMPTS.
+   ============================================================ */
+
+/* ---------- inline icon set (14px line icons) ---------- */
+const svg = (paths, filled = false) =>
+  `<svg viewBox="0 0 24 24" ${filled
+    ? 'fill="currentColor" stroke="none"'
+    : 'fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"'} aria-hidden="true">${paths}</svg>`;
+
+const ICONS = {
+  shield:   svg('<path d="M12 3l7 3.2v5.1c0 4.6-3 7.7-7 9.2-4-1.5-7-4.6-7-9.2V6.2L12 3z"/>'),
+  layers:   svg('<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>'),
+  folder:   svg('<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>'),
+  lock:     svg('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'),
+  key:      svg('<circle cx="7.5" cy="15.5" r="4"/><path d="M10.5 12.5L20 3"/><path d="M16 7l3 3"/>'),
+  bug:      svg('<circle cx="12" cy="13" r="5"/><path d="M12 8V6"/><path d="M9.5 8L7.5 5M14.5 8l2-3"/><path d="M4.5 13h2.5M17 13h2.5M6 19l2-2M18 19l-2-2"/>'),
+  clock:    svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+  eye:      svg('<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.5"/>'),
+  copy:     svg('<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>'),
+  check:    svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>'),
+  expand:   svg('<path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7.5 7.5"/><path d="M3 21l7.5-7.5"/>'),
+  dots:     svg('<circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/>', true),
+  ext:      svg('<path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/>'),
+  filecode: svg('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><path d="M10.5 12.5L8.5 15l2 2.5"/><path d="M13.5 12.5l2 2.5-2 2.5"/>'),
+};
+const icon = (name) => ICONS[name] || "";
+
+/* ---------- full copyable prompt ---------- */
+const FULL_PROMPT = `# Security Blueprint — Universal Web App Spec
+
+You are building a web application with Next.js + MongoDB. Follow this security and engineering spec exactly. It is project-agnostic — adapt the product-specific examples (upload whitelist, phone format, masked fields) to your own domain; everything else applies as-is.
+
+## 1 · Architecture & Tech Stack
+- Database → MongoDB (no SQL): schema changes never need migrations; updates stay fast and painless.
+- Frontend → React: light and fast UI.
+- Backend → Next.js (App Router, src/app/api/) + Node.js patterns: one codebase for app + API.
+- Engineering goals: update-resilient (no update may ever break the project) and SEO-first (every public page fully optimized).
+
+## 2 · Folder Structure & Code Style
+The whole project lives in src/ with this exact structure:
+- src/app/ → frontend pages & routing (src/app/api/ → backend & API routes)
+- src/public/img + src/public/font → site images and fonts
+- src/controllers/ → HTTP responses
+- src/services/ → all business logic
+- src/components/ → UI & styles (auth, theme, layout, ui)
+- src/utils/ → libraries, realtime, helpers
+- .env → secrets: token keys, DB URI (never commit!)
+- Clean code: anyone must be able to read and understand it, so future updates stay painless.
+- Componentize every reusable piece under components/ so the project stays scalable.
+
+## 3 · Login Security
+1. Password hashing: Bcrypt or Argon2 only — plain text and MD5 are forbidden.
+2. Rate limit: max 5 login requests per 15 minutes per IP → temporary IP block.
+3. Unified error message: never reveal whether the username or the password was wrong.
+4. Secure token storage: the login JWT lives only in HttpOnly + Secure cookies so XSS cannot steal it.
+5. Strict input validation: every field regex-validated server-side so malicious payloads (SQLi / XSS) never reach the database.
+
+## 4 · JWT Token System
+- After login the backend issues TWO tokens, each signed with its OWN 128-character secret generated with crypto and stored in .env:
+  - Access token — 2 minutes: payload { id, role, firstName, jti: crypto.randomUUID() }.
+  - Refresh token — 15 days: payload { id, firstName, jti: crypto.randomUUID() }.
+- Cookies (adapt the Express sample to the Next.js App Router API):
+  accessToken  → httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "strict", maxAge: 2 * 60 * 1000
+  refreshToken → same flags, maxAge: 15 * 24 * 60 * 60 * 1000
+- Logout clears BOTH cookies with identical flags. A new login immediately invalidates the previous session.
+
+## 5 · Post-Login Security
+- Sessions: idle timeout 15–30 min · absolute timeout ~8 h (stolen long-lived tokens become useless) · single active session per user (a new login invalidates the previous one).
+- RBAC isolation: every database query filters by user_id = current user; only admins see global reports and every user's data; a user must never see another user's files, tasks, messages or customer data.
+- IDOR prevention: changing an id in the API URL (/api/files/101 → /api/files/102) must never return someone else's data — the server verifies ownership of every requested id (Object-Level Authorization); prefer UUIDs over sequential ids.
+- Data masking: sensitive customer data — above all phone numbers — appears masked in list views (e.g. 0912****567); full value is revealed only through a "View" action and every reveal is logged.
+- File uploads: whitelist formats (e.g. jpg/png/pdf — check extension AND MIME type), filenames randomized on the server, no execute permission on stored files, store in cloud storage — never in code or database.
+- Chat & AI: sanitize messages before storage (XSS); rate limit + character-length limit on AI requests (cost and prompt-injection protection).
+- Audit trail: every sensitive action — viewing sensitive data, editing or deleting records, downloading files — is logged with IP + timestamp + username + action type, so leaks can always be traced to who, what and when.
+
+## 6 · OWASP Top 10 Checklist
+1. SQL Injection — sanitize every input (' OR 1=1 -- must fail).
+2. XSS (Reflected / Stored / DOM-based) — sanitize output and messages.
+3. CSRF — CSRF tokens in forms + SameSite=Strict/Lax cookies + re-confirmation for sensitive operations.
+4. IDOR — server-side ownership check per request; UUIDs.
+5. Authentication Failures — session regeneration after login, expiry, account lockout after failed attempts.
+6. Sensitive Data Exposure — HTTPS mandatory (TLS 1.2+ & HSTS), encryption at rest & in transit, proper secrets management, no stack traces to users, no API keys in frontend code.
+7. SSRF — whitelist allowed domains, block internal & loopback IPs, no automatic redirects.
+8. Security Misconfiguration — server hardening, no debug mode in production, CORS only for allowed domains, security headers.
+9. Vulnerable Components — regular package updates, review advisories, remove unused dependencies.
+10. Unsafe File Uploads — whitelist extensions & MIME types, random filenames stored outside the web root, antivirus scanning, no execute permission.
+
+Reference: https://github.com/OWASP/Top10`;
+
+/* ---------- prompt data (rendered as cards) ---------- */
+const REPO_URL = "https://github.com/meysamdesign963-oss/prompt-library";
+
+const PROMPTS = [
+  {
+    id: "security-blueprint",
+    icon: "shield",
+    name: "Security Blueprint",
+    sub: "Universal Web App Spec · Next.js + MongoDB",
+    version: "V1.0",
+    status: "Spec ready",
+    descEn:
+      "A project-agnostic security & engineering blueprint for any Next.js + MongoDB web app — six color-coded categories in one interactive Obsidian Canvas, written to be handed to a developer or AI coding agent as a ready-made spec.",
+    descFa:
+      "بلوپرینت مستقل از نوع پروژه برای امنیت و مهندسی هر اپلیکیشن وب با Next.js + MongoDB — شش دسته‌بندی در قالب یک کانواس تعاملی اوبسیدین، آماده‌ی تحویل به توسعه‌دهنده یا ایجنت هوش مصنوعی.",
+    chips: [
+      ["key", "JWT auth"],
+      ["bug", "OWASP Top 10"],
+      ["layers", "RBAC isolation"],
+      ["clock", "Rate limiting"],
+      ["lock", "Secure cookies"],
+      ["eye", "Data masking"],
+      ["filecode", "Safe uploads"],
+      ["book", "Audit trail"],
+    ].map(([iconName, label]) => ({ iconName, label })),
+    stats: [
+      ["06", "Categories"],
+      ["20", "Canvas cards"],
+      ["02", "Languages"],
+      ["10", "OWASP items"],
+    ],
+    categories: [
+      ["layers", "Architecture & Tech Stack", "Stack & goals", "MongoDB (no migrations) · React · Next.js + Node.js · SEO-first · update-resilient engineering goals."],
+      ["folder", "Folder Structure & Code Style", "src/ layout", "Exact src/ structure (app, controllers, services, components, utils) · clean code · componentize everything."],
+      ["lock", "Login Security", "Auth gate", "Bcrypt / Argon2 hashing · 5 req / 15 min rate limit · unified errors · HttpOnly cookies · server-side validation."],
+      ["key", "JWT Token System", "Two tokens", "Access 2 min + Refresh 15 days · separate 128-char secrets · strict SameSite cookies · logout clears both."],
+      ["shield", "Post-Login Security", "Runtime shield", "Sessions (idle 15–30 min, absolute ~8 h, single active) · RBAC isolation · IDOR · masking · uploads · AI limits · audit trail."],
+      ["bug", "OWASP Top 10 Checklist", "Threat model", "The 10 critical web threats with concrete fixes — from SQLi and XSS to SSRF and unsafe uploads."],
+    ],
+    stack: [
+      ["M", "#47A248", "MongoDB", "Database"],
+      ["R", "#61DAFB", "React", "Frontend"],
+      ["N", "#171717", "Next.js", "Framework"],
+      ["Nd", "#5FA04E", "Node.js", "Runtime"],
+      ["O", "#7C3AED", "Obsidian", "Canvas"],
+      ["W", "#B91C1C", "OWASP", "Checklist"],
+    ],
+    owasp: [
+      ["SQL Injection", "sanitize every input — ' OR 1=1 -- must fail"],
+      ["XSS", "reflected · stored · DOM — sanitize output"],
+      ["CSRF", "tokens + SameSite + re-auth"],
+      ["IDOR", "ownership check per request · UUIDs"],
+      ["Auth Failures", "regeneration · expiry · lockout"],
+      ["Data Exposure", "TLS 1.2+ · HSTS · secrets mgmt"],
+      ["SSRF", "domain whitelist · block internal IPs"],
+      ["Misconfiguration", "hardening · strict CORS · headers"],
+      ["Vulnerable Deps", "regular updates · prune unused"],
+      ["Unsafe Uploads", "whitelist · AV scan · no execute"],
+    ],
+    canvas: { href: "./Prompt-Library.canvas", name: "Prompt-Library.canvas", sub: "Source file · JSON Canvas" },
+    full: FULL_PROMPT,
+  },
+];
+
+/* ---------- rendering ---------- */
+const pill = (text, cls = "") => `<span class="pill ${cls}">${text}</span>`;
+
+function renderPrompt(p) {
+  const chips = p.chips
+    .map((c) => `<span class="chip">${icon(c.iconName)}<span>${c.label}</span></span>`)
+    .join("");
+
+  const stats = p.stats
+    .map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`)
+    .join("");
+
+  const catRows = p.categories.map(([ic, name, sub, text], i) =>
+    `<div class="row cat-row">
+      <span class="icon-tile icon-tile--lg">${icon(ic)}</span>
+      <div class="cat-body">
+        <div class="cat-top"><span class="row-name">${name}</span><span class="row-sub">${sub}</span></div>
+        <p class="row-text">${text}</p>
+      </div>
+      <span class="cat-no">${String(i + 1).padStart(2, "0")}</span>
+    </div>`
+  );
+  const cats = catRows.join('<div class="connector" aria-hidden="true"></div>');
+
+  const stackTiles = p.stack
+    .map(([letter, color, name, cat]) =>
+      `<div class="stack-tile">
+        <span class="brand-letter" style="background:${color}1A;color:${color}">${letter}</span>
+        <div><p class="stack-name">${name}</p><p class="stack-cat">${cat}</p></div>
+      </div>`)
+    .join("");
+
+  const owaspItems = p.owasp
+    .map(([name, fix], i) =>
+      `<div class="owasp-item">
+        <span class="owasp-no">${String(i + 1).padStart(2, "0")}</span>
+        <div><p class="owasp-name">${name}</p><p class="owasp-fix">${fix}</p></div>
+      </div>`)
+    .join("");
+
+  return `
+  <section class="card prompt-card reveal" id="${p.id}" aria-labelledby="${p.id}-title">
+    <div class="prompt-head">
+      <span class="icon-tile icon-tile--lg">${icon(p.icon)}</span>
+      <div class="prompt-id">
+        <h3 class="title-xl" id="${p.id}-title">${p.name}</h3>
+        <p class="title-sub">${p.sub}</p>
+      </div>
+      <div class="head-icons">
+        <a class="icon-btn" href="${p.canvas.href}" target="_blank" rel="noopener" title="Open source file">${icon("dots")}</a>
+        <button class="icon-btn" type="button" data-expand="details-${p.id}" aria-expanded="false" aria-controls="details-${p.id}" title="Expand details">${icon("expand")}</button>
+      </div>
+    </div>
+
+    <div class="prompt-pills">
+      ${pill("Recommended", "pill--mint")}
+      ${pill(p.status, "pill--dark")}
+      ${pill(p.version)}
+      ${pill("Bilingual FA · EN")}
+    </div>
+
+    <p class="lede prompt-desc">${p.descEn}</p>
+    <p class="fa">${p.descFa}</p>
+
+    <div class="chips prompt-chips">${chips}</div>
+    <div class="stats prompt-stats">${stats}</div>
+
+    <div class="details" id="details-${p.id}">
+      <div class="details-inner">
+        <div class="details-pad">
+          <div class="detail-group">
+            <span class="sec-label">Blueprint map — 6 categories</span>
+            <div class="timeline">${cats}</div>
+          </div>
+          <div class="detail-group">
+            <span class="sec-label">Tech stack</span>
+            <div class="stack-grid">${stackTiles}</div>
+          </div>
+          <div class="detail-group">
+            <span class="sec-label">OWASP Top 10 — quick reference</span>
+            <div class="owasp-grid">${owaspItems}</div>
+          </div>
+          <div class="row">
+            <span class="icon-tile icon-tile--lg">${icon("filecode")}</span>
+            <div>
+              <p class="row-name">${p.canvas.name}</p>
+              <p class="row-sub" style="margin-left:0;margin-top:2px">${p.canvas.sub}</p>
+            </div>
+            <a class="pill row-right" href="${p.canvas.href}" target="_blank" rel="noopener">Open ${icon("ext")}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+/* ---------- interactions ---------- */
+function wireEvents() {
+  document.querySelectorAll("[data-expand]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const d = document.getElementById(btn.getAttribute("data-expand"));
+      const open = d.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", String(open));
+      btn.title = open ? "Collapse details" : "Expand details";
+    });
+  });
+
+  document.querySelectorAll("[data-copy]").forEach((el) => {
+    el.addEventListener("click", () => copyText(el.getAttribute("data-copy"), el));
+  });
+
+  document.querySelectorAll("[data-copy-target]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const p = PROMPTS.find((x) => x.id === el.getAttribute("data-copy-target"));
+      if (p) copyText(p.full, el);
+    });
+  });
+}
+
+async function copyText(text, el) {
+  let ok = false;
+  try {
+    await navigator.clipboard.writeText(text);
+    ok = true;
+  } catch (_) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { ok = document.execCommand("copy"); } catch (_) { ok = false; }
+    ta.remove();
+  }
+  flashCopied(el, ok);
+}
+
+function flashCopied(el, ok) {
+  if (!ok) { el.title = "Copy failed — select and copy manually"; return; }
+  const prev = el.innerHTML;
+  const prevTitle = el.title;
+  el.classList.add("is-copied");
+  el.innerHTML = el.classList.contains("btn-white")
+    ? `${icon("check")}<span>Copied ✓</span>`
+    : icon("check");
+  el.title = "Copied";
+  setTimeout(() => {
+    el.innerHTML = prev;
+    el.title = prevTitle;
+    el.classList.remove("is-copied");
+  }, 1600);
+}
+
+/* ---------- scroll reveal ---------- */
+function initReveal() {
+  const els = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach((el) => el.classList.add("is-in"));
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+    }),
+    { threshold: 0.08 }
+  );
+  els.forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 6) * 45}ms`;
+    io.observe(el);
+  });
+}
+
+/* ---------- boot ---------- */
+document.getElementById("prompts").innerHTML = PROMPTS.map(renderPrompt).join("");
+wireEvents();
+initReveal();
