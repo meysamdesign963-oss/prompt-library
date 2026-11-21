@@ -2,7 +2,7 @@
    and the full page shell that assembles head + chrome + body. */
 import { icon } from "./icons.mjs";
 import { esc } from "./utils.mjs";
-import { REPO_URL, CATS } from "./site.mjs";
+import { REPO_URL, OWNER, CATS } from "./site.mjs";
 import { brandMark } from "./components.mjs";
 
 function headActions() {
@@ -68,6 +68,7 @@ export function siteFooter(pre) {
       </div>
       <div class="footer-col">
         <h3 class="mono-title">Resources</h3>
+        <a href="https://github.com/${OWNER}" target="_blank" rel="noopener">Author · meysamdesign963-oss ${icon("ext")}</a>
         <a href="${REPO_URL}" target="_blank" rel="noopener">GitHub repository ${icon("ext")}</a>
         <a href="${pre}Prompt-Library.canvas" target="_blank" rel="noopener">Prompt-Library.canvas ${icon("ext")}</a>
         <a href="https://github.com/OWASP/Top10" target="_blank" rel="noopener">OWASP Top 10 ${icon("ext")}</a>
@@ -76,7 +77,7 @@ export function siteFooter(pre) {
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© ${new Date().getFullYear()} Prompt Library — built with security in mind</span>
+      <span>© ${new Date().getFullYear()} Prompt Library · Built by <a href="https://github.com/${OWNER}" target="_blank" rel="noopener">meysamdesign963-oss ${icon("ext")}</a></span>
       <span>Static · No tracking · EN → FA</span>
     </div>
   </footer>`;
