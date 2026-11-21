@@ -3,6 +3,7 @@
 # 📚 Prompt Library — Curated Prompts & Specs
 ### کتابخانه‌ی پرامپت‌ها و اسپک‌های آماده — برای توسعه‌دهنده‌ها و ایجنت‌های هوش مصنوعی
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-5CB8A6)](https://meysamdesign963-oss.github.io/prompt-library/)
 [![Canvas](https://img.shields.io/badge/Obsidian-Canvas-7C3AED?logo=obsidian&logoColor=white)](https://obsidian.md)
 [![Spec](https://img.shields.io/badge/Spec-Bilingual%20FA%20%2F%20EN-0E7490)](#)
 [![Prompt](https://img.shields.io/badge/Use%20As-Prompt%20%2F%20Spec-9333EA)](#-use-it-as-a-prompt)
