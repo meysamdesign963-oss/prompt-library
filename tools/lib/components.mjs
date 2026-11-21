@@ -20,18 +20,6 @@ export function brand(pre, { name, sub, href, heading = false }) {
     : `${tile}${text}`;
 }
 
-/* actions cluster — theme toggle + GitHub link */
-export const headActions = (pre) => `    <div class="head-actions">
-      <button class="icon-btn theme-toggle" type="button" data-theme-toggle title="Toggle dark / light theme" aria-label="Toggle color theme">
-        <span class="theme-ic theme-ic--moon">${icon("moon")}</span>
-        <span class="theme-ic theme-ic--sun">${icon("sun")}</span>
-      </button>
-      <a class="pill pill-link" href="${REPO_URL}" target="_blank" rel="noopener">
-        GitHub
-        ${icon("ext")}
-      </a>
-    </div>`;
-
 /* generic card head: icon tile + mono title */
 export const cardHead = (ic, id, title) => `    <div class="card-head">
       <span class="icon-tile" aria-hidden="true">${icon(ic)}</span>
