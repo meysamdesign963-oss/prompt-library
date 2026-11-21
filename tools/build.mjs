@@ -420,6 +420,7 @@ function shell({ pre, title, desc, canonical, jsonLd, body, active = "" }) {
 <div class="bg-lights" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
   <header class="site-header reveal">
+    <div class="header-row">
     <div class="brand">
       <a class="brand-link" href="${pre}" aria-label="Prompt Library home">
         <span class="brand-tile" aria-hidden="true">${brandMark}</span>
@@ -439,9 +440,9 @@ function shell({ pre, title, desc, canonical, jsonLd, body, active = "" }) {
         ${icon("ext")}
       </a>
     </div>
+    </div>
+    <nav class="site-nav reveal" aria-label="Site sections">${nav}</nav>
   </header>
-
-  <nav class="site-nav reveal" aria-label="Site sections">${nav}</nav>
 
 <main class="sheet">
 
