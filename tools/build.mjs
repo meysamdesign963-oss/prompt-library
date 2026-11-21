@@ -64,6 +64,8 @@ const ICONS = {
   box: svg('<path d="M21 8.2l-9-5-9 5v7.6l9 5 9-5V8.2z"/><path d="M3 8.2l9 5 9-5"/><path d="M12 13.2V21"/>'),
   globe: svg('<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.8 2.7 2.8 14.3 0 17-2.8-2.7-2.8-14.3 0-17z"/>'),
   moon: svg('<path d="M20 12.5A8 8 0 1 1 11.5 4a6.5 6.5 0 0 0 8.5 8.5z"/>'),
+  zoomin: svg('<path d="M12 5v14M5 12h14"/>'),
+  zoomout: svg('<path d="M5 12h14"/>'),
   sun: svg('<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>'),
 };
 const icon = (n) => ICONS[n] || "";
@@ -138,6 +140,22 @@ function canvasToHtml(jsonText) {
     return html || '<div class="canvas-card"><p><em>(This canvas has no text nodes — open it in Obsidian.)</em></p></div>';
   } catch (_) {
     return '<div class="canvas-card"><p><em>(Unreadable canvas file — open it in Obsidian.)</em></p></div>';
+  }
+}
+
+/* raw canvas model for the interactive viewer (positions + edges + rendered html) */
+function buildCanvasJson(jsonText) {
+  try {
+    const j = JSON.parse(jsonText);
+    const nodes = (j.nodes || []).filter((n) => n.type === "text" && n.text);
+    const groups = (j.nodes || []).filter((n) => n.type === "group");
+    return JSON.stringify({
+      nodes: nodes.map((n) => ({ id: n.id, x: n.x, y: n.y, w: n.width, h: n.height, c: n.color || null, html: mdToHtml(n.text) })),
+      groups: groups.map((g) => ({ id: g.id, x: g.x, y: g.y, w: g.width, h: g.height, label: g.label || "", c: g.color || null })),
+      edges: (j.edges || []).map((e) => ({ f: e.fromNode, fs: e.fromSide, t: e.toNode, ts: e.toSide, c: e.color || null })),
+    }).replace(/<\/script/gi, "<\\/script");
+  } catch (_) {
+    return "{}";
   }
 }
 
@@ -651,6 +669,26 @@ function categoryPage(cat, prompts) {
   });
 }
 
+function canvasStageBlock(p) {
+  return `
+  <section class="card reveal" data-canvas-view aria-label="Interactive canvas" hidden>
+    <div class="canvas-toolbar">
+      <div class="mode-pills">
+        <button class="pill mode-pill" type="button" data-canvas-mode-btn="canvas">Canvas view</button>
+        <button class="pill mode-pill" type="button" data-canvas-mode-btn="text">Text view</button>
+      </div>
+      <div class="canvas-controls">
+        <button class="icon-btn" type="button" data-zoom="out" title="Zoom out" aria-label="Zoom out">${icon("zoomout")}</button>
+        <span class="zoom-label" data-zoom-label>100%</span>
+        <button class="icon-btn" type="button" data-zoom="in" title="Zoom in" aria-label="Zoom in">${icon("zoomin")}</button>
+        <button class="pill pill-link" type="button" data-canvas-fit>Fit</button>
+      </div>
+    </div>
+    <div class="canvas-stage" data-canvas-stage></div>
+  </section>
+  <script type="application/json" class="canvas-json">${p.canvasData}</script>`;
+}
+
 function promptPage(p, all) {
   const pre = "../../"; // served at /<cat>/<slug>/ → two levels deep
   const c = CATS[p.cat];
@@ -710,7 +748,8 @@ function promptPage(p, all) {
         <button class="pill pill--dark btn-copy" type="button" data-copy-prompt="${p.slug}" title="Copy the full prompt">Copy prompt ${icon("copy")}</button>
       </div>
     </section>
-    <section class="card reveal" aria-label="Prompt full text">
+    ${p.canvasData ? canvasStageBlock(p) : ""}
+    <section class="card reveal" data-text-view aria-label="Prompt full text">
       <div class="md-body md-body--page">${p.bodyHtml}</div>
     </section>
     ${relatedSection(p, all, pre)}
@@ -814,6 +853,7 @@ if (existsSync(rootCanvasPath)) {
     icon: "layers",
     bodyHtml: canvasToHtml(raw),
     bodyText: canvasToMd(raw),
+    canvasData: buildCanvasJson(raw),
     extras: { featured: false, icon: "layers", pillLabel: "JSON Canvas", alt: { href: "security/security-blueprint/", label: "Markdown view" } },
   });
   if (EXTRAS["security-blueprint"]) {

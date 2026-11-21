@@ -647,3 +647,45 @@ button{font-family:inherit}
   .btn-white{margin-left:0}
   .cat-no{display:none}
 }
+
+
+/* ============ Interactive canvas viewer ============ */
+.canvas-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.mode-pills{display:flex;gap:6px}
+.mode-pill{cursor:pointer}
+.mode-pill.is-active{background:var(--solid-tile);border-color:var(--solid-tile);color:var(--solid-tile-ink)}
+.canvas-controls{display:flex;align-items:center;gap:6px}
+.zoom-label{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--text-3);min-width:44px;text-align:center}
+.canvas-stage{
+  position:relative;height:min(70vh,640px);overflow:hidden;
+  border:1px solid var(--hairline);border-radius:var(--r-row);
+  background-color:var(--card);
+  background-image:radial-gradient(circle,var(--dot) 1px,transparent 1.4px);
+  background-size:18px 18px;
+  cursor:grab;touch-action:none;user-select:none;
+}
+.canvas-stage.is-panning{cursor:grabbing}
+.canvas-world{position:absolute;top:0;left:0;width:0;height:0;transform-origin:0 0;will-change:transform}
+.cv-layer{position:absolute;top:0;left:0;width:0;height:0}
+.cv-edges{position:absolute;top:0;left:0;width:10px;height:10px;overflow:visible;pointer-events:none}
+.cv-group{position:absolute;border:2px solid;border-radius:14px;pointer-events:none}
+.cv-group-label{
+  position:absolute;top:-12px;left:16px;
+  font-family:var(--mono);font-size:9.5px;font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;
+  padding:2px 9px;border-radius:999px;background:var(--card);border:1px solid;
+  pointer-events:none;white-space:nowrap;
+}
+.cv-node{
+  position:absolute;border:1px solid var(--hairline);border-radius:10px;
+  background:var(--card);padding:12px 14px;
+  box-shadow:0 4px 14px rgba(0,0,0,.10);
+  cursor:grab;overflow:auto;scrollbar-width:none;
+}
+.cv-node::-webkit-scrollbar{display:none}
+.cv-node.is-dragging{cursor:grabbing;box-shadow:0 12px 30px rgba(0,0,0,.22);z-index:6}
+.cv-node .md-body{font-size:11px;line-height:1.55}
+.cv-node .md-body h1,.cv-node .md-body h2{border-top:none;padding-top:0;margin:0 0 6px;font-size:10.5px}
+.cv-node .md-body > *:first-child{margin-top:0}
+[data-theme="dark"] .cv-node{box-shadow:0 4px 14px rgba(0,0,0,.4)}
+[data-theme="dark"] .cv-node.is-dragging{box-shadow:0 12px 30px rgba(0,0,0,.55)}
