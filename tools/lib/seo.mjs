@@ -64,6 +64,7 @@ export function sitemap(prompts) {
   const urls = [
     { loc: `${BASE}/`, priority: "1.0" },
     ...Object.keys(CATS).map((k) => ({ loc: `${BASE}/${k}/`, priority: "0.8" })),
+    { loc: `${BASE}/about/`, priority: "0.6" },
     ...prompts.map((p) => ({ loc: `${BASE}/${p.cat}/${p.slug}/`, priority: "0.9" })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>

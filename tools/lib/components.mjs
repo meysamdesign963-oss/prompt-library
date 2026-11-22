@@ -46,6 +46,7 @@ export const aboutCard = `
       <span class="chip">${icon("sparkle")}<span>Agent-ready</span></span>
       <span class="chip">${icon("check")}<span>Static pages · SEO-ready</span></span>
     </div>
+    <div class="prompt-pills"><a class="pill pill-link" href="about/">More about the project ${icon("arrow")}</a></div>
   </section>`;
 
 export const terminalCard = (pre) => `

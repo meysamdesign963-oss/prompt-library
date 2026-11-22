@@ -3,7 +3,7 @@ import { icon } from "./icons.mjs";
 import { esc, pill } from "./utils.mjs";
 import { REPO_URL, BRANCH, BASE, OWNER, CATS, BUILD_DATE } from "./site.mjs";
 import { shell, crumbGraph } from "./seo.mjs";
-import { brand, aboutCard, terminalCard, howtoCard, renderCard, relatedSection, canvasStageBlock, copyPromptBtn } from "./components.mjs";
+import { brand, brandMark, aboutCard, terminalCard, howtoCard, renderCard, relatedSection, canvasStageBlock, copyPromptBtn, cardHead } from "./components.mjs";
 
 export function relatedOf(p, all) {
   const same = all.filter((q) => q.slug !== p.slug && q.cat === p.cat);
@@ -238,4 +238,122 @@ var PL_CATS = ${JSON.stringify(Object.keys(CATS))};
   else if ((m2 = pth.match(/\\/c\\/([^/]+)\\/?$/)) && PL_CATS.indexOf(m2[1]) !== -1) location.replace("/" + m2[1] + "/");
 })();
 </script>`;
+}
+
+export function aboutPage() {
+  const pre = "../"; // served at /about/ → one level deep
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "AboutPage", name: "About — Prompt Library", url: BASE + "/about/", inLanguage: ["en", "fa"] },
+      crumbGraph([["Library", BASE + "/"], ["About", BASE + "/about/"]]),
+    ],
+  };
+
+  return shell({
+    pre,
+    active: "about",
+    title: "About — Prompt Library",
+    desc: "What Prompt-Library is, who builds it and how every prompt becomes a real static page — bilingual (EN → FA), framework-free and SEO-ready.",
+    canonical: BASE + "/about/",
+    jsonLd,
+    body: `
+  <div class="stack">
+    <section class="card reveal" aria-labelledby="ab-title">
+      <div class="prompt-head">
+        <span class="icon-tile icon-tile--lg">${icon("book")}</span>
+        <div class="prompt-id">
+          <h2 class="title-xl" id="ab-title">About Prompt-Library</h2>
+          <p class="title-sub">درباره‌ی سایت · سازنده · چرخه‌ی انتشار</p>
+        </div>
+      </div>
+      <p class="lede prompt-desc">Everything about this site — <strong>what it is</strong>, <strong>who builds it</strong> and <strong>how every prompt becomes a real static page</strong>.</p>
+      <p class="fa">همه‌چیز درباره‌ی این سایت — اینکه <strong>چیست</strong>، <strong>توسط کی ساخته شده</strong> و <strong>چطور کار می‌کند</strong>.</p>
+      <div class="prompt-pills">
+        ${pill("V1.0", "pill--dark")}
+        ${pill("Open source")}
+        ${pill("Static · No tracking")}
+      </div>
+    </section>
+
+    <section class="card reveal" aria-labelledby="ab-what-title">
+      ${cardHead("book", "ab-what-title", "What is this site?")}
+      <p class="lede prompt-desc"><strong>Prompt-Library</strong> is a curated, growing collection of <strong>production-grade security &amp; engineering prompts</strong> for Next.js + MongoDB web builders — authored as <strong>Markdown + Obsidian Canvas</strong>, bilingual (<strong>English → Persian</strong>), and published as <strong>real static pages</strong>: every prompt gets its own URL, unique meta tags, JSON-LD and a sitemap entry.</p>
+      <p class="fa"><strong>پرامپت‌لایبرری</strong> مجموعه‌ای منتخب و در حال رشد از <strong>پرامپت‌های امنیتی و مهندسیِ آماده‌ی کار</strong> برای سازندگان وب با Next.js + MongoDB است — به‌صورت Markdown و Obsidian Canvas نوشته می‌شود، دوزبانه است (انگلیسی → فارسی) و به‌صورت صفحات استاتیک واقعی منتشر می‌شود: هر پرامپت URL و متای اختصاصی و JSON-LD و ورود به sitemap دارد. بدون فریم‌ورک، بدون ردیابی — فقط HTML و CSS و JavaScript خالص.</p>
+      <div class="chips prompt-chips">
+        <span class="chip">${icon("book")}<span>11 prompts</span></span>
+        <span class="chip">${icon("layers")}<span>4 categories</span></span>
+        <span class="chip">${icon("globe")}<span>2 languages</span></span>
+        <span class="chip">${icon("check")}<span>0 tracking</span></span>
+      </div>
+    </section>
+
+    <section class="card reveal" aria-labelledby="ab-who-title">
+      ${cardHead("sparkle", "ab-who-title", "Who builds it")}
+      <div class="prompt-head">
+        <span class="brand-tile" aria-hidden="true">${brandMark(pre)}</span>
+        <div class="prompt-id">
+          <h3 class="title-xl" id="ab-who-name">meysam</h3>
+          <p class="title-sub">meysamdesign963-oss · 3D Designer &amp; Full-Stack Web Builder · طراح سه‌بعدی و سازنده‌ی وب</p>
+        </div>
+      </div>
+      <p class="lede prompt-desc">A 3D designer gone full-stack: the same hands that model in Blender ship <strong>Next.js + MongoDB</strong> products like <strong>Duck CRM</strong>. This library is where the prompts and workflows that power those builds are collected, polished and published.</p>
+      <p class="fa">یک طراح سه‌بعدی که به سراغ ساخت محصولات وب با Next.js و MongoDB رفت؛ سازنده‌ی <strong>Duck CRM</strong>. این کتابخانه جایی است که پرامپت‌ها و گردش‌کارهایی که این ساخته‌ها را پیش می‌برند، جمع‌آوری، پرداخت و منتشر می‌شوند.</p>
+      <div class="prompt-pills">
+        ${pill("Author", "pill--dark")}
+        <a class="pill pill-link" href="https://github.com/meysamdesign963-oss" target="_blank" rel="noopener">GitHub profile ${icon("ext")}</a>
+        <a class="pill pill-link" href="https://duckcrm.ir" target="_blank" rel="noopener">duckcrm.ir ${icon("ext")}</a>
+        <a class="pill pill-link" href="https://github.com/meysamdesign963-oss/prompt-library" target="_blank" rel="noopener">This repo ${icon("ext")}</a>
+      </div>
+    </section>
+
+    <section class="card reveal" aria-labelledby="ab-how-title">
+      ${cardHead("list", "ab-how-title", "How publishing works")}
+      <div class="timeline">
+        <div class="row cat-row">
+          <span class="step-tile" aria-hidden="true">01</span>
+          <div class="cat-body">
+            <div class="cat-top"><span class="row-name">Author</span><span class="row-sub">Write</span></div>
+            <p class="row-text">Write a <strong>.md</strong> (with front-matter) or an Obsidian <strong>.canvas</strong> file inside <strong>prompts/&lt;category&gt;/</strong> — the folder is the category.</p>
+          </div>
+        </div>
+        <div class="connector" aria-hidden="true"></div>
+        <div class="row cat-row">
+          <span class="step-tile" aria-hidden="true">02</span>
+          <div class="cat-body">
+            <div class="cat-top"><span class="row-name">Push to main</span><span class="row-sub">Build</span></div>
+            <p class="row-text">A GitHub Action runs the static generator (<strong>tools/build.mjs</strong> — pure Node, no dependencies).</p>
+          </div>
+        </div>
+        <div class="connector" aria-hidden="true"></div>
+        <div class="row cat-row">
+          <span class="step-tile" aria-hidden="true">03</span>
+          <div class="cat-body">
+            <div class="cat-top"><span class="row-name">Real pages ship</span><span class="row-sub">Live</span></div>
+            <p class="row-text">Every prompt gets a card, its own page (<strong>/category/slug/</strong>), unique meta tags, JSON-LD and a sitemap entry — automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card reveal" aria-labelledby="ab-tech-title">
+      ${cardHead("layers", "ab-tech-title", "Under the hood")}
+      <div class="chips">
+        <span class="chip">${icon("filecode")}<span>Pure HTML / CSS / JS</span></span>
+        <span class="chip">${icon("check")}<span>Zero frameworks</span></span>
+        <span class="chip">${icon("moon")}<span>Dark / Light theme</span></span>
+        <span class="chip">${icon("list")}<span>IRANSansX · Inter · JetBrains Mono</span></span>
+        <span class="chip">${icon("filecode")}<span>JSON Canvas viewer</span></span>
+        <span class="chip">${icon("globe")}<span>JSON-LD + Sitemap</span></span>
+        <span class="chip">${icon("check")}<span>Self-hosted fonts</span></span>
+      </div>
+    </section>
+
+    <div class="back-row reveal">
+      <a class="pill pill-link" href="../">${icon("arrow")} Back to Library</a>
+      <a class="pill pill-link" href="https://github.com/meysamdesign963-oss" target="_blank" rel="noopener">GitHub ${icon("ext")}</a>
+    </div>
+  </div>`,
+  });
 }

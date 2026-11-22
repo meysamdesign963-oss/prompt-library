@@ -25,7 +25,7 @@ import { join } from "node:path";
 import { ROOT, CATS, BUILD_DATE } from "./lib/site.mjs";
 import { loadPrompts } from "./lib/prompts.mjs";
 import { canvasToHtml, canvasToMd, buildCanvasJson } from "./lib/utils.mjs";
-import { homePage, categoryPage, promptPage, notFoundPage } from "./lib/pages.mjs";
+import { homePage, categoryPage, promptPage, notFoundPage, aboutPage } from "./lib/pages.mjs";
 import { sitemap, robotsTxt } from "./lib/seo.mjs";
 import { EXTRAS } from "./extras.mjs";
 
@@ -62,7 +62,7 @@ if (existsSync(rootCanvasPath)) {
 }
 
 /* clean previously generated output */
-for (const d of ["p", "c", ...Object.keys(CATS)]) {
+for (const d of ["p", "c", "about", ...Object.keys(CATS)]) {
   rmSync(join(ROOT, d), { recursive: true, force: true });
 }
 
@@ -71,6 +71,9 @@ writeFileSync(join(ROOT, "index.html"), homePage(prompts));
 writeFileSync(join(ROOT, "404.html"), notFoundPage(prompts));
 writeFileSync(join(ROOT, "sitemap.xml"), sitemap(prompts));
 writeFileSync(join(ROOT, "robots.txt"), robotsTxt);
+
+mkdirSync(join(ROOT, "about"), { recursive: true });
+writeFileSync(join(ROOT, "about", "index.html"), aboutPage());
 
 for (const cat of Object.keys(CATS)) {
   mkdirSync(join(ROOT, cat), { recursive: true });

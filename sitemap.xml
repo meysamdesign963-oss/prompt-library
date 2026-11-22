@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/</loc><lastmod>2026-11-21</lastmod><priority>1.0</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/security/</loc><lastmod>2026-11-21</lastmod><priority>0.8</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/structure/</loc><lastmod>2026-11-21</lastmod><priority>0.8</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/ui/</loc><lastmod>2026-11-21</lastmod><priority>0.8</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/server/</loc><lastmod>2026-11-21</lastmod><priority>0.8</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/security/security-blueprint-canvas/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/security/security-blueprint/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/server/backend-patterns/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/server/deployment-runbook/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/server/nextjs-seo-guide/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/structure/action-mode/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/structure/git-commit-workflow/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/structure/nextjs-project-structure/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/structure/parallel-agents/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/ui/grainy-sage-editorial/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/ui/responsive-frontend-standards/</loc><lastmod>2026-11-21</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/</loc><lastmod>2026-11-22</lastmod><priority>1.0</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/security/</loc><lastmod>2026-11-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/structure/</loc><lastmod>2026-11-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/ui/</loc><lastmod>2026-11-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/server/</loc><lastmod>2026-11-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/about/</loc><lastmod>2026-11-22</lastmod><priority>0.6</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/security/security-blueprint-canvas/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/security/security-blueprint/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/server/backend-patterns/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/server/deployment-runbook/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/server/nextjs-seo-guide/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/structure/action-mode/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/structure/git-commit-workflow/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/structure/nextjs-project-structure/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/structure/parallel-agents/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/ui/grainy-sage-editorial/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://meysamdesign963-oss.github.io/prompt-library/ui/responsive-frontend-standards/</loc><lastmod>2026-11-22</lastmod><priority>0.9</priority></url>
 </urlset>

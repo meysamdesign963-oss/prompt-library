@@ -23,6 +23,7 @@ function siteNav(pre, active) {
   const navItems = [
     ["Library", "", "home"],
     ...Object.entries(CATS).map(([k, c]) => [c.label, `${k}/`, k]),
+    ["About", "about/", "about"],
   ];
   const nav = navItems
     .map(([label, href, key]) =>
