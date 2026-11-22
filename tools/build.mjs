@@ -25,6 +25,7 @@ import { join } from "node:path";
 import { ROOT, CATS, BUILD_DATE } from "./lib/site.mjs";
 import { loadPrompts } from "./lib/prompts.mjs";
 import { canvasToHtml, canvasToMd, buildCanvasJson } from "./lib/utils.mjs";
+import { missingIcons } from "./lib/icons.mjs";
 import { homePage, categoryPage, promptPage, notFoundPage, aboutPage } from "./lib/pages.mjs";
 import { sitemap, robotsTxt } from "./lib/seo.mjs";
 import { EXTRAS } from "./extras.mjs";
@@ -101,5 +102,7 @@ try {
 } catch (_) {}
 writeFileSync(join(ROOT, "assets/favicon.svg"), faviconSvg);
 
+const miss = missingIcons();
+console.log(miss.length ? `⚠ missing icons: ${miss.join(", ")}` : "icons: all resolved");
 console.log(`OK — built ${prompts.length} prompt pages, ${Object.keys(CATS).length} category pages, home, 404, sitemap.xml, robots.txt (${BUILD_DATE})`);
 for (const p of prompts) console.log(`  · /${p.cat}/${p.slug}/`);

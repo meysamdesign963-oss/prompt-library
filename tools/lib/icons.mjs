@@ -36,4 +36,11 @@ export const ICONS = {
   close: svg('<path d="M6 6l12 12M18 6L6 18"/>'),
   chevron: svg('<path d="M6 9l6 6 6-6"/>'),
 };
-export const icon = (n) => ICONS[n] || "";
+/* audit: unknown icon names are collected so the build can warn about them */
+const missing = new Set();
+export const icon = (n) => {
+  const s = ICONS[n] || "";
+  if (!s && n) missing.add(n);
+  return s;
+};
+export const missingIcons = () => [...missing];

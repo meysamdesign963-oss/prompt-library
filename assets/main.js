@@ -370,6 +370,73 @@ function wireChrome() {
   });
 }
 
+/* ---------- markdown enhancements (copy code, lazy images, safe links) ---------- */
+const COPY_SVG =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+
+function enhanceMd() {
+  document.querySelectorAll(".md-body").forEach((body) => {
+    /* images: lazy + async decode */
+    body.querySelectorAll("img").forEach((img) => {
+      img.loading = "lazy";
+      img.decoding = "async";
+      if (!img.getAttribute("alt")) img.alt = "";
+    });
+
+    /* external links: new tab + noopener */
+    body.querySelectorAll('a[href^="http"]').forEach((a) => {
+      if (a.host && a.host !== location.host) {
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+      }
+    });
+
+    /* fenced code blocks: wrap + copy button */
+    body.querySelectorAll("pre").forEach((pre) => {
+      if (pre.closest(".code-wrap")) return;
+      const wrap = document.createElement("div");
+      wrap.className = "code-wrap";
+      pre.parentNode.insertBefore(wrap, pre);
+      wrap.appendChild(pre);
+
+      const btn = document.createElement("button");
+      btn.className = "code-copy";
+      btn.type = "button";
+      btn.title = "Copy code";
+      btn.setAttribute("aria-label", "Copy code");
+      btn.innerHTML = COPY_SVG;
+      btn.addEventListener("click", async () => {
+        const text = pre.innerText;
+        let ok = false;
+        try {
+          await navigator.clipboard.writeText(text);
+          ok = true;
+        } catch (_) {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          try { ok = document.execCommand("copy"); } catch (_) { ok = false; }
+          ta.remove();
+        }
+        if (ok) {
+          btn.classList.add("is-copied");
+          btn.innerHTML = CHECK_SVG;
+          btn.title = "Copied";
+          setTimeout(() => {
+            btn.classList.remove("is-copied");
+            btn.innerHTML = COPY_SVG;
+            btn.title = "Copy code";
+          }, 1600);
+        }
+      });
+      wrap.appendChild(btn);
+    });
+  });
+}
+
 /* ---------- scroll reveal ---------- */
 function initReveal() {
   const els = document.querySelectorAll(".reveal:not(.is-in)");
@@ -395,4 +462,5 @@ wireTheme();
 wireCanvas();
 wireCanvasMode();
 wireChrome();
+enhanceMd();
 initReveal();

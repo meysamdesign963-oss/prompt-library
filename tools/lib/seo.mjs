@@ -55,7 +55,7 @@ ${body}
 
 ${siteFooter(pre)}
 
-<script src="${pre}assets/main.js" defer></script>
+<script src="${pre}assets/main.js?v=7" defer></script>
 </body>
 </html>`;
 }
