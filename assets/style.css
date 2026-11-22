@@ -395,6 +395,18 @@ button{font-family:inherit}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:24px}
 .footer-brandcol .brand{margin-bottom:12px}
 .footer-about{font-size:12.5px;color:var(--text-2);line-height:1.65;margin-top:12px;max-width:36ch}
+.footer-toggle{
+  display:flex;width:100%;align-items:center;justify-content:space-between;gap:12px;
+  background:none;border:none;padding:0;cursor:pointer;text-align:left;
+}
+.footer-toggle .mono-title{color:var(--ink)}
+.footer-toggle .acc-chevron{display:flex;align-items:center;justify-content:center}
+.footer-toggle .acc-chevron svg{width:12px;height:12px;color:var(--text-3);transition:transform .2s ease-out}
+.footer-col.is-open .acc-chevron svg{transform:rotate(180deg)}
+@media (min-width:721px){
+  .footer-toggle{cursor:default}
+  .footer-toggle .acc-chevron{display:none}
+}
 .footer-col h3{margin-bottom:12px}
 .footer-col a{
   display:flex;align-items:center;gap:8px;
