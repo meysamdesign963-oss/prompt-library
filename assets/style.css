@@ -586,7 +586,7 @@ button{font-family:inherit}
   .site-nav a.is-active{background:var(--tile-bg)!important;color:var(--ink)!important}
 }
 @media (max-width:720px){
-  .footer-bottom{flex-direction:column!important;gap:8px!important;align-items:flex-start!important}
+  .footer-bottom{flex-direction:column!important;gap:10px!important;align-items:flex-start!important;padding-top:16px!important}
   .brand-sub{display:none!important}
   .footer-bottom{flex-direction:column!important;gap:8px!important;align-items:flex-start!important}
   .sheet{margin:0 14px 32px;padding:24px 16px}
@@ -595,12 +595,15 @@ button{font-family:inherit}
   .site-header .icon-btn svg{width:16px;height:16px}
   .site-header .pill-link{padding:10px 14px}
   .site-nav a{min-height:44px;display:flex;align-items:center}
-  .site-footer{margin:0 14px 28px;padding:20px 4px 0}
+  .site-footer{margin:0 14px 28px;padding:20px 16px 0}
   .stack,.prompt-list{gap:20px}
   .card{padding:16px}
   .site-header{flex-direction:column;align-items:flex-start}
-  .footer-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:0}
+  .footer-col + .footer-col{border-top:1px solid var(--hairline);margin-top:16px;padding-top:16px}
   .footer-col:not(.is-open) .footer-list{display:none}
+  .footer-toggle{min-height:44px;padding:10px 0}
+  .footer-list a{padding:6px 0}
   .stack-grid,.stats,.cat-grid{grid-template-columns:repeat(2,1fr)}
   .owasp-grid{grid-template-columns:1fr}
   .btn-white{margin-left:0}
