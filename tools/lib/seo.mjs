@@ -38,8 +38,8 @@ export function shell({ pre, title, desc, canonical, jsonLd, body, active = "" }
 <link rel="preload" href="${pre}assets/fonts/IRANSansX-DemiBold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${pre}assets/fonts/IRANSansX-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="${pre}assets/favicon.svg">
-<link rel="stylesheet" href="${pre}assets/fonts/fonts.css">
-<link rel="stylesheet" href="${pre}assets/style.css">
+<link rel="stylesheet" href="${pre}assets/fonts/fonts.css?v=7">
+<link rel="stylesheet" href="${pre}assets/style.css?v=7">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 </head>
 <body>

@@ -344,6 +344,32 @@ function wireCanvasMode() {
   set("canvas");
 }
 
+/* ---------- mobile menu + footer accordions ---------- */
+function wireChrome() {
+  const header = document.querySelector(".site-header");
+  const menuBtn = document.querySelector("[data-menu-toggle]");
+  if (menuBtn && header) {
+    menuBtn.addEventListener("click", () => {
+      const open = header.classList.toggle("menu-open");
+      menuBtn.setAttribute("aria-expanded", String(open));
+    });
+    header.querySelectorAll(".site-nav a").forEach((a) =>
+      a.addEventListener("click", () => {
+        header.classList.remove("menu-open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      })
+    );
+  }
+
+  document.querySelectorAll("[data-acc-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const col = btn.closest("[data-acc-col]");
+      const open = col.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", String(open));
+    });
+  });
+}
+
 /* ---------- scroll reveal ---------- */
 function initReveal() {
   const els = document.querySelectorAll(".reveal:not(.is-in)");
@@ -368,4 +394,5 @@ wireCopy();
 wireTheme();
 wireCanvas();
 wireCanvasMode();
+wireChrome();
 initReveal();

@@ -32,5 +32,8 @@ export const ICONS = {
   min: svg('<path d="M4 14h6v6"/><path d="M14 10h6V4"/><path d="M14 10l7-7"/><path d="M3 21l7-7"/>'),
   zoomout: svg('<path d="M5 12h14"/>'),
   sun: svg('<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>'),
+  menu: svg('<path d="M4 7h16M4 12h16M4 17h16"/>'),
+  close: svg('<path d="M6 6l12 12M18 6L6 18"/>'),
+  chevron: svg('<path d="M6 9l6 6 6-6"/>'),
 };
 export const icon = (n) => ICONS[n] || "";
