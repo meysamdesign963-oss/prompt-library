@@ -28,10 +28,13 @@ function siteNav(pre, active) {
     ["Library", "", "home"],
     ...Object.entries(CATS).map(([k, c]) => [c.label, `${k}/`, k]),
     ["About", "about/", "about"],
+    ["GitHub", `https://github.com/${OWNER}`, "gh-ext"],
   ];
   const nav = navItems
     .map(([label, href, key]) =>
-      `<a href="${pre}${href}"${key === active ? ' class="is-active"' : ""}>${label}</a>`)
+      key === "gh-ext"
+        ? `<a href="${href}" target="_blank" rel="noopener" class="nav-gh">${label} ${icon("ext")}</a>`
+        : `<a href="${pre}${href}"${key === active ? ' class="is-active"' : ""}>${label}</a>`)
     .join("");
   return `    <nav class="site-nav reveal" id="site-nav" aria-label="Site sections">${nav}</nav>`;
 }
